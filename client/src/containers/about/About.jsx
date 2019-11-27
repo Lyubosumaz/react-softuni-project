@@ -13,10 +13,8 @@ export default function About() {
 
     return (
         <div>
-            <Header />
             <div>Hello About</div>
             <button onClick={(e) => handleTest(e)}>Submit</button>
-            <Footer />
         </div>
     );
 }

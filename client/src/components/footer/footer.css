@@ -1,0 +1,42 @@
+.main-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 60px 5%;
+}
+
+.main-footer a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+.copy-write {
+    font-size: 18px;
+    float: left;
+}
+
+.footer-nav {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li {
+    float: left;
+}
+
+.footer-nav li+li {
+    margin-left: 15px;
+}
