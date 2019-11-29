@@ -1,31 +1,60 @@
 import React from 'react';
-import './login.css';
 
-export default function Login() {
-    return (
-        <form>
-            <div className="login-container">
-                <h1>Login</h1>
-                <p>Please enter your Username and Password</p>
+import withForm from '../../components/higher-order-components/withForm';
+import userService from '../../services/user-services';
+import http from '../../services/http';
 
-                <div>
-                    <label for="username"><b>Username</b></label>
-                    <input type="text" placeholder="Enter your Username" name="username" required />
+// import './login.css';
+
+class Login extends React.Component {
+
+    usernameChangeHandler = this.props.controlChangeHeaderFactory('username');
+    passwordChangeHandler = this.props.controlChangeHeaderFactory('password');
+
+    submitHandler = (ev) => {
+        ev.preventDefault();
+
+        const errors = this.props.getFormErrorsState();
+        if (!!errors) { return; }
+        const data = this.props.getFormState();
+        userService.login(data).then(() => {
+            this.props.history.push('/home');
+        });
+
+        // http.User.login(data).then(() => {
+        //    this.props.history.push('/home');
+        // });
+    }
+
+    render() {
+
+        return (
+            <form>
+                <div className="form-container">
+                    <h1>Login</h1>
+                    <p>Please enter your Username and Password</p>
+
+                    <div>
+                        <label for="username"><b>Username:</b></label>
+                        <input type="text" placeholder="Enter your Username" name="username" className="form-input" onChange={this.usernameChangeHandler} />
+                    </div>
+
+                    <div>
+                        <label for="password"><b>Password:</b></label>
+                        <input type="text" placeholder="Enter your Password" name="password" className="form-input" onChange={this.passwordChangeHandler} />
+                    </div>
+
+                    <div>
+                        <button type="submit" className="form-action-btn" onClick={this.submitHandler}>Login</button>
+                    </div>
+
+                    <div className="form-info-container">
+                        <p>Don't have an account? <a href="/register">Create account</a>.</p>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="password"><b>Password</b></label>
-                    <input type="text" placeholder="Enter your Password" name="password" required />
-                </div>
-
-                <div>
-                    <button type="submit" className="login-btn">Login</button>
-                </div>
-
-                <div className="info-container">
-                    <p>Don't have an account? <a href="/register">Create account</a>.</p>
-                </div>
-            </div>
-        </form>
-    );
+            </form>
+        );
+    };
 }
+
+export default withForm(Login, { username: '', password: '' });

@@ -1,4 +1,4 @@
-//IliaIdakiev Debouncing Code & Throttling Info
+//IliaIdakiev Debouncing & Front-end Verification Code
 import React from 'react';
 
 export default function withForm(Cmp, initialState, schema) {
@@ -41,11 +41,11 @@ export default function withForm(Cmp, initialState, schema) {
 
         runControlValidation = name => {
             const currentValue = this.state.form[name];
-            return schema.fields[name].validate(currentValue, { abortEarly: false });
+            return schema && schema.fields[name].validate(currentValue, { abortEarly: false }) || Promise.resolve();
         }
 
         runValidations = () => {
-            return schema.validate(this.state.form, { abortEarly: false })
+            return schema && schema.validate(this.state.form, { abortEarly: false })
                 .then(() => {
                     this.setState({ errors: undefined });
                     return this.state.form;
@@ -56,7 +56,7 @@ export default function withForm(Cmp, initialState, schema) {
                         return acc;
                     }, {});
                     this.setState({ errors });
-                });
+                }) || Promise.resolve();
         }
 
         render() {

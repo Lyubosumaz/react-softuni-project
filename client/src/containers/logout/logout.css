@@ -1,49 +1,13 @@
-.logout-container {
-    padding: 16px;
-  }
-
-button.yes-btn {
-    border-radius: 4px;
+#yes-btn {
     background-color: #4CAF50;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
 }
 
-.yes-btn span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-
-.yes-btn span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.yes-btn:hover span {
-    padding-right: 25px;
-}
-
-.yes-btn:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
-.no-btn {
-    border-radius: 4px;
+#no-btn {
     background-color: #f4511e;
+}
+
+.logout-button {
+    border-radius: 4px;
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -55,14 +19,14 @@ button.yes-btn {
     margin: 5px;
 }
 
-.no-btn span {
+.logout-button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-.no-btn span:after {
+.logout-button span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -71,11 +35,11 @@ button.yes-btn {
     transition: 0.5s;
 }
 
-.no-btn:hover span {
+.logout-button:hover span {
     padding-right: 25px;
 }
 
-.no-btn:hover span:after {
+.logout-button:hover span:after {
     opacity: 1;
     right: 0;
 }

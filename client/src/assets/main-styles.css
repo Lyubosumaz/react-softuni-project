@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+* {
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin: 1%;
+}
+
+a {
+    color: dodgerblue;
+}

@@ -7,6 +7,16 @@ const userService = {
                 'Content-type': 'application/json'
             }
         }).then(res => res.json());
+    },
+    login: function (data) {
+        return fetch(`http://localhost:4000/api/user/login`, {
+            body: JSON.stringify(data),
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => res.text());
     }
 };
 

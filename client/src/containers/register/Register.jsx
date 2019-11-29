@@ -1,9 +1,10 @@
 import React from 'react';
 import * as yup from 'yup';
 
-import withForm from '../../components/hocs/withForm';
-import './register.css';
+import withForm from '../../components/higher-order-components/withForm';
 import userService from '../../services/user-services';
+
+// import './register.css';
 
 class Register extends React.Component {
 
@@ -19,7 +20,7 @@ class Register extends React.Component {
         if (!!errors) { return; }
         const data = this.props.getFormState();
         userService.register(data).then(() => {
-            alert('SUCCESS!');
+            this.props.history.push('/login');
         })
 
     }
@@ -37,42 +38,43 @@ class Register extends React.Component {
 
         return (
             <form>
-                <div className="register-container">
+                <div className="form-container">
                     <h1>Register</h1>
                     <p>Please fill this form to create your Account.</p>
 
-                    <div className="input-div">
-                        <label for="username"><b>Username</b></label>
-                        <input type="text" placeholder="Enter your Username" name="username" onChange={this.usernameOnChangeHandler} />
+                    <div>
+                        <label for="username"><b>Username:</b></label>
+                        <input type="text" placeholder="Enter your Username" className="form-input" name="username" onChange={this.usernameOnChangeHandler} />
                         {usernameError && <div>{usernameError}</div>}
                     </div>
 
-                    <div className="input-div">
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter your Email" name="email" onChange={this.emailOnChangeHandler} />
+                    <div>
+                        <label for="email"><b>Email:</b></label>
+                        <input type="text" placeholder="Enter your Email" className="form-input" name="email" onChange={this.emailOnChangeHandler} />
                         {emailError && <div>{emailError}</div>}
-                    </div >
+                    </div>
 
-                    <div className="input-div">
-                        <label for="password"><b>Password</b></label>
-                        <input type="text" placeholder="Enter your Password" name="password" onChange={this.passwordOnChangeHandler} />
+                    <div>
+                        <label for="password"><b>Password:</b></label>
+                        <input type="text" placeholder="Enter your Password" className="form-input" name="password" onChange={this.passwordOnChangeHandler} />
                         {passwordError && <div>{passwordError}</div>}
                     </div>
 
-                    <div className="input-div">
-                        <label for="repeat-password"><b>Repeat-Password</b></label>
-                        <input type="text" placeholder="Repeat your Password" name="repeat-password" onChange={this.repeatPasswordOnChangeHandler} />
+                    <div>
+                        <label for="repeat-password"><b>Repeat-Password:</b></label>
+                        <input type="text" placeholder="Confirm your Password" className="form-input" name="repeat-password" onChange={this.repeatPasswordOnChangeHandler} />
                         {repeatPasswordError && <div>{repeatPasswordError}</div>}
                     </div>
 
-                    <div className="input-div">
+                    <div>
                         <p>By creating an account, you agree to our <a href="/terms-and-privacy">Terms & Conditions</a>.</p>
-                        <button type="button" className="register-btn" onClick={this.submitHandler}>Register</button>
+                        <button type="button" className="form-action-btn" onClick={this.submitHandler}>Register</button>
                     </div>
 
-                    <div className="info-container">
+                    <div className="form-info-container">
                         <p>Already have account? <a href="/login">Sign in</a>.</p>
                     </div>
+
                 </div>
             </form>
         );
@@ -100,9 +102,9 @@ const schema = yup.object({
         .min(5, 'Password should be at least 5 character'),
 
     repeatPassword: yup.string('Repeated password should be String')
-        // .oneOf([yup.ref('password'), null], 'Repeated password doesn\'t match the password')
-        // .required('Repeated password is required')
-        // .min(5, 'Repeated password should be at least 5 character'),
+    // .oneOf([yup.ref('password'), null], 'Repeated password doesn\'t match the password')
+    // .required('Repeated password is required')
+    // .min(5, 'Repeated password should be at least 5 character'),
 });
 
 export default withForm(Register, initialFormState, schema);
