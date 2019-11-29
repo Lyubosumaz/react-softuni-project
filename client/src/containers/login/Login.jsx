@@ -22,7 +22,7 @@ export default function Login() {
                     <button type="submit" className="login-btn">Login</button>
                 </div>
 
-                <div className="create-container">
+                <div className="info-container">
                     <p>Don't have an account? <a href="/register">Create account</a>.</p>
                 </div>
             </div>

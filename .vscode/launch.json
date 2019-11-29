@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "nodemon",
+            "name": "Launch Server-Express",
             "runtimeExecutable": "nodemon",
             "program": "${workspaceFolder}/server/index.js",
             "restart": true,

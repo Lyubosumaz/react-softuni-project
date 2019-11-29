@@ -3,7 +3,7 @@
 }
 
 input[type=text], input[type=password] {
-  width: 98.3%;
+  width: 25%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -31,7 +31,18 @@ a {
   opacity: 0.9;
 }
 
-.signin-container {
-  background-color: #f1f1f1;
-  text-align: center;
+.checker-terms {
+  width: 20px;
+  height: 20px;
+  display: inline;
+}
+
+/* div {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+} */
+
+.test {
+  justify-content: space-evenly;
 }

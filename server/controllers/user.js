@@ -5,33 +5,36 @@ const utils = require('../utils');
 
 module.exports = {
     get: {
-        register: (req, res) => {
-            res.render('user/register');
-        },
-        login: (req, res) => {
-            res.render('user/login');
+        all: (req, res, next) => {
+            User.find()
+                .then((users) => res.send(users))
+                .catch(next);
         },
     },
     post: {
-        // try{}catch(err){console.log(err);}
         register: async (req, res) => {
-            const { username, password, repeatPassword } = req.body;
-            if (password !== repeatPassword) {
-                res.render('user/register', {
-                    errors: {
-                        repeatPassword: { message: 'Password and Re-Password doesn\'t match!' }
-                    }
-                });
-            }
+            const { username, password } = req.body;
+            User.create({ username, password })
+                .then((createdUser) => { res.send(createdUser) })
+                .catch(next);
 
-            try {
-                await User.create({ username, password });
-                res.redirect('/login');
-            } catch (err) {
-                if (err.name === 'ValidationError') {
-                    res.render('user/register', { errors: err.errors });
-                }
-            }
+            // const { username, password, repeatPassword } = req.body;
+            // if (password !== repeatPassword) {
+            //     res.render('user/register', {
+            //         errors: {
+            //             repeatPassword: { message: 'Password and Re-Password doesn\'t match!' }
+            //         }
+            //     });
+            // }
+
+            // try {
+            //     await User.create({ username, password });
+            //     res.redirect('/login');
+            // } catch (err) {
+            //     if (err.name === 'ValidationError') {
+            //         res.render('user/register', { errors: err.errors });
+            //     }
+            // }
         },
         login: async (req, res) => {
             const { username, password } = req.body;

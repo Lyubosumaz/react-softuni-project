@@ -2,7 +2,7 @@ const protocol = 'http://';
 const domain = 'localhost:4000';
 
 const User = {
-    test: () => httpGet("/about"),
+    test: () => httpGet("/api/home"),
     // login: (userData) => httpPost("/api/user/login", userData),
     // signup: (userData) => httpPost("/api/user/signup", userData)
 };

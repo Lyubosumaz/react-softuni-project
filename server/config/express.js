@@ -10,6 +10,7 @@ module.exports = (app) => {
     app.use(logger('dev'));
     app.use(cookieParser(cookieParserSecret));
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
     app.use(express.json());
     app.use(express.static(path.join(__dirname, 'public')));
 
