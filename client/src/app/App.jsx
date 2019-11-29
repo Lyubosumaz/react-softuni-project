@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './App.css';
 import Router from '../containers/router/Router';
@@ -17,14 +17,23 @@ function parseCookies() {
 }
 
 export default function App() {
+  const [isLogged, setIsLogged] = useState(false);
 
-  const cookies = parseCookies();
-  const isLogged = !!cookies['auth-token'];
+  // let cookies = parseCookies();
+
+  // useEffect(() => {
+  //   setIsLogged(!!cookies['auth-token']);
+  // }, [cookies])
+
+  const handleLogin = () => {
+    const cookies = parseCookies();
+    setIsLogged(!!cookies['auth-token']);
+  }
 
   return (
     <div className="App is this">
       <Header isLogged={isLogged} />
-      <Router />
+      <Router handlers={{ handleLogin }} />
       <Footer />
     </div>
   );

@@ -41,10 +41,12 @@ export default function withForm(Cmp, initialState, schema) {
 
         runControlValidation = name => {
             const currentValue = this.state.form[name];
+            // eslint-disable-next-line
             return schema && schema.fields[name].validate(currentValue, { abortEarly: false }) || Promise.resolve();
         }
 
         runValidations = () => {
+            // eslint-disable-next-line
             return schema && schema.validate(this.state.form, { abortEarly: false })
                 .then(() => {
                     this.setState({ errors: undefined });
@@ -56,11 +58,18 @@ export default function withForm(Cmp, initialState, schema) {
                         return acc;
                     }, {});
                     this.setState({ errors });
+                    // eslint-disable-next-line
                 }) || Promise.resolve();
         }
 
         render() {
-            return <Cmp {...this.props} controlChangeHeaderFactory={this.controlChangeHeaderFactory} getFormState={this.getFormState} runValidations={this.runValidations} getFormErrorsState={this.getFormErrorsState}></Cmp>
+            return <Cmp
+                {...this.props}
+                controlChangeHeaderFactory={this.controlChangeHeaderFactory}
+                getFormState={this.getFormState}
+                runValidations={this.runValidations}
+                getFormErrorsState={this.getFormErrorsState}
+            ></Cmp>
         };
     }
 }

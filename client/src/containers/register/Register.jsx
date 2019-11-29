@@ -1,10 +1,7 @@
 import React from 'react';
-import * as yup from 'yup';
-
 import withForm from '../../components/higher-order-components/withForm';
 import userService from '../../services/user-services';
-
-// import './register.css';
+import validator from './register-validator';
 
 class Register extends React.Component {
 
@@ -14,8 +11,6 @@ class Register extends React.Component {
     repeatPasswordOnChangeHandler = this.props.controlChangeHeaderFactory('repeatPassword');
 
     submitHandler = () => {
-        // this.props.runValidations()
-        //     .then(formData => console.log(formData));
         const errors = this.props.getFormErrorsState();
         if (!!errors) { return; }
         const data = this.props.getFormState();
@@ -41,70 +36,44 @@ class Register extends React.Component {
                 <div className="form-container">
                     <h1>Register</h1>
                     <p>Please fill this form to create your Account.</p>
-
                     <div>
                         <label for="username"><b>Username:</b></label>
                         <input type="text" placeholder="Enter your Username" className="form-input" name="username" onChange={this.usernameOnChangeHandler} />
                         {usernameError && <div>{usernameError}</div>}
                     </div>
-
                     <div>
                         <label for="email"><b>Email:</b></label>
                         <input type="text" placeholder="Enter your Email" className="form-input" name="email" onChange={this.emailOnChangeHandler} />
                         {emailError && <div>{emailError}</div>}
                     </div>
-
                     <div>
                         <label for="password"><b>Password:</b></label>
                         <input type="text" placeholder="Enter your Password" className="form-input" name="password" onChange={this.passwordOnChangeHandler} />
                         {passwordError && <div>{passwordError}</div>}
                     </div>
-
                     <div>
                         <label for="repeat-password"><b>Repeat-Password:</b></label>
                         <input type="text" placeholder="Confirm your Password" className="form-input" name="repeat-password" onChange={this.repeatPasswordOnChangeHandler} />
                         {repeatPasswordError && <div>{repeatPasswordError}</div>}
                     </div>
-
                     <div>
                         <p>By creating an account, you agree to our <a href="/terms-and-privacy">Terms & Conditions</a>.</p>
                         <button type="button" className="form-action-btn" onClick={this.submitHandler}>Register</button>
                     </div>
-
                     <div className="form-info-container">
                         <p>Already have account? <a href="/login">Sign in</a>.</p>
                     </div>
-
                 </div>
             </form>
         );
-    }
-}
+    };
+};
 
 const initialFormState = {
     username: '',
     email: '',
     password: '',
     repeatPassword: '',
-}
+};
 
-const schema = yup.object({
-    username: yup.string('Username should be String')
-        .required('Username is required')
-        .min(4, 'Username should be at lest 4 symbols'),
-
-    email: yup.string('Email should be String')
-        .required('Email is required')
-        .min(5, 'Email should be at least 5 character'),
-
-    password: yup.string('Password should be String')
-        .required('Password is required')
-        .min(5, 'Password should be at least 5 character'),
-
-    repeatPassword: yup.string('Repeated password should be String')
-    // .oneOf([yup.ref('password'), null], 'Repeated password doesn\'t match the password')
-    // .required('Repeated password is required')
-    // .min(5, 'Repeated password should be at least 5 character'),
-});
-
-export default withForm(Register, initialFormState, schema);
+export default withForm(Register, initialFormState, validator);

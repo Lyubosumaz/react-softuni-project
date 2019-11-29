@@ -1,10 +1,12 @@
+const { variable } = require('../app-config');
+
 const env = process.env.NODE_ENV || 'development';
 
 const config = {
     development: {
-        port: normalizePort(process.env.PORT || '4000'),
-        dbURL: 'mongodb://localhost:27017/alpha-test',
-        cookie: 'auth-token'
+        port: normalizePort(process.env.PORT || `${variable.port}`),
+        dbURL: `mongodb://localhost:27017/${variable.dbName}`,
+        cookie: `${variable.cookieName}`
     },
     production: {}
 };

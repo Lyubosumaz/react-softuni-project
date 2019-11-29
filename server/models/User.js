@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const { saltRounds } = require('../app-config');
+const { constant } = require('../app-config');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -40,7 +40,7 @@ userSchema.methods = {
 
 userSchema.pre('save', function (next) {
     if (this.isModified('password')) {
-        bcrypt.genSalt(saltRounds, (err, salt) => {
+        bcrypt.genSalt(constant.saltRounds, (err, salt) => {
             if (err) {
                 next(err);
                 return;

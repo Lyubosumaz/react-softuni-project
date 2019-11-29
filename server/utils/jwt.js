@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('../app-config')
+const { constant } = require('../app-config')
 
 function createToken(data) {
-    return jwt.sign(data, jwtSecret, { expiresIn: '1h' });
+    return jwt.sign(data, constant.jwtSecret, { expiresIn: '1h' });
 }
 
 function verifyToken(token) {
     return new Promise((resolve, reject) => {
-        jwt.verify(token, jwtSecret, (err, data) => {
+        jwt.verify(token, constant.jwtSecret, (err, data) => {
             if (err) {
                 reject(err);
                 return;

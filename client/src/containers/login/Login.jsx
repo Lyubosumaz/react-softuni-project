@@ -17,7 +17,8 @@ class Login extends React.Component {
         const errors = this.props.getFormErrorsState();
         if (!!errors) { return; }
         const data = this.props.getFormState();
-        userService.login(data).then(() => {
+        userService.login(data).then((res) => {
+            this.props.handlers.handleLogin();
             this.props.history.push('/home');
         });
 

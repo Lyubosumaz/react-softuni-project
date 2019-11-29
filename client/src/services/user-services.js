@@ -17,6 +17,12 @@ const userService = {
             },
             credentials: 'include'
         }).then(res => res.text());
+    },
+    logout: function (data) {
+        return fetch(`http://localhost:4000/api/user/logout`, {
+            method: 'POST',
+            credentials: 'include'
+        }).then(res => res.text());
     }
 };
 
