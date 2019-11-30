@@ -4,6 +4,6 @@ const controller = require('../controllers');
 
 router.post('/register', controller.user.post.register);
 router.post('/login', controller.user.post.login);
-router.get('/logout', function (req, res, next) { res.send('respond with a Get Logout'); });
+router.get('/logout', controller.user.post.logout);
 
 module.exports = router;

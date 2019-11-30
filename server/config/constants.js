@@ -1,12 +1,12 @@
-const { variable } = require('../app-config');
+const { port, dbName, cookieName } = require('../app-config');
 
 const env = process.env.NODE_ENV || 'development';
 
 const config = {
     development: {
-        port: normalizePort(process.env.PORT || `${variable.port}`),
-        dbURL: `mongodb://localhost:27017/${variable.dbName}`,
-        cookie: `${variable.cookieName}`
+        port: normalizePort(process.env.PORT || `${port}`),
+        dbURL: `mongodb://localhost:27017/${dbName}`,
+        cookie: `${cookieName}`
     },
     production: {}
 };
