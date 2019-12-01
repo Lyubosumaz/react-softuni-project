@@ -7,6 +7,7 @@ import HouseOfFame from '../house-of-fame/HouseOfFame';
 import Register from '../register/Register';
 import Login from '../login/Login';
 import Logout from '../logout/Logout';
+import Game from '../game/Game';
 
 export default function AppRouter(props) {
     return (
@@ -19,6 +20,7 @@ export default function AppRouter(props) {
                 <Route path="/register" exact component={Register} />
                 <Route path="/login" exact render={(pr) => <Login {...pr} handlers={props.handlers} />} />
                 <Route path="/logout" exact component={Logout} />
+                <Route path="/game" exact component={Game} />
             </Switch>
         </BrowserRouter>
     );

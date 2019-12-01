@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Provider } from 'react-redux';
+import store from '../containers/game/config/store';
 
 import './App.css';
 import Router from '../containers/router/Router';
@@ -32,9 +34,11 @@ export default function App() {
 
   return (
     <div className="App is this">
-      <Header isLogged={isLogged} />
-      <Router handlers={{ handleLogin }} />
-      <Footer />
+      <Provider store={store}>
+        <Header isLogged={isLogged} />
+        <Router handlers={{ handleLogin }} />
+        <Footer />
+      </Provider>
     </div>
   );
 }

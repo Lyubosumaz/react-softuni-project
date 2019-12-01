@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 
+// Yup.addMethod(Yup.string, equalTo(ref: ))
+
 const schema = Yup.object().shape({
     username: Yup
         .string('Username should be String')
@@ -18,7 +20,7 @@ const schema = Yup.object().shape({
 
     repeatPassword: Yup
         .string('Repeated password should be String')
-        // .oneOf([Yup.ref('password')], 'Repeated password doesn\'t match the password')
+        // .oneOf([Yup.ref('password', null)], 'Repeated password doesn\'t match the password')
         .required('Repeated password is required')
         .min(5, 'Repeated password should be at least 5 character'),
 });
