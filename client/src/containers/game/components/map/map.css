@@ -1,0 +1,15 @@
+.tile {
+    display: table-cell;
+}
+
+.grass {
+    background-color: green;
+}
+
+.rock {
+    background-image: url('/client/public/tiles/snow_rock.png');
+}
+
+.tree {
+    background-image: url('/client/public/tiles/pine_tree.png');
+}
