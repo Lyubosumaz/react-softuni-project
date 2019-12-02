@@ -10,6 +10,12 @@ function getTileSprite(type) {
             return 'rock';
         case 6:
             return 'tree';
+        case 10:
+            return 'treasure-gold';
+        case 11:
+            return 'treasure-item';
+        case 12:
+            return 'final';
     }
 }
 

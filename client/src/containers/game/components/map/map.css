@@ -1,5 +1,10 @@
 .tile {
     display: table-cell;
+    background-color: green;
+}
+
+.final {
+    background-color: yellow;
 }
 
 .grass {
@@ -7,9 +12,17 @@
 }
 
 .rock {
-    background-image: url('/client/public/tiles/snow_rock.png');
+    background-image: url(./tiles/snow_rock.png);
 }
 
 .tree {
-    background-image: url('/client/public/tiles/pine_tree.png');
+    background-image: url(./tiles/tree.png);
+}
+
+.treasure-gold {
+    background-image: url(./tiles/treasure_gold.png);
+}
+
+.treasure-item {
+    background-image: url(./tiles/treasure_item.png);
 }
