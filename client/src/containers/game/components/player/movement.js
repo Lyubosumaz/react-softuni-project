@@ -8,14 +8,33 @@ export default function handleMovement(player) {
         switch (direction) {
             case 'WEST':
                 return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
-            case 'EAST':
-                return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
             case 'NORTH':
                 return [oldPos[0], oldPos[1] - SPRITE_SIZE];
+            case 'EAST':
+                return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
             case 'SOUTH':
                 return [oldPos[0], oldPos[1] + SPRITE_SIZE];
-        }
+        };
     }
+
+    function getSpriteLocation(direction, walkIndex) {
+        switch (direction) {
+            case 'WEST':
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`;
+            case 'NORTH':
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`;
+            case 'EAST':
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
+            case 'SOUTH':
+                return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
+        };
+    }
+
+    function getWalkIndex() {
+        const walkIndex = store.getState().player.walkIndex;
+        return walkIndex >= 7 ? 0 : walkIndex + 1;
+    }
+
 
     function observeBoundaries(oldPos, newPos) {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
@@ -30,11 +49,15 @@ export default function handleMovement(player) {
         return nextTile < 5
     }
 
-    function dispatchMove(newPos) {
+    function dispatchMove(direction, newPos) {
+        const walkIndex = getWalkIndex()
         store.dispatch({
             type: 'MOVE_PLAYER',
             payload: {
-                position: newPos
+                position: newPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex),
             }
         });
     }
@@ -44,7 +67,7 @@ export default function handleMovement(player) {
         const newPos = getNewPosition(oldPos, direction)
 
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) {
-            dispatchMove(newPos)
+            dispatchMove(direction, newPos)
         }
     }
 
