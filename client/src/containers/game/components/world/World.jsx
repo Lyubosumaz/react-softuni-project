@@ -3,8 +3,16 @@ import Map from '../map/Map';
 import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
+import store from '../../config/store';
 
 export default function World() {
+    store.dispatch({
+        type: 'ADD_TILES',
+        payload: {
+            tiles,
+        }
+    });
+    
     return (
         <div
             style={{
@@ -13,7 +21,7 @@ export default function World() {
                 height: '650px',
                 margin: '20px auto'
             }}>
-            <Map tiles={tiles} />
+            <Map />
             <Player />
         </div>
     );
