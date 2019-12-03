@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Map from '../map/Map';
 import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
-import store from '../../config/store';
+import store from '../../../../services/store';
 
 export default function World() {
     store.dispatch({

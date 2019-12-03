@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux';
-import playerReducer from '../components/player/reducer';
-import mapReducer from '../components/map/reducer';
+import playerReducer from '../containers/game/components/player/reducer';
+import mapReducer from '../containers/game/components/map/reducer';
+import loginReducer from '../containers/login/reducer';
 
 const rootReducer = combineReducers({
     player: playerReducer,
     map: mapReducer,
+    login: loginReducer,
 });
 
 const store = createStore(

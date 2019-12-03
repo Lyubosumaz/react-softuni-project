@@ -6,7 +6,7 @@ const userService = {
             headers: {
                 'Content-type': 'application/json'
             }
-        }).then(res => res.json());
+        }).then(res => { console.log(res); res.json() });
     },
     login: function (data) {
         return fetch(`http://localhost:4000/api/user/login`, {

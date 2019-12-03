@@ -8,7 +8,11 @@ seedAdminUser = async function () {
         if (users.length > 0) { return };
         // const salt = await bcrypt.genSalt(parseInt(parseInt(saltRounds)));
         // const password = await bcrypt.hash('123', salt);
-        return User.create({ username: 'admin', password: '123' });
+        return User.create({
+            username: 'admin',
+            email: 'admin@admin.admin',
+            password: 'admin',
+        });
     } catch (err) { console.log(err); }
 }
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import store from '../containers/game/config/store';
+import store from '../services/store';
 
 import './App.css';
 import Router from '../containers/router/Router';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import OptionsBar from '../components/options-bar/OptionsBar';
 
 import '../assets/main-styles.css';
 import '../assets/forms-style.css';
-import OptionsBar from '../components/options-bar/OptionsBar';
 
 function parseCookies() {
   return document.cookie.split('; ').reduce((acc, cookie) => {
@@ -20,7 +20,7 @@ function parseCookies() {
 }
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  // const [isLogged, setIsLogged] = useState(false);
 
   // let cookies = parseCookies();
 
@@ -28,17 +28,17 @@ export default function App() {
   //   setIsLogged(!!cookies['auth-token']);
   // }, [cookies])
 
-  const handleLogin = () => {
-    const cookies = parseCookies();
-    setIsLogged(!!cookies['auth-token']);
-  }
+  // const handleLogin = () => {
+  //   const cookies = parseCookies();
+  //   setIsLogged(!!cookies['auth-token']);
+  // }
 
   return (
     <div className="App is this">
       <Provider store={store}>
-        <Header isLogged={isLogged} />
+        <Header />
         <OptionsBar />
-        <Router handlers={{ handleLogin }} />
+        <Router />
         <Footer />
       </Provider>
     </div>

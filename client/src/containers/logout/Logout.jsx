@@ -34,4 +34,4 @@ export default function Logout(props) {
             </div>
         </form>
     );
-}
+};

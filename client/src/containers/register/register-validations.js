@@ -6,7 +6,7 @@ const schema = Yup.object().shape({
     username: Yup
         .string('Username should be String')
         .required('Username is required')
-        .min(3, 'Username should be at lest 3 symbols'),
+        .min(4, 'Username should be at least 4 characters long'),
 
     email: Yup
         .string('Email should be String')

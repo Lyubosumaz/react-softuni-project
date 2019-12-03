@@ -14,19 +14,19 @@ module.exports = {
     },
     post: {
         register: async (req, res, next) => {
-            const { username, password } = req.body;
-            User.create({ username, password })
+            const { username, email, password, subscribe, repeatPassword } = req.body;
+
+            if (password !== repeatPassword) {
+                res.send({ message: { errors: err.errors } });
+                res.send('Passwords doesn\'t match');
+                res.json({ message: 'Passwords doesn\'t match' });
+                console.log(req.body);
+                
+            }
+
+            User.create({ username, email, password, subscribe })
                 .then((createdUser) => { res.send(createdUser) })
                 .catch(next);
-
-            // const { username, password, repeatPassword } = req.body;
-            // if (password !== repeatPassword) {
-            //     res.render('user/register', {
-            //         errors: {
-            //             repeatPassword: { message: 'Password and Re-Password doesn\'t match!' }
-            //         }
-            //     });
-            // }
 
             // try {
             //     await User.create({ username, password });
@@ -43,7 +43,7 @@ module.exports = {
                 .then(user => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
                 .then(([user, match]) => {
                     if (!match) {
-                        res.status(401).send('Invalid username or password');
+                        res.status(401).send('Invalid Username or Password');
                         return;
                     }
 

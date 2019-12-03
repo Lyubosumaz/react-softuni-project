@@ -9,7 +9,7 @@ export default function withForm(Cmp, initialState, schema) {
         };
 
         controlChangeHeaderFactory = name => {
-            let id;
+            let = null;
             return e => {
                 const newValue = e.target.value;
                 if (id) { clearTimeout(id); id = null; }

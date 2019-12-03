@@ -1,8 +1,18 @@
-import store from '../../config/store';
+import React, { useEffect } from 'react';
+import store from '../../../../services/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 
 
-export default function handleMovement(player) {
+export default function HandleMovement({ children }) {
+
+    useEffect(() => {
+        window.addEventListener('keydown', (e) => {
+            handleKeyDown(e)
+        });
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        }
+    }, []);
 
     function getNewPosition(oldPos, direction) {
         switch (direction) {
@@ -53,13 +63,13 @@ export default function handleMovement(player) {
         return nextTile;
     }
 
-    function dispatchMove(direction, newPos, action) {
+    function dispatchMove(direction, newPos) {
         const walkIndex = getWalkIndex()
 
         //TODO
-        if (action) {
-            console.log(action);
-        }
+        // if (action) {
+        //     console.log(action);
+        // }
 
         store.dispatch({
             type: 'MOVE_PLAYER',
@@ -72,15 +82,17 @@ export default function handleMovement(player) {
         });
     }
 
+
+
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
 
         if (observeBoundaries(newPos) && observeImpassable(newPos) < 4) {
+            handleCurrentTile(observeImpassable(newPos));
 
-            const action = handleCurrentTile(observeImpassable(newPos));
 
-            dispatchMove(direction, newPos, action)
+            dispatchMove(direction, newPos)
         }
     }
 
@@ -106,7 +118,13 @@ export default function handleMovement(player) {
             case 1:
                 return { final: true };
             case 2:
-                return { gold: Math.floor((Math.random() * 10) + 1) };
+                store.dispatch({
+                    type: 'OPEN_CHEST',
+                    payload: Math.floor((Math.random() * 10) + 1)
+
+                });
+                break;
+            // return { gold: Math.floor((Math.random() * 10) + 1) };
             case 3:
                 return { item: 'Sandals of the Saint' };
             default:
@@ -114,9 +132,7 @@ export default function handleMovement(player) {
         }
     }
 
-    window.addEventListener('keydown', (e) => {
-        handleKeyDown(e)
-    });
-
-    return player;
-}
+    return (<React.Fragment>
+        {children}
+    </React.Fragment>);
+};

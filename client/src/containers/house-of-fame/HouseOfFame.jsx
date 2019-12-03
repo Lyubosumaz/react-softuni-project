@@ -1,4 +1,5 @@
 import React from 'react';
+import './house-of-fame.css';
 
 export default function HouseOfFame() {
     return (
@@ -30,7 +31,7 @@ export default function HouseOfFame() {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ipsam itaque nihil beatae laborum, earum consequatur illum ipsum deleniti, quisquam quos! Ullam eius quos, pariatur repellat vero dolore quis atque.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perferendis minus nobis praesentium. Fuga mollitia ipsum id fugiat iste dicta esse perspiciatis praesentium, quidem vitae, adipisci cum, eaque ex laudantium.</p>
             </div>
-            
+
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat eius vero iusto facilis nostrum inventore, esse consequatur quasi a animi ipsam excepturi nesciunt, quisquam aut, enim alias adipisci ab consequuntur.</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, consequatur! Optio ea praesentium molestias eos? Quam consectetur, esse nesciunt repellendus dolore aspernatur consequatur obcaecati et in molestias, earum consequuntur facilis.</p>
