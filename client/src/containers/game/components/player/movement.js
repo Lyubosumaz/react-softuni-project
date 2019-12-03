@@ -14,6 +14,8 @@ export default function handleMovement(player) {
                 return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
             case 'SOUTH':
                 return [oldPos[0], oldPos[1] + SPRITE_SIZE];
+            default:
+                break;
         };
     }
 
@@ -27,6 +29,8 @@ export default function handleMovement(player) {
                 return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
             case 'SOUTH':
                 return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
+            default:
+                break;
         };
     }
 
@@ -36,21 +40,27 @@ export default function handleMovement(player) {
     }
 
 
-    function observeBoundaries(oldPos, newPos) {
+    function observeBoundaries(newPos) {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
             (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE);
     }
 
-    function observeImpassable(oldPos, newPos) {
+    function observeImpassable(newPos) {
         const tiles = store.getState().map.tiles;
         const y = newPos[1] / SPRITE_SIZE;
         const x = newPos[0] / SPRITE_SIZE;
         const nextTile = tiles[y][x];
-        return nextTile < 5
+        return nextTile;
     }
 
-    function dispatchMove(direction, newPos) {
+    function dispatchMove(direction, newPos, action) {
         const walkIndex = getWalkIndex()
+
+        //TODO
+        if (action) {
+            console.log(action);
+        }
+
         store.dispatch({
             type: 'MOVE_PLAYER',
             payload: {
@@ -63,11 +73,14 @@ export default function handleMovement(player) {
     }
 
     function attemptMove(direction) {
-        const oldPos = store.getState().player.position
-        const newPos = getNewPosition(oldPos, direction)
+        const oldPos = store.getState().player.position;
+        const newPos = getNewPosition(oldPos, direction);
 
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) {
-            dispatchMove(direction, newPos)
+        if (observeBoundaries(newPos) && observeImpassable(newPos) < 4) {
+
+            const action = handleCurrentTile(observeImpassable(newPos));
+
+            dispatchMove(direction, newPos, action)
         }
     }
 
@@ -83,6 +96,19 @@ export default function handleMovement(player) {
                 return attemptMove('EAST');
             case 40:
                 return attemptMove('SOUTH');
+            default:
+                break;
+        }
+    }
+
+    function handleCurrentTile(tile) {
+        switch (tile) {
+            case 1:
+                return { final: true };
+            case 2:
+                return { gold: Math.floor((Math.random() * 10) + 1) };
+            case 3:
+                return { item: 'Sandals of the Saint' };
             default:
                 break;
         }

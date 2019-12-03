@@ -17,18 +17,22 @@ class Login extends React.Component {
         const errors = this.props.getFormErrorsState();
         if (!!errors) { return; }
         const data = this.props.getFormState();
-        userService.login(data).then((res) => {
-            this.props.handlers.handleLogin();
-            this.props.history.push('/home');
-        });
-
-        // http.User.login(data).then(() => {
-        //    this.props.history.push('/home');
-        // });
+        userService.login(data)
+            .then(() => {
+                this.props.handlers.handleLogin();
+                this.props.history.push('/home');
+            }).catch(error => {
+                this.setState({ error });
+            })
     }
 
-    render() {
+    // http.User.login(data).then(() => {
+    //    this.props.history.push('/home');
+    // });
 
+
+    render() {
+        const { error } = this.state;
         return (
             <form>
                 <div className="form-container">
@@ -44,7 +48,7 @@ class Login extends React.Component {
                         <label for="password"><b>Password:</b></label>
                         <input type="text" placeholder="Enter your Password" name="password" className="form-input" onChange={this.passwordChangeHandler} />
                     </div>
-
+                    {error && <div>{error}</div >}
                     <div>
                         <button type="submit" className="form-action-btn" onClick={this.submitHandler}>Login</button>
                     </div>

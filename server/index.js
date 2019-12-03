@@ -8,5 +8,5 @@ dbConnector().then(() => {
     require('./config/express')(app);
     require('./routes/routes')(app);
 
-    app.listen(config.port, console.log(`***Server is listening on port ${config.port}! Now its up to you..***`));
+    app.listen(config.port, console.log(`***Server is listening on port ${config.port}! Now its up to you!***`));
 }).catch(console.error);

@@ -5,9 +5,8 @@ import './header.css';
 export default function Header(props) {
     return (
         <div className="nav-container">
-            <a className="active" href="/home">Home</a>
+            {props.isLogged ? <a className="active" href="/game">Game</a> : <a className="active" href="/home">Home</a>}
             <a href="/house-of-fame">House of Fame</a>
-
             <div className="nav-container-right">
                 {props.isLogged ?
                     <Fragment>

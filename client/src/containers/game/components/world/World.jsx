@@ -12,7 +12,7 @@ export default function World() {
             tiles,
         }
     });
-    
+
     return (
         <div
             style={{

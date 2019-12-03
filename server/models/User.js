@@ -7,36 +7,41 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'You should write something for Username'],
         unique: [true, 'This Username is already taken. Try something else.'],
-        validate: [
-            {
-                validator: (v) => {
-                    return /[a-zA-Z0-9]+/.test(v);
-                },
-                message: props => `${props.value} is not a valid Username! Use Alphanumeric.`
-            }
-        ],
         minlength: [3, 'Username should be at least 3 characters long!']
+    },
+    email: {
+        type: String,
+        required: [true, 'You should write your Email'],
+        unique: [true, 'There is already account using this Email.'],
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid Email address']
     },
     password: {
         type: String,
         required: [true, 'You should write something for Password'],
-        validate: [
-            {
-                validator: (v) => {
-                    return /[a-zA-Z0-9]+/.test(v);
-                },
-                message: props => `${props.value} is not a valid Password! Use Alphanumeric.`
-            }
-        ],
-        minlength: [2, 'Password should be at least 2 characters long!']
-    }
+        minlength: [5, 'Password should be at least 5 characters long!']
+    },
+    created: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
+    totalGames: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    totalTime: {
+        type: Number,
+        required: true,
+        default: 0
+    },
 });
 
 userSchema.methods = {
     matchPassword: function (password) {
         return bcrypt.compare(password, this.password);
     }
-}
+};
 
 userSchema.pre('save', function (next) {
     if (this.isModified('password')) {
@@ -59,4 +64,4 @@ userSchema.pre('save', function (next) {
     next();
 });
 
-module.exports = mongoose.model('User', userSchema);;
+module.exports = mongoose.model('User', userSchema);

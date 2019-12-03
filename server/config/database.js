@@ -8,7 +8,7 @@ module.exports = () => {
         useUnifiedTopology: true,
         useNewUrlParser: true
     }).then(() => {
-        console.log('***Database is connected successfully! Everything is ready..***');
+        console.log('***Database is connected successfully! Everything is ready!***');
     }).catch(err => {
         console.log('Something went terribly wrong');
         console.error(err.message);

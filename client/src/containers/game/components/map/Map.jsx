@@ -7,16 +7,24 @@ function getTileSprite(type) {
     switch (type) {
         case 0:
             return 'grass';
+        case 1:
+            return 'final';
+        case 2:
+            return 'treasure-gold';
+        case 3:
+            return 'treasure-item';
+        case 4:
+        //TODO return 'stone';
         case 5:
             return 'rock';
         case 6:
             return 'tree';
-        case 10:
-            return 'treasure-gold';
-        case 11:
-            return 'treasure-item';
-        case 12:
-            return 'final';
+        case 7:
+        //TODO return 'pine-tree';
+        case 8:
+        //TODO return 'apple-tree';
+        case 9:
+        //TODO return 'oak-tree';
     }
 }
 
@@ -28,7 +36,6 @@ function MapTile(props) {
             width: SPRITE_SIZE,
         }}
     >
-        {/* {props.tile} */}
     </div>
 }
 
@@ -61,7 +68,7 @@ function Map(props) {
 }
 
 function mapStateToProps(state) {
-    return{
+    return {
         tiles: state.map.tiles
     }
 }

@@ -7,4 +7,3 @@ module.exports = {
     jwtSecret: 'shhhhh',
     saltRounds: '10',
 };
-// authCookieName: 'auth_cookie',

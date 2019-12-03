@@ -9,6 +9,7 @@ import Footer from '../components/footer/Footer';
 
 import '../assets/main-styles.css';
 import '../assets/forms-style.css';
+import OptionsBar from '../components/options-bar/OptionsBar';
 
 function parseCookies() {
   return document.cookie.split('; ').reduce((acc, cookie) => {
@@ -36,6 +37,7 @@ export default function App() {
     <div className="App is this">
       <Provider store={store}>
         <Header isLogged={isLogged} />
+        <OptionsBar />
         <Router handlers={{ handleLogin }} />
         <Footer />
       </Provider>
