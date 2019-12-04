@@ -8,8 +8,10 @@ export default function HandleMovement({ children }) {
         window.addEventListener('keydown', (e) => {
             handleKeyDown(e)
         });
+        console.log("Start");
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
+            console.log("End");
         }
     }, []);
 

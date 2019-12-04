@@ -9,7 +9,7 @@ export default function Social() {
                 <button type="button">Add Meme</button>
             </div>
 
-            <div>
+            <div className="memes-container">
                 <MemeCard />
                 <MemeCard />
                 <MemeCard />
