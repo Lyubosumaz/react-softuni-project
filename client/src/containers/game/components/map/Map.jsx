@@ -14,21 +14,17 @@ function getTileSprite(type) {
         case 3:
             return 'treasure-item';
         case 4:
-            //TODO return 'stone';
-            break;
+            return 'stone';
         case 5:
-            return 'rock';
+            return 'snow-rock';
         case 6:
             return 'tree';
         case 7:
-            //TODO return 'pine-tree';
-            break;
+            return 'pine-tree';
         case 8:
-            //TODO return 'apple-tree';
-            break;
+            return 'apple-tree';
         case 9:
-            //TODO return 'oak-tree';
-            break;
+            return 'oak-tree';
         default:
             break;
     }

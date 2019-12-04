@@ -13,6 +13,7 @@ module.exports = () => {
         console.log('Something went terribly wrong');
         console.error(err.message);
     });
+    
     const db = mongoose.connection;
     db.once('open', err => {
         if (err) throw err;

@@ -3,20 +3,12 @@
     background-color: green;
 }
 
-.final {
-    background-color: yellow;
-}
-
 .grass {
     background-color: green;
 }
 
-.rock {
-    background-image: url(./tiles/snow_rock.png);
-}
-
-.tree {
-    background-image: url(./tiles/tree.png);
+.final {
+    background-image: url(./tiles/final.png);
 }
 
 .treasure-gold {
@@ -25,4 +17,28 @@
 
 .treasure-item {
     background-image: url(./tiles/treasure_item.png);
+}
+
+.stone {
+    background-image: url(./tiles/stone.png);
+}
+
+.snow-rock {
+    background-image: url(./tiles/snow_rock.png);
+}
+
+.tree {
+    background-image: url(./tiles/tree.png);
+}
+
+.pine-tree {
+    background-image: url(./tiles/pine_tree.png)
+}
+
+.apple-tree {
+    background-image: url(./tiles/apple_tree.png)
+}
+
+.oak-tree {
+    background-image: url(./tiles/oak_tree.png)
 }
