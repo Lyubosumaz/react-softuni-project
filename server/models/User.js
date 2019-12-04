@@ -40,6 +40,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 0
     },
+    items:[]
 });
 
 userSchema.methods = {

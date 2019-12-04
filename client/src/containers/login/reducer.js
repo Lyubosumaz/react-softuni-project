@@ -1,5 +1,6 @@
 const initialState = {
     isLogin: false,
+    userId: null,
 }
 
 const loginReducer = (state = initialState, action) => {
@@ -8,6 +9,7 @@ const loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLogin: true,
+                userId: action.payload._id
             }
         default:
             return state;

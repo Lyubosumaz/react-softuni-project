@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const GameProfile = require('../models/GameProfile');
 const config = require('../config/constants');
 
 const appConfig = require('../app-config');
@@ -21,12 +22,22 @@ module.exports = {
                 res.send('Passwords doesn\'t match');
                 res.json({ message: 'Passwords doesn\'t match' });
                 console.log(req.body);
-                
+
             }
 
             User.create({ username, email, password, subscribe })
-                .then((createdUser) => { res.send(createdUser) })
-                .catch(next);
+                .then((createdUser) => {
+                    console.log('register---------------', createdUser);
+                    GameProfile.create({ user: createdUser._id })
+                        .then(() =>
+                            res.send(createdUser)
+                        ).catch((err) => {
+                            res.send(err)
+                        });
+                })
+                .catch((err) => {
+                    res.send(err)
+                });
 
             // try {
             //     await User.create({ username, password });

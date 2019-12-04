@@ -110,7 +110,23 @@ export default function HandleMovement({ children }) {
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                return { final: true };
+                return fetch('http://localhost:4000/api/game/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _id: store.getState().login.userId,
+                        data: {
+                            totalTime: 10,
+                            totalGold: store.getState().player.gold
+                        }
+                    })
+                }).then((res) => {
+                    console.log('--SAVE--', res);
+                })
+
+
             case 2:
                 store.dispatch({
                     type: 'OPEN_CHEST',

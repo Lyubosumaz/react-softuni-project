@@ -57,8 +57,9 @@ function Login(props) {
 
         if (hasErrors.length === 0 && data.username && data.password) {
             userService.login(data)
-                .then(() => {
-                    props.setLoginValue();
+                .then((res) => {
+                    // console.log(test._id)
+                    props.setLoginValue(res);
                     history.push('/home');
                 }).catch(err => {
                     console.log(err)
@@ -95,13 +96,15 @@ function mapStateToProps(state) {
     return {
         isLogin: state.login.isLogin,
     };
-}
+};
+
 function mapDispatchToProps(dispatch) {
     return {
-        setLoginValue: () => dispatch({
-            type: 'USER_LOGGED_IN'
+        setLoginValue: (data) => dispatch({
+            type: 'USER_LOGGED_IN',
+            payload: data,
         }),
     };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
