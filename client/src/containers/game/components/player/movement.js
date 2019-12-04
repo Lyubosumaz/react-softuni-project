@@ -1,19 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 import store from '../../../../services/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 
 export default function HandleMovement({ children }) {
-
-    useEffect(() => {
-        window.addEventListener('keydown', (e) => {
-            handleKeyDown(e)
-        });
-        console.log("Start");
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-            console.log("End");
-        }
-    }, []);
 
     function getNewPosition(oldPos, direction) {
         switch (direction) {
@@ -140,7 +130,12 @@ export default function HandleMovement({ children }) {
         };
     };
 
-    return (<React.Fragment>
-        {children}
-    </React.Fragment>);
+    return (
+        <React.Fragment>
+            <KeyboardEventHandler
+                handleKeys={['left', 'right', 'up', 'down']}
+                onKeyEvent={(key, e) => handleKeyDown(e)} />
+            {children}
+        </React.Fragment>
+    );
 };
