@@ -4,4 +4,4 @@ import './404.css';
 
 export default function fourOFour() {
     return (<img className={error404} src={error404} alt="" />);
-}
+};

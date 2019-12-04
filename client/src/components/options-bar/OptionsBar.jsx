@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import history from '../../services/history';
 import './option-bar.css';
 
 function Options(props) {
     const isLogged = props.isLogin;
 
+    const handleRoute = (name) => (e) => {
+        e.preventDefault();
+        history.push(name);
+    }
+
     return (isLogged ?
         <div class="options-bar" >
-            <a href="/progress">Progress</a>
-            <a href="/shop">Shop</a>
-            <a href="/inventory">Inventory</a>
-            <a href="/character">Character</a>
-            {/* <a href="#">Pay to Shop</a> */}
-            {/* <a href="#">Merchant Guild</a> */}
+            <button className="options-bar-button" onClick={handleRoute('/progress')}>Progress</button>
+            <button className="options-bar-button" onClick={handleRoute('/shop')}>Shop</button>
+            <button className="options-bar-button" onClick={handleRoute('/inventory')}>Inventory</button>
+            <button className="options-bar-button" onClick={handleRoute('/character')}>Character</button>
         </div >
         : null);
 };

@@ -6,25 +6,30 @@ import './header.css';
 function Header(props) {
     const isLogged = props.isLogin;
 
-    const handleClick = (name) => (e) => {
+    const handleRoute = (name) => (e) => {
         e.preventDefault();
         history.push(name);
     }
 
     return (
         <div className="nav-container">
-            {isLogged ? <a className="active" onClick={handleClick('/game')}>Game</a> : <a className="active" onClick={handleClick('/home')}>Home</a>}
-            <a onClick={handleClick('/house-of-fame')}>House of Fame</a>
+            {isLogged ?
+                <button className="nav-bar-button" name="active" onClick={handleRoute('/game')}>Game</button>
+                :
+                <button className="nav-bar-button" name="active" onClick={handleRoute('/home')}>Home</button>
+            }
+            <button className="nav-bar-button" onClick={handleRoute('/house-of-fame')}>House of Fame</button>
             <div className="nav-container-right">
                 {isLogged ?
                     <Fragment>
-                        <a onClick={handleClick('/profile')}>Profile</a>
-                        <a onClick={handleClick('/logout')}>Logout</a>
+                        <button className="nav-bar-button" onClick={handleRoute('/social')}>Social</button>
+                        <button className="nav-bar-button" onClick={handleRoute('/profile')}>Profile</button>
+                        <button className="nav-bar-button" onClick={handleRoute('/logout')}>Logout</button>
                     </Fragment>
                     :
                     <Fragment>
-                        <a onClick={handleClick('/register')}>Register</a>
-                        <a onClick={handleClick('/login')}>Login</a>
+                        <button className="nav-bar-button" onClick={handleRoute('/register')}>Register</button>
+                        <button className="nav-bar-button" onClick={handleRoute('/login')}>Login</button>
                     </Fragment>
                 }
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import http from '../../services/http';
 
 export default function About() {
-    const handleTest = (e) => {
+    const handleTest = () => {
         http.User.test().then(res => console.log(res));
         http.User.test2({ name: 'test' }).then(res => console.log(res));
     }
@@ -13,4 +13,4 @@ export default function About() {
             <button onClick={(e) => handleTest(e)}>Submit</button>
         </div>
     );
-}
+};

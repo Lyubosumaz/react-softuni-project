@@ -1,8 +1,8 @@
-#yes-btn {
+.logout-button[name="yes-btn"] {
     background-color: #4CAF50;
 }
 
-#no-btn {
+.logout-button[name="no-btn"] {
     background-color: #f4511e;
 }
 

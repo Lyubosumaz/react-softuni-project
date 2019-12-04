@@ -1,7 +1,14 @@
 import React from 'react';
+import history from '../../services/history';
 import './house-of-fame.css';
 
 export default function HouseOfFame() {
+
+    const handleRoute = (name) => (e) => {
+        e.preventDefault();
+        history.push(name);
+    };
+
     return (
         <div className="house-of-fame-container">
             <h1>House of Fame</h1>
@@ -57,8 +64,8 @@ export default function HouseOfFame() {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perferendis minus nobis praesentium. Fuga mollitia ipsum id fugiat iste dicta esse perspiciatis praesentium, quidem vitae, adipisci cum, eaque ex laudantium.</p>
             </div>
 
-            <div className="info-container">
-                <p>Join the race and climb to the top <a href="/home">Here</a>!</p>
+            <div className="form-info-container">
+                <p>Join the race and climb to the top <button className="form-info-button" onClick={handleRoute('/game')}>Game</button>!</p>
             </div>
         </div>
     );

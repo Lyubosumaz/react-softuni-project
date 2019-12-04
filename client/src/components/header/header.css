@@ -3,25 +3,28 @@
   overflow: hidden;
 }
 
-.nav-container a {
-float: left;
-color: #f2f2f2;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 17px;
+.nav-bar-button[name="active"] {
+  background-color: #4CAF50;
+  color: white;
 }
 
-.nav-container a:hover {
-background-color: #ddd;
-color: black;
+.nav-bar-button {
+  background: none;
+  border: none;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer;
 }
 
-.nav-container a.active {
-background-color: #4CAF50;
-color: white;
+.nav-container button:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 .nav-container-right {
-float: right;
+  float: right;
 }

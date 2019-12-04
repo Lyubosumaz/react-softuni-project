@@ -22,9 +22,9 @@
 
 input[type="checkbox"] {
     margin: auto 8px;
-    cursor: pointer;
     width: 19px;
     height: 19px;
+    cursor: pointer;
 }
 
 .form-action-btn {
@@ -33,9 +33,18 @@ input[type="checkbox"] {
     padding: 16px 20px;
     margin: 8px 0;
     border: none;
-    cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    cursor: pointer;
+}
+
+.form-info-button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: dodgerblue;
+    cursor: pointer;
+    font-size: 17px;
 }
 
 .form-info-container {

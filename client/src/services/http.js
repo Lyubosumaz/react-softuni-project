@@ -13,17 +13,17 @@ const httpGet = (path) => {
     return requester("GET", path);
 };
 
-const httpDelete = (path) => {
-    return requester("DELETE", path);
-};
+// const httpDelete = (path) => {
+//     return requester("DELETE", path);
+// };
 
 const httpPost = (path, options) => {
     return requester("POST", path, options);
 };
 
-const httpPut = (path, options) => {
-    return requester("PUT", path, options);
-};
+// const httpPut = (path, options) => {
+//     return requester("PUT", path, options);
+// };
 
 const requester = (method, path, options) => {
     const combinedUrl = `${protocol}${domain}${path}`;

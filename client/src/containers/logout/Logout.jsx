@@ -1,20 +1,30 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import userService from '../../services/user-services';
+import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
 
-export default function Logout(props) {
-    console.log(props)
+export default function Logout() {
+    const history = useHistory();
 
-    const yesButtonHandler = () => {
-        // document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-        // props.history.push('/home');
+    const handleRoute = (name) => (e) => {
+        e.preventDefault();
+        history.push(name);
+    };
+
+    const yesButtonHandler = (e) => {
+        e.preventDefault();
+
         userService.logout().then(() => {
-            props.history.push('/home');
+            removeAllCookies();
+            history.push('/login');
         });
-    }
-    const noButtonHandler = () => {
-        props.history.push('/home');
-    }
+    };
+
+    const noButtonHandler = (e) => {
+        e.preventDefault();
+        history.push('/home');
+    };
 
 
     return (
@@ -24,12 +34,12 @@ export default function Logout(props) {
                 <p>Do you really want to logout?</p>
 
                 <div>
-                    <button type="submit" className="logout-button" id="yes-btn" onClick={yesButtonHandler}><span>Yes</span></button>
-                    <button type="submit" className="logout-button" id="no-btn" onClick={noButtonHandler}><span>No!</span></button>
+                    <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}><span>Yes</span></button>
+                    <button type="submit" className="logout-button" name="no-btn" onClick={noButtonHandler}><span>No!</span></button>
                 </div>
 
                 <div className="form-info-container">
-                    <p>Check out the new features in latest update <a href="/home">Here</a>.</p>
+                    <p>Check out the new features in latest update <button className="form-info-button" onClick={handleRoute('/about')}>Here</button>.</p>
                 </div>
             </div>
         </form>

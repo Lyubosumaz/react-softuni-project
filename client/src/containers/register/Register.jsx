@@ -1,79 +1,107 @@
-// import React from 'react';
-// import withForm from '../../components/higher-order-components/withForm';
-// import userService from '../../services/user-services';
-// import validator from './register-validator';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import userService from '../../services/user-services';
+import schema from './register-validations';
+import './register.css';
 
-// class Register extends React.Component {
+export default function Register() {
+    const username = useFormInput('');
+    const email = useFormInput('');
+    const password = useFormInput('');
+    const repeatPassword = useFormInput('');
+    const [subscribe, setSubscribe] = useState(false);
+    const [errors, setErrors] = useState({});
+    const history = useHistory();
 
-//     usernameOnChangeHandler = this.props.controlChangeHeaderFactory('username');
-//     emailOnChangeHandler = this.props.controlChangeHeaderFactory('email');
-//     passwordOnChangeHandler = this.props.controlChangeHeaderFactory('password');
-//     repeatPasswordOnChangeHandler = this.props.controlChangeHeaderFactory('repeatPassword');
+    const handleRoute = (name) => (e) => {
+        e.preventDefault();
+        history.push(name);
+    };
 
-//     submitHandler = () => {
-//         const errors = this.props.getFormErrorsState();
-//         if (!!errors) { return; }
-//         const data = this.props.getFormState();
-//         userService.register(data).then(() => {
-//             this.props.history.push('/login');
-//         })
+    return (
+        <form>
+            <div className="form-container">
+                <h1>Register</h1>
+                <p>Please fill this form to create your Account.</p>
 
-//     }
+                <div className="form-div-container">
+                    <label for="username"><b>Username:</b></label>
+                    <input type="text" placeholder="Enter your Username" className="form-input" id="username" {...username} />
+                    {errors.username && <div className="form-input-error">{errors.username[0]}</div>}
+                </div>
 
-//     getFirstControlError = name => {
-//         const errorState = this.props.getFormErrorsState();
-//         return errorState && errorState[name] && errorState[name][0];
-//     }
+                <div className="form-div-container">
+                    <label for="email"><b>Email:</b></label>
+                    <input type="text" placeholder="Enter your Email" className="form-input" id="email" {...email} />
+                    {errors.email && <div className="form-input-error">{errors.email[0]}</div>}
+                </div>
 
-//     render() {
-//         const usernameError = this.getFirstControlError('username');
-//         const emailError = this.getFirstControlError('email');
-//         const passwordError = this.getFirstControlError('password');
-//         const repeatPasswordError = this.getFirstControlError('repeatPassword');
+                <div className="form-div-container">
+                    <label for="password"><b>Password:</b></label>
+                    <input type="password" placeholder="Enter your Password" className="form-input" id="password" {...password} />
+                    {errors.password && <div className="form-input-error">{errors.password[0]}</div>}
+                </div>
 
-//         return (
-//             <form>
-//                 <div className="form-container">
-//                     <h1>Register</h1>
-//                     <p>Please fill this form to create your Account.</p>
-//                     <div>
-//                         <label for="username"><b>Username:</b></label>
-//                         <input type="text" placeholder="Enter your Username" className="form-input" name="username" onChange={this.usernameOnChangeHandler} />
-//                         {usernameError && <div>{usernameError}</div>}
-//                     </div>
-//                     <div>
-//                         <label for="email"><b>Email:</b></label>
-//                         <input type="text" placeholder="Enter your Email" className="form-input" name="email" onChange={this.emailOnChangeHandler} />
-//                         {emailError && <div>{emailError}</div>}
-//                     </div>
-//                     <div>
-//                         <label for="password"><b>Password:</b></label>
-//                         <input type="text" placeholder="Enter your Password" className="form-input" name="password" onChange={this.passwordOnChangeHandler} />
-//                         {passwordError && <div>{passwordError}</div>}
-//                     </div>
-//                     <div>
-//                         <label for="repeat-password"><b>Repeat-Password:</b></label>
-//                         <input type="text" placeholder="Confirm your Password" className="form-input" name="repeat-password" onChange={this.repeatPasswordOnChangeHandler} />
-//                         {repeatPasswordError && <div>{repeatPasswordError}</div>}
-//                     </div>
-//                     <div>
-//                         <p>By creating an account, you agree to our <a href="/terms-and-privacy">Terms & Conditions</a>.</p>
-//                         <button type="button" className="form-action-btn" onClick={this.submitHandler}>Register</button>
-//                     </div>
-//                     <div className="form-info-container">
-//                         <p>Already have account? <a href="/login">Sign in</a>.</p>
-//                     </div>
-//                 </div>
-//             </form>
-//         );
-//     };
-// };
+                <div className="form-div-container">
+                    <label for="repeat-password"><b>Repeat-Password:</b></label>
+                    <input type="password" placeholder="Confirm your Password" className="form-input" id="repeatPassword" {...repeatPassword} />
+                    {errors.repeatPassword && <div className="form-input-error">{errors.repeatPassword[0]}</div>}
+                </div>
 
-// const initialFormState = {
-//     username: '',
-//     email: '',
-//     password: '',
-//     repeatPassword: '',
-// };
+                <div>
+                    <p>By creating an account, you agree to our <button className="form-info-button" onClick={handleRoute('/terms-and-privacy')}>Terms & Conditions</button>.</p>
+                    <p className="register-checkbox">I accept to receive feedback on my email:<input type="checkbox" onClick={(e) => setSubscribe(e.target.checked)} /><b>Subscribe</b>.</p>
+                    <button type="button" className="form-action-btn" onClick={handleSubmit}>Register</button>
+                </div>
 
-// export default withForm(Register, initialFormState, validator);
+                <div className="form-info-container">
+                    <p>Already have account? <button className="form-info-button" onClick={handleRoute('/login')}>Sign in</button>.</p>
+                </div>
+            </div>
+        </form>
+    );
+
+    function handleSubmit() {
+        const data = {
+            username: username.value,
+            email: email.value,
+            password: password.value,
+            repeatPassword: repeatPassword.value,
+            subscribe: subscribe
+        };
+        const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
+
+        if (data.password !== data.repeatPassword) {
+            return setErrors({ ...errors, repeatPassword: ['Passwords doesn\'t match'] });
+        }
+
+        if (hasErrors.length === 0 && data.username && data.email && data.password) {
+            userService.register(data).then(() => {
+                history.push('/login');
+            });
+        }
+    };
+
+    function useFormInput(initialValue) {
+        const [value, setValue] = useState(initialValue);
+
+        function handleChange(event) {
+            setValue(event.target.value);
+            validate(event);
+        };
+
+        function validate(event) {
+            const name = event.target.id;
+
+            schema.fields[name].validate(event.target.value, { abortEarly: false })
+                .then(() => {
+                    setErrors({ ...errors, [name]: [] });
+                })
+                .catch((err) => {
+                    setErrors({ ...errors, [name]: err.errors });
+                });
+        };
+
+        return { value, onChange: handleChange };
+    };
+};

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import store from '../../../../services/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 
-
 export default function HandleMovement({ children }) {
 
     useEffect(() => {
@@ -27,7 +26,7 @@ export default function HandleMovement({ children }) {
             default:
                 break;
         };
-    }
+    };
 
     function getSpriteLocation(direction, walkIndex) {
         switch (direction) {
@@ -42,18 +41,18 @@ export default function HandleMovement({ children }) {
             default:
                 break;
         };
-    }
+    };
 
     function getWalkIndex() {
         const walkIndex = store.getState().player.walkIndex;
         return walkIndex >= 7 ? 0 : walkIndex + 1;
-    }
+    };
 
 
     function observeBoundaries(newPos) {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
             (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE);
-    }
+    };
 
     function observeImpassable(newPos) {
         const tiles = store.getState().map.tiles;
@@ -61,15 +60,10 @@ export default function HandleMovement({ children }) {
         const x = newPos[0] / SPRITE_SIZE;
         const nextTile = tiles[y][x];
         return nextTile;
-    }
+    };
 
     function dispatchMove(direction, newPos) {
-        const walkIndex = getWalkIndex()
-
-        //TODO
-        // if (action) {
-        //     console.log(action);
-        // }
+        const walkIndex = getWalkIndex();
 
         store.dispatch({
             type: 'MOVE_PLAYER',
@@ -80,7 +74,7 @@ export default function HandleMovement({ children }) {
                 spriteLocation: getSpriteLocation(direction, walkIndex),
             }
         });
-    }
+    };
 
 
 
@@ -90,14 +84,12 @@ export default function HandleMovement({ children }) {
 
         if (observeBoundaries(newPos) && observeImpassable(newPos) < 4) {
             handleCurrentTile(observeImpassable(newPos));
-
-
-            dispatchMove(direction, newPos)
+            dispatchMove(direction, newPos);
         }
-    }
+    };
 
     function handleKeyDown(e) {
-        e.preventDefault()
+        e.preventDefault();
 
         switch (e.keyCode) {
             case 37:
@@ -110,8 +102,8 @@ export default function HandleMovement({ children }) {
                 return attemptMove('SOUTH');
             default:
                 break;
-        }
-    }
+        };
+    };
 
     function handleCurrentTile(tile) {
         switch (tile) {
@@ -121,16 +113,14 @@ export default function HandleMovement({ children }) {
                 store.dispatch({
                     type: 'OPEN_CHEST',
                     payload: Math.floor((Math.random() * 10) + 1)
-
                 });
                 break;
-            // return { gold: Math.floor((Math.random() * 10) + 1) };
             case 3:
                 return { item: 'Sandals of the Saint' };
             default:
                 break;
-        }
-    }
+        };
+    };
 
     return (<React.Fragment>
         {children}
