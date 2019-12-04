@@ -27,8 +27,8 @@ function getTileSprite(type) {
             return 'oak-tree';
         default:
             break;
-    }
-}
+    };
+};
 
 function MapTile(props) {
     return <div
@@ -36,10 +36,8 @@ function MapTile(props) {
         style={{
             height: SPRITE_SIZE,
             width: SPRITE_SIZE,
-        }}
-    >
-    </div>
-}
+        }} />
+};
 
 function MapRow(props) {
     return (
@@ -49,30 +47,29 @@ function MapRow(props) {
             }
         </div>
     );
-}
+};
 
 function Map(props) {
-    return (
-        <div
-            style={{
-                position: 'relative',
-                top: '0px',
-                left: '0px',
-                width: '1600px',
-                height: '650px',
-                border: '4px solid white',
-            }}>
-            {
-                props.tiles.map(row => <MapRow tiles={row} />)
-            }
-        </div>
-    )
-}
+    return (<div
+        style={{
+            position: 'relative',
+            top: '0px',
+            left: '0px',
+            width: '1600px',
+            height: '650px',
+            border: '4px solid white',
+        }}>
+        {
+            props.tiles.map(row => <MapRow tiles={row} />)
+        }
+    </div>
+    );
+};
 
 function mapStateToProps(state) {
     return {
         tiles: state.map.tiles
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps)(Map);

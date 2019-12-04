@@ -4,7 +4,6 @@ import HandleMovement from './movement';
 import walkSprite from './sprite/player_walk.png';
 
 function Player(props) {
-
     return (
         <HandleMovement>
             <div
@@ -20,12 +19,12 @@ function Player(props) {
             </div>
         </HandleMovement>
     );
-}
+};
 
 function mapStateToProps(state) {
     return {
         ...state.player,
     };
-}
+};
 
 export default connect(mapStateToProps)(Player);

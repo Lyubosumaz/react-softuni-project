@@ -32,13 +32,13 @@
 }
 
 .pine-tree {
-    background-image: url(./tiles/pine_tree.png)
+    background-image: url(./tiles/pine_tree.png);
 }
 
 .apple-tree {
-    background-image: url(./tiles/apple_tree.png)
+    background-image: url(./tiles/apple_tree.png);
 }
 
 .oak-tree {
-    background-image: url(./tiles/oak_tree.png)
+    background-image: url(./tiles/oak_tree.png);
 }

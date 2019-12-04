@@ -6,7 +6,7 @@ const initialState = {
     final: false,
     gold: 0,
     items: []
-}
+};
 
 const playerReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -24,7 +24,7 @@ const playerReducer = (state = initialState, action) => {
             return;
         default:
             return state;
-    }
-}
+    };
+};
 
 export default playerReducer;

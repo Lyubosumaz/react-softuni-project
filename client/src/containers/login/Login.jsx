@@ -39,7 +39,8 @@ function Login(props) {
                 </div>
 
                 <div className="form-info-container">
-                    <p>Don't have an account? <button className="form-info-button" onClick={handleRoute('/register')}>Create account</button>.</p>
+                    <p>Don't have an account? <button className="form-info-button"
+                        onClick={handleRoute('/register')}>Create account</button>.</p>
                 </div>
             </div>
         </form>

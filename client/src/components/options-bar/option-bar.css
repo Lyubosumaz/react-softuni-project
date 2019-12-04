@@ -21,6 +21,10 @@
     background-color: #333;
 }
 
+.options-bar-button:active {
+    background-color: #333;
+}
+
 @media screen and (max-width: 500px) {
     .options-bar button {
         float: none;
