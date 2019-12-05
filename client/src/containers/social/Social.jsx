@@ -1,14 +1,10 @@
 import React from 'react';
 import MemeCard from './meme-card/MemeCard';
-import history from '../../services/history';
+import handleRoute from '../../utils/handleRoutes';
 import './social.css';
 
 export default function Social() {
 
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    };
 
     return (
         <div className="social-container">
@@ -18,6 +14,14 @@ export default function Social() {
             </div>
 
             <div className="memes-container">
+                <MemeCard />
+                <MemeCard />
+                <MemeCard />
+                <MemeCard />
+                <MemeCard />
+                <MemeCard />
+                <MemeCard />
+                <MemeCard />
                 <MemeCard />
                 <MemeCard />
                 <MemeCard />

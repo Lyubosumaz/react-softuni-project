@@ -19,3 +19,12 @@ label {
     text-align: right;
     margin: 1%;
 }
+
+.background-image-container {
+    min-height: 750px;
+    padding: 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}

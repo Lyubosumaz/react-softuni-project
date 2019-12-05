@@ -1,4 +1,13 @@
 .house-of-fame-container {
-    overflow-y: scroll;
-    height: 800px;
+    padding: 17px;
+}
+
+.house-of-fame-search-p {
+    font-size: 22px;
+}
+
+.mySearch {
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #ddd;
 }

@@ -1,0 +1,11 @@
+.terms-and-conditions-container {
+    overflow-y: scroll;  
+    text-align: center;
+    height: 750px;
+}
+
+.terms-and-conditions-text {
+    display: inline-grid;
+    text-align: justify;
+    width: 55%;
+}
