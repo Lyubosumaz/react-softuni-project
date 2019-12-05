@@ -6,6 +6,7 @@ import Home from '../home/Home';
 import About from '../about/About';
 import HouseOfFame from '../house-of-fame/HouseOfFame';
 import TermsAndPrivacy from '../terms-and-privacy/TermsAndPrivacy';
+import fourOFour from '../404/404';
 //user
 import Register from '../register/Register';
 import Login from '../login/Login';
@@ -19,7 +20,7 @@ import Inventory from '../inventory/Inventory';
 import Character from '../character/Character';
 //memes
 import Social from '../social/Social';
-import fourOFour from '../404/404';
+import AddMeme from '../add-meme/AddMeme';
 
 export default function AppRouter() {
     return (
@@ -40,6 +41,7 @@ export default function AppRouter() {
                 <Route path="/inventory" exact component={Inventory} />
                 <Route path="/character" exact component={Character} />
                 <Route path="/social" exact component={Social} />
+                <Route path="/social/add-meme" exact component={AddMeme} />
                 <Route path="*" component={fourOFour} />
             </Switch>
         </Router>

@@ -2,9 +2,11 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import userService from '../../services/user-services';
 import { removeAllCookies } from '../../services/cookies';
+import { connect } from 'react-redux';
 import './logout.css';
 
-export default function Logout() {
+
+function Logout(props) {
     const history = useHistory();
 
     const handleRoute = (name) => (e) => {
@@ -17,6 +19,7 @@ export default function Logout() {
 
         userService.logout().then(() => {
             removeAllCookies();
+            props.setLoginValue();
             history.push('/login');
         });
     };
@@ -45,3 +48,19 @@ export default function Logout() {
         </form>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        isLogin: state.login.isLogin,
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setLoginValue: () => dispatch({
+            type: 'USER_LOGGED_OUT',
+        }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logout);

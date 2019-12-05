@@ -1,0 +1,11 @@
+.social-add-meme-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    font-size: 20px;
+    border: none;
+    width: 100%;
+    opacity: 0.9;
+    cursor: pointer;
+}

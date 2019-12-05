@@ -32,6 +32,7 @@ input[type="checkbox"] {
     color: white;
     padding: 16px 20px;
     margin: 8px 0;
+    font-size: 20px;
     border: none;
     width: 100%;
     opacity: 0.9;

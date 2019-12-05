@@ -92,6 +92,7 @@ module.exports = {
             // } catch (err) { console.log(err); }
         },
         logout: (req, res) => {
+            console.log(res.body)
             // res.clearCookie(appConfig.authCookieName);
             res.clearCookie();
             res.redirect('/')

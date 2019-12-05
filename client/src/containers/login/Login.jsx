@@ -23,13 +23,13 @@ function Login(props) {
                 <p>Please enter your Username and Password.</p>
 
                 <div className="form-div-container">
-                    <label for="username"><b>Username:</b></label>
+                    <label htmlFor="username"><b>Username:</b></label>
                     <input type="text" placeholder="Enter your Username" name="username" className="form-input" id="username" {...username} />
                     {errors.username && <div className="form-input-error">{errors.username[0]}</div>}
                 </div>
 
                 <div className="form-div-container">
-                    <label for="password"><b>Password:</b></label>
+                    <label htmlFor="password"><b>Password:</b></label>
                     <input type="password" placeholder="Enter your Password" name="password" className="form-input" id="password" {...password} />
                     {errors.password && <div className="form-input-error">{errors.password[0]}</div>}
                 </div>
@@ -58,13 +58,11 @@ function Login(props) {
         if (hasErrors.length === 0 && data.username && data.password) {
             userService.login(data)
                 .then((res) => {
-                    // console.log(test._id)
                     props.setLoginValue(res);
                     history.push('/home');
                 }).catch(err => {
-                    console.log(err)
                     setErrors({ ...errors, password: [err] });
-                })
+                });
         }
     };
 

@@ -25,25 +25,25 @@ export default function Register() {
                 <p>Please fill this form to create your Account.</p>
 
                 <div className="form-div-container">
-                    <label for="username"><b>Username:</b></label>
+                    <label htmlFor="username"><b>Username:</b></label>
                     <input type="text" placeholder="Enter your Username" className="form-input" id="username" {...username} />
                     {errors.username && <div className="form-input-error">{errors.username[0]}</div>}
                 </div>
 
                 <div className="form-div-container">
-                    <label for="email"><b>Email:</b></label>
+                    <label htmlFor="email"><b>Email:</b></label>
                     <input type="text" placeholder="Enter your Email" className="form-input" id="email" {...email} />
                     {errors.email && <div className="form-input-error">{errors.email[0]}</div>}
                 </div>
 
                 <div className="form-div-container">
-                    <label for="password"><b>Password:</b></label>
+                    <label htmlFor="password"><b>Password:</b></label>
                     <input type="password" placeholder="Enter your Password" className="form-input" id="password" {...password} />
                     {errors.password && <div className="form-input-error">{errors.password[0]}</div>}
                 </div>
 
                 <div className="form-div-container">
-                    <label for="repeat-password"><b>Repeat-Password:</b></label>
+                    <label htmlFor="repeat-password"><b>Repeat-Password:</b></label>
                     <input type="password" placeholder="Confirm your Password" className="form-input" id="repeatPassword" {...repeatPassword} />
                     {errors.repeatPassword && <div className="form-input-error">{errors.repeatPassword[0]}</div>}
                 </div>

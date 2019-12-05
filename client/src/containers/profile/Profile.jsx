@@ -8,7 +8,7 @@ export default function Profile() {
         <div className="profile-container">
             <div className="profile-card">
                 <h1>John Doe</h1>
-                <img src={defaultProfilePic} />
+                <img src={defaultProfilePic} alt="" />
                 <p><b>Total played games: 0</b></p>
                 <p><b>Total played time: 0</b></p>
                 <p><b>Total gold: 0</b></p>

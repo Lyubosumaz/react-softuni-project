@@ -11,6 +11,11 @@ const loginReducer = (state = initialState, action) => {
                 isLogin: true,
                 userId: action.payload._id
             }
+        case 'USER_LOGGED_OUT':
+            return {
+                isLogin: false,
+                userId: null,
+            }
         default:
             return state;
     }

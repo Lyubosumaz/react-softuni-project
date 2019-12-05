@@ -115,8 +115,6 @@ export default function HandleMovement({ children }) {
                 }).then((res) => {
                     console.log('--SAVE--', res);
                 })
-
-
             case 2:
                 store.dispatch({
                     type: 'OPEN_CHEST',
