@@ -13,10 +13,10 @@ function Options(props) {
 
     return (isLogged ?
         <div className="options-bar" >
-            <button className="options-bar-button" onClick={handleRoute('/progress')}>Progress</button>
-            <button className="options-bar-button" onClick={handleRoute('/shop')}>Shop</button>
-            <button className="options-bar-button" onClick={handleRoute('/inventory')}>Inventory</button>
-            <button className="options-bar-button" onClick={handleRoute('/character')}>Character</button>
+            <button className="options-bar-button" onClick={handleRoute('/game/progress')}>Progress</button>
+            <button className="options-bar-button" onClick={handleRoute('/game/shop')}>Shop</button>
+            <button className="options-bar-button" onClick={handleRoute('/game/inventory')}>Inventory</button>
+            <button className="options-bar-button" onClick={handleRoute('/game/character')}>Character</button>
         </div >
         : null);
 };

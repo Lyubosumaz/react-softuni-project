@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import userService from '../../services/user-services';
 import { removeAllCookies } from '../../services/cookies';
 import { connect } from 'react-redux';
 import './logout.css';
+import http from '../../services/http';
 
 
 function Logout(props) {
@@ -17,7 +17,7 @@ function Logout(props) {
     const yesButtonHandler = (e) => {
         e.preventDefault();
 
-        userService.logout().then(() => {
+        http.User.logout().then(() => {
             removeAllCookies();
             props.setLoginValue();
             history.push('/login');
@@ -28,7 +28,6 @@ function Logout(props) {
         e.preventDefault();
         history.push('/home');
     };
-
 
     return (
         <form>

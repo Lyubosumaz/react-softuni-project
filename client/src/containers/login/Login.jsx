@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import userService from '../../services/user-services';
+import http from '../../services/http';
 import schema from './login-validations';
 
 function Login(props) {
@@ -56,9 +56,10 @@ function Login(props) {
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
         if (hasErrors.length === 0 && data.username && data.password) {
-            userService.login(data)
+            http.User.login(data)
                 .then((res) => {
-                    props.setLoginValue(res);
+                    props.setLoginValue(res.user);
+                    localStorage.setItem('token', res.token)
                     history.push('/home');
                 }).catch(err => {
                     setErrors({ ...errors, password: [err] });

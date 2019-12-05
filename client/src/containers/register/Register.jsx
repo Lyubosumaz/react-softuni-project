@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import userService from '../../services/user-services';
 import schema from './register-validations';
 import './register.css';
+import http from '../../services/http';
 
 export default function Register() {
     const username = useFormInput('');
@@ -49,7 +49,7 @@ export default function Register() {
                 </div>
 
                 <div>
-                    <p>By creating an account, you agree to our <button className="form-info-button" onClick={handleRoute('/terms-and-privacy')}>Terms & Conditions</button>.</p>
+                    <p>By creating an account, you agree to our <button className="form-info-button" onClick={handleRoute('/terms-and-conditions')}>Terms & Conditions</button>.</p>
                     <p className="register-checkbox">I accept to receive feedback on my email:<input type="checkbox" onClick={(e) => setSubscribe(e.target.checked)} /><b>Subscribe</b>.</p>
                     <button type="button" className="form-action-btn" onClick={handleSubmit}>Register</button>
                 </div>
@@ -76,7 +76,7 @@ export default function Register() {
         }
 
         if (hasErrors.length === 0 && data.username && data.email && data.password) {
-            userService.register(data).then(() => {
+            http.User.register(data).then(() => {
                 history.push('/login');
             });
         }

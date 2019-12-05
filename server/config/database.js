@@ -17,7 +17,8 @@ module.exports = () => {
     const db = mongoose.connection;
     db.once('open', err => {
         if (err) throw err;
-        seed.seedAdminUser()
+        // seed.seedAdminUser()
+        seed.seedGameItems();
     });
     db.on('error', reason => {
         console.log(reason);

@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
+import http from '../../services/http';
 
 export default function useMemePage(query, pageNumber) {
 
     useEffect(() => {
-        fetch({
-            method: 'GET',
-            url: 'http://localhost:4000/api/user/social'
-        })
+
+        http.Social.getAll().then()
 
     }, [query, pageNumber]);
     return hull;

@@ -1,15 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import history from '../../services/history';
 import './header.css';
+import handleRoute from '../../utils/handleRoutes';
 
 function Header(props) {
     const isLogged = props.isLogin;
-
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    }
 
     return (
         <div className="nav-container">

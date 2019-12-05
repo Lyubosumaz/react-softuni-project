@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-
-import history from '../../services/history';
+import history from '../../../services/history';
+import http from '../../../services/http';
 import schema from './add-meme-validations';
 
 function AddMeme(props) {
@@ -48,15 +48,17 @@ function AddMeme(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const data = {
-            title,
-            imageUrl,
+        const meme = {
+            _id: props.login.userId,
+            title: title.value,
+            imageUrl: imageUrl.value,
         };
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && data.title && data.imageUrl) {
-            console.log(props.login.userId)
-            console.log(data)
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.login.isLogin) {
+            http.Social.addMeme(meme)
+                .then(res => { console.log('--ADD MEME--', res) })
+            //TODO error and redirect
         }
     };
 

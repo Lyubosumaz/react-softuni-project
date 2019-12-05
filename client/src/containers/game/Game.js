@@ -3,8 +3,8 @@ import World from './components/world/World';
 
 export default function Game() {
     return (
-        <div>
+        <React.Fragment>
             <World />
-        </div>
+        </React.Fragment>
     );
 };

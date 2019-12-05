@@ -1,5 +1,5 @@
 import React from 'react';
-import MemeCard from '../../components/meme-card/MemeCard';
+import MemeCard from './meme-card/MemeCard';
 import history from '../../services/history';
 import './social.css';
 

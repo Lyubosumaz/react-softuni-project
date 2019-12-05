@@ -1,4 +1,4 @@
-import history from './history';
+import history from '../services/history';
 
 const handleRoute = (name) => (e) => {
     e.preventDefault();

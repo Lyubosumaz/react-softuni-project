@@ -1,7 +1,7 @@
 import React from 'react';
 import defaultProfilePic from '../../assets/default_profile.png';
 import './profile.css';
-import GameHistoryCard from '../../components/game-history-card/GameHistoryCard';
+import GameHistoryCard from './game-history-card/GameHistoryCard';
 
 export default function Profile() {
     return (

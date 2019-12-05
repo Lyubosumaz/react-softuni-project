@@ -2,6 +2,7 @@ import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import store from '../../../../services/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
+import http from '../../../../services/http';
 
 export default function HandleMovement({ children }) {
 
@@ -100,18 +101,10 @@ export default function HandleMovement({ children }) {
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                return fetch('http://localhost:4000/api/game/save', {
-                    method: 'POST',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _id: store.getState().login.userId,
-                        data: {
-                            totalTime: 10,
-                            totalGold: store.getState().player.gold
-                        }
-                    })
+                return http.Game.save({
+                    _id: store.getState().login.userId,
+                    totalTime: 10,
+                    totalGold: store.getState().player.gold
                 }).then((res) => {
                     console.log('--SAVE--', res);
                 })
