@@ -1,0 +1,23 @@
+.meme-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+  max-height: auto;
+  margin: auto;
+  text-align: center;
+}
+
+.meme-card-button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  width: 100%;
+  color: white;
+  background-color: #555;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.meme-card-button:hover {
+  background-color: #333;
+}

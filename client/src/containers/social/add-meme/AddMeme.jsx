@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import history from '../../../services/history';
+import handleRoute from '../../../utils/handleRoutes';
 import http from '../../../services/http';
 import schema from './add-meme-validations';
 
@@ -9,15 +9,10 @@ function AddMeme(props) {
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
 
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    };
-
     return (
         <div>
             <form>
-                <div className="form-container">
+                <div className="container">
                     <h1>Add Meme</h1>
                     <p>Adding meme was never been easier.</p>
 
@@ -37,8 +32,8 @@ function AddMeme(props) {
                         <button type="submit" className="form-action-btn" onClick={handleSubmit}>Submit</button>
                     </div>
 
-                    <div className="form-info-container">
-                        <p>Tired of memes? Start a new game <button className="form-info-button"
+                    <div className="info-container">
+                        <p>Tired of memes? Start a new game <button className="info-button"
                             onClick={handleRoute('/game')}>Here</button>.</p>
                     </div>
                 </div>

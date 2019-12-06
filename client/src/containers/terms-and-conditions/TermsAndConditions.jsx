@@ -16,8 +16,8 @@ export default function TermsAndConditions() {
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, consequatur! Optio ea praesentium molestias eos? Quam consectetur, esse nesciunt repellendus dolore aspernatur consequatur obcaecati et in molestias, earum consequuntur facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo dolore quidem tempore officia quisquam, autem sit ipsum nam in laboriosam quia itaque quos distinctio eius veritatis adipisci facilis rem maxime! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel in, nihil, at iusto molestiae totam pariatur aut quidem ipsum porro nisi quod dolorum rerum alias beatae officiis praesentium omnis quam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ratione cum adipisci ducimus repudiandae facere voluptatem soluta tempora repellendus. A quisquam atque sequi eius voluptas pariatur repellat quas rerum voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ipsam itaque nihil beatae laborum, earum consequatur illum ipsum deleniti, quisquam quos! Ullam eius quos, pariatur repellat vero dolore quis atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perferendis minus nobis praesentium. Fuga mollitia ipsum id fugiat iste dicta esse perspiciatis praesentium, quidem vitae, adipisci cum, eaque ex laudantium.</p>
             </div>
 
-            <div className="form-info-container">
-                <p>If you already read the terms and conditions. <button className="form-info-button" onClick={handleRoute('/register')}>Create account</button></p>
+            <div className="info-container">
+                <p>If you already read the terms and conditions. <button className="info-button" onClick={handleRoute('/register')}>Create account</button></p>
             </div>
         </div>
     );

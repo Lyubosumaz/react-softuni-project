@@ -1,13 +1,13 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import history from '../../services/history';
+import history from '../../utils/history';
 import OptionBar from '../../components/options-bar/OptionsBar';
 
 import Home from '../home/Home';
 import About from '../about/About';
 import HouseOfFame from '../house-of-fame/HouseOfFame';
 import TermsAndConditions from '../terms-and-conditions/TermsAndConditions';
-import fourOFour from '../404/404';
+import FourOFour from '../404/404';
 //user
 import Register from '../register/Register';
 import Login from '../login/Login';
@@ -31,14 +31,12 @@ export default function AppRouter() {
                 <Route path="/" exact component={Home} />
                 <Route path="/home" exact component={Home} />
                 <Route path="/about" exact component={About} />
-                <Route path="/house-of-fame" exact component={HouseOfFame} />
                 <Route path="/terms-and-conditions" exact component={TermsAndConditions} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/logout" exact component={Logout} />
+                <Route path="/house-of-fame" exact component={HouseOfFame} />
                 <Route path="/profile" exact component={Profile} />
-                <Route path="/social" exact component={Social} />
-                <Route path="/social/add-meme" exact component={AddMeme} />
                 <Route
                     path="/game"
                     render={({ match: { url } }) => (
@@ -52,7 +50,19 @@ export default function AppRouter() {
                         </React.Fragment>
                     )}
                 />
-                <Route path="*" component={fourOFour} />
+                <Route
+                    path="/social"
+                    render={({ match: { url } }) => (
+                        <React.Fragment>
+                            <Route path={`${url}/`} exact component={Social} />
+                            <Route path={`${url}/add-meme`} exact component={AddMeme} />
+                            {/* <Route path={`${url}/view-meme`} exact component={} /> */}
+                            {/* <Route path={`${url}/delete-meme`} exact component={} /> */}
+                            {/* <Route path={`${url}/edit-meme`} exact component={} /> */}
+                        </React.Fragment>
+                    )}
+                />
+                <Route path="*" component={FourOFour} />
             </Switch>
         </Router>
     );

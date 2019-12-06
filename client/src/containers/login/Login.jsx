@@ -18,7 +18,7 @@ function Login(props) {
 
     return (
         <form>
-            <div className="form-container">
+            <div className="container">
                 <h1>Login</h1>
                 <p>Please enter your Username and Password.</p>
 
@@ -38,8 +38,8 @@ function Login(props) {
                     <button type="submit" className="form-action-btn" onClick={handleSubmit}>Login</button>
                 </div>
 
-                <div className="form-info-container">
-                    <p>Don't have an account? <button className="form-info-button"
+                <div className="info-container">
+                    <p>Don't have an account? <button className="info-button"
                         onClick={handleRoute('/register')}>Create account</button>.</p>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import history from '../../services/history';
+import history from '../../utils/history';
 import './footer.css';
 
 export default function Footer() {

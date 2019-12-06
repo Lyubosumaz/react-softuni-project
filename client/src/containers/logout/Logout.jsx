@@ -31,7 +31,7 @@ function Logout(props) {
 
     return (
         <form>
-            <div className="form-container">
+            <div className="container">
                 <h1>Logout</h1>
                 <p>Do you really want to logout?</p>
 
@@ -40,8 +40,8 @@ function Logout(props) {
                     <button type="submit" className="logout-button" name="no-btn" onClick={noButtonHandler}><span>No!</span></button>
                 </div>
 
-                <div className="form-info-container">
-                    <p>Check out the new features in latest update <button className="form-info-button" onClick={handleRoute('/about')}>Here</button>.</p>
+                <div className="info-container">
+                    <p>Check out the new features in latest update <button className="info-button" onClick={handleRoute('/about')}>Here</button>.</p>
                 </div>
             </div>
         </form>

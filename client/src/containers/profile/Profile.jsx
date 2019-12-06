@@ -1,11 +1,14 @@
 import React from 'react';
+import GameHistoryCard from './game-history-card/GameHistoryCard';
+import handleRoute from '../../utils/handleRoutes';
 import defaultProfilePic from '../../assets/default_profile.png';
 import './profile.css';
-import GameHistoryCard from './game-history-card/GameHistoryCard';
 
 export default function Profile() {
     return (
-        <div className="profile-container">
+        <div className="container">
+            <h1>Profile</h1>
+
             <div className="profile-card">
                 <h1>John Doe</h1>
                 <img src={defaultProfilePic} alt="" />
@@ -25,6 +28,9 @@ export default function Profile() {
                 <GameHistoryCard />
             </div>
 
+            <div className="info-container">
+                <p>Play one more game <button className="info-button" onClick={handleRoute('/game')}>Here</button>!</p>
+            </div>
         </div >
     );
-}
+};

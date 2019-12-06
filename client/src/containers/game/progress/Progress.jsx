@@ -3,7 +3,7 @@ import React from 'react';
 export default function Progress() {
     return (
         <div>
-            <div>Hello Progress</div>
+             <h1>Progress</h1>
         </div>
     );
 };

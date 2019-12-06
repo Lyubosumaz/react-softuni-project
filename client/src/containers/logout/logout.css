@@ -15,15 +15,15 @@
     padding: 20px;
     width: 200px;
     transition: all 0.5s;
-    cursor: pointer;
     margin: 5px;
+    cursor: pointer;
 }
 
 .logout-button span {
-    cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .logout-button span:after {

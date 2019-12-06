@@ -1,21 +1,15 @@
 import React from 'react';
-import history from '../../services/history';
+import handleRoute from '../../utils/handleRoutes';
 import './house-of-fame.css';
 
 export default function HouseOfFame() {
-
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    };
-
     return (
-        <div className="house-of-fame-container">
+        <div className="container">
             <h1>House of Fame</h1>
-            <p className="house-of-fame-search-p"><b>Find your player: </b><input type="text" className="mySearch" onkeyup="myFunction()" placeholder="Search.."></input></p>
-            <div className="form-info-container">
-                <p>Join the race and climb to the top <button className="form-info-button" onClick={handleRoute('/login')}>Sign in</button>!</p>
+            <p className="house-of-fame-search-p"><b>Find your player: </b><input type="text" className="my-search" placeholder="Search.."></input></p>
+            <div className="info-container">
+                <p>Join the race climb ladder and be the apex legend <button className="info-button" onClick={handleRoute('/login')}>Sign in</button>!</p>
             </div>
         </div>
     );
-}
+};

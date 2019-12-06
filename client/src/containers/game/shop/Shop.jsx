@@ -4,7 +4,7 @@ import './shop.css';
 export default function Shop() {
     return (
         <div>
-            <div>Hello Shop</div>
+            <h1>Shop</h1>
 
             <div class="flip-card">
                 <div class="flip-card-inner">

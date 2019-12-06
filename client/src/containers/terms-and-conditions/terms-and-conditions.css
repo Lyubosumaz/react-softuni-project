@@ -1,6 +1,6 @@
 .terms-and-conditions-container {
-    overflow-y: scroll;  
     text-align: center;
+    overflow-y: scroll;
     height: 750px;
 }
 
