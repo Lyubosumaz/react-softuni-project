@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './header.css';
 import handleRoute from '../../utils/handleRoutes';
 
-function Header(props) {
+ function Header(props) {
     const isLogged = props.isLogin;
 
     return (
@@ -14,6 +14,8 @@ function Header(props) {
                 <button className="nav-bar-button" name="active" onClick={handleRoute('/home')}>Home</button>
             }
             <button className="nav-bar-button" onClick={handleRoute('/house-of-fame')}>House of Fame</button>
+
+
             <div className="nav-container-right">
                 {isLogged ?
                     <Fragment>
@@ -34,8 +36,8 @@ function Header(props) {
 
 function mapStateToProps(state) {
     return {
-        isLogin: state.login.isLogin
-    }
-}
+        isLogin: state.login.isLogin,
+    };
+};
 
 export default connect(mapStateToProps)(Header);

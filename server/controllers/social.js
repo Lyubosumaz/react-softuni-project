@@ -4,6 +4,7 @@ module.exports = {
     get: {
         all: (req, res) => {
             Meme.find()
+            .sort({ date: -1 })
                 .then(allMemes => res.send(allMemes))
         }
         // view: (req, res) => {
@@ -17,8 +18,6 @@ module.exports = {
                 .catch((err) => { res.send(err); });
         },
         memes: (req, res) => {
-            // console.log(req.user)
-            // console.log(req.body)
             const { itemNumber, pageNumber } = req.body;
             Meme.find()
                 .skip(itemNumber * (pageNumber - 1))

@@ -1,12 +1,14 @@
-import React, {  useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
 import handleRoute from '../../utils/handleRoutes';
 import './social.css';
+import http from '../../services/http';
 
 export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
+    http.Social.getAll(res => console.log(res))
 
     const observer = useRef();
     const lastMemeCardRef = useCallback((node) => {
@@ -19,6 +21,7 @@ export default function Social() {
         })
         if (node) { observer.current.observe(node); }
     }, [loading, hasMore]);
+
 
     return (
         <div className="main-container">

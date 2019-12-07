@@ -11,6 +11,46 @@ function AddMeme(props) {
     const [errors, setErrors] = useState({});
     const history = useHistory();
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        const meme = {
+            _id: props.login.userId,
+            title: title.value,
+            imageUrl: imageUrl.value,
+        };
+        const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
+
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.login.isLogin) {
+            http.Social.addMeme(meme)
+                // .then(res => { console.log('--ADD MEME--', res) })
+         
+            history.push('/social');
+        }
+    };
+
+    function useFormInput(initialValue) {
+        const [value, setValue] = useState(initialValue);
+
+        function handleChange(event) {
+            setValue(event.target.value);
+            validate(event);
+        };
+
+        function validate(event) {
+            const name = event.target.id;
+
+            schema.fields[name].validate(event.target.value, { abortEarly: false })
+                .then(() => {
+                    setErrors({ ...errors, [name]: [] });
+                })
+                .catch((err) => {
+                    setErrors({ ...errors, [name]: err.errors });
+                });
+        };
+
+        return { value, onChange: handleChange };
+    };
+
     return (
         <div className="main-container">
             <form>
@@ -40,46 +80,6 @@ function AddMeme(props) {
             </form>
         </div>
     );
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        const meme = {
-            _id: props.login.userId,
-            title: title.value,
-            imageUrl: imageUrl.value,
-        };
-        const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
-
-        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.login.isLogin) {
-            http.Social.addMeme(meme)
-                .then(res => { console.log('--ADD MEME--', res) })
-            //TODO error and redirect
-            history.push('/social');
-        }
-    };
-
-    function useFormInput(initialValue) {
-        const [value, setValue] = useState(initialValue);
-
-        function handleChange(event) {
-            setValue(event.target.value);
-            validate(event);
-        };
-
-        function validate(event) {
-            const name = event.target.id;
-
-            schema.fields[name].validate(event.target.value, { abortEarly: false })
-                .then(() => {
-                    setErrors({ ...errors, [name]: [] });
-                })
-                .catch((err) => {
-                    setErrors({ ...errors, [name]: err.errors });
-                });
-        };
-
-        return { value, onChange: handleChange };
-    };
 };
 
 function mapStateToProps(state) {

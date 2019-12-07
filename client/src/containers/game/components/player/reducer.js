@@ -1,4 +1,5 @@
 const initialState = {
+    inGame: false,
     position: [0, 0],
     spriteLocation: '0px 0px',
     default: 'EAST',
@@ -22,6 +23,11 @@ const playerReducer = (state = initialState, action) => {
             };
         case 'FINAL':
             return;
+        case 'START':
+            return {
+                ...state,
+                inGame: action.payload,
+            }
         default:
             return state;
     };
