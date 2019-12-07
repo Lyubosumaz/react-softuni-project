@@ -4,47 +4,41 @@ import { removeAllCookies } from '../../services/cookies';
 import { connect } from 'react-redux';
 import './logout.css';
 import http from '../../services/http';
+import handleRoute from '../../utils/handleRoutes';
 
 
 function Logout(props) {
     const history = useHistory();
-
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    };
 
     const yesButtonHandler = (e) => {
         e.preventDefault();
 
         http.User.logout().then(() => {
             removeAllCookies();
-            props.setLoginValue();
+            props.setLoginValue()
             history.push('/login');
-        });
-    };
-
-    const noButtonHandler = (e) => {
-        e.preventDefault();
-        history.push('/home');
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     };
 
     return (
-        <form>
-            <div className="container">
+        <div className="main-container">
+            <form>
                 <h1>Logout</h1>
                 <p>Do you really want to logout?</p>
 
                 <div>
                     <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}><span>Yes</span></button>
-                    <button type="submit" className="logout-button" name="no-btn" onClick={noButtonHandler}><span>No!</span></button>
+                    <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}><span>No!</span></button>
                 </div>
 
                 <div className="info-container">
                     <p>Check out the new features in latest update <button className="info-button" onClick={handleRoute('/about')}>Here</button>.</p>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     );
 };
 

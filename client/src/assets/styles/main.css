@@ -13,6 +13,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.app-container {
+    display: grid;
+    grid-template-rows: 50px auto 70px;
+    grid-template-areas: "header" "main" "footer";
+    height: 100vh;
+}
+
 label {
     display: inline-block;
     width: 150px;
@@ -20,11 +27,11 @@ label {
     margin: 1%;
 }
 
-.container {
-    padding: 16px;
+.main-container {
+    /* padding: 16px; */
     text-align: center;
     overflow-y: scroll;
-    height: 775px;
+    grid-area: main;
 }
 
 .info-container {
@@ -41,10 +48,7 @@ label {
     font-size: 17px;
 }
 
-.background-image-container {
-    text-align: center;
-    min-height: 750px;
-    padding: 17px;
+.main-container.background-image {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -61,7 +65,7 @@ label {
     opacity: 0.9;
     border-radius: 25px;
     font-size: 20px;
-    width: 50%;
+    width: 40%;
     cursor: pointer;
 }
 

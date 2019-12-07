@@ -30,6 +30,7 @@ seedGameItems = function () {
                         strength: '2',
                         agility: '2',
                         intelligence: '2',
+                        price: '4',
                         ownedBy: []
                     }, {
                         itemName: 'Sword of Hellfire',
@@ -37,6 +38,7 @@ seedGameItems = function () {
                         strength: '6',
                         agility: '1',
                         intelligence: '1',
+                        price: '9',
                         ownedBy: []
                     }, {
                         itemName: 'Quiet Eye of the Dragon',
@@ -44,6 +46,7 @@ seedGameItems = function () {
                         strength: '1',
                         agility: '1',
                         intelligence: '1',
+                        price: '2',
                         ownedBy: []
                     }, {
                         itemName: 'Armor of Wonder',
@@ -51,6 +54,7 @@ seedGameItems = function () {
                         strength: '3',
                         agility: '3',
                         intelligence: '3',
+                        price: '10',
                         ownedBy: []
                     }, {
                         itemName: 'Charm of Mana',
@@ -58,6 +62,7 @@ seedGameItems = function () {
                         strength: '1',
                         agility: '2',
                         intelligence: '3',
+                        price: '4',
                         ownedBy: []
                     }, {
                         itemName: 'Clover of Fortune',
@@ -65,6 +70,7 @@ seedGameItems = function () {
                         strength: '1',
                         agility: '1',
                         intelligence: '5',
+                        price: '8',
                         ownedBy: []
                     }, {
                         itemName: 'Buckler of the Gnoll King',
@@ -72,6 +78,7 @@ seedGameItems = function () {
                         strength: '2',
                         agility: '2',
                         intelligence: '1',
+                        price: '6',
                         ownedBy: []
                     }, {
                         itemName: 'Helm of Heavenly Enlightenment',
@@ -79,6 +86,7 @@ seedGameItems = function () {
                         strength: '6',
                         agility: '6',
                         intelligence: '6',
+                        price: '20',
                         ownedBy: []
                     }]
                 ).then(console.log('***All Game Items are successfully loaded in the database!***'))

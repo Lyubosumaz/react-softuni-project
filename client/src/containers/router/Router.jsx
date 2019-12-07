@@ -40,14 +40,15 @@ export default function AppRouter() {
                 <Route
                     path="/game"
                     render={({ match: { url } }) => (
-                        <React.Fragment>
-                            <OptionBar />
+                      <div className="main-container">
+                            <OptionBar/>
+
                             <Route path={`${url}/`} exact component={Game} />
                             <Route path={`${url}/progress`} exact component={Progress} />
                             <Route path={`${url}/shop`} exact component={Shop} />
                             <Route path={`${url}/inventory`} exact component={Inventory} />
                             <Route path={`${url}/character`} exact component={Character} />
-                        </React.Fragment>
+                        </div>
                     )}
                 />
                 <Route

@@ -30,7 +30,7 @@ module.exports = {
                 })
                 .catch((err) => { res.send(err); });
         },
-        login: async (req, res, next) => {
+        login: async (req, res) => {
             const { username, password } = req.body;
             User.findOne({ username })
                 .then(user => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
@@ -41,8 +41,7 @@ module.exports = {
                     }
 
                     const token = utils.jwt.createToken({ id: user._id });
-                    // res.cookie(config.cookie, token).send(user);
-                    res.json({ user, token });
+                    res.cookie(config.cookie, token).send(user);
                 })
                 .catch((err) => {
                     res.send(err);
@@ -51,7 +50,7 @@ module.exports = {
         logout: (req, res) => {
             console.log(res.body)
             // res.clearCookie(appConfig.authCookieName);
-            res.clearCookie();
+            res.clearCookie(appConfig.cookieName).send({message: 'logout successful'});
         },
     }
 };

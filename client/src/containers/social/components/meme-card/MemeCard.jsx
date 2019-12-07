@@ -1,12 +1,21 @@
 import React from 'react';
 import './meme-card.css';
 
-export default function MemeCard() {
+export default function MemeCard(props) {
+    // console.log(props)
     return (
         <div className="meme-card">
-            <h1>Tailored Jeans</h1>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png" alt="" />
-            <button className='meme-card-button'>View</button>
+            <h1>{props.title}</h1>
+
+            <div>
+                <button className='meme-card-button'>View</button>
+                <button className='meme-card-button'>Edit</button>
+                <button className='meme-card-button'>Delete</button>
+            </div>
+            
+            <div>
+                <img src={props.imageUrl} alt={props.title} />
+            </div>
         </div>
     );
 };

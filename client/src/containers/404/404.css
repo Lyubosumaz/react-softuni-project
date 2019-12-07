@@ -1,6 +1,6 @@
-.four-o-four-container {
+.error-container {
     padding: 17px;
-    min-height: 765px;
+    /* min-height: 765px; */
     background-image: linear-gradient(125deg, #6a89cc, #b8e994);
     width: 100%;
     top: 50%;
@@ -8,7 +8,7 @@
     color: #343434;
 }
 
-.four-o-four-container h2 {
+.error-container h2 {
     font-size: 180px;
     margin: 0;
     font-weight: 900;

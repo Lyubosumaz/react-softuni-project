@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import handleRoute from '../../../utils/handleRoutes';
 import http from '../../../services/http';
@@ -8,34 +9,33 @@ function AddMeme(props) {
     const title = useFormInput('');
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     return (
-        <div>
+        <div className="main-container">
             <form>
-                <div className="container">
-                    <h1>Add Meme</h1>
-                    <p>Adding meme was never been easier.</p>
+                <h1>Add Meme</h1>
+                <p>Adding meme was never been easier.</p>
 
-                    <div className="form-div-container">
-                        <label htmlFor="Title"><b>Title:</b></label>
-                        <input type="text" placeholder="Write some funny title" className="form-input" id="title" onChange={useFormInput} {...title} />
-                        {errors.title && <div className="form-input-error">{errors.title[0]}</div>}
-                    </div>
+                <div className="form-div-container">
+                    <label htmlFor="Title"><b>Title:</b></label>
+                    <input type="text" placeholder="Write some funny title" className="form-input" id="title" onChange={useFormInput} {...title} />
+                    {errors.title && <div className="form-input-error">{errors.title[0]}</div>}
+                </div>
 
-                    <div className="form-div-container">
-                        <label htmlFor="imageUrl"><b>imageUrl:</b></label>
-                        <input type="text" placeholder="Copy and Paste your memeURL here" className="form-input" id="imageUrl" onChange={useFormInput} {...imageUrl} />
-                        {errors.imageUrl && <div className="form-input-error">{errors.imageUrl[0]}</div>}
-                    </div>
+                <div className="form-div-container">
+                    <label htmlFor="imageUrl"><b>imageUrl:</b></label>
+                    <input type="text" placeholder="Copy and Paste your memeURL here" className="form-input" id="imageUrl" onChange={useFormInput} {...imageUrl} />
+                    {errors.imageUrl && <div className="form-input-error">{errors.imageUrl[0]}</div>}
+                </div>
 
-                    <div>
-                        <button type="submit" className="form-action-btn" onClick={handleSubmit}>Submit</button>
-                    </div>
+                <div>
+                    <button type="submit" className="form-action-btn" onClick={handleSubmit}>Submit</button>
+                </div>
 
-                    <div className="info-container">
-                        <p>Tired of memes? Start a new game <button className="info-button"
-                            onClick={handleRoute('/game')}>Here</button>.</p>
-                    </div>
+                <div className="info-container">
+                    <p>Tired of memes? Start a new game <button className="info-button"
+                        onClick={handleRoute('/game')}>Here</button>.</p>
                 </div>
             </form>
         </div>
@@ -54,6 +54,7 @@ function AddMeme(props) {
             http.Social.addMeme(meme)
                 .then(res => { console.log('--ADD MEME--', res) })
             //TODO error and redirect
+            history.push('/social');
         }
     };
 

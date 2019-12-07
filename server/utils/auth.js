@@ -5,15 +5,15 @@ const models = require('../models');
 
 function auth(redirectUnauthenticated = true) {
     return function (req, res, next) {
-        const token = req.cookies[appConfig.authCookieName] || '';
+        const token = req.cookies[appConfig.cookieName] || '';
         Promise.all([
             jwt.verifyToken(token),
-            models.tokenBlacklistModel.findOne({ token })
+            // models.tokenBlacklistModel.findOne({ token })
         ]).then(([data, blacklistToken]) => {
             if (blacklistToken) {
                 return Promise.reject(new Error('blacklisted token'))
             }
-            models.userModel.findById(data.id).then(user => {
+            models.User.findById(data.id).then(user => {
                 req.user = user;
                 next();
             });

@@ -4,6 +4,8 @@ const controller = require('../controllers');
 const { auth } = require('../utils');
 
 // router.get('/view-meme', controller.);
-router.post('/add-meme',  controller.social.post.add);
+// router.get('/', controller.social.get.all);
+router.post('/', auth(), controller.social.post.memes);
+router.post('/add-meme', controller.social.post.add);
 
 module.exports = router;

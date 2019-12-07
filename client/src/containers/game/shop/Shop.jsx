@@ -3,7 +3,7 @@ import './shop.css';
 
 export default function Shop() {
     return (
-        <div>
+        <div >
             <h1>Shop</h1>
 
             <div class="flip-card">

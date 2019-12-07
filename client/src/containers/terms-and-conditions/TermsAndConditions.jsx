@@ -4,7 +4,7 @@ import './terms-and-conditions.css';
 
 export default function TermsAndConditions() {
     return (
-        <div className="terms-and-conditions-container">
+        <div className="main-container">
             <h1>Hello Terms & Conditions</h1>
 
             <div className="terms-and-conditions-text">

@@ -1,12 +1,12 @@
 import React from 'react';
 import GameHistoryCard from './game-history-card/GameHistoryCard';
 import handleRoute from '../../utils/handleRoutes';
-import defaultProfilePic from '../../assets/default_profile.png';
+import defaultProfilePic from '../../assets/img/default_profile.png';
 import './profile.css';
 
 export default function Profile() {
     return (
-        <div className="container">
+        <div className="main-container">
             <h1>Profile</h1>
 
             <div className="profile-card">
