@@ -11,7 +11,7 @@ function HouseOfFame(props) {
             <p className="house-of-fame-search-p"><b>Find your player: </b><input type="text" className="my-search" placeholder="Search.."></input></p>
 
             <div className="info-container">
-                {props.login.isLogin ?
+                {props.isLogin ?
                     <p>You saw what you need. Now join the game <button className="info-button" onClick={handleRoute('/game')}>Here</button>!</p>
                     :
                     <p>Join the race climb ladder and be the apex legend <button className="info-button" onClick={handleRoute('/login')}>Sign in</button>.</p>}
@@ -22,7 +22,7 @@ function HouseOfFame(props) {
 
 function mapStateToProps(state) {
     return {
-        ...state
+        isLogin: state.user.isLogin,
     };
 };
 

@@ -28,7 +28,6 @@ label {
 }
 
 .main-container {
-    /* padding: 16px; */
     text-align: center;
     overflow-y: scroll;
     grid-area: main;

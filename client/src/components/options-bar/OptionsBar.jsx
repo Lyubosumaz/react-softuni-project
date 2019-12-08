@@ -23,7 +23,7 @@ function Options(props) {
 
 function mapStateToProps(state) {
     return {
-        isLogin: state.login.isLogin
+        isLogin: state.user.isLogin
     }
 }
 

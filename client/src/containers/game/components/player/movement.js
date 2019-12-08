@@ -1,7 +1,7 @@
 import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import store from '../../../../services/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
+import store from '../../../../services/store';
 import http from '../../../../services/http';
 
 export default function HandleMovement({ children }) {
@@ -102,9 +102,9 @@ export default function HandleMovement({ children }) {
         switch (tile) {
             case 1:
                 return http.Game.save({
-                    _id: store.getState().login.userId,
+                    _id: store.getState().user.userId,
                     totalTime: 10,
-                    totalGold: store.getState().player.gold
+                    totalGold: store.getState().game.gold
                 }).then((res) => {
                     console.log('--SAVE--', res);
                 })

@@ -24,7 +24,7 @@ function Game(props) {
 
 function mapStateToProps(state) {
     return {
-        inGame: state.player.inGame,
+        inGame: state.game.inGame,
     };
 };
 

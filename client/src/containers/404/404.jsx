@@ -4,7 +4,7 @@ import './404.css';
 
 export default function FourOFour() {
     return (
-        <div className="error-container">
+        <div className="main-container error-container">
             <h1>Oops! Page not found</h1>
             <h2>404</h2>
             <p><b>We can't find the page you're looking for</b></p>

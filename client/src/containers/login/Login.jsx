@@ -44,8 +44,8 @@ function Login(props) {
 
         if (hasErrors.length === 0 && data.username && data.password) {
             http.User.login(data)
-                .then((res) => {
-                    props.setLoginValue(res)
+                .then((user) => {
+                    props.setLoginValue(user)
                     history.push('/home');
                 }).catch(err => {
                     setErrors({ ...errors, password: [err] });
@@ -86,7 +86,7 @@ function Login(props) {
 
 function mapStateToProps(state) {
     return {
-        isLogin: state.login.isLogin,
+        isLogin: state.user.isLogin,
     };
 };
 

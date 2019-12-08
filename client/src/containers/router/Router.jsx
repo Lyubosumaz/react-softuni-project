@@ -42,7 +42,6 @@ export default function AppRouter() {
                     render={({ match: { url } }) => (
                       <div className="main-container">
                             <OptionBar/>
-
                             <Route path={`${url}/`} exact component={Game} />
                             <Route path={`${url}/progress`} exact component={Progress} />
                             <Route path={`${url}/shop`} exact component={Shop} />

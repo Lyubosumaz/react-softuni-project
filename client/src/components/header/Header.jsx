@@ -36,7 +36,7 @@ import handleRoute from '../../utils/handleRoutes';
 
 function mapStateToProps(state) {
     return {
-        isLogin: state.login.isLogin,
+        isLogin: state.user.isLogin,
     };
 };
 

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks for html changes 1`] = `
+<div
+  className="main-container background-image"
+  name="about"
+>
+  <h1>
+    About
+  </h1>
+</div>
+`;
