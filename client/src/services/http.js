@@ -5,6 +5,7 @@ const User = {
     register: (userData) => httpPost("/api/user/register", userData),
     login: (userData) => httpPost("/api/user/login", userData),
     logout: () => httpPost("/api/user/logout"),
+    refresh: () => httpPost("/api/user/refresh"),
 };
 
 const Social = {
@@ -43,19 +44,12 @@ const requester = (method, path, options) => {
         "Content-Type": "application/json"
     };
 
-    const JWT_TOKEN = localStorage.getItem('token');
-    if (JWT_TOKEN) {
-        data.headers.Authorization = `Bearer ${JWT_TOKEN}`
-    }
-
     if (method === "POST" || method === "PUT") {
         data.body = JSON.stringify({ ...options });
     }
 
     const combinedUrl = `${protocol}${domain}${path}`;
     return fetch(combinedUrl, data)
-        // .then(res => res.text())
-        // // .then(res => Promise.resolve(JSON.parse(res)))
         .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
 };
 

@@ -16,7 +16,7 @@ function Logout(props) {
         http.User.logout().then(() => {
             removeAllCookies();
             props.setLoginValue()
-            history.push('/login');
+            history.push('/home');
         })
         .catch((err)=>{
             console.log(err)

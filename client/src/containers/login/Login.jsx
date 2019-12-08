@@ -45,7 +45,6 @@ function Login(props) {
         if (hasErrors.length === 0 && data.username && data.password) {
             http.User.login(data)
                 .then((res) => {
-                    console.log(res)
                     props.setLoginValue(res)
                     history.push('/home');
                 }).catch(err => {

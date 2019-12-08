@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import World from './components/world/World';
-import Overlay from './Overlay';
+import Overlay from './components/overlay/Overlay';
 
 function Game(props) {
     const inGame = props.inGame

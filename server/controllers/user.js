@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const GameProfile = require('../models/GameProfile');
+const BlacklistToken = require('../models/BlacklistToken');
 const config = require('../config/constants');
 
 const appConfig = require('../app-config');
@@ -48,9 +49,23 @@ module.exports = {
                 });
         },
         logout: (req, res) => {
-            console.log(res.body)
-            // res.clearCookie(appConfig.authCookieName);
-            res.clearCookie(appConfig.cookieName).send({message: 'logout successful'});
+            const token = req.cookies[appConfig.cookieName];
+            BlacklistToken.create({ token })
+                .then(() => {
+                    res.clearCookie(appConfig.cookieName)
+                        .send({ message: 'logout successful' });
+
+                })
+        },
+        refresh: (req, res) => {
+            const token = req.cookies[appConfig.cookieName];
+            BlacklistToken.create({ token })
+                .then(() => {
+                    const newToken = utils.jwt.createToken({ id: req.user._id });
+                    res.clearCookie(appConfig.cookieName)
+                        .cookie(config.cookie, newToken)
+                        .send({ message: 'new token' })
+                })
         },
     }
 };
