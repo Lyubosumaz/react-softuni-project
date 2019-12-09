@@ -22,6 +22,9 @@ import Character from '../game/character/Character';
 //memes
 import Social from '../social/Social';
 import AddMeme from '../social/add-meme/AddMeme';
+import ViewMeme from '../social/view-meme/ViewMeme';
+import EditMeme from '../social/edit-meme/EditMeme';
+import DeleteMeme from '../social/delete-meme/DeleteMeme';
 
 
 export default function AppRouter() {
@@ -40,8 +43,8 @@ export default function AppRouter() {
                 <Route
                     path="/game"
                     render={({ match: { url } }) => (
-                      <div className="main-container">
-                            <OptionBar/>
+                        <div className="main-container">
+                            <OptionBar />
                             <Route path={`${url}/`} exact component={Game} />
                             <Route path={`${url}/progress`} exact component={Progress} />
                             <Route path={`${url}/shop`} exact component={Shop} />
@@ -56,9 +59,9 @@ export default function AppRouter() {
                         <React.Fragment>
                             <Route path={`${url}/`} exact component={Social} />
                             <Route path={`${url}/add-meme`} exact component={AddMeme} />
-                            {/* <Route path={`${url}/view-meme`} exact component={} /> */}
-                            {/* <Route path={`${url}/delete-meme`} exact component={} /> */}
-                            {/* <Route path={`${url}/edit-meme`} exact component={} /> */}
+                            <Route path={`${url}/view-meme/:id`} exact component={ViewMeme} />
+                            <Route path={`${url}/edit-meme/:id`} exact component={EditMeme} />
+                            <Route path={`${url}/delete-meme/:id`} exact component={DeleteMeme} />
                         </React.Fragment>
                     )}
                 />

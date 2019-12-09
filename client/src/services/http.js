@@ -9,32 +9,34 @@ const User = {
 };
 
 const Social = {
-    getAll: () => httpGet('/api/social'),
     get: (memeData) => httpPost('/api/social', memeData),
-    addMeme: (memeData) => httpPost('/api/social/add-meme', memeData),
+    getAll: () => httpGet('/api/social'),
+    getMeme: () => httpGet('/api/social/view-meme/:id'),
+    addMeme: (memeData) => httpPost('/api/social/add-meme/:id', memeData),
+    editMeme: (memeData) => httpPut('/api/social/edit-meme/:id', memeData),
+    deleteMeme: (memeData) => httpDelete('/api/social/delete-meme/:id', memeData),
 };
 
 const Game = {
     save: (gameData) => httpPost('/api/game/save', gameData),
+    shop: () => httpGet('/api/game/shop'),
 };
-
 
 const httpGet = (path) => {
     return requester("GET", path);
 };
 
-// const httpDelete = (path) => {
-//     return requester("DELETE", path);
-// };
-
 const httpPost = (path, options) => {
     return requester("POST", path, options);
 };
 
-// const httpPut = (path, options) => {
-//     return requester("PUT", path, options);
-// };
+const httpPut = (path, options) => {
+    return requester("PUT", path, options);
+};
 
+const httpDelete = (path) => {
+    return requester("DELETE", path);
+};
 
 const requester = (method, path, options) => {
     const data = { method, credentials: 'include' };

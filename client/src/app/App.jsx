@@ -14,7 +14,7 @@ import '../assets/styles/main.css';
 import '../assets/styles/forms.css';
 
 export default function App() {
-  //REFRESHING TOKEN FOR AUTH USER EVERY 60 SEC. = 6*10*1000
+  //REFRESHING TOKEN FOR AUTH USER EVERY 60 SEC. = 60*1000
   useEffect(() => {
     setInterval(() => {
       const userAuthToken = authCookie();
@@ -24,7 +24,7 @@ export default function App() {
       } else if (userAuthToken) {
         removeAllCookies();
       }
-    }, 10 * 1000);
+    }, 5 * 60 * 1000);
   });
 
   return (

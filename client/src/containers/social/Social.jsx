@@ -3,12 +3,10 @@ import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
 import handleRoute from '../../utils/handleRoutes';
 import './social.css';
-import http from '../../services/http';
 
 export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
-    http.Social.getAll(res => console.log(res))
 
     const observer = useRef();
     const lastMemeCardRef = useCallback((node) => {
@@ -38,12 +36,12 @@ export default function Social() {
                     if (memes.length === index + 1) {
                         return (
                             <div key={meme.index} ref={lastMemeCardRef} >
-                                <MemeCard title={meme.title} imageUrl={meme.imageUrl} />
+                                <MemeCard meme={meme} />
                             </div>)
                     } else {
                         return (
                             <div key={meme.index}>
-                                <MemeCard title={meme.title} imageUrl={meme.imageUrl} />
+                                <MemeCard meme={meme} />
                             </div>)
                     }
                 })}

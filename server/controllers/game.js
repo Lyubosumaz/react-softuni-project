@@ -1,7 +1,13 @@
 const GameProfile = require('../models/GameProfile');
+const GameItem = require('../models/GameItem');
 
 module.exports = {
     get: {
+        shop: (req, res) => {
+            GameItem.find()
+                .then((items) => { res.send(items); })
+                .catch((err) => { res.send(err); });
+        }
     },
     post: {
         save: (req, res) => {
@@ -13,8 +19,8 @@ module.exports = {
                         totalGames: 1
                     }
                 })
-                .then(profile => res.json(profile))
-                .catch(err => res.send(err));
+                .then((profile) => { res.json(profile); })
+                .catch((err) => { res.send(err); });
         },
     }
 };

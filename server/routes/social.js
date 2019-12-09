@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const controller = require('../controllers');
-
 const { auth } = require('../utils');
 
-// router.get('/view-meme', controller.);
-router.get('/', controller.social.get.all);
 router.post('/', auth(), controller.social.post.memes);
-router.post('/add-meme', controller.social.post.add);
+router.post('/add-meme', auth(), controller.social.post.add);
+router.get('/view-meme/:id', auth(), controller.social.get.view);
+router.put('/edit-meme/:id', auth(), controller.social.edit);
+router.delete('/delete-meme/:id', auth(), controller.social.delete);
 
 module.exports = router;
