@@ -12,6 +12,11 @@ const playerReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             }
+        case 'RESET_MOVE_PLAYER':
+            return {
+                ...state,
+                ...initialState
+            }
         default:
             return state;
     };

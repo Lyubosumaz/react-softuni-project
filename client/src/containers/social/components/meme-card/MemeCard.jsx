@@ -7,29 +7,18 @@ function MemeCard(props) {
     const memeAddedBy = props.meme.addedBy;
     const currentUser = props.userId;
 
-    let rights = false;
-    if (memeAddedBy === currentUser) {
-        rights = true;
-    }
-    console.log(rights)
-
     return (
         <div className="meme-card">
             <h1>{props.meme.title}</h1>
 
             <div>
                 <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${props.meme._id}`)}>View</button>
-                {/* {rights
-                    ?
-                    <div>
-                        <button className="meme-card-button" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>Edit</button>
-                        <button className="meme-card-button" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>Delete</button>
-                    <div>
-                    :
-                    null
-                } */}
-                <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>Edit</button>
-                <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>Delete</button>
+                {(memeAddedBy === currentUser) && (
+                    <React.Fragment>
+                        <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>Edit</button>
+                        <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>Delete</button>
+                    </React.Fragment>
+                )}
             </div>
 
             <div>

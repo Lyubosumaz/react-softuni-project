@@ -9,12 +9,9 @@ const memeSchema = new mongoose.Schema({
         type: String,
         required: [true, 'You should write something for imageUrl'],
     },
-    date: {
-        type: Date,
-        required: true,
-        default: () => Date.now() + 2 * 60 * 60 * 1000
-    },
     addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+}, {
+    timestamps: true
 });
 
 const Meme = mongoose.model('Meme', memeSchema);

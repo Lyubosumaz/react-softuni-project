@@ -6,7 +6,7 @@ const gameProfileSchema = new mongoose.Schema({
     totalTime: { type: Number, required: true, default: 0 },
     totalGold: { type: Number, required: true, default: 0 },
     gameHistory: [],
-    items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'GameItem' }]
+    totalItem: [{ type: mongoose.Schema.Types.ObjectId, ref: 'GameItem' }]
 });
 
 const GameProfile = mongoose.model('GameProfile', gameProfileSchema);

@@ -6,16 +6,21 @@ import http from '../../../services/http';
 import schema from './edit-meme-validations';
 
 function EditMeme(props) {
-    const [meme, setMeme] = useState(null)
-    const title = useFormInput('');
-    const imageUrl = useFormInput('');
+    const [meme, setMeme] = useState('')
+    let title = useFormInput('');
+    let imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
     const history = useHistory();
 
     const memeId = props.match.params.id;
     useEffect(() => {
         http.Social.getMeme(memeId)
-            .then((meme) => { setMeme(meme); })
+            .then((meme) => {
+
+                setMeme(meme);
+                // title = useFormInput(meme.title);
+                // imageUrl = useFormInput(meme.imageUrl);
+            })
     }, []);
 
     function handleSubmit(e) {
@@ -28,7 +33,7 @@ function EditMeme(props) {
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
         if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
-            http.Social.editMeme(meme)
+            http.Social.editMeme(meme);
             history.push('/social');
         }
     };

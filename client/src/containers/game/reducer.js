@@ -2,7 +2,7 @@ const initialState = {
     inGame: false,
     final: false,
     gold: 0,
-    items: [],
+    item: [],
     time: 0
 };
 
@@ -21,10 +21,25 @@ const gameReducer = (state = initialState, action) => {
         case 'OPEN_ITEM_CHEST':
             return {
                 ...state,
+                item: state.item.concat(action.payload),
+            };
+        case 'GET_TIME':
+            return {
+                ...state,
+                time: action.payload,
             };
         case 'FINAL':
             return {
                 ...state,
+                inGame: action.payload,
+            };
+        case 'RESET_GAME':
+            return {
+                ...state,
+                final: false,
+                gold: 0,
+                item: [],
+                time: 0
             };
         default:
             return state;

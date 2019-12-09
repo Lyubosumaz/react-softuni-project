@@ -1,8 +1,10 @@
 const User = require('../models/User');
 const GameProfile = require('../models/GameProfile');
 const BlacklistToken = require('../models/BlacklistToken');
-const config = require('../config/constants');
 
+// const model = require('../models');
+
+const config = require('../config/constants');
 const appConfig = require('../app-config');
 const utils = require('../utils');
 

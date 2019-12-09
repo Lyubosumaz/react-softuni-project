@@ -74,8 +74,8 @@ function AddMeme(props) {
                 </div>
 
                 <div className="info-container">
-                    <p>You could add meme later, maybe <button className="info-button"
-                        onClick={handleRoute('/social')}>Back</button>?</p>
+                    <p>You could add meme later, maybe play a <button className="info-button"
+                        onClick={handleRoute('/game')}>Game</button>?</p>
                 </div>
             </form>
         </div>

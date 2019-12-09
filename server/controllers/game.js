@@ -11,15 +11,20 @@ module.exports = {
     },
     post: {
         save: (req, res) => {
+            console.log(req.body)
+
             GameProfile.updateOne({ user: req.body._id },
                 {
+                    $addToSet: { totalItem: req.body.totalItem },
                     $inc: {
                         totalTime: req.body.totalTime,
                         totalGold: req.body.totalGold,
                         totalGames: 1
                     }
                 })
-                .then((profile) => { res.json(profile); })
+                .then((profile) => {
+                    console.log(profile)
+                    res.json(profile); })
                 .catch((err) => { res.send(err); });
         },
     }

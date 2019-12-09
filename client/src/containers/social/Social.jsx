@@ -18,6 +18,7 @@ export default function Social() {
             }
         })
         if (node) { observer.current.observe(node); }
+    
     }, [loading, hasMore]);
 
 

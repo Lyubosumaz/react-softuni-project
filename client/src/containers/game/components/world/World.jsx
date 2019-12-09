@@ -7,19 +7,12 @@ import store from '../../../../services/store';
 
 export default function World() {
 
-    useEffect(() => {
-        console.log('component will mount');
-        store.dispatch({
-            type: 'ADD_TILES',
-            payload: {
-                tiles,
-            }
-        });
-        return () => {
-            console.log('component will unmount');
-            
+    store.dispatch({
+        type: 'ADD_TILES',
+        payload: {
+            tiles,
         }
-    })
+    });
 
     return (
         <div

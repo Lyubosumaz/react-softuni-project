@@ -32,12 +32,12 @@ function DeleteMeme(props) {
 
                 <div className="form-div-container">
                     <label htmlFor="Title"><b>Title:</b></label>
-                    {meme && <input type="text" placeholder={meme.title} className="form-input" disabled />}
+                    {meme && <input type="text" value={meme.title} className="form-input" disabled />}
                 </div>
 
                 <div className="form-div-container">
                     <label htmlFor="imageUrl"><b>imageUrl:</b></label>
-                    {meme && <input type="text" placeholder={meme.imageUrl} className="form-input" disabled />}
+                    {meme && <input type="text" value={meme.imageUrl} className="form-input" disabled />}
                 </div>
 
                 <div>

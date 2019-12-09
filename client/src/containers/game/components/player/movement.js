@@ -3,6 +3,7 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 import store from '../../../../services/store';
 import http from '../../../../services/http';
+import { tiles } from '../data/maps/2';
 
 export default function HandleMovement({ children }) {
 
@@ -101,21 +102,39 @@ export default function HandleMovement({ children }) {
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
+                store.dispatch({
+                    type: 'FINAL',
+                    payload: false,
+                });
+                console.log(store.getState().game.time)
                 return http.Game.save({
                     _id: store.getState().user.userId,
-                    totalTime: 10,
-                    totalGold: store.getState().game.gold
+                    totalGold: store.getState().game.gold,
+                    totalItem: store.getState().game.item,
+                    totalTime: store.getState().game.time,
                 }).then((res) => {
                     console.log('--SAVE--', res);
+                    // store.dispatch({
+                    //     type: 'ADD_TILES',
+                    //     payload: {
+                    //         tiles,
+                    //     }
+                    // });
                 })
             case 2:
+                if (store.getState().game.gold > 0) { return; }
                 store.dispatch({
-                    type: 'OPEN_CHEST',
-                    payload: Math.floor((Math.random() * 10) + 1)
+                    type: 'OPEN_GOLD_CHEST',
+                    payload: Math.floor((Math.random() * 10) + 1),
                 });
                 break;
             case 3:
-                return { item: 'Sandals of the Saint' };
+                if (store.getState().game.item.length > 0) { return; }
+                store.dispatch({
+                    type: 'OPEN_ITEM_CHEST',
+                    payload: '5dee5913f4808b210cfd456a',
+                });
+                break
             default:
                 break;
         };
