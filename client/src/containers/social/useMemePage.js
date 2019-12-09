@@ -11,7 +11,7 @@ export default function useMemePage(pageNumber) {
         setLoading(true);
         setError(false);
 
-        http.Social.get({
+        http.Social.getScroll({
             pageNumber,
             itemNumber: 5
         })

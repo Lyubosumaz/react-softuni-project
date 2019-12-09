@@ -50,7 +50,7 @@ export default function Social() {
             <div>{error && "Error"}</div>
 
             <div className="info-container">
-                <p>Join the race and climb to the top <button className="info-button" onClick={handleRoute('/game')}>Here</button>!</p>
+                <p>Join the race and climb to the top <button className="info-button" onClick={handleRoute('/game')}>Game</button>!</p>
             </div>
         </div>
     );

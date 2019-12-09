@@ -25,3 +25,19 @@
 .meme-card-button:hover {
   background-color: #333;
 }
+
+.meme-card-button.delete {
+  background-color: #f4511e;
+}
+
+.meme-card-button.delete:hover {
+  background-color: red;
+}
+
+.meme-card-button.edit {
+  background-color: #4CAF50;
+}
+
+.meme-card-button.edit:hover {
+  background-color: green;
+}

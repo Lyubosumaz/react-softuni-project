@@ -21,7 +21,7 @@ seedGameItems = function () {
     GameItems.find()
         .then((result) => {
             if (result.length > 0) { return; }
-            console.log('***Initiate Seed for Game Items...***');
+            console.log('***Initiate Seed for Game Items!***');
             return (
                 GameItems.insertMany(
                     [{

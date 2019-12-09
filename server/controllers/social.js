@@ -1,5 +1,7 @@
 const Meme = require('../models/Meme');
 
+const models = require('../models');
+
 module.exports = {
     get: {
         all: (req, res) => {
@@ -8,9 +10,11 @@ module.exports = {
                 .then(allMemes => res.send(allMemes))
         },
         view: (req, res) => {
-            console.log(req.params)
-            console.log(req.user)
-            res.send({ message: 'im here' })
+            const memeId = req.params.id;
+
+            Meme.findById({ _id: memeId })
+                .then((meme) => { res.send(meme); })
+                .catch((err) => { res.send(err); });
         },
     },
     post: {
@@ -29,16 +33,18 @@ module.exports = {
         },
     },
     edit: (req, res) => {
-        // const id = req.params.id;
-        // const { description } = req.body;
-        // models.Origami.updateOne({ _id: id }, { description })
-        //   .then((updatedOrigami) => res.send(updatedOrigami))
-        //   .catch(next)
+        const { title, imageUrl } = req.body;
+        const memeId = req.params.id
+
+        models.Meme.findByIdAndUpdate({ _id: memeId }, { title, imageUrl })
+            .then((editedMeme) => { res.send(editedMeme) })
+            .catch((err) => { res.send(err); });
     },
     delete: (req, res) => {
-        // const id = req.params.id;
-        // models.Origami.deleteOne({ _id: id })
-        //   .then((removedOrigami) => res.send(removedOrigami))
-        //   .catch(next)
+        const memeId = req.params.id
+
+        models.Meme.deleteOne({ _id: memeId })
+            .then((removedMeme) => { res.send(removedMeme); })
+            .catch((err) => { res.send(err); });
     },
 };

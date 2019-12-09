@@ -9,12 +9,11 @@ const User = {
 };
 
 const Social = {
-    get: (memeData) => httpPost('/api/social', memeData),
-    getAll: () => httpGet('/api/social'),
-    getMeme: () => httpGet('/api/social/view-meme/:id'),
-    addMeme: (memeData) => httpPost('/api/social/add-meme/:id', memeData),
-    editMeme: (memeData) => httpPut('/api/social/edit-meme/:id', memeData),
-    deleteMeme: (memeData) => httpDelete('/api/social/delete-meme/:id', memeData),
+    getScroll: (memeData) => httpPost('/api/social', memeData),
+    getMeme: (id) => httpGet(`/api/social/view-meme/${id}`),
+    addMeme: (memeData) => httpPost('/api/social/add-meme', memeData),
+    editMeme: (memeData) => httpPut(`/api/social/edit-meme/${memeData.id}`, memeData),
+    deleteMeme: (id) => httpDelete(`/api/social/delete-meme/${id}`),
 };
 
 const Game = {
@@ -49,6 +48,7 @@ const requester = (method, path, options) => {
     if (method === "POST" || method === "PUT") {
         data.body = JSON.stringify({ ...options });
     }
+
 
     const combinedUrl = `${protocol}${domain}${path}`;
     return fetch(combinedUrl, data)

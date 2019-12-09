@@ -14,16 +14,16 @@ function AddMeme(props) {
     function handleSubmit(e) {
         e.preventDefault();
         const meme = {
-            _id: props.login.userId,
+            _id: props.userId,
             title: title.value,
             imageUrl: imageUrl.value,
         };
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.login.isLogin) {
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.userId) {
             http.Social.addMeme(meme)
-                // .then(res => { console.log('--ADD MEME--', res) })
-         
+                .then(res => { console.log('--ADD MEME--', res) })
+
             history.push('/social');
         }
     };
@@ -74,8 +74,8 @@ function AddMeme(props) {
                 </div>
 
                 <div className="info-container">
-                    <p>Tired of memes? Start a new game <button className="info-button"
-                        onClick={handleRoute('/game')}>Here</button>.</p>
+                    <p>You could add meme later, maybe <button className="info-button"
+                        onClick={handleRoute('/social')}>Back</button>?</p>
                 </div>
             </form>
         </div>
@@ -84,7 +84,7 @@ function AddMeme(props) {
 
 function mapStateToProps(state) {
     return {
-        ...state
+        userId: state.user.userId,
     };
 };
 
