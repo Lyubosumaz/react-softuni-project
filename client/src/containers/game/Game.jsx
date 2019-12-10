@@ -14,7 +14,7 @@ function Game(props) {
 
     return (
         <React.Fragment>
-            {inGame && < Clock saveTime={inGame}/> || <h1>0</h1>}
+            {inGame && <Clock saveTime={inGame} /> || <h1>Level: -, Time: -</h1>}
 
             <div>
                 {!inGame && <Overlay />}

@@ -102,24 +102,29 @@ export default function HandleMovement({ children }) {
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                store.dispatch({
-                    type: 'FINAL',
-                    payload: false,
-                });
-                console.log(store.getState().game.time)
+                if (store.getState().game.item.length === 0) {
+                    store.dispatch({
+                        type: 'OPEN_ITEM_CHEST',
+                        payload: 'There is no Loot',
+                    });
+                }
                 return http.Game.save({
                     _id: store.getState().user.userId,
                     totalGold: store.getState().game.gold,
                     totalItem: store.getState().game.item,
                     totalTime: store.getState().game.time,
-                }).then((res) => {
-                    console.log('--SAVE--', res);
-                    // store.dispatch({
-                    //     type: 'ADD_TILES',
-                    //     payload: {
-                    //         tiles,
-                    //     }
-                    // });
+                    level: store.getState().game.level,
+                }).then(() => {
+                    store.dispatch({
+                        type: 'FINAL',
+                        payload: false,
+                    });
+                    store.dispatch({
+                        type: 'ADD_TILES',
+                        payload: {
+                            tiles,
+                        }
+                    });
                 })
             case 2:
                 if (store.getState().game.gold > 0) { return; }
@@ -132,7 +137,7 @@ export default function HandleMovement({ children }) {
                 if (store.getState().game.item.length > 0) { return; }
                 store.dispatch({
                     type: 'OPEN_ITEM_CHEST',
-                    payload: '5dee5913f4808b210cfd456a',
+                    payload: 'Sandals of the Saint',
                 });
                 break
             default:

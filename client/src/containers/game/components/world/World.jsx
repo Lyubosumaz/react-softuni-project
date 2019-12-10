@@ -1,11 +1,27 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Map from '../map/Map';
 import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
+// import { tiles } from '../data/maps/2';
+// import { tiles as tiles2 } from '../data/maps/2';
 import store from '../../../../services/store';
 
-export default function World() {
+function World(props) {
+
+    // console.log(props.level)
+    // console.log(tiles1)
+    // switch (props.level) {
+    //     case 1:
+    //         console.log(1)
+    //         return props.setTiles(tiles1);
+    //     case 2:
+    //         console.log(2)
+    //         return props.setTiles(tiles2);
+    //     default:
+    //         break;
+    // }
 
     store.dispatch({
         type: 'ADD_TILES',
@@ -27,3 +43,22 @@ export default function World() {
         </div>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        level: state.game.level,
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setTiles: (data) => dispatch({
+            type: 'ADD_TILES',
+            payload: {
+                data,
+            }
+        }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(World);

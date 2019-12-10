@@ -1,3 +1,10 @@
 .register-checkbox {
     display: inline-flex;
 }
+
+input[type="checkbox"] {
+    margin: auto 8px;
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+}

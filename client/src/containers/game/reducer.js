@@ -3,7 +3,8 @@ const initialState = {
     final: false,
     gold: 0,
     item: [],
-    time: 0
+    time: 0,
+    level: 1
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -32,6 +33,7 @@ const gameReducer = (state = initialState, action) => {
             return {
                 ...state,
                 inGame: action.payload,
+                level: 2,
             };
         case 'RESET_GAME':
             return {
@@ -39,7 +41,8 @@ const gameReducer = (state = initialState, action) => {
                 final: false,
                 gold: 0,
                 item: [],
-                time: 0
+                time: 0,
+                // level: 1
             };
         default:
             return state;

@@ -18,9 +18,9 @@ module.exports = {
                 .then((createdMeme) => { res.send(createdMeme); })
                 .catch((err) => { res.send(err); });
         },
-        memes: (req, res) => {
+        scroll: (req, res) => {
             const { itemNumber, pageNumber } = req.body;
-
+       
             models.Meme.find()
                 .sort({ updatedAt: -1 })
                 .skip(itemNumber * (pageNumber - 1))
@@ -29,19 +29,23 @@ module.exports = {
                 .catch((err) => { res.send(err); });
         },
     },
-    edit: (req, res) => {
-        const memeId = req.params.id
-        const { title, imageUrl } = req.body;
+    put: {
+        edit: (req, res) => {
+            const memeId = req.params.id
+            const { title, imageUrl } = req.body;
 
-        models.Meme.findByIdAndUpdate({ _id: memeId }, { title, imageUrl })
-            .then((editedMeme) => { res.send(editedMeme); })
-            .catch((err) => { res.send(err); });
+            models.Meme.findByIdAndUpdate({ _id: memeId }, { title, imageUrl })
+                .then((editedMeme) => { res.send(editedMeme); })
+                .catch((err) => { res.send(err); });
+        },
     },
-    delete: (req, res) => {
-        const memeId = req.params.id
+    delete: {
+        delete: (req, res) => {
+            const memeId = req.params.id
 
-        models.Meme.deleteOne({ _id: memeId })
-            .then((removedMeme) => { res.send(removedMeme); })
-            .catch((err) => { res.send(err); });
+            models.Meme.deleteOne({ _id: memeId })
+                .then((removedMeme) => { res.send(removedMeme); })
+                .catch((err) => { res.send(err); });
+        },
     },
 };

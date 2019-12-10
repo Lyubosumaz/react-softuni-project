@@ -16,13 +16,6 @@
     outline: none;
 }
 
-input[type="checkbox"] {
-    margin: auto 8px;
-    width: 19px;
-    height: 19px;
-    cursor: pointer;
-}
-
 .form-action-btn {
     background-color: #4CAF50;
     color: white;

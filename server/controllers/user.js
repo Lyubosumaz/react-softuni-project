@@ -2,7 +2,7 @@ const User = require('../models/User');
 const GameProfile = require('../models/GameProfile');
 const BlacklistToken = require('../models/BlacklistToken');
 
-// const model = require('../models');
+const model = require('../models');
 
 const config = require('../config/constants');
 const appConfig = require('../app-config');
@@ -10,10 +10,12 @@ const utils = require('../utils');
 
 module.exports = {
     get: {
-        all: (req, res, next) => {
-            User.find()
-                .then((users) => res.send(users))
-                .catch(next);
+        profile: (req, res) => {
+            const userId = req.user._id;
+
+            model.GameProfile.findOne({ user: userId })
+                .then((profile) => { res.send(profile); })
+                .catch((err) => { res.send(err); });
         },
     },
     post: {

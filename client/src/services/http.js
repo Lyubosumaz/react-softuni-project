@@ -6,6 +6,7 @@ const User = {
     login: (userData) => httpPost("/api/user/login", userData),
     logout: () => httpPost("/api/user/logout"),
     refresh: () => httpPost("/api/user/refresh"),
+    profile: () => httpGet('/api/user/profile'),
 };
 
 const Social = {
@@ -17,8 +18,8 @@ const Social = {
 };
 
 const Game = {
-    save: (gameData) => httpPost('/api/game/save', gameData),
     shop: () => httpGet('/api/game/shop'),
+    save: (gameData) => httpPost('/api/game/save', gameData),
 };
 
 const httpGet = (path) => {
@@ -51,6 +52,7 @@ const requester = (method, path, options) => {
 
 
     const combinedUrl = `${protocol}${domain}${path}`;
+    console.log(combinedUrl)
     return fetch(combinedUrl, data)
         .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
 };

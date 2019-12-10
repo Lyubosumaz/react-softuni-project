@@ -9,16 +9,12 @@ function Clock(props) {
     }, 1000)
 
     useEffect(() => {
-        console.log(!props.inGame)
         props.setTimeValue(count);
-        if (!props.inGame) {
-            console.log(count)
-        }
     }, [count]);
 
     return (
         <div>
-            <h1>{count}</h1>
+            <h1>Level: {props.level}, Time: {count}</h1>
         </div>
     );
 };
@@ -26,6 +22,7 @@ function Clock(props) {
 function mapStateToProps(state) {
     return {
         inGame: state.game.inGame,
+        level: state.game.level,
     };
 };
 
