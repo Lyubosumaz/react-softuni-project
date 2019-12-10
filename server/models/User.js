@@ -30,16 +30,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: () => Date.now() + 2 * 60 * 60 * 1000
     },
-    totalGames: {
-        type: Number,
-        required: true,
-        default: 0
-    },
-    totalTime: {
-        type: Number,
-        required: true,
-        default: 0
-    }
 });
 
 userSchema.methods = {

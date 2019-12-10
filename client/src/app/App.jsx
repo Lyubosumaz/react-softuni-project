@@ -12,6 +12,7 @@ import { authCookie, removeAllCookies } from '../services/cookies'
 import './App.css';
 import '../assets/styles/main.css';
 import '../assets/styles/forms.css';
+import '../assets/styles/list-card.css';
 
 export default function App() {
   //REFRESHING TOKEN FOR AUTH USER EVERY 60 SEC. = 60*1000

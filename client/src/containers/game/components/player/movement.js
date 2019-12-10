@@ -105,7 +105,7 @@ export default function HandleMovement({ children }) {
                 if (store.getState().game.item.length === 0) {
                     store.dispatch({
                         type: 'OPEN_ITEM_CHEST',
-                        payload: 'There is no Loot',
+                        payload: 'You didn\'t look anything',
                     });
                 }
                 return http.Game.save({

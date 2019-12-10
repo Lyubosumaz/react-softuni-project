@@ -43,7 +43,7 @@ function MapRow(props) {
     return (
         <div className="row">
             {
-                props.tiles.map(tile => <MapTile tile={tile} />)
+                props.tiles.map((tile, index) => <MapTile key={index} tile={tile} />)
             }
         </div>
     );
@@ -60,7 +60,7 @@ function Map(props) {
             border: '4px solid white',
         }}>
         {
-            props.tiles.map(row => <MapRow tiles={row} />)
+            props.tiles.map((row, index) => <MapRow key={index} tiles={row} />)
         }
     </div>
     );

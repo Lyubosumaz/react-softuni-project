@@ -10,6 +10,12 @@ const utils = require('../utils');
 
 module.exports = {
     get: {
+        house: (req, res) => {
+            model.GameProfile.find()
+                .populate('user')
+                .then((users) => { res.send(users) })
+                .catch((err) => { res.send(err); });
+        },
         profile: (req, res) => {
             const userId = req.user._id;
 
@@ -29,8 +35,9 @@ module.exports = {
             User.create({ username, email, password, subscribe })
                 .then((createdUser) => {
                     GameProfile.create({ user: createdUser._id })
-                        .then(() =>
-                            res.send(createdUser)
+                        .then(() => {
+                            res.send(createdUser);
+                        }
                         ).catch((err) => { res.send(err); });
                 })
                 .catch((err) => { res.send(err); });

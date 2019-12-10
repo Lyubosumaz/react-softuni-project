@@ -22,8 +22,6 @@ function AddMeme(props) {
 
         if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.userId) {
             http.Social.addMeme(meme)
-                .then(res => { console.log('--ADD MEME--', res) })
-
             history.push('/social');
         }
     };

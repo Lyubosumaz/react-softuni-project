@@ -7,6 +7,7 @@ const User = {
     logout: () => httpPost("/api/user/logout"),
     refresh: () => httpPost("/api/user/refresh"),
     profile: () => httpGet('/api/user/profile'),
+    house: () => httpGet('/api/user/house-of-fame'),
 };
 
 const Social = {
@@ -52,7 +53,6 @@ const requester = (method, path, options) => {
 
 
     const combinedUrl = `${protocol}${domain}${path}`;
-    console.log(combinedUrl)
     return fetch(combinedUrl, data)
         .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
 };
