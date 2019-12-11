@@ -1,5 +1,6 @@
 import React from 'react';
 import gameRank from '../../../../assets/img/game_rank.png';
+import secondsToClock from '../../../../utils/secondsToClock';
 
 export default function GameHistoryCard(props) {
     return (
@@ -12,7 +13,7 @@ export default function GameHistoryCard(props) {
                 <span><b>Level: {props.data.level}</b></span>
                 <div className="list-card-stats">
                     <div>
-                        <p><b>Your time is: {props.data.time}</b></p>
+                        <p><b>Your time is: {secondsToClock(props.data.time)}</b></p>
                     </div>
                     <div>
                         <p><b>Collected gold: {props.data.gold}</b></p>

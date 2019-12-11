@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from '../../utils/history';
 import OptionBar from '../../components/options-bar/OptionsBar';
+import AuthRoute from './auth-route/AuthRoute';
 
 import Home from '../home/Home';
 import About from '../about/About';
@@ -35,21 +36,21 @@ export default function AppRouter() {
                 <Route path="/home" exact component={Home} />
                 <Route path="/about" exact component={About} />
                 <Route path="/terms-and-conditions" exact component={TermsAndConditions} />
+                <Route path="/house-of-fame" exact component={HouseOfFame} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/login" exact component={Login} />
-                <Route path="/logout" exact component={Logout} />
-                <Route path="/house-of-fame" exact component={HouseOfFame} />
-                <Route path="/profile" exact component={Profile} />
+                <AuthRoute path="/logout" exact component={Logout} />
+                <AuthRoute path="/profile" exact component={Profile} />
                 <Route
                     path="/game"
                     render={({ match: { url } }) => (
                         <div className="main-container">
                             <OptionBar />
-                            <Route path={`${url}/`} exact component={Game} />
-                            <Route path={`${url}/progress`} exact component={Progress} />
-                            <Route path={`${url}/shop`} exact component={Shop} />
-                            <Route path={`${url}/inventory`} exact component={Inventory} />
-                            <Route path={`${url}/character`} exact component={Character} />
+                            <AuthRoute path={`${url}/`} exact component={Game} />
+                            <AuthRoute path={`${url}/progress`} exact component={Progress} />
+                            <AuthRoute path={`${url}/shop`} exact component={Shop} />
+                            <AuthRoute path={`${url}/inventory`} exact component={Inventory} />
+                            <AuthRoute path={`${url}/character`} exact component={Character} />
                         </div>
                     )}
                 />
@@ -57,11 +58,11 @@ export default function AppRouter() {
                     path="/social"
                     render={({ match: { url } }) => (
                         <React.Fragment>
-                            <Route path={`${url}/`} exact component={Social} />
-                            <Route path={`${url}/add-meme`} exact component={AddMeme} />
-                            <Route path={`${url}/view-meme/:id`} exact component={ViewMeme} />
-                            <Route path={`${url}/edit-meme/:id`} exact component={EditMeme} />
-                            <Route path={`${url}/delete-meme/:id`} exact component={DeleteMeme} />
+                            <AuthRoute path={`${url}/`} exact component={Social} />
+                            <AuthRoute path={`${url}/add-meme`} exact component={AddMeme} />
+                            <AuthRoute path={`${url}/view-meme/:id`} exact component={ViewMeme} />
+                            <AuthRoute path={`${url}/edit-meme/:id`} exact component={EditMeme} />
+                            <AuthRoute path={`${url}/delete-meme/:id`} exact component={DeleteMeme} />
                         </React.Fragment>
                     )}
                 />

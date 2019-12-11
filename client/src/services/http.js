@@ -22,6 +22,9 @@ const Game = {
     shop: () => httpGet('/api/game/shop'),
     save: (gameData) => httpPost('/api/game/save', gameData),
     buy: (itemId) => httpGet(`/api/game/buy/${itemId}`),
+    inventory: () => httpGet('/api/game/inventory'),
+    sell: (itemId) => httpGet(`/api/game/sell/${itemId}`),
+    equip: (itemId) => httpGet(`/api/game/equip/${itemId}`),
 };
 
 const httpGet = (path) => {

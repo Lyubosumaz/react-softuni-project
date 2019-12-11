@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import World from './components/world/World';
 import Overlay from './components/overlay/Overlay';
 import Clock from './components/clock/Clock';
+import http from '../../services/http';
 
 function Game(props) {
     const inGame = props.inGame
+
+    useEffect(() => {
+        http.Game.shop().then(items => props.saveGameItems(items));
+    }, []);
 
     useEffect(() => {
         props.resetPlayerState();
@@ -38,6 +43,10 @@ function mapDispatchToProps(dispatch) {
         }),
         resetGameState: () => dispatch({
             type: 'RESET_GAME',
+        }),
+        saveGameItems: (items) => dispatch({
+            type: 'SAVE_GAME_ITEMS',
+            payload: items,
         }),
     };
 };

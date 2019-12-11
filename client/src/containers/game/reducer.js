@@ -4,11 +4,17 @@ const initialState = {
     gold: 0,
     item: [],
     time: 0,
-    level: 1
+    level: 1,
+    gameItems: []
 };
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'SAVE_GAME_ITEMS':
+            return {
+                ...state,
+                gameItems: action.payload,
+            }
         case 'START':
             return {
                 ...state,

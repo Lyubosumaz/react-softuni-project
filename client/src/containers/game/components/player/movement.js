@@ -105,7 +105,7 @@ export default function HandleMovement({ children }) {
                 if (store.getState().game.item.length === 0) {
                     store.dispatch({
                         type: 'OPEN_ITEM_CHEST',
-                        payload: 'You didn\'t look anything',
+                        payload: { itemName: 'You didn\'t loot anything' },
                     });
                 }
                 return http.Game.save({
@@ -137,7 +137,7 @@ export default function HandleMovement({ children }) {
                 if (store.getState().game.item.length > 0) { return; }
                 store.dispatch({
                     type: 'OPEN_ITEM_CHEST',
-                    payload: 'Sandals of the Saint',
+                    payload: store.getState().game.gameItems[Math.ceil(Math.random() * 7)],
                 });
                 break
             default:

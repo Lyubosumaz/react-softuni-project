@@ -4,7 +4,7 @@ import GameHistoryCard from './components/game-history-card/GameHistoryCard';
 import handleRoute from '../../utils/handleRoutes';
 import defaultProfilePic from '../../assets/img/default_profile.png';
 import http from '../../services/http';
-import secondsToClock from './secondsToClock';
+import secondsToClock from '../../utils/secondsToClock';
 import './profile.css';
 
 function Profile(props) {
@@ -12,7 +12,6 @@ function Profile(props) {
 
     useEffect(() => {
         http.User.profile().then((gameProfile) => {
-            console.log(gameProfile.gameHistory);
             setProfile(gameProfile);
         })
     }, []);
@@ -32,7 +31,7 @@ function Profile(props) {
                         <p><b>Your Game Profile Records:</b></p>
                         <p><b>Total Games Played: {profile.totalGames}</b></p>
                         <p><b>Total Time Played: {secondsToClock(profile.totalTime)}</b></p>
-                        <p><b>Total Gold Accumulated: {profile.totalGames}</b></p>
+                        <p><b>Total Gold Accumulated: {profile.totalGold}</b></p>
                     </div>
                 </div>}
 
