@@ -1,7 +1,14 @@
 import React from 'react';
+import handleRoute from '../../../../utils/handleRoutes';
+import http from '../../../../services/http';
 import './shop-items.css';
 
 export default function ShopItems(props) {
+    // handleRoute(`/game/buy/${props.item._id}`
+    function handleBuy() {
+        http.Game.buy(props.item._id).then(res => console.log(res))
+    }
+
     return (
         <div class="flip-card">
             <div class="flip-card-inner">
@@ -14,6 +21,7 @@ export default function ShopItems(props) {
                     <div>
                         <h1>{props.item.itemName}</h1>
                         <p>Price: {props.item.price}</p>
+                        <button className="active-button" onClick={handleBuy}>Buy</button>
                     </div>
 
                     <div>

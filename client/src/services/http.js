@@ -12,15 +12,16 @@ const User = {
 
 const Social = {
     getScroll: (memeData) => httpPost('/api/social', memeData),
-    getMeme: (id) => httpGet(`/api/social/view-meme/${id}`),
+    getMeme: (memeId) => httpGet(`/api/social/view-meme/${memeId}`),
     addMeme: (memeData) => httpPost('/api/social/add-meme', memeData),
     editMeme: (memeData) => httpPut(`/api/social/edit-meme/${memeData.id}`, memeData),
-    deleteMeme: (id) => httpDelete(`/api/social/delete-meme/${id}`),
+    deleteMeme: (memeId) => httpDelete(`/api/social/delete-meme/${memeId}`),
 };
 
 const Game = {
     shop: () => httpGet('/api/game/shop'),
     save: (gameData) => httpPost('/api/game/save', gameData),
+    buy: (itemId) => httpGet(`/api/game/buy/${itemId}`),
 };
 
 const httpGet = (path) => {
@@ -53,6 +54,7 @@ const requester = (method, path, options) => {
 
 
     const combinedUrl = `${protocol}${domain}${path}`;
+    console.log(combinedUrl)
     return fetch(combinedUrl, data)
         .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
 };
