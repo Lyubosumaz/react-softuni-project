@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import CharacterCard from './components/character-card/CharacterCard';
 import http from '../../../services/http';
+import { toast } from 'react-toastify';
 import defaultPicture from '../../../assets/img/default_profile.png';
 import './character.css';
 
@@ -9,20 +10,26 @@ function Character(props) {
     const [items, setItems] = useState([])
     const [statistics, setStatistics] = useState([])
 
-
     useEffect(() => {
-        http.Game.character().then(c => {
-            const allStats = c.reduce((a, b) => {
-                return {
-                    strength: a.strength + b.strength,
-                    agility: a.agility + b.agility,
-                    intelligence: a.intelligence + b.intelligence
-                }
-            }, { strength: 0, agility: 0, intelligence: 0 });
+        http.Game.character()
+            .then(c => {
+                if (!c) { return; }
+                const allStats = c.reduce((a, b) => {
+                    return {
+                        strength: a.strength + b.strength,
+                        agility: a.agility + b.agility,
+                        intelligence: a.intelligence + b.intelligence
+                    }
+                }, { strength: 0, agility: 0, intelligence: 0 });
 
-            setItems(c);
-            setStatistics(allStats)
-        })
+                setItems(c);
+                setStatistics(allStats)
+            })
+            .catch((err) => {
+                toast(err.message, {
+                    type: toast.TYPE.ERROR,
+                });
+            });
     }, []);
 
     return (
@@ -43,8 +50,6 @@ function Character(props) {
                 </div>
             </div>
 
-
-
             <div className="item-card-container">
                 <div className="item-card-card">
                     {items && items.map((item, index) => {
@@ -52,7 +57,6 @@ function Character(props) {
                     })}
                 </div>
             </div>
-
         </div>
     );
 };

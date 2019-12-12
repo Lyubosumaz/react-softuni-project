@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import http from '../../services/http';
-import schema from './login-validations';
 import handleRoute from '../../utils/handleRoutes';
+import { toast } from 'react-toastify';
+import schema from './login-validations';
 
 function Login(props) {
     const username = useFormInput('');
@@ -35,7 +36,6 @@ function Login(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         const data = {
             username: username.value,
             password: password.value,
@@ -45,7 +45,10 @@ function Login(props) {
         if (hasErrors.length === 0 && data.username && data.password) {
             http.User.login(data)
                 .then((user) => {
-                    props.setLoginValue(user)
+                    props.setLoginValue(user);
+                    toast('You have Logged successfully!', {
+                        type: toast.TYPE.SUCCESS,
+                    });
                     history.push('/home');
                 }).catch(err => {
                     setErrors({ ...errors, password: [err] });

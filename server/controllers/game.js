@@ -23,21 +23,22 @@ module.exports = {
                 .then(([profile, item]) => {
 
                     if (profile.totalGold >= item.price) {
-                        Promise.resolve(models.GameProfile.updateOne({ user: userId },
-                            {
-                                $push: { totalItem: item._id },
-                                $inc: { totalGold: item.price * -1 }
-                            }
-                        ))
+                        Promise.resolve(
+                            models.GameProfile.updateOne({ user: userId },
+                                {
+                                    $push: { totalItem: item._id },
+                                    $inc: { totalGold: item.price * -1 }
+                                }
+                            ))
                             .catch((err) => {
                                 res.send({ message: 'There is a problem, please try to Buy later.' });
                                 console.error(err);
                             });
 
-                        return res.send({ message: 'You bought the Item successfully!' });
+                        return res.send({ message: 'You have bought the Item successfully!' });
                     }
 
-                    return res.send({ message: 'You don\'t have enough Gold to buy the Item.' });
+                    return res.send({ message: 'You don\'t have enough Gold to buy this Item.' });
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try to Buy later.' });
@@ -72,18 +73,19 @@ module.exports = {
                         profile.totalItem.splice(sellItemIndex, 1);
                         const sellPrice = Math.ceil(item.price / 2)
 
-                        Promise.resolve(models.GameProfile.updateOne({ user: userId },
-                            {
-                                totalItem: profile.totalItem,
-                                $inc: { totalGold: sellPrice }
-                            }
-                        ))
+                        Promise.resolve(
+                            models.GameProfile.updateOne({ user: userId },
+                                {
+                                    totalItem: profile.totalItem,
+                                    $inc: { totalGold: sellPrice }
+                                }
+                            ))
                             .catch((err) => {
                                 res.send({ message: 'There is a problem, please try to Sell later.' });
                                 console.error(err);
                             });
 
-                        return res.send({ message: `You sold the Item successfully for ${sellPrice}!` });
+                        return res.send({ message: `You have sold the Item successfully for ${sellPrice} gold!` });
                     }
 
                     return res.send({ message: 'You don\'t have this Item in your Inventory' });
@@ -105,18 +107,19 @@ module.exports = {
                         if (equipItemIndex > -1) {
                             profile.totalItem.splice(equipItemIndex, 1);
 
-                            Promise.resolve(models.GameProfile.updateOne({ user: userId },
-                                {
-                                    totalItem: profile.totalItem,
-                                    $push: { equipItem: itemId }
-                                }
-                            ))
+                            Promise.resolve(
+                                models.GameProfile.updateOne({ user: userId },
+                                    {
+                                        totalItem: profile.totalItem,
+                                        $push: { equipItem: itemId }
+                                    }
+                                ))
                                 .catch((err) => {
                                     res.send({ message: 'There is a problem, please try to Equip later.' });
                                     console.error(err);
                                 });
 
-                            return res.send({ message: 'You Equip the Item successfully!' });
+                            return res.send({ message: 'You have Equip the Item successfully!' });
                         }
 
                         return res.send({ message: 'You don\'t have this Item in your Inventory' });
@@ -153,12 +156,13 @@ module.exports = {
                     if (removeItemIndex > -1) {
                         profile.equipItem.splice(removeItemIndex, 1);
 
-                        Promise.resolve(models.GameProfile.updateOne({ user: userId },
-                            {
-                                equipItem: profile.equipItem,
-                                $push: { totalItem: itemId }
-                            }
-                        ))
+                        Promise.resolve(
+                            models.GameProfile.updateOne({ user: userId },
+                                {
+                                    equipItem: profile.equipItem,
+                                    $push: { totalItem: itemId }
+                                }
+                            ))
                             .catch((err) => {
                                 res.send({ message: 'There is a problem, please try to Remove later.' });
                                 console.error(err);

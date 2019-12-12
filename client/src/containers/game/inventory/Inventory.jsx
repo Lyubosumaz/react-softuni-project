@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InventoryCard from './components/inventory-card/InventoryCard';
-
 import http from '../../../services/http';
+import { toast } from 'react-toastify';
 
 export default function Inventory() {
     const [items, setItems] = useState([])
@@ -9,15 +9,18 @@ export default function Inventory() {
     useEffect(() => {
         http.Game.inventory()
             .then((i) => {
-                console.log(i)
-
+                if (!i) { return; }
                 const rows = [...Array(Math.ceil(i.length / 4))];
                 const arr = rows.map((row, index) => {
                     return i.slice(index * 4, index * 4 + 4);
-                })
+                });
                 setItems(arr);
             })
-            .catch((err) => { console.log(err) });
+            .catch((err) => {
+                toast(err.message, {
+                    type: toast.TYPE.ERROR,
+                });
+            });
     }, []);
 
     return (

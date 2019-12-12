@@ -1,26 +1,31 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { removeAllCookies } from '../../services/cookies';
 import { connect } from 'react-redux';
-import './logout.css';
 import http from '../../services/http';
+import { toast } from 'react-toastify';
 import handleRoute from '../../utils/handleRoutes';
-
+import { removeAllCookies } from '../../services/cookies';
+import './logout.css';
 
 function Logout(props) {
     const history = useHistory();
 
     const yesButtonHandler = (e) => {
         e.preventDefault();
-
-        http.User.logout().then(() => {
-            removeAllCookies();
-            props.setLoginValue()
-            history.push('/home');
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+        http.User.logout()
+            .then((res) => {
+                toast(res.message, {
+                    type: toast.TYPE.SUCCESS,
+                });
+                removeAllCookies();
+                props.setLoginValue()
+                history.push('/home');
+            })
+            .catch((err) => {
+                toast(err.message, {
+                    type: toast.TYPE.ERROR,
+                });
+            });
     };
 
     return (

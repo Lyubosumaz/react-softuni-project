@@ -4,14 +4,11 @@ import Map from '../map/Map';
 import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
-// import { tiles } from '../data/maps/2';
-// import { tiles as tiles2 } from '../data/maps/2';
 import store from '../../../../services/store';
 
 function World(props) {
 
-    // console.log(props.level)
-    // console.log(tiles1)
+    //TODO level system
     // switch (props.level) {
     //     case 1:
     //         console.log(1)

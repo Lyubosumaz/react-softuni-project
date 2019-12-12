@@ -27,7 +27,6 @@ import ViewMeme from '../social/view-meme/ViewMeme';
 import EditMeme from '../social/edit-meme/EditMeme';
 import DeleteMeme from '../social/delete-meme/DeleteMeme';
 
-
 export default function AppRouter() {
     return (
         <Router history={history}>

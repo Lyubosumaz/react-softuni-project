@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import GameHistoryCard from './components/game-history-card/GameHistoryCard';
-import handleRoute from '../../utils/handleRoutes';
-import defaultProfilePic from '../../assets/img/default_profile.png';
 import http from '../../services/http';
+import handleRoute from '../../utils/handleRoutes';
 import secondsToClock from '../../utils/secondsToClock';
+import defaultProfilePic from '../../assets/img/default_profile.png';
 import './profile.css';
 
 function Profile(props) {
@@ -13,7 +13,7 @@ function Profile(props) {
     useEffect(() => {
         http.User.profile().then((gameProfile) => {
             setProfile(gameProfile);
-        })
+        });
     }, []);
 
     return (

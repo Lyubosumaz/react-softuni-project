@@ -37,7 +37,7 @@ module.exports = {
                 .then((createdUser) => {
                     models.GameProfile.create({ user: createdUser._id })
                         .then(() => {
-                            res.send({ message: 'You Registered successfully!' });
+                            res.send({ message: 'You have Registered successfully!' });
                         })
                         .catch((err) => {
                             res.send({ message: 'There is a problem, please try to Register later.' });

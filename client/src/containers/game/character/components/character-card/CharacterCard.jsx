@@ -1,12 +1,23 @@
 import React from 'react';
 import http from '../../../../../services/http';
+import { toast } from 'react-toastify';
 import './character-card.css';
 
 export default function CharacterCard(props) {
 
     function handleRemove() {
-        http.Game.remove(props.item._id).then(res => console.log(res))
-    }
+        http.Game.remove(props.item._id)
+            .then((res) => {
+                toast(res.message, {
+                    type: toast.TYPE.INFO,
+                });
+            })
+            .catch((err) => {
+                toast(err.message, {
+                    type: toast.TYPE.ERROR,
+                });
+            });
+    };
 
     return (
         <div className={props.styleClass ? props.styleClass : 'item-card'}>

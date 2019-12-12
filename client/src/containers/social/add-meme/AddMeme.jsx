@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import handleRoute from '../../../utils/handleRoutes';
+import { connect } from 'react-redux';
 import http from '../../../services/http';
+import handleRoute from '../../../utils/handleRoutes';
+import { toast } from 'react-toastify';
 import schema from './add-meme-validations';
 
-export default function AddMeme() {
+function AddMeme(props) {
     const title = useFormInput('');
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
@@ -18,9 +20,19 @@ export default function AddMeme() {
         };
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && meme.title && meme.imageUrl) {
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
             http.Social.addMeme(meme)
-            history.push('/social');
+                .then((res) => {
+                    toast(res.message, {
+                        type: toast.TYPE.SUCCESS,
+                    });
+                    history.push('/social');
+                })
+                .catch((err) => {
+                    toast(err.message, {
+                        type: toast.TYPE.ERROR,
+                    });
+                });
         }
     };
 
@@ -77,3 +89,11 @@ export default function AddMeme() {
         </div>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        isLogin: state.user.isLogin,
+    };
+};
+
+export default connect(mapStateToProps)(AddMeme);

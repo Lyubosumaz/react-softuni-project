@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import handleRoute from '../../../utils/handleRoutes';
 import http from '../../../services/http';
+import handleRoute from '../../../utils/handleRoutes';
+import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
 
 function EditMeme(props) {
-    const [meme, setMeme] = useState('')
+    const [meme, setMeme] = useState(null)
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState({});
@@ -46,7 +47,6 @@ function EditMeme(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         const data = {
             id: memeId,
             title,
@@ -55,8 +55,18 @@ function EditMeme(props) {
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
         if (hasErrors.length === 0 && data.title && data.imageUrl && props.isLogin) {
-            http.Social.editMeme(data).then((res) => { console.log(res); });
-            history.push('/social');
+            http.Social.editMeme(data)
+                .then((res) => {
+                    toast(res.message, {
+                        type: toast.TYPE.SUCCESS,
+                    });
+                    history.push('/social');
+                })
+                .catch((err) => {
+                    toast(err.message, {
+                        type: toast.TYPE.ERROR,
+                    });
+                });
         }
     };
 

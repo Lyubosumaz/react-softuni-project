@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ShopCard from './components/shop-card/ShopCard';
 import http from '../../../services/http';
+import { toast } from 'react-toastify';
 
 export default function Shop() {
     const [items, setItems] = useState([])
@@ -8,13 +9,18 @@ export default function Shop() {
     useEffect(() => {
         http.Game.shop()
             .then((i) => {
+                if (!i) { return; }
                 const rows = [...Array(Math.ceil(i.length / 4))];
                 const arr = rows.map((row, index) => {
                     return i.slice(index * 4, index * 4 + 4);
                 })
                 setItems(arr);
             })
-            .catch((err) => { console.log(err) });
+            .catch((err) => {
+                toast(err.message, {
+                    type: toast.TYPE.ERROR,
+                });
+            });
     }, []);
 
     return (

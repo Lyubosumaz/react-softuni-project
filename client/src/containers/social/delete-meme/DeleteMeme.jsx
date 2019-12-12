@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import handleRoute from '../../../utils/handleRoutes';
 import http from '../../../services/http';
+import handleRoute from '../../../utils/handleRoutes';
+import { toast } from 'react-toastify';
 import './delete-meme.css';
 
 function DeleteMeme(props) {
@@ -19,7 +20,16 @@ function DeleteMeme(props) {
         e.preventDefault();
         if (props.isLogin) {
             http.Social.deleteMeme(memeId)
-            history.push('/social');
+                .then((res) => {
+                    toast(res.message, {
+                        type: toast.TYPE.ERROR,
+                    });
+                    history.push('/social');
+                }).catch((err) => {
+                    toast(err.message, {
+                        type: toast.TYPE.ERROR,
+                    });
+                });
         }
     };
 

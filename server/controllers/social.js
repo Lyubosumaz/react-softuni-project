@@ -8,7 +8,7 @@ module.exports = {
             models.Meme.findById({ _id: memeId })
                 .then((oneMeme) => { res.send(oneMeme); })
                 .catch((err) => {
-                    res.send({ message: 'There is a problem, please try to View Meme later.' });
+                    res.send({ message: 'There is a problem, please try to View meme later.' });
                     console.error(err);
                 });
         },
@@ -32,9 +32,9 @@ module.exports = {
             const { title, imageUrl } = req.body;
 
             models.Meme.create({ title, imageUrl, addedBy: userId })
-                .then(() => { res.send({ message: 'You Added successfully!' }); })
+                .then(() => { res.send({ message: 'You Added the meme successfully!' }); })
                 .catch((err) => {
-                    res.send({ message: 'There is a problem, please try to Add Meme later.' });
+                    res.send({ message: 'There is a problem, please try to Add meme later.' });
                     console.error(err);
                 });
         },
@@ -45,9 +45,9 @@ module.exports = {
             const { title, imageUrl } = req.body;
 
             models.Meme.findByIdAndUpdate({ _id: memeId }, { title, imageUrl })
-                .then(() => { res.send({ message: 'You Edited successfully!' }); })
+                .then(() => { res.send({ message: 'You Edited the meme successfully!' }); })
                 .catch((err) => {
-                    res.send({ message: 'There is a problem, please try to Edit Meme later.' });
+                    res.send({ message: 'There is a problem, please try to Edit meme later.' });
                     console.error(err);
                 });
         },
@@ -57,9 +57,9 @@ module.exports = {
             const memeId = req.params.id
 
             models.Meme.deleteOne({ _id: memeId })
-                .then(() => { res.send({ message: 'You Deleted successfully!' }); })
+                .then(() => { res.send({ message: 'You Deleted the meme successfully!' }); })
                 .catch((err) => {
-                    res.send({ message: 'There is a problem, please try to Delete Meme later.' });
+                    res.send({ message: 'There is a problem, please try to Delete meme later.' });
                     console.error(err);
                 });
         },

@@ -5,11 +5,11 @@ import handleRoute from '../../../utils/handleRoutes';
 
 export default function ViewMeme(props) {
     const memeId = props.match.params.id;
-    const [meme, setMeme] = useState(null)
+    const [meme, setMeme] = useState(null);
 
     useEffect(() => {
         http.Social.getMeme(memeId)
-            .then((meme) => { setMeme(meme) })
+            .then((meme) => { setMeme(meme); });
     }, []);
 
     return (
@@ -17,7 +17,6 @@ export default function ViewMeme(props) {
             <h1>View Meme</h1>
 
             {meme && <MemeCard meme={meme} />}
-
 
             <div className="info-container">
                 <p>Add Meme or just watch others memes <button className="info-button" 

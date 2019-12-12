@@ -19,9 +19,10 @@ export default function useMemePage(pageNumber) {
                 setMemes([...memes, ...m]);
                 setHasMore(m.length > 0);
                 setLoading(false);
-            }).catch((err) => {
+            }).catch(() => {
                 setError(true);
             })
     }, [pageNumber]);
+
     return { memes, loading, error, hasMore };
 };

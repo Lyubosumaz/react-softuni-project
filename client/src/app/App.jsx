@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import store from '../services/store';
 
 import Router from '../containers/router/Router';
@@ -14,6 +16,12 @@ import '../assets/styles/main.css';
 import '../assets/styles/forms.css';
 import '../assets/styles/list-card.css';
 import '../assets/styles/item-card.css';
+
+toast.configure({
+  autoClose: 7000,
+  draggable: false,
+  position: toast.POSITION.BOTTOM_CENTER,
+});
 
 export default function App() {
   //REFRESHING TOKEN FOR AUTH USER EVERY 5 MINUTES = 5*60*1000

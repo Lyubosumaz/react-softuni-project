@@ -20,7 +20,6 @@ export default function Social() {
     
     }, [loading, hasMore]);
 
-
     return (
         <div className="main-container">
             <h1>Social</h1>
@@ -37,12 +36,12 @@ export default function Social() {
                         return (
                             <div key={meme.index} ref={lastMemeCardRef} >
                                 <MemeCard meme={meme} />
-                            </div>)
+                            </div>);
                     } else {
                         return (
                             <div key={meme.index}>
                                 <MemeCard meme={meme} />
-                            </div>)
+                            </div>);
                     }
                 })}
             </div>

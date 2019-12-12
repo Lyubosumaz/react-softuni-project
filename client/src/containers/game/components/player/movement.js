@@ -3,6 +3,7 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 import store from '../../../../services/store';
 import http from '../../../../services/http';
+import { toast } from 'react-toastify';
 import { tiles } from '../data/maps/2';
 
 export default function HandleMovement({ children }) {
@@ -70,8 +71,6 @@ export default function HandleMovement({ children }) {
         });
     };
 
-
-
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
@@ -114,6 +113,9 @@ export default function HandleMovement({ children }) {
                     totalTime: store.getState().game.time,
                     level: store.getState().game.level,
                 }).then(() => {
+                    toast('Welcome the next level!', {
+                        type: toast.TYPE.SUCCESS,
+                    });
                     store.dispatch({
                         type: 'FINAL',
                         payload: false,
@@ -127,16 +129,24 @@ export default function HandleMovement({ children }) {
                 })
             case 2:
                 if (store.getState().game.gold > 0) { return; }
+                const gold = Math.floor((Math.random() * 10) + 1);
                 store.dispatch({
                     type: 'OPEN_GOLD_CHEST',
-                    payload: Math.floor((Math.random() * 10) + 1),
+                    payload: gold,
+                });
+                toast(`You have picked up ${gold} gold!`, {
+                    type: toast.TYPE.SUCCESS,
                 });
                 break;
             case 3:
                 if (store.getState().game.item.length > 0) { return; }
+                const item = store.getState().game.gameItems[Math.ceil(Math.random() * 7)];
                 store.dispatch({
                     type: 'OPEN_ITEM_CHEST',
-                    payload: store.getState().game.gameItems[Math.ceil(Math.random() * 7)],
+                    payload: item,
+                });
+                toast(`You have found ${item.itemName}!`, {
+                    type: toast.TYPE.SUCCESS,
                 });
                 break
             default:
