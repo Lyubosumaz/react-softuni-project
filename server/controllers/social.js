@@ -6,27 +6,37 @@ module.exports = {
             const memeId = req.params.id;
 
             models.Meme.findById({ _id: memeId })
-                .then((meme) => { res.send(meme); })
-                .catch((err) => { res.send(err); });
+                .then((oneMeme) => { res.send(oneMeme); })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to View Meme later.' });
+                    console.error(err);
+                });
         },
     },
     post: {
         add: (req, res) => {
-            const { title, imageUrl, _id } = req.body;
+            const userId = req.user._id;
+            const { title, imageUrl } = req.body;
 
-            models.Meme.create({ title, imageUrl, addedBy: _id })
-                .then((createdMeme) => { res.send(createdMeme); })
-                .catch((err) => { res.send(err); });
+            models.Meme.create({ title, imageUrl, addedBy: userId })
+                .then(() => { res.send({ message: 'You Added successfully!' }); })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to Add Meme later.' });
+                    console.error(err);
+                });
         },
         scroll: (req, res) => {
             const { itemNumber, pageNumber } = req.body;
-       
+
             models.Meme.find()
                 .sort({ updatedAt: -1 })
                 .skip(itemNumber * (pageNumber - 1))
                 .limit(itemNumber)
                 .then((allMemes) => { res.send(allMemes); })
-                .catch((err) => { res.send(err); });
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try later.' });
+                    console.error(err);
+                });
         },
     },
     put: {
@@ -35,8 +45,11 @@ module.exports = {
             const { title, imageUrl } = req.body;
 
             models.Meme.findByIdAndUpdate({ _id: memeId }, { title, imageUrl })
-                .then((editedMeme) => { res.send(editedMeme); })
-                .catch((err) => { res.send(err); });
+                .then(() => { res.send({ message: 'You Edited successfully!' }); })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to Edit Meme later.' });
+                    console.error(err);
+                });
         },
     },
     delete: {
@@ -44,8 +57,11 @@ module.exports = {
             const memeId = req.params.id
 
             models.Meme.deleteOne({ _id: memeId })
-                .then((removedMeme) => { res.send(removedMeme); })
-                .catch((err) => { res.send(err); });
+                .then(() => { res.send({ message: 'You Deleted successfully!' }); })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to Delete Meme later.' });
+                    console.error(err);
+                });
         },
     },
 };

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
 import handleRoute from '../../../utils/handleRoutes';
 import http from '../../../services/http';
 import schema from './add-meme-validations';
 
-function AddMeme(props) {
+export default function AddMeme() {
     const title = useFormInput('');
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
@@ -14,13 +13,12 @@ function AddMeme(props) {
     function handleSubmit(e) {
         e.preventDefault();
         const meme = {
-            _id: props.userId,
             title: title.value,
             imageUrl: imageUrl.value,
         };
         const hasErrors = Object.keys(errors).filter(key => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.userId) {
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl) {
             http.Social.addMeme(meme)
             history.push('/social');
         }
@@ -79,11 +77,3 @@ function AddMeme(props) {
         </div>
     );
 };
-
-function mapStateToProps(state) {
-    return {
-        userId: state.user.userId,
-    };
-};
-
-export default connect(mapStateToProps)(AddMeme);

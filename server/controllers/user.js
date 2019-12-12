@@ -25,7 +25,7 @@ module.exports = {
         },
     },
     post: {
-        register: async (req, res, next) => {
+        register: async (req, res) => {
             const { username, email, password, subscribe, repeatPassword } = req.body;
 
             if (password !== repeatPassword) {
