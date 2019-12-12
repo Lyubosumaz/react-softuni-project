@@ -4,8 +4,13 @@ module.exports = {
     get: {
         shop: (req, res) => {
             models.GameItem.find()
-                .then((items) => { res.send(items); })
-                .catch((err) => { res.send(err); });
+                .then((items) => {
+                    res.send(items);
+                })
+                .catch((err) => {
+                    res.send({ serverMessage: 'Item is successfully bought' });
+                    console.error(err);
+                });
         },
         buy: (req, res) => {
             const userId = req.user._id;
@@ -23,7 +28,7 @@ module.exports = {
                                 $inc: { totalGold: item.price * -1 }
                             }
                         ))
-                        return res.send({ message: 'Item is successfully bought' });
+                        return res.send({ serverMessage: 'Item is successfully bought' });
                     }
                     return res.send({ message: 'You don\'t have enough gold to buy the item' });
                 })
@@ -42,7 +47,7 @@ module.exports = {
         sell: (req, res) => {
             const userId = req.user._id;
             const itemId = req.params.id;
-        
+
             Promise.all([
                 models.GameProfile.findOne({ user: userId }),
                 models.GameItem.findOne({ _id: itemId })
@@ -88,6 +93,36 @@ module.exports = {
                 })
                 .catch((err) => { res.send(err); });
         },
+        character: (req, res) => {
+            const userId = req.user._id;
+            models.GameProfile.findOne({ user: userId })
+                .populate('equipItem')
+                .then((profile) => {
+                    res.send(profile.equipItem)
+                })
+                .catch((err) => { res.send(err); });
+        },
+        remove: (req, res) => {
+            const userId = req.user._id;
+            const itemId = req.params.id;
+
+            models.GameProfile.findOne({ user: userId })
+                .then((profile) => {
+                    const removeItemIndex = profile.equipItem.indexOf(itemId);
+
+                    if (removeItemIndex > -1) {
+                        profile.equipItem.splice(removeItemIndex, 1);
+                    }
+
+                    Promise.resolve(models.GameProfile.updateOne({ user: userId },
+                        {
+                            equipItem: profile.equipItem,
+                            $push: { totalItem: itemId }
+                        }
+                    ))
+                    return res.send({ message: 'Successfully Equipped item' });
+                })
+        }
     },
     post: {
         save: (req, res) => {

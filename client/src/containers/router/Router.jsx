@@ -16,7 +16,7 @@ import Logout from '../logout/Logout';
 import Profile from '../profile/Profile';
 //game
 import Game from '../game/Game';
-import Progress from '../game/progress/Progress';
+import Progress from '../game/progress/Progress'; // TODO
 import Shop from '../game/shop/Shop';
 import Inventory from '../game/inventory/Inventory';
 import Character from '../game/character/Character';

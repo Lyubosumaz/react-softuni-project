@@ -1,0 +1,8 @@
+.active-button.remove {
+    background-color: #333;
+  }
+  
+  .active-button.remove:hover {
+    background-color: #ddd;
+    color: black;
+  }

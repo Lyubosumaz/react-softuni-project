@@ -8,5 +8,7 @@ router.get('/buy/:id', auth(), controller.game.get.buy);
 router.get('/inventory', auth(), controller.game.get.inventory);
 router.get('/sell/:id', auth(), controller.game.get.sell);
 router.get('/equip/:id', auth(), controller.game.get.equip);
+router.get('/character', auth(), controller.game.get.character);
+router.get('/remove/:id', auth(), controller.game.get.remove);
 
 module.exports = router;

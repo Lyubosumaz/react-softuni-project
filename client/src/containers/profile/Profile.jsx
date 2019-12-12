@@ -23,7 +23,7 @@ function Profile(props) {
             {profile &&
                 <div className="profile-card">
                     <div>
-                        <h1>Username: {props.userName}</h1>
+                        <h1>{props.userName}</h1>
                         <img src={defaultProfilePic} alt="Profile" />
                     </div>
 

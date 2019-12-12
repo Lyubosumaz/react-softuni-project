@@ -2,10 +2,10 @@ const protocol = 'http://';
 const domain = 'localhost:4000';
 
 const User = {
-    register: (userData) => httpPost("/api/user/register", userData),
-    login: (userData) => httpPost("/api/user/login", userData),
-    logout: () => httpPost("/api/user/logout"),
-    refresh: () => httpPost("/api/user/refresh"),
+    register: (userData) => httpPost('/api/user/register', userData),
+    login: (userData) => httpPost('/api/user/login', userData),
+    logout: () => httpPost('/api/user/logout'),
+    refresh: () => httpPost('/api/user/refresh'),
     profile: () => httpGet('/api/user/profile'),
     house: () => httpGet('/api/user/house-of-fame'),
 };
@@ -25,6 +25,8 @@ const Game = {
     inventory: () => httpGet('/api/game/inventory'),
     sell: (itemId) => httpGet(`/api/game/sell/${itemId}`),
     equip: (itemId) => httpGet(`/api/game/equip/${itemId}`),
+    character: () => httpGet('/api/game/character'),
+    remove: (itemId) => httpGet(`/api/game/remove/${itemId}`),
 };
 
 const httpGet = (path) => {

@@ -10,8 +10,8 @@ function HouseOfFame(props) {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        http.User.house().then((users) => {
-            setUsers(users);
+        http.User.house().then((allUsers) => {
+            setUsers(allUsers);
         });
     }, []);
 
@@ -26,8 +26,8 @@ function HouseOfFame(props) {
         }));
 
         if (search === '') {
-            http.User.house().then((users) => {
-                setUsers(users);
+            http.User.house().then((allUsers) => {
+                setUsers(allUsers);
             });
         }
     }, [search]);
