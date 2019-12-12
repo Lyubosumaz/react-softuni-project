@@ -56,6 +56,11 @@ module.exports = {
                 .then(user => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
                 .then(([user, match]) => {
 
+                    if (!user) {
+                        res.status(401).send({ message: 'Username not found! Try again.' });
+                        return;
+                    }
+
                     if (!match) {
                         res.status(401).send({ message: 'Wrong password or username! Try again.' });
                         return;
