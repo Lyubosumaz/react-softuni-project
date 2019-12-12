@@ -1,23 +1,6 @@
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
 const GameItems = require('../models/GameItem');
-const { constant } = require('../app-config');
 
-// seedAdminUser = async function () {
-//     try {
-//         let users = await User.find();
-//         if (users.length > 0) { return; };
-//         // const salt = await bcrypt.genSalt(parseInt(parseInt(saltRounds)));
-//         // const password = await bcrypt.hash('123', salt);
-//         return User.create({
-//             username: 'admin',
-//             email: 'admin@admin.admin',
-//             password: 'admin',
-//         });
-//     } catch (err) { console.log(err); }
-// }
-
-seedGameItems = function () {
+function seedGameItems() {
     GameItems.find()
         .then((result) => {
             if (result.length > 0) { return; }
@@ -25,71 +8,72 @@ seedGameItems = function () {
             return (
                 GameItems.insertMany(
                     [{
-                        itemName: 'Sandals of the Saint',
-                        imageUrl: 'https://heroes.thelazy.net/images/7/78/Artifact_Sandals_of_the_Saint.gif',
+                        itemName: 'Tabula Rasa',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/8/8c/Tabula_Rasa_inventory_icon.png?version=07ff8a06d71e2fa01cdb6912110cb64b',
                         strength: '2',
                         agility: '2',
                         intelligence: '2',
                         price: '4',
                         ownedBy: []
                     }, {
-                        itemName: 'Sword of Hellfire',
-                        imageUrl: 'https://heroes.thelazy.net/images/5/53/Artifact_Sword_of_Hellfire.gif',
-                        strength: '6',
+                        itemName: 'Daresso\'s Passion',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/1/1f/Daresso%27s_Passion_inventory_icon.png?version=42fef4bef48dae21093910934357cd8c',
+                        strength: '9',
                         agility: '1',
+                        intelligence: '1',
+                        price: '12',
+                        ownedBy: []
+                    }, {
+                        itemName: 'Lioneye\'s Remorse',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/9/95/Lioneye%27s_Remorse_inventory_icon.png?version=dab52d352ea66dc560fc18e3334fb2fe',
+                        strength: '5',
+                        agility: '2',
                         intelligence: '1',
                         price: '9',
                         ownedBy: []
                     }, {
-                        itemName: 'Quiet Eye of the Dragon',
-                        imageUrl: 'https://heroes.thelazy.net/images/8/86/Artifact_Quiet_Eye_of_the_Dragon.gif',
-                        strength: '1',
-                        agility: '1',
-                        intelligence: '1',
-                        price: '2',
+                        itemName: 'Chains of Command',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/5/5d/Chains_of_Command_inventory_icon.png?version=8839dafbe15c7b840682f3cdcc4217af',
+                        strength: '3',
+                        agility: '3',
+                        intelligence: '10',
+                        price: '17',
                         ownedBy: []
                     }, {
-                        itemName: 'Armor of Wonder',
-                        imageUrl: 'https://heroes.thelazy.net/images/a/ab/Artifact_Armor_of_Wonder.gif',
+                        itemName: 'The Bringer of Rain',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/8/89/The_Bringer_of_Rain_inventory_icon.png?version=5c28cd58b5b2702a5845ce9c986c9f26',
+                        strength: '9',
+                        agility: '9',
+                        intelligence: '1',
+                        price: '20',
+                        ownedBy: []
+                    }, {
+                        itemName: 'Devoto\'s Devotion',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/a/a0/Devoto%27s_Devotion_inventory_icon.png?version=97878c23d897ebd84610cb4d803a2fbd',
+                        strength: '8',
+                        agility: '8',
+                        intelligence: '2',
+                        price: '18',
+                        ownedBy: []
+                    }, {
+                        itemName: 'Dance of the Offered',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/0/0c/Dance_of_the_Offered_inventory_icon.png?version=59ef4f69510a97415ec2ddf2bd02ed19',
                         strength: '3',
                         agility: '3',
                         intelligence: '3',
                         price: '10',
                         ownedBy: []
                     }, {
-                        itemName: 'Charm of Mana',
-                        imageUrl: 'https://heroes.thelazy.net/images/0/04/Artifact_Charm_of_Mana.gif',
+                        itemName: 'Shavronne\'s Wrappings',
+                        imageUrl: 'https://gamepedia.cursecdn.com/pathofexile_gamepedia/6/62/Shavronne%27s_Wrappings_inventory_icon.png?version=8a0039907ba9325199fc7f89630cfeb1',
                         strength: '1',
-                        agility: '2',
-                        intelligence: '3',
-                        price: '4',
-                        ownedBy: []
-                    }, {
-                        itemName: 'Clover of Fortune',
-                        imageUrl: 'https://heroes.thelazy.net/images/5/5f/Artifact_Clover_of_Fortune.gif',
-                        strength: '1',
-                        agility: '1',
-                        intelligence: '5',
-                        price: '8',
-                        ownedBy: []
-                    }, {
-                        itemName: 'Buckler of the Gnoll King',
-                        imageUrl: 'https://heroes.thelazy.net/images/e/eb/Artifact_Buckler_of_the_Gnoll_King.gif',
-                        strength: '2',
-                        agility: '2',
-                        intelligence: '1',
-                        price: '6',
-                        ownedBy: []
-                    }, {
-                        itemName: 'Helm of Heavenly Enlightenment',
-                        imageUrl: 'https://heroes.thelazy.net/images/a/a2/Artifact_Helm_of_Heavenly_Enlightenment.gif',
-                        strength: '6',
                         agility: '6',
-                        intelligence: '6',
+                        intelligence: '9',
                         price: '20',
                         ownedBy: []
-                    }]
-                ).then(console.log('***All Game Items are successfully loaded in the database!***'))
+                    }])
+                    .then(console.log('***All Game Items are successfully loaded in the database!***'))
+                    .catch((err) => { console.error(err); })
             );
         });
 };
