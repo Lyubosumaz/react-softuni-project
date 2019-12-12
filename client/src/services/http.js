@@ -57,9 +57,7 @@ const requester = (method, path, options) => {
         data.body = JSON.stringify({ ...options });
     }
 
-
     const combinedUrl = `${protocol}${domain}${path}`;
-    console.log(combinedUrl)
     return fetch(combinedUrl, data)
         .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
 };

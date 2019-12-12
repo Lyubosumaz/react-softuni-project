@@ -14,17 +14,6 @@ module.exports = {
         },
     },
     post: {
-        add: (req, res) => {
-            const userId = req.user._id;
-            const { title, imageUrl } = req.body;
-
-            models.Meme.create({ title, imageUrl, addedBy: userId })
-                .then(() => { res.send({ message: 'You Added successfully!' }); })
-                .catch((err) => {
-                    res.send({ message: 'There is a problem, please try to Add Meme later.' });
-                    console.error(err);
-                });
-        },
         scroll: (req, res) => {
             const { itemNumber, pageNumber } = req.body;
 
@@ -35,6 +24,17 @@ module.exports = {
                 .then((allMemes) => { res.send(allMemes); })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try later.' });
+                    console.error(err);
+                });
+        },
+        add: (req, res) => {
+            const userId = req.user._id;
+            const { title, imageUrl } = req.body;
+
+            models.Meme.create({ title, imageUrl, addedBy: userId })
+                .then(() => { res.send({ message: 'You Added successfully!' }); })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to Add Meme later.' });
                     console.error(err);
                 });
         },

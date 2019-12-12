@@ -109,7 +109,6 @@ export default function HandleMovement({ children }) {
                     });
                 }
                 return http.Game.save({
-                    _id: store.getState().user.userId,
                     totalGold: store.getState().game.gold,
                     totalItem: store.getState().game.item,
                     totalTime: store.getState().game.time,
