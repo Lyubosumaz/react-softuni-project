@@ -16,7 +16,7 @@ import '../assets/styles/list-card.css';
 import '../assets/styles/item-card.css';
 
 export default function App() {
-  //REFRESHING TOKEN FOR AUTH USER EVERY 60 SEC. = 60*1000
+  //REFRESHING TOKEN FOR AUTH USER EVERY 5 MINUTES = 5*60*1000
   useEffect(() => {
     setInterval(() => {
       const userAuthToken = authCookie();
