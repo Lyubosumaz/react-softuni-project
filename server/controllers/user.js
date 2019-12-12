@@ -1,11 +1,5 @@
-const User = require('../models/User');
-const GameProfile = require('../models/GameProfile');
-const BlacklistToken = require('../models/BlacklistToken');
-
 const models = require('../models');
-
 const config = require('../config/constants');
-const appConfig = require('../app-config');
 const utils = require('../utils');
 
 module.exports = {
@@ -14,41 +8,56 @@ module.exports = {
             models.GameProfile.find()
                 .populate('user')
                 .then((users) => { res.send(users) })
-                .catch((err) => { res.send(err); });
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try later.' });
+                    console.error(err);
+                });
         },
         profile: (req, res) => {
             const userId = req.user._id;
 
             models.GameProfile.findOne({ user: userId })
                 .then((profile) => { res.send(profile); })
-                .catch((err) => { res.send(err); });
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try later.' });
+                    console.error(err);
+                });
         },
     },
     post: {
         register: async (req, res, next) => {
             const { username, email, password, subscribe, repeatPassword } = req.body;
+
             if (password !== repeatPassword) {
-                res.status(401).send('Passwords don\'t match!');
+                res.status(401).send({ message: 'Passwords don\'t match! Try again.' });
                 return;
             }
 
-            User.create({ username, email, password, subscribe })
+            models.User.create({ username, email, password, subscribe })
                 .then((createdUser) => {
-                    GameProfile.create({ user: createdUser._id })
+                    models.GameProfile.create({ user: createdUser._id })
                         .then(() => {
-                            res.send(createdUser);
-                        }
-                        ).catch((err) => { res.send(err); });
+                            res.send({ message: 'You Registered successfully!' });
+                        })
+                        .catch((err) => {
+                            res.send({ message: 'There is a problem, please try to Register later.' });
+                            console.error(err);
+                        });
                 })
-                .catch((err) => { res.send(err); });
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to Register later.' });
+                    console.error(err);
+                });
         },
         login: async (req, res) => {
             const { username, password } = req.body;
-            User.findOne({ username })
+
+            models.User.findOne({ username })
                 .then(user => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
                 .then(([user, match]) => {
+
                     if (!match) {
-                        res.status(401).send('Wrong password or username! Try again.');
+                        res.status(401).send({ message: 'Wrong password or username! Try again.' });
                         return;
                     }
 
@@ -56,27 +65,39 @@ module.exports = {
                     res.cookie(config.cookie, token).send(user);
                 })
                 .catch((err) => {
-                    res.send(err);
+                    res.send({ message: 'There is a problem, please try to Login later.' });
+                    console.error(err);
                 });
         },
         logout: (req, res) => {
-            const token = req.cookies[appConfig.cookieName];
-            BlacklistToken.create({ token })
-                .then(() => {
-                    res.clearCookie(appConfig.cookieName)
-                        .send({ message: 'logout successful' });
+            const token = req.cookies[config.cookie];
 
+            models.BlacklistToken.create({ token })
+                .then(() => {
+                    res.clearCookie(config.cookie)
+                        .send({ message: 'You Logout successfully!' });
                 })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, please try to Logout later.' });
+                    console.error(err);
+                });
         },
         refresh: (req, res) => {
-            const token = req.cookies[appConfig.cookieName];
-            BlacklistToken.create({ token })
+            const userId = req.user._id;
+            const token = req.cookies[config.cookie];
+
+            models.BlacklistToken.create({ token })
                 .then(() => {
-                    const newToken = utils.jwt.createToken({ id: req.user._id });
-                    res.clearCookie(appConfig.cookieName)
+                    const newToken = utils.jwt.createToken({ id: userId });
+
+                    res.clearCookie(config.cookie)
                         .cookie(config.cookie, newToken)
-                        .send({ message: 'new token' })
+                        .send({ message: 'You received new authorization token' });
                 })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, with your authorization.' });
+                    console.error(err);
+                });
         },
-    }
+    },
 };

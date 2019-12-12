@@ -4,7 +4,7 @@ function seedGameItems() {
     GameItems.find()
         .then((result) => {
             if (result.length > 0) { return; }
-            console.log('***Initiate Seed for Game Items!***');
+            console.log('***Initiate Seed for Items!***');
             return (
                 GameItems.insertMany(
                     [{
@@ -72,7 +72,7 @@ function seedGameItems() {
                         price: '20',
                         ownedBy: []
                     }])
-                    .then(console.log('***All Game Items are successfully loaded in the database!***'))
+                    .then(console.log('***Items Successfully loaded in database!***'))
                     .catch((err) => { console.error(err); })
             );
         });
