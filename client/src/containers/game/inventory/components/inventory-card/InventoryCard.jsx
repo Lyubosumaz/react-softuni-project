@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import http from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './inventory-card.css';
 
-export default function InventoryCard(props) {
+function InventoryCard(props) {
 
     function handleSell() {
         http.Game.sell(props.item._id)
@@ -11,6 +12,7 @@ export default function InventoryCard(props) {
                 toast(res.message, {
                     type: toast.TYPE.INFO,
                 });
+                props.setSellItem();
             })
             .catch((err) => {
                 toast(err.message, {
@@ -25,6 +27,7 @@ export default function InventoryCard(props) {
                 toast(res.message, {
                     type: toast.TYPE.INFO,
                 });
+                props.setEquipItem();
             })
             .catch((err) => {
                 toast(err.message, {
@@ -62,3 +65,18 @@ export default function InventoryCard(props) {
         </div>
     );
 };
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setSellItem: () => dispatch({
+            type: 'CHARACTER_SELL_ITEM',
+            payload: true,
+        }),
+        setEquipItem: () => dispatch({
+            type: 'CHARACTER_EQUIP_ITEM',
+            payload: true,
+        }),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(InventoryCard);

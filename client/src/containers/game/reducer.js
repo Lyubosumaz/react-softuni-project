@@ -5,7 +5,10 @@ const initialState = {
     item: [],
     time: 0,
     level: 1,
-    gameItems: []
+    gameItems: [],
+    inventorySellItem: false,
+    inventoryEquipItem: false,
+    characterRemoveItem: false
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -49,6 +52,21 @@ const gameReducer = (state = initialState, action) => {
                 item: [],
                 time: 0,
                 // level: 1
+            };
+        case 'CHARACTER_SELL_ITEM':
+            return {
+                ...state,
+                inventorySellItem: action.payload
+            };
+        case 'CHARACTER_EQUIP_ITEM':
+            return {
+                ...state,
+                inventoryEquipItem: action.payload
+            };
+        case 'CHARACTER_REMOVE_ITEM':
+            return {
+                ...state,
+                characterRemoveItem: action.payload
             };
         default:
             return state;

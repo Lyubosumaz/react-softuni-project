@@ -57,12 +57,12 @@ module.exports = {
                 .then(([user, match]) => {
 
                     if (!user) {
-                        res.status(401).send({ message: 'Username not found! Try again.' });
+                        res.status(401).send('Username is not found! Try again.');
                         return;
                     }
 
                     if (!match) {
-                        res.status(401).send({ message: 'Wrong password or username! Try again.' });
+                        res.status(401).send('Wrong password or username! Try again.');
                         return;
                     }
 

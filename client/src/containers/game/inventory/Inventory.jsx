@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import InventoryCard from './components/inventory-card/InventoryCard';
 import http from '../../../services/http';
 import { toast } from 'react-toastify';
 
-export default function Inventory() {
+function Inventory(props) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
@@ -15,13 +16,18 @@ export default function Inventory() {
                     return i.slice(index * 4, index * 4 + 4);
                 });
                 setItems(arr);
+                
+                if (props.inventorySellItem || props.inventoryEquipItem) {
+                    props.setSellItem();
+                    props.setEquipItem();
+                }
             })
             .catch((err) => {
                 toast(err.message, {
                     type: toast.TYPE.ERROR,
                 });
             });
-    }, []);
+    }, [props.inventorySellItem, props.inventoryEquipItem]);
 
     return (
         <div >
@@ -41,3 +47,25 @@ export default function Inventory() {
         </div>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        inventorySellItem: state.game.inventorySellItem,
+        inventoryEquipItem: state.game.inventoryEquipItem,
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setSellItem: () => dispatch({
+            type: 'CHARACTER_SELL_ITEM',
+            payload: false,
+        }),
+        setEquipItem: () => dispatch({
+            type: 'CHARACTER_EQUIP_ITEM',
+            payload: false,
+        }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inventory);

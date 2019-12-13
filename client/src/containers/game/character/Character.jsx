@@ -23,14 +23,18 @@ function Character(props) {
                 }, { strength: 0, agility: 0, intelligence: 0 });
 
                 setItems(c);
-                setStatistics(allStats)
+                setStatistics(allStats);
+                
+                if (props.characterRemoveItem) {
+                    props.setRemoveItem();
+                }
             })
             .catch((err) => {
                 toast(err.message, {
                     type: toast.TYPE.ERROR,
                 });
             });
-    }, []);
+    }, [props.characterRemoveItem]);
 
     return (
         <div>
@@ -64,7 +68,17 @@ function Character(props) {
 function mapStateToProps(state) {
     return {
         userName: state.user.userName,
+        characterRemoveItem: state.game.characterRemoveItem,
     };
 };
 
-export default connect(mapStateToProps)(Character);
+function mapDispatchToProps(dispatch) {
+    return {
+        setRemoveItem: () => dispatch({
+            type: 'CHARACTER_REMOVE_ITEM',
+            payload: false,
+        }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Character);

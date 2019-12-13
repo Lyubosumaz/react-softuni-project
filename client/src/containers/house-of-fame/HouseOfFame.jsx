@@ -53,7 +53,7 @@ function HouseOfFame(props) {
                 {props.isLogin ?
                     <p>You saw what you need. Now join the game <button className="info-button" onClick={handleRoute('/game')}>Here</button>!</p>
                     :
-                    <p>Join the race climb ladder and be the apex legend <button className="info-button" onClick={handleRoute('/login')}>Sign in</button>.</p>}
+                    <p>Join the race, climb ladder and be the top apex legend <button className="info-button" onClick={handleRoute('/login')}>Sign in</button>.</p>}
             </div>
 
         </div>

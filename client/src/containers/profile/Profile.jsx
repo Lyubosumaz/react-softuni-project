@@ -31,7 +31,7 @@ function Profile(props) {
                         <p><b>Your Game Profile Records:</b></p>
                         <p><b>Total Games Played: {profile.totalGames}</b></p>
                         <p><b>Total Time Played: {secondsToClock(profile.totalTime)}</b></p>
-                        <p><b>Total Gold Accumulated: {profile.totalGold}</b></p>
+                        <p><b>Current Gold: {profile.totalGold} coins</b></p>
                     </div>
                 </div>}
 

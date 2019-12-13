@@ -1,13 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import http from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './character-card.css';
 
-export default function CharacterCard(props) {
+function CharacterCard(props) {
 
     function handleRemove() {
         http.Game.remove(props.item._id)
             .then((res) => {
+                props.setRemoveItem()
                 toast(res.message, {
                     type: toast.TYPE.INFO,
                 });
@@ -47,3 +49,14 @@ export default function CharacterCard(props) {
         </div>
     );
 };
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setRemoveItem: () => dispatch({
+            type: 'CHARACTER_REMOVE_ITEM',
+            payload: true,
+        }),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(CharacterCard);

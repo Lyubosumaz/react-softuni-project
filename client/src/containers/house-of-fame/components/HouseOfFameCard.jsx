@@ -19,7 +19,7 @@ export default function HouseOfFameCard(props) {
                         <p><b>Time Played: {secondsToClock(props.data.totalTime)}</b></p>
                     </div>
                     <div>
-                        <p><b>Gold Accumulated: {props.data.totalGold}</b></p>
+                        <p><b>Wealth: {props.data.totalGold} coins</b></p>
                     </div>
                 </div>
             </div>
