@@ -3,10 +3,10 @@
 exports[`Checks for html changes 1`] = `
 <div
   className="main-container background-image"
-  name="about"
+  name="home"
 >
   <h1>
-    About
+    Home
   </h1>
 </div>
 `;

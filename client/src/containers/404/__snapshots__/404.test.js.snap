@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checks for html changes 1`] = `
+<div
+  className="error-container"
+>
+  <h1>
+    Oops! Page not found
+  </h1>
+  <h2>
+    404
+  </h2>
+  <p>
+    <b>
+      We can't find the page you're looking for
+    </b>
+  </p>
+  <button
+    className="active-button"
+    name="404"
+    onClick={[Function]}
+  >
+    Go Back Home
+  </button>
+</div>
+`;

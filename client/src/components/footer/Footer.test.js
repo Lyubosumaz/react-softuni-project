@@ -1,13 +1,13 @@
 import React from 'react';
-import About from './About';
+import Footer from './Footer';
 import { shallow } from 'enzyme';
 
-it('Renter About component', () => {
-    const wrapper = shallow(<About />);
+it('Renter Footer component', () => {
+    const wrapper = shallow(<Footer />);
     expect(wrapper).toBeTruthy();
 });
 
 it('Checks for html changes', () => {
-    const wrapper = shallow(<About />);
+    const wrapper = shallow(<Footer />);
     expect(wrapper).toMatchSnapshot();
 });

@@ -1,13 +1,13 @@
 import React from 'react';
-import About from './About';
+import Home from './Home';
 import { shallow } from 'enzyme';
 
-it('Renter About component', () => {
-    const wrapper = shallow(<About />);
+it('Renter Home component', () => {
+    const wrapper = shallow(<Home />);
     expect(wrapper).toBeTruthy();
 });
 
 it('Checks for html changes', () => {
-    const wrapper = shallow(<About />);
+    const wrapper = shallow(<Home />);
     expect(wrapper).toMatchSnapshot();
 });
