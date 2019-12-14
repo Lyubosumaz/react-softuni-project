@@ -35,8 +35,28 @@ MongoDB,
 
 ## --how to start--
 
-open Command Prompt type: mongod,
+open Command Prompt write: mongod,
 
-open second Command Prompt directory /server type: npm install then npm start,
+open second Command Prompt directory /server write: npm install(for first start) then npm start,
 
-open third Command Prompt directory /client type: npm install then npm start
+open third Command Prompt directory /client write: npm install(for first start) then npm start
+
+
+## --how to test--
+
+open Command Prompt directory /client write: npm install then npm test
+
+
+## --info--
+
+JWT with Authentication refresh tokens and Blacklist tokens,
+
+Route Authentication for path: /logout, /profile, all /game and all /social,
+
+Tests are correctly rendering the Components,
+
+Server routing is using middleware for authorizing the user,
+
+/server/utils/seed.js contains the Game Items,
+
+/server/app-config.js contains server options
