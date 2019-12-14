@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import history from '../../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
@@ -11,7 +11,6 @@ function EditMeme(props) {
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState({});
-    const history = useHistory();
     const memeId = props.match.params.id;
 
     useEffect(() => {

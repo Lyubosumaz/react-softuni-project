@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import history from '../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../services/http';
 import handleRoute from '../../utils/handleRoutes';
@@ -10,7 +10,6 @@ function Login(props) {
     const username = useFormInput('');
     const password = useFormInput('');
     const [errors, setErrors] = useState({});
-    const history = useHistory();
 
     function useFormInput(initialValue) {
         const [value, setValue] = useState(initialValue);

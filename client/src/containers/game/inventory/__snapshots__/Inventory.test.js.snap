@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inventory Component Checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Inventory)>
+    <Inventory
+      inventoryEquipItem={false}
+      inventorySellItem={false}
+      setEquipItem={[Function]}
+      setSellItem={[Function]}
+    >
+      <div>
+        <h1>
+          Inventory
+        </h1>
+        <div
+          className="item-card-container"
+        />
+      </div>
+    </Inventory>
+  </Connect(Inventory)>
+</Provider>
+`;

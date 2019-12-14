@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component Checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Header)>
+    <Header
+      dispatch={[Function]}
+      isLogin={true}
+    >
+      <div
+        className="nav-container"
+      >
+        <button
+          className="nav-bar-button"
+          name="active"
+          onClick={[Function]}
+        >
+          Game
+        </button>
+        <button
+          className="nav-bar-button"
+          onClick={[Function]}
+        >
+          House of Fame
+        </button>
+        <div
+          className="nav-container-right"
+        >
+          <button
+            className="nav-bar-button"
+            onClick={[Function]}
+          >
+            Social
+          </button>
+          <button
+            className="nav-bar-button"
+            onClick={[Function]}
+          >
+            Profile
+          </button>
+          <button
+            className="nav-bar-button"
+            onClick={[Function]}
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </Header>
+  </Connect(Header)>
+</Provider>
+`;

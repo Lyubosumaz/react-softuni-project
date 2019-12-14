@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import history from '../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../services/http';
 import { toast } from 'react-toastify';
@@ -8,7 +8,6 @@ import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
 
 function Logout(props) {
-    const history = useHistory();
 
     const yesButtonHandler = (e) => {
         e.preventDefault();

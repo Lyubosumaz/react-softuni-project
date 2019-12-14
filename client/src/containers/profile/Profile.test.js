@@ -2,21 +2,24 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mount } from 'enzyme';
-import reducer from '../login/reducer';
-import HouseOfFame from './HouseOfFame';
+import reducer from '../game/reducer';
+import Profile from './Profile';
 
-describe('HouseOfFame Component', () => {
+describe('Profile Component', () => {
     let getWrapper;
     beforeEach(() => {
-        const mockStore = createStore(reducer, { user: { isLogin: true } });
+        const mockStore = createStore(reducer, { user: { userName: 'test' } });
+        jest.mock('history', () => ({
+            push: jest.fn(fn => fn()),
+        }));
         getWrapper = () => mount(
             <Provider store={mockStore}>
-                <HouseOfFame />
+                <Profile />
             </Provider>
         );
     });
 
-    it('Renter HouseOfFame', () => {
+    it('Renter Profile', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });

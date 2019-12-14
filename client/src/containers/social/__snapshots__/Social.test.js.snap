@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checks for html changes 1`] = `
+<div
+  className="main-container"
+>
+  <h1>
+    Social
+  </h1>
+  <div>
+    <button
+      className="active-button"
+      onClick={[Function]}
+    >
+      Add Meme
+    </button>
+  </div>
+  <h1>
+    Memes
+  </h1>
+  <div
+    className="memes-container"
+  />
+  <div>
+    Loading...
+  </div>
+  <div />
+  <div
+    className="info-container"
+  >
+    <p>
+      Join the race and climb to the top 
+      <button
+        className="info-button"
+        onClick={[Function]}
+      >
+        Game
+      </button>
+      !
+    </p>
+  </div>
+</div>
+`;

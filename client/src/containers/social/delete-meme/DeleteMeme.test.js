@@ -2,21 +2,26 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mount } from 'enzyme';
-import reducer from '../login/reducer';
-import HouseOfFame from './HouseOfFame';
+import reducer from '../../login/reducer';
+import DeleteMeme from './DeleteMeme';
+import expect from 'expect';
 
-describe('HouseOfFame Component', () => {
+describe('DeleteMeme Component', () => {
     let getWrapper;
     beforeEach(() => {
+        const memeId = 'test';
         const mockStore = createStore(reducer, { user: { isLogin: true } });
+        jest.mock('history', () => ({
+            push: jest.fn(fn => fn()),
+        }));
         getWrapper = () => mount(
             <Provider store={mockStore}>
-                <HouseOfFame />
+                <DeleteMeme match={{ params: { id: memeId } }} />
             </Provider>
         );
     });
 
-    it('Renter HouseOfFame', () => {
+    it('Renter DeleteMeme', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });

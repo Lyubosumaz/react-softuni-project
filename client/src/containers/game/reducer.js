@@ -51,7 +51,6 @@ const gameReducer = (state = initialState, action) => {
                 gold: 0,
                 item: [],
                 time: 0,
-                // level: 1
             };
         case 'CHARACTER_SELL_ITEM':
             return {

@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditMeme Component Checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(EditMeme)
+    match={
+      Object {
+        "params": Object {
+          "id": "test",
+        },
+      }
+    }
+  >
+    <EditMeme
+      dispatch={[Function]}
+      isLogin={true}
+      match={
+        Object {
+          "params": Object {
+            "id": "test",
+          },
+        }
+      }
+    >
+      <div
+        className="main-container"
+      >
+        <form>
+          <h1>
+            Edit Meme
+          </h1>
+          <p>
+            Editing meme was never been easier.
+          </p>
+          <div
+            className="form-div-container"
+          >
+            <label
+              htmlFor="Title"
+            >
+              <b>
+                Title:
+              </b>
+            </label>
+          </div>
+          <div
+            className="form-div-container"
+          >
+            <label
+              htmlFor="imageUrl"
+            >
+              <b>
+                imageUrl:
+              </b>
+            </label>
+          </div>
+          <div>
+            <button
+              className="form-action-btn"
+              onClick={[Function]}
+              type="submit"
+            >
+              Edit
+            </button>
+          </div>
+          <div
+            className="info-container"
+          >
+            <p>
+              Add Meme or just watch others memes 
+              <button
+                className="info-button"
+                onClick={[Function]}
+              >
+                Back
+              </button>
+              .
+            </p>
+          </div>
+        </form>
+      </div>
+    </EditMeme>
+  </Connect(EditMeme)>
+</Provider>
+`;

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logout Component Checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Logout)>
+    <Logout
+      isLogin={true}
+      setLoginValue={[Function]}
+    >
+      <div
+        className="main-container"
+      >
+        <form>
+          <h1>
+            Logout
+          </h1>
+          <p>
+            Do you really want to logout?
+          </p>
+          <div>
+            <button
+              className="logout-button"
+              name="yes-btn"
+              onClick={[Function]}
+              type="submit"
+            >
+              <span>
+                Yes
+              </span>
+            </button>
+            <button
+              className="logout-button"
+              name="no-btn"
+              onClick={[Function]}
+              type="submit"
+            >
+              <span>
+                No!
+              </span>
+            </button>
+          </div>
+          <div
+            className="info-container"
+          >
+            <p>
+              Check out the new features in latest update 
+              <button
+                className="info-button"
+                onClick={[Function]}
+              >
+                Here
+              </button>
+              .
+            </p>
+          </div>
+        </form>
+      </div>
+    </Logout>
+  </Connect(Logout)>
+</Provider>
+`;

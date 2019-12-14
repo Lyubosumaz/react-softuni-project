@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import history from '../../utils/history';
 import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
@@ -12,8 +12,7 @@ export default function Register() {
     const repeatPassword = useFormInput('');
     const [subscribe, setSubscribe] = useState(false);
     const [errors, setErrors] = useState({});
-    const history = useHistory();
-
+ 
     const handleRoute = (name) => (e) => {
         e.preventDefault();
         history.push(name);

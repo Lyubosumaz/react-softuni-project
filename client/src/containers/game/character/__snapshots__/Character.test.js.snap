@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Character Component Checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Character)>
+    <Character
+      characterRemoveItem={false}
+      setRemoveItem={[Function]}
+      userName="test"
+    >
+      <div>
+        <h1>
+          Character
+        </h1>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <h1>
+              test
+            </h1>
+            <img
+              alt="Profile"
+              src="default_profile.png"
+            />
+          </div>
+          <div
+            className="profile-stats"
+          >
+            <p>
+              <b>
+                Your character statistics:
+              </b>
+            </p>
+            <p>
+              <b>
+                Total Strength: 
+              </b>
+            </p>
+            <p>
+              <b>
+                Total Agility:  
+              </b>
+            </p>
+            <p>
+              <b>
+                Total Intelligence:  
+              </b>
+            </p>
+          </div>
+        </div>
+        <div
+          className="item-card-container"
+        >
+          <div
+            className="item-card-card"
+          />
+        </div>
+      </div>
+    </Character>
+  </Connect(Character)>
+</Provider>
+`;

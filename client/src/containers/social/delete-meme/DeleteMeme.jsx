@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import history from '../../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import './delete-meme.css';
 
 function DeleteMeme(props) {
-    const history = useHistory();
     const memeId = props.match.params.id;
     const [meme, setMeme] = useState(null);
 

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checks for html changes 1`] = `
+<div
+  className="main-container"
+>
+  <h1>
+    View Meme
+  </h1>
+  <div
+    className="info-container"
+  >
+    <p>
+      Add Meme or just watch others memes 
+      <button
+        className="info-button"
+        onClick={[Function]}
+      >
+        Back
+      </button>
+      .
+    </p>
+  </div>
+</div>
+`;
