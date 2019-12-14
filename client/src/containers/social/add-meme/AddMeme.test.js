@@ -4,7 +4,6 @@ import { createStore } from 'redux';
 import { mount } from 'enzyme';
 import reducer from '../../login/reducer';
 import AddMeme from './AddMeme';
-import expect from 'expect';
 
 describe('AddMeme Component', () => {
     let getWrapper;
@@ -20,17 +19,17 @@ describe('AddMeme Component', () => {
         );
     });
 
-    it('Renter AddMeme', () => {
+    it('should renter AddMeme Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Should render without errors main-container', () => {
+    it('should render without errors main-container', () => {
         const wrapper = getWrapper().find('.main-container');
         expect(wrapper.length).toBe(1);
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

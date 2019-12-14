@@ -1,5 +1,4 @@
 import React from 'react';
-// import handleRoute from '../../utils/handleRoutes';
 import './home.css';
 
 export default function Home() {

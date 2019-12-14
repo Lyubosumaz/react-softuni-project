@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DeleteMeme Component Checks for html changes 1`] = `
+exports[`DeleteMeme Component should checks for html changes 1`] = `
 <Provider
   store={
     Object {

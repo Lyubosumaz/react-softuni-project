@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import InventoryCard from './components/inventory-card/InventoryCard';
 import http from '../../../services/http';
 import { toast } from 'react-toastify';
+import InventoryCard from './components/inventory-card/InventoryCard';
 
 function Inventory(props) {
     const [items, setItems] = useState([])

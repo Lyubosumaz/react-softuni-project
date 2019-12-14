@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import TermsAndConditions from './TermsAndConditions';
 
-it('Renter HouseOfFame component', () => {
+it('should renter HouseOfFame Component', () => {
     const wrapper = shallow(<TermsAndConditions />);
     expect(wrapper).toBeTruthy();
 });
 
-it('Checks for html changes', () => {
+it('should checks for html changes', () => {
     const wrapper = shallow(<TermsAndConditions />);
     expect(wrapper).toMatchSnapshot();
 });

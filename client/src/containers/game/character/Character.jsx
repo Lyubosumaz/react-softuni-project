@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import CharacterCard from './components/character-card/CharacterCard';
 import http from '../../../services/http';
 import { toast } from 'react-toastify';
+import CharacterCard from './components/character-card/CharacterCard';
 import defaultPicture from '../../../assets/img/default_profile.png';
 import './character.css';
 

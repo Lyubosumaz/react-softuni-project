@@ -21,17 +21,17 @@ describe('EditMeme Component', () => {
         );
     });
 
-    it('Renter EditMeme', () => {
+    it('should renter EditMeme Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Should render without errors main-container', () => {
+    it('should render without errors main-container', () => {
         const wrapper = getWrapper().find('.main-container');
         expect(wrapper.length).toBe(1);
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

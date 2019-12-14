@@ -1,5 +1,4 @@
 import reducer from './reducer';
-import expect from 'expect';
 
 describe('Login reducer', () => {
     const initialState = {
@@ -8,7 +7,7 @@ describe('Login reducer', () => {
         userName: ''
     };
 
-    it('Should return the initial state', () => {
+    it('should return the initial state', () => {
         expect(reducer(undefined, {})).toEqual({
             isLogin: false,
             userId: null,
@@ -16,7 +15,7 @@ describe('Login reducer', () => {
         });
     });
 
-    it('Should handle USER_LOGGED_IN', () => {
+    it('should handle USER_LOGGED_IN', () => {
         expect(
             reducer(initialState, {
                 type: 'USER_LOGGED_IN',
@@ -32,7 +31,7 @@ describe('Login reducer', () => {
             });
     });
 
-    it('Should handle USER_LOGGED_OUT', () => {
+    it('should handle USER_LOGGED_OUT', () => {
         expect(
             reducer(initialState, {
                 type: 'USER_LOGGED_OUT',

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
+import handleRoute from '../../utils/handleRoutes';
 import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
-import handleRoute from '../../utils/handleRoutes';
 
 export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);

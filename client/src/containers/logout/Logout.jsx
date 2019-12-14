@@ -2,8 +2,8 @@ import React from 'react';
 import history from '../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../services/http';
-import { toast } from 'react-toastify';
 import handleRoute from '../../utils/handleRoutes';
+import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
 

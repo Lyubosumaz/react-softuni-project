@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from '../../utils/handleRoutes';
 import http from '../../services/http';
-import './house-of-fame.css';
+import handleRoute from '../../utils/handleRoutes';
 import HouseOfFameCard from './components/HouseOfFameCard';
+import './house-of-fame.css';
 
 function HouseOfFame(props) {
     const [users, setUsers] = useState([]);

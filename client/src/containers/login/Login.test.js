@@ -4,7 +4,6 @@ import { createStore } from 'redux';
 import { mount } from 'enzyme';
 import reducer from './reducer';
 import Login from './Login';
-import expect from 'expect';
 
 describe('Login Component', () => {
     let getWrapper;
@@ -20,17 +19,17 @@ describe('Login Component', () => {
         );
     });
 
-    it('Renter Login', () => {
+    it('should renter Login Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Should render without errors main-container', () => {
+    it('should render without errors main-container', () => {
         const wrapper = getWrapper().find('.main-container');
         expect(wrapper.length).toBe(1);
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

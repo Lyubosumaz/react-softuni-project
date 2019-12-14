@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MemeCard from '../components/meme-card/MemeCard';
 import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
+import MemeCard from '../components/meme-card/MemeCard';
 
 export default function ViewMeme(props) {
     const memeId = props.match.params.id;

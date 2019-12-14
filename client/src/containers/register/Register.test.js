@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Register from './Register';
 
-it('Renter Register component', () => {
+it('should renter Register Component', () => {
     const wrapper = shallow(<Register />);
     expect(wrapper).toBeTruthy();
 });
 
-it('Checks for html changes', () => {
+it('should checks for html changes', () => {
     const wrapper = shallow(<Register />);
     expect(wrapper).toMatchSnapshot();
 });

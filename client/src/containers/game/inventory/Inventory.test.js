@@ -24,12 +24,12 @@ describe('Inventory Component', () => {
         );
     });
 
-    it('Renter Inventory', () => {
+    it('should renter Inventory Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

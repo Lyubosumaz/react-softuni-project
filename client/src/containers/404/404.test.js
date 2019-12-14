@@ -1,13 +1,13 @@
 import React from 'react';
-import FourOFour from './404';
 import { shallow } from 'enzyme';
+import FourOFour from './404';
 
-it('Renter 404 component', () => {
+it('should renter 404 Component', () => {
     const wrapper = shallow(<FourOFour />);
     expect(wrapper).toBeTruthy();
 });
 
-it('Checks for html changes', () => {
+it('should checks for html changes', () => {
     const wrapper = shallow(<FourOFour />);
     expect(wrapper).toMatchSnapshot();
 });

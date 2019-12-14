@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import './header.css';
 import handleRoute from '../../utils/handleRoutes';
+import './header.css';
 
  function Header(props) {
     const isLogged = props.isLogin;

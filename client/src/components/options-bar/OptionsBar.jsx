@@ -9,7 +9,7 @@ function Options(props) {
     const handleRoute = (name) => (e) => {
         e.preventDefault();
         history.push(name);
-    }
+    };
 
     return (isLogged ?
         <div className="options-bar" >
@@ -23,8 +23,8 @@ function Options(props) {
 
 function mapStateToProps(state) {
     return {
-        isLogin: state.user.isLogin
-    }
-}
+        isLogin: state.user.isLogin,
+    };
+};
 
 export default connect(mapStateToProps)(Options);

@@ -4,7 +4,6 @@ import { createStore } from 'redux';
 import { mount } from 'enzyme';
 import reducer from '../../containers/login/reducer';
 import Header from './Header';
-import expect from 'expect';
 
 describe('Header Component', () => {
     let getWrapper;
@@ -20,12 +19,12 @@ describe('Header Component', () => {
         );
     });
 
-    it('Renter Header', () => {
+    it('should renter Header Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

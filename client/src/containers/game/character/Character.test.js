@@ -26,12 +26,12 @@ describe('Character Component', () => {
         );
     });
 
-    it('Renter Character', () => {
+    it('should renter Character Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

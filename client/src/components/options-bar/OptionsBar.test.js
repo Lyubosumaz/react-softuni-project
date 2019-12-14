@@ -4,7 +4,6 @@ import { createStore } from 'redux';
 import { mount } from 'enzyme';
 import reducer from '../../containers/login/reducer';
 import OptionsBar from './OptionsBar';
-import expect from 'expect';
 
 describe('OptionsBar Component', () => {
     let getWrapper;
@@ -20,12 +19,12 @@ describe('OptionsBar Component', () => {
         );
     });
 
-    it('Renter OptionsBar', () => {
+    it('should renter OptionsBar Component', () => {
         const wrapper = getWrapper();
         expect(wrapper).toBeTruthy();
     });
 
-    it('Checks for html changes', () => {
+    it('should checks for html changes', () => {
         const wrapper = getWrapper();
         expect(wrapper).toMatchSnapshot();
     });

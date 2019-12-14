@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header Component Checks for html changes 1`] = `
+exports[`Header Component should checks for html changes 1`] = `
 <Provider
   store={
     Object {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ShopCard from './components/shop-card/ShopCard';
 import http from '../../../services/http';
 import { toast } from 'react-toastify';
+import ShopCard from './components/shop-card/ShopCard';
 
 export default function Shop() {
     const [items, setItems] = useState([])

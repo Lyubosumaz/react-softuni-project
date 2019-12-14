@@ -1,13 +1,13 @@
 import React from 'react';
-import About from './About';
 import { shallow } from 'enzyme';
+import About from './About';
 
-it('Renter About component', () => {
+it('should renter About Component', () => {
     const wrapper = shallow(<About />);
     expect(wrapper).toBeTruthy();
 });
 
-it('Checks for html changes', () => {
+it('should checks for html changes', () => {
     const wrapper = shallow(<About />);
     expect(wrapper).toMatchSnapshot();
 });

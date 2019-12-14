@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Shop from './Shop';
 
-it('Renter Shop component', () => {
+it('should renter Shop Component', () => {
     const wrapper = shallow(<Shop />);
     expect(wrapper).toBeTruthy();
 });
 
-it('Checks for html changes', () => {
+it('should checks for html changes', () => {
     const wrapper = shallow(<Shop />);
     expect(wrapper).toMatchSnapshot();
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checks for html changes 1`] = `
+exports[`should checks for html changes 1`] = `
 <div
   className="error-container"
 >
