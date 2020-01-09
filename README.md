@@ -37,9 +37,9 @@ MongoDB,
 
 open Command Prompt write: mongod,
 
-open second Command Prompt directory /server write: npm install(for first start) then npm start,
+open second Command Prompt directory /server write: npm install (for first start) then npm start,
 
-open third Command Prompt directory /client write: npm install(for first start) then npm start
+open third Command Prompt directory /client write: npm install (for first start) then npm start
 
 
 ## --how to test--
