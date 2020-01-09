@@ -33,7 +33,7 @@ MongoDB,
 ## --check for all used dependencies in the package.json files--
 
 
-## --how to start--
+## --how to start app--
 
 open Command Prompt write: mongod,
 
@@ -42,7 +42,7 @@ open second Command Prompt directory /server write: npm install (for first start
 open third Command Prompt directory /client write: npm install (for first start) then npm start
 
 
-## --how to test--
+## --how to start unit tests--
 
 open Command Prompt directory /client write: npm install then npm test
 
