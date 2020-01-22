@@ -24,7 +24,7 @@ toast.configure({
 });
 
 export default function App() {
-  //REFRESHING TOKEN EVERY 45 MINUTES = 45*60*1000
+  //REFRESHING TOKEN EVERY 9 MINUTES = 9*60*1000
   useEffect(() => {
     setInterval(() => {
       const userAuthToken = authCookie();
@@ -34,7 +34,7 @@ export default function App() {
       } else if (userAuthToken) {
         removeAllCookies();
       }
-    }, 45 * 60 * 1000);
+    }, 9 * 60 * 1000);
   });
 
   return (

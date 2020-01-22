@@ -1,6 +1,7 @@
 const { port, dbName, cookieName } = require('../app-config');
 
 const env = process.env.NODE_ENV || 'development';
+process.env.TZ = 'Europe/Sofia';
 
 const config = {
     development: {

@@ -3,7 +3,7 @@ const GameItems = require('../models/GameItem');
 function seedGameItems() {
     GameItems.find()
         .then((result) => {
-            if (result.length > 0) { return; }
+            if (result.length > 0) { return console.log('***Items are Already Loaded in the Database!***'); }
             console.log('***Initiate Seed for Items!***');
             return (
                 GameItems.insertMany(
@@ -72,10 +72,10 @@ function seedGameItems() {
                         price: '20',
                         ownedBy: []
                     }])
-                    .then(console.log('***Items Successfully loaded in database!***'))
+                    .then(console.log('***Items Successfully Loaded in the Database!***'))
                     .catch((err) => { console.error(err); })
             );
-        });
+        }).catch((err) => { console.error(err); });
 };
 
 module.exports = {
