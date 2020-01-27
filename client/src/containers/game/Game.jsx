@@ -19,7 +19,7 @@ function Game(props) {
     return (
         <React.Fragment>
             <div>
-                {props.inGame && <Clock /> || <h1>Level: -, Time: -</h1>}
+                {props.inGame && <Clock /> || <h1>Level: --, Time: --h --m --s</h1>}
             </div>
 
             <div>

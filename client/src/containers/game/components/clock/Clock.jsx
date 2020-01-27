@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import secondsToClock from '../../../../utils/secondsToClock';
 
 function Clock(props) {
     const [count, setCount] = useState(0);
@@ -14,7 +15,7 @@ function Clock(props) {
 
     return (
         <div>
-            <h1>Level: {props.level}, Time: {count}</h1>
+            <h1>Level: {props.level}, Time: {secondsToClock(count)}</h1>
         </div>
     );
 };
