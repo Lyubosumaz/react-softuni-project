@@ -12,7 +12,7 @@ const playerReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             }
-        case 'RESET_MOVE_PLAYER':
+        case 'RESET_PLAYER_LOCATION':
             return {
                 ...state,
                 ...initialState

@@ -1,9 +1,9 @@
 const initialState = {
     inGame: false,
-    final: false,
     gold: 0,
     item: [],
     time: 0,
+    handleGameTimer: false,
     level: 1,
     gameItems: [],
     inventorySellItem: false,
@@ -13,16 +13,21 @@ const initialState = {
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SAVE_GAME_ITEMS':
+        case 'SAVE_GAME_ITEMS_LOOT':
             return {
                 ...state,
                 gameItems: action.payload,
             }
-        case 'START':
+        case 'GAME_TIMER_STATE':
             return {
                 ...state,
-                inGame: action.payload,
-            }
+                handleGameTimer: action.payload,
+            };
+        case 'SET_TIME':
+            return {
+                ...state,
+                time: action.payload,
+            };
         case 'OPEN_GOLD_CHEST':
             return {
                 ...state,
@@ -33,21 +38,20 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 item: state.item.concat(action.payload),
             };
-        case 'GET_TIME':
+        case 'START_THE_GAME':
             return {
                 ...state,
-                time: action.payload,
+                inGame: action.payload,
             };
-        case 'FINAL':
+        case 'END_THE_GAME':
             return {
                 ...state,
                 inGame: action.payload,
                 level: 2,
             };
-        case 'RESET_GAME':
+        case 'RESET_GAME_LEVEL':
             return {
                 ...state,
-                final: false,
                 gold: 0,
                 item: [],
                 time: 0,

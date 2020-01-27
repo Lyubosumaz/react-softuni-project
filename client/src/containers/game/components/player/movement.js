@@ -107,26 +107,39 @@ export default function HandleMovement({ children }) {
                         payload: { itemName: 'You didn\'t loot anything' },
                     });
                 }
-                return http.Game.save({
-                    totalGold: store.getState().game.gold,
-                    totalItem: store.getState().game.item,
-                    totalTime: store.getState().game.time,
-                    level: store.getState().game.level,
-                }).then(() => {
-                    toast('Welcome the next level!', {
-                        type: toast.TYPE.SUCCESS,
-                    });
+
+                Promise.resolve(
                     store.dispatch({
-                        type: 'FINAL',
+                        type: 'GAME_TIMER_STATE',
                         payload: false,
-                    });
-                    store.dispatch({
-                        type: 'ADD_TILES',
-                        payload: {
-                            tiles,
-                        }
-                    });
-                })
+                    })
+                )
+                    .then(() => {
+                        http.Game.save({
+                            totalGold: store.getState().game.gold,
+                            totalItem: store.getState().game.item,
+                            totalTime: store.getState().game.time,
+                            level: store.getState().game.level,
+                        });
+
+                        toast('Welcome the next level!', {
+                            type: toast.TYPE.SUCCESS,
+                        });
+
+                        store.dispatch({
+                            type: 'END_THE_GAME',
+                            payload: false,
+                        });
+
+                        store.dispatch({
+                            type: 'ADD_TILES',
+                            payload: {
+                                tiles,
+                            }
+                        });
+                    })
+                    .catch((err) => { console.error(err); });
+                break;
             case 2:
                 if (store.getState().game.gold > 0) { return; }
                 const gold = Math.floor((Math.random() * 10) + 1);

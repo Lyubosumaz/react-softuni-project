@@ -17,13 +17,16 @@ export default function Social() {
             }
         })
         if (node) { observer.current.observe(node); }
-    
+
     }, [loading, hasMore]);
 
     return (
         <div className="main-container">
             <h1>Social</h1>
 
+            <div >
+                <button className="active-button" onClick={handleRoute('/404')}>Create Meme</button>
+            </div>
             <div >
                 <button className="active-button" onClick={handleRoute('/social/add-meme')}>Add Meme</button>
             </div>

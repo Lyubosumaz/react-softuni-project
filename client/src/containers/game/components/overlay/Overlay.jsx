@@ -7,7 +7,8 @@ function Overlay(props) {
 
     const handleSubmit = () => {
         props.setGameStart();
-    }
+        props.setGameTimer();
+    };
 
     return (
         <section className="overlay-container">
@@ -27,19 +28,17 @@ function Overlay(props) {
     );
 };
 
-function mapStateToProps(state) {
-    return {
-        isLogin: state.user.isLogin,
-    };
-};
-
 function mapDispatchToProps(dispatch) {
     return {
         setGameStart: () => dispatch({
-            type: 'START',
+            type: 'START_THE_GAME',
+            payload: true,
+        }),
+        setGameTimer: () => dispatch({
+            type: 'GAME_TIMER_STATE',
             payload: true,
         }),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Overlay);
+export default connect(null, mapDispatchToProps)(Overlay);

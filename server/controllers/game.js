@@ -184,42 +184,46 @@ module.exports = {
             const userId = req.user._id;
             const { totalItem, totalGold, totalTime, level } = req.body;
 
-            if (totalItem[0]._id) {
-                models.GameProfile.updateOne({ user: userId },
-                    {
-                        $push: {
+            models.GameProfile.updateOne({ user: userId },
+                {
+                    $push: totalItem[0]._id ?
+                        {
                             totalItem: totalItem[0]._id,
                             gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level }
-                        },
-                        $inc: {
-                            totalGold: totalGold,
-                            totalTime: totalTime,
-                            totalGames: 1
-                        }
-                    })
-                    .then(() => { res.send({ message: 'You Save the Game successfully!' }); })
-                    .catch((err) => {
-                        res.send({ message: 'There is a problem, cannot Finish the Game!' });
-                        console.error(err);
-                    });
-            } else if (!totalItem[0]._id) {
-                models.GameProfile.updateOne({ user: userId },
-                    {
-                        $push: {
+                        } :
+                        {
                             gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level }
                         },
-                        $inc: {
-                            totalGold: totalGold,
-                            totalTime: totalTime,
-                            totalGames: 1
-                        }
-                    })
-                    .then(() => { res.send({ message: 'You Save the Game successfully!' }); })
-                    .catch((err) => {
-                        res.send({ message: 'There is a problem, cannot Finish the Game!' });
-                        console.error(err);
-                    });
-            }
+                    $inc: {
+                        totalGold: totalGold,
+                        totalTime: totalTime,
+                        totalGames: 1
+                    }
+                })
+                .then(() => { res.send({ message: 'You Save the Game successfully!' }); })
+                .catch((err) => {
+                    res.send({ message: 'There is a problem, cannot Finish the Game!' });
+                    console.error(err);
+                });
+            // if (totalItem[0]._id) {
+            // } else if (!totalItem[0]._id) {
+            //     models.GameProfile.updateOne({ user: userId },
+            //         {
+            //             $push: {
+            //                 gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level }
+            //             },
+            //             $inc: {
+            //                 totalGold: totalGold,
+            //                 totalTime: totalTime,
+            //                 totalGames: 1
+            //             }
+            //         })
+            //         .then(() => { res.send({ message: 'You Save the Game successfully!' }); })
+            //         .catch((err) => {
+            //             res.send({ message: 'There is a problem, cannot Finish the Game!' });
+            //             console.error(err);
+            //         });
+            // }
         },
     }
 };

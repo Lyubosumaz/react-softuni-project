@@ -1,5 +1,5 @@
 global.__basedir = __dirname;
-const corn = require('./utils/cron');
+const DELETE_BLACKLIST_TOKENS_SCRIPT = require('./utils');
 const dbConnector = require('./config/database');
 
 dbConnector().then(() => {
@@ -9,8 +9,8 @@ dbConnector().then(() => {
     require('./config/express')(app);
     require('./routes/routes')(app);
 
-    //DELETE_TOKENS_SCRIP EVERY 1 HOUR DROPS LAST 45 MINUTES OF BLACKLIST TOKENS
-    corn.task.start();
+    //EVERY 1 HOUR DROPS LAST 45 MINUTES OF BLACKLIST
+    DELETE_BLACKLIST_TOKENS_SCRIPT.cron.task.start();
 
     app.listen(config.port, console.log(`***Server is listening on port ${config.port}! Now its up to you!***`));
 }).catch(console.error);

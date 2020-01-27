@@ -6,26 +6,29 @@ import Clock from './components/clock/Clock';
 import http from '../../services/http';
 
 function Game(props) {
-    const inGame = props.inGame
 
     useEffect(() => {
         http.Game.shop().then(items => props.saveGameItems(items));
     }, []);
 
     useEffect(() => {
-        props.resetPlayerState();
-        props.resetGameState();
-    });
+        props.resetPlayerLocation();
+        props.resetGameLevel();
+    }, [props.inGame]);
 
     return (
         <React.Fragment>
-            {inGame && <Clock saveTime={inGame} /> || <h1>Level: -, Time: -</h1>}
-
             <div>
-                {!inGame && <Overlay />}
+                {props.inGame && <Clock /> || <h1>Level: -, Time: -</h1>}
             </div>
 
-            <World />
+            <div>
+                {!props.inGame && <Overlay />}
+            </div>
+
+            <div>
+                <World />
+            </div>
         </React.Fragment>
     );
 };
@@ -33,19 +36,20 @@ function Game(props) {
 function mapStateToProps(state) {
     return {
         inGame: state.game.inGame,
+        time: state.game.time,
     };
 };
 
 function mapDispatchToProps(dispatch) {
     return {
-        resetPlayerState: () => dispatch({
-            type: 'RESET_MOVE_PLAYER',
+        resetPlayerLocation: () => dispatch({
+            type: 'RESET_PLAYER_LOCATION',
         }),
-        resetGameState: () => dispatch({
-            type: 'RESET_GAME',
+        resetGameLevel: () => dispatch({
+            type: 'RESET_GAME_LEVEL',
         }),
         saveGameItems: (items) => dispatch({
-            type: 'SAVE_GAME_ITEMS',
+            type: 'SAVE_GAME_ITEMS_LOOT',
             payload: items,
         }),
     };

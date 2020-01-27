@@ -6,11 +6,11 @@ function Clock(props) {
 
     setTimeout(() => {
         setCount(prevState => (prevState + 1))
-    }, 1000)
+    }, 1000);
 
     useEffect(() => {
         props.setTimeValue(count);
-    }, [count]);
+    }, [props.handleGameTimer]);
 
     return (
         <div>
@@ -21,7 +21,7 @@ function Clock(props) {
 
 function mapStateToProps(state) {
     return {
-        inGame: state.game.inGame,
+        handleGameTimer: state.game.handleGameTimer,
         level: state.game.level,
     };
 };
@@ -29,7 +29,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setTimeValue: (data) => dispatch({
-            type: 'GET_TIME',
+            type: 'SET_TIME',
             payload: data,
         }),
     };
