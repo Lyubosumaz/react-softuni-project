@@ -5,6 +5,7 @@ import http from '../../services/http';
 import handleRoute from '../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
+import { setLoginValue } from './actions';
 
 function Login(props) {
     const username = useFormInput('');
@@ -94,10 +95,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLoginValue: (data) => dispatch({
-            type: 'USER_LOGGED_IN',
-            payload: data,
-        }),
+        setLoginValue: (data) => dispatch(setLoginValue(data)),
     };
 };
 
