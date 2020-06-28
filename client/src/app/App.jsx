@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import store from '../services/store';
+import { store, persistor } from '../services/store';
+import { PersistGate } from "redux-persist/integration/react";
 
 import Router from '../containers/router/Router';
 import Header from '../components/header/Header';
@@ -40,9 +41,11 @@ export default function App() {
   return (
     <div className="app-container">
       <Provider store={store}>
-        <Header />
-        <Router />
-        <Footer />
+        <PersistGate persistor={persistor}>
+          <Header />
+          <Router />
+          <Footer />
+        </PersistGate>
       </Provider>
     </div>
   );

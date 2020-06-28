@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import history from '../../utils/history';
 import { connect } from 'react-redux';
+import { setLoginValue } from './actions';
 import http from '../../services/http';
 import handleRoute from '../../utils/handleRoutes';
 import { toast } from 'react-toastify';
@@ -94,10 +95,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLoginValue: (data) => dispatch({
-            type: 'USER_LOGGED_IN',
-            payload: data,
-        }),
+        setLoginValue: (data) => dispatch(setLoginValue(data)),
     };
 };
 

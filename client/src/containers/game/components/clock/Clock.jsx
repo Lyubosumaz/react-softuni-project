@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import secondsToClock from '../../../../utils/secondsToClock';
+import { setTimeValue } from './actions';
 
 function Clock(props) {
     const [count, setCount] = useState(0);
@@ -29,10 +30,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setTimeValue: (data) => dispatch({
-            type: 'SET_TIME',
-            payload: data,
-        }),
+        setTimeValue: (data) => dispatch(setTimeValue(data)),
     };
 };
 

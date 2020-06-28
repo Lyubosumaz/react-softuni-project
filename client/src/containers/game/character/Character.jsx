@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import CharacterCard from './components/character-card/CharacterCard';
 import defaultPicture from '../../../assets/img/default_profile.png';
 import './character.css';
+import { setRemoveItem } from './actions';
 
 function Character(props) {
     const [items, setItems] = useState([])
@@ -24,7 +25,7 @@ function Character(props) {
 
                 setItems(c);
                 setStatistics(allStats);
-                
+
                 if (props.characterRemoveItem) {
                     props.setRemoveItem();
                 }
@@ -74,10 +75,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setRemoveItem: () => dispatch({
-            type: 'CHARACTER_REMOVE_ITEM',
-            payload: false,
-        }),
+        setRemoveItem: () => dispatch(setRemoveItem(false))
     };
 };
 

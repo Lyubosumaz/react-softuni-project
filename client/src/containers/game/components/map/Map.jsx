@@ -43,26 +43,27 @@ function MapRow(props) {
     return (
         <div className="row">
             {
-                props.tiles.map((tile, index) => <MapTile key={index} tile={tile} />)
+                props.tiles && props.tiles.map((tile, index) => <MapTile key={index} tile={tile} />)
             }
         </div>
     );
 };
 
 function Map(props) {
-    return (<div
-        style={{
-            position: 'relative',
-            top: '0px',
-            left: '0px',
-            width: '1600px',
-            height: '650px',
-            border: '4px solid white',
-        }}>
-        {
-            props.tiles.map((row, index) => <MapRow key={index} tiles={row} />)
-        }
-    </div>
+    return (
+        <div
+            style={{
+                position: 'relative',
+                top: '0px',
+                left: '0px',
+                width: '1600px',
+                height: '650px',
+                border: '4px solid white',
+            }}>
+            {
+                props.tiles && props.tiles.map((row, index) => <MapRow key={index} tiles={row} />)
+            }
+        </div>
     );
 };
 

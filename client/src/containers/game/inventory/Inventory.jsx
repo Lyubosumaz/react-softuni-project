@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import http from '../../../services/http';
 import { toast } from 'react-toastify';
 import InventoryCard from './components/inventory-card/InventoryCard';
+import { setSellItem, setEquipItem } from './actions'
 
 function Inventory(props) {
     const [items, setItems] = useState([])
@@ -16,7 +17,7 @@ function Inventory(props) {
                     return i.slice(index * 4, index * 4 + 4);
                 });
                 setItems(arr);
-                
+
                 if (props.inventorySellItem || props.inventoryEquipItem) {
                     props.setSellItem();
                     props.setEquipItem();
@@ -57,14 +58,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setSellItem: () => dispatch({
-            type: 'CHARACTER_SELL_ITEM',
-            payload: false,
-        }),
-        setEquipItem: () => dispatch({
-            type: 'CHARACTER_EQUIP_ITEM',
-            payload: false,
-        }),
+        setSellItem: () => dispatch(setSellItem(false)),
+        setEquipItem: () => dispatch(setEquipItem(false)),
     };
 };
 
