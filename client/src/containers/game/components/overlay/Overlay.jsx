@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import handleRoute from '../../../../utils/handleRoutes';
 import './overlay.css';
+import { setGameStart, setGameTimer } from './actions'
 
 function Overlay(props) {
 
@@ -30,14 +31,8 @@ function Overlay(props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setGameStart: () => dispatch({
-            type: 'START_THE_GAME',
-            payload: true,
-        }),
-        setGameTimer: () => dispatch({
-            type: 'GAME_TIMER_STATE',
-            payload: true,
-        }),
+        setGameStart: () => dispatch(setGameStart(true)),
+        setGameTimer: () => dispatch(setGameTimer(true)),
     };
 };
 

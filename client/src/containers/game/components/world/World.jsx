@@ -5,6 +5,7 @@ import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
 import { store } from '../../../../services/store';
+import { setTiles } from '../map/actions';
 
 function World(props) {
 

@@ -5,6 +5,7 @@ import { store } from '../../../../services/store';
 import http from '../../../../services/http';
 import { toast } from 'react-toastify';
 import { tiles } from '../data/maps/2';
+import { connect } from 'react-redux';
 
 export default function HandleMovement({ children }) {
 
@@ -171,7 +172,8 @@ export default function HandleMovement({ children }) {
         <React.Fragment>
             <KeyboardEventHandler
                 handleKeys={['left', 'right', 'up', 'down']}
-                onKeyEvent={(key, e) => handleKeyDown(e)} />
+                onKeyEvent={(key, e) => handleKeyDown(e)}
+            />
             {children}
         </React.Fragment>
     );

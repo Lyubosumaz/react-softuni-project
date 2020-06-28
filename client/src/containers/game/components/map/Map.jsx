@@ -40,7 +40,6 @@ function MapTile(props) {
 };
 
 function MapRow(props) {
-    console.log(props)
     return (
         <div className="row">
             {
