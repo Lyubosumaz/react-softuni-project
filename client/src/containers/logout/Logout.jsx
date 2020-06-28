@@ -6,6 +6,7 @@ import handleRoute from '../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
+import { setLogoutValue } from '../login/actions';
 
 function Logout(props) {
 
@@ -17,7 +18,7 @@ function Logout(props) {
                     type: toast.TYPE.SUCCESS,
                 });
                 removeAllCookies();
-                props.setLoginValue()
+                props.setLogoutValue()
                 history.push('/home');
             })
             .catch((err) => {
@@ -54,9 +55,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLoginValue: () => dispatch({
-            type: 'USER_LOGGED_OUT',
-        }),
+        setLogoutValue: () => dispatch(setLogoutValue()),
     };
 };
 

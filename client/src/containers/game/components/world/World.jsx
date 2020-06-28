@@ -4,7 +4,7 @@ import Map from '../map/Map';
 import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
-import store from '../../../../services/store';
+import { store } from '../../../../services/store';
 
 function World(props) {
 

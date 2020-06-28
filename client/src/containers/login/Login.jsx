@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import history from '../../utils/history';
 import { connect } from 'react-redux';
+import { setLoginValue } from './actions';
 import http from '../../services/http';
 import handleRoute from '../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
-import { setLoginValue } from './actions';
 
 function Login(props) {
     const username = useFormInput('');
