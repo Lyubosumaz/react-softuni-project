@@ -3,11 +3,14 @@ my project "Dqvol 4"
 
 ## --need to install--
 
-Node.js,
+install Node.js --version 12:
+sudo snap install node --channel=12/stable --classic
+
 
 windows-build-tools for bcrypt,
 
-MongoDB,
+download MongoDB from here:
+https://www.mongodb.com/download-center/community
 
 
 ## --dependencies info--
