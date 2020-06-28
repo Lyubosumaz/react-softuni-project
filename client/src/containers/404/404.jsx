@@ -1,5 +1,5 @@
 import React from 'react';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from 'utils/handleRoutes';
 import './404.css';
 
 export default function FourOFour() {
@@ -11,4 +11,4 @@ export default function FourOFour() {
             <button className="active-button" name="404" onClick={handleRoute('/home')}>Go Back Home</button>
         </div>
     );
-};
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import gameRank from '../../../assets/img/game_rank.png';
-import secondsToClock from '../../../utils/secondsToClock';
+import gameRank from 'assets/img/game_rank.png';
+import secondsToClock from 'utils/secondsToClock';
 
 export default function HouseOfFameCard(props) {
     return (

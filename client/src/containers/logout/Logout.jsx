@@ -1,10 +1,10 @@
 import React from 'react';
-import history from '../../utils/history';
 import { connect } from 'react-redux';
-import http from '../../services/http';
-import handleRoute from '../../utils/handleRoutes';
+import history from 'utils/history';
+import handleRoute from 'utils/handleRoutes';
+import http from 'services/http';
 import { toast } from 'react-toastify';
-import { removeAllCookies } from '../../services/cookies';
+import { removeAllCookies } from 'services/cookies';
 import './logout.css';
 import { setLogoutValue } from '../login/actions';
 
@@ -51,12 +51,12 @@ function mapStateToProps(state) {
     return {
         isLogin: state.user.isLogin,
     };
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
         setLogoutValue: () => dispatch(setLogoutValue()),
     };
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Logout);

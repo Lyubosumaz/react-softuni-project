@@ -28,7 +28,7 @@ function getTileSprite(type) {
         default:
             break;
     };
-};
+}
 
 function MapTile(props) {
     return <div
@@ -37,7 +37,7 @@ function MapTile(props) {
             height: SPRITE_SIZE,
             width: SPRITE_SIZE,
         }} />
-};
+}
 
 function MapRow(props) {
     return (
@@ -47,7 +47,7 @@ function MapRow(props) {
             }
         </div>
     );
-};
+}
 
 function Map(props) {
     return (
@@ -65,12 +65,12 @@ function Map(props) {
             }
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         tiles: state.map.tiles
     };
-};
+}
 
 export default connect(mapStateToProps)(Map);

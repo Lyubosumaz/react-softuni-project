@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from 'utils/handleRoutes';
 import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
 
@@ -52,8 +52,8 @@ export default function Social() {
             <div>{error && "Error"}</div>
 
             <div className="info-container">
-                <p>Join the race and climb to the top <button className="info-button" onClick={handleRoute('/game')}>Game</button>!</p>
+                <p>Join the race and climb to the top <button className="info-button" onClick={handleRoute('/games')}>Game</button>!</p>
             </div>
         </div>
     );
-};
+}

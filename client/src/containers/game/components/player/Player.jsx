@@ -19,12 +19,12 @@ function Player(props) {
             </div>
         </HandleMovement>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         ...state.player,
     };
-};
+}
 
 export default connect(mapStateToProps)(Player);

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import history from '../../utils/history';
 import { connect } from 'react-redux';
 import { setLoginValue } from './actions';
-import http from '../../services/http';
-import handleRoute from '../../utils/handleRoutes';
+import history from 'utils/history';
+import handleRoute from 'utils/handleRoutes';
+import http from 'services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
 
@@ -85,18 +85,18 @@ function Login(props) {
             </form>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         isLogin: state.user.isLogin,
     };
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
         setLoginValue: (data) => dispatch(setLoginValue(data)),
     };
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
