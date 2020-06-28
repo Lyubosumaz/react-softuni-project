@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import history from '../../utils/history';
-import http from '../../services/http';
+import history from 'utils/history';
+import http from 'services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
 import './register.css';
@@ -12,7 +12,7 @@ export default function Register() {
     const repeatPassword = useFormInput('');
     const [subscribe, setSubscribe] = useState(false);
     const [errors, setErrors] = useState({});
- 
+
     const handleRoute = (name) => (e) => {
         e.preventDefault();
         history.push(name);
@@ -116,4 +116,4 @@ export default function Register() {
             </form>
         </div>
     );
-};
+}

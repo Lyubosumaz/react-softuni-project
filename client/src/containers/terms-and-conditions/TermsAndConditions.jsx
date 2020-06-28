@@ -1,5 +1,5 @@
 import React from 'react';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from 'utils/handleRoutes';
 import './terms-and-conditions.css';
 
 export default function TermsAndConditions() {
@@ -21,4 +21,4 @@ export default function TermsAndConditions() {
             </div>
         </div>
     );
-};
+}

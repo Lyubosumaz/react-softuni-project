@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import http from '../../../../../services/http';
+import http from 'services/http';
 import { toast } from 'react-toastify';
 import './inventory-card.css';
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import secondsToClock from '../../../../utils/secondsToClock';
+import secondsToClock from 'utils/secondsToClock';
 import { setTimeValue } from './actions';
 
 function Clock(props) {
@@ -19,19 +19,19 @@ function Clock(props) {
             <h1>Level: {props.level}, Time: {secondsToClock(count)}</h1>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         handleGameTimer: state.game.handleGameTimer,
         level: state.game.level,
     };
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
         setTimeValue: (data) => dispatch(setTimeValue(data)),
     };
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clock);

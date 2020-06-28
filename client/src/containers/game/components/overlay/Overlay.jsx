@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import handleRoute from '../../../../utils/handleRoutes';
+import handleRoute from 'utils/handleRoutes';
 import './overlay.css';
 import { setGameStart, setGameTimer } from './actions'
 
@@ -27,13 +27,13 @@ function Overlay(props) {
             </div>
         </section>
     );
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
         setGameStart: () => dispatch(setGameStart(true)),
         setGameTimer: () => dispatch(setGameTimer(true)),
     };
-};
+}
 
 export default connect(null, mapDispatchToProps)(Overlay);

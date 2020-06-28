@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { store, persistor } from '../services/store';
 import { PersistGate } from "redux-persist/integration/react";
 
-import Router from '../containers/router/Router';
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
+import http from 'services/http';
+import { store, persistor } from 'services/store';
+import { authCookie, removeAllCookies } from 'services/cookies'
 
-import http from '../services/http';
-import { authCookie, removeAllCookies } from '../services/cookies'
+import Router from 'router/Router';
+import Header from 'components/header/Header';
+import Footer from 'components/footer/Footer';
 
 import './App.css';
-import '../assets/styles/main.css';
-import '../assets/styles/forms.css';
-import '../assets/styles/list-card.css';
-import '../assets/styles/item-card.css';
+import 'assets/styles/main.css';
+import 'assets/styles/forms.css';
+import 'assets/styles/list-card.css';
+import 'assets/styles/item-card.css';
 
 toast.configure({
   autoClose: 7000,

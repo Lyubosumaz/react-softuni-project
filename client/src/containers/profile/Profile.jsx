@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import handleRoute from 'utils/handleRoutes';
+import secondsToClock from 'utils/secondsToClock';
+import http from 'services/http';
 import GameHistoryCard from './components/game-history-card/GameHistoryCard';
-import http from '../../services/http';
-import handleRoute from '../../utils/handleRoutes';
-import secondsToClock from '../../utils/secondsToClock';
-import defaultProfilePic from '../../assets/img/default_profile.png';
+import defaultProfilePic from 'assets/img/default_profile.png';
 import './profile.css';
 
 function Profile(props) {
@@ -42,16 +42,16 @@ function Profile(props) {
             </div>
 
             <div className="info-container">
-                <p>Play one more game <button className="info-button" onClick={handleRoute('/game')}>Here</button>!</p>
+                <p>Play one more game <button className="info-button" onClick={handleRoute('/games')}>Here</button>!</p>
             </div>
         </div >
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         userName: state.user.userName,
     };
-};
+}
 
 export default connect(mapStateToProps)(Profile);

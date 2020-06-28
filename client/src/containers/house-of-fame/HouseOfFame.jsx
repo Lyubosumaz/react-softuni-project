@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import http from '../../services/http';
-import handleRoute from '../../utils/handleRoutes';
+import http from 'services/http';
+import handleRoute from 'utils/handleRoutes';
 import HouseOfFameCard from './components/HouseOfFameCard';
 import './house-of-fame.css';
 
@@ -51,19 +51,19 @@ function HouseOfFame(props) {
 
             <div className="info-container">
                 {props.isLogin ?
-                    <p>You saw what you need. Now join the game <button className="info-button" onClick={handleRoute('/game')}>Here</button>!</p>
+                    <p>You saw what you need. Now join the game <button className="info-button" onClick={handleRoute('/games')}>Here</button>!</p>
                     :
                     <p>Join the race, climb ladder and be the top apex legend <button className="info-button" onClick={handleRoute('/login')}>Sign in</button>.</p>}
             </div>
 
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         isLogin: state.user.isLogin,
     };
-};
+}
 
 export default connect(mapStateToProps)(HouseOfFame);

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import http from '../../../services/http';
 import { toast } from 'react-toastify';
 import CharacterCard from './components/character-card/CharacterCard';
-import defaultPicture from '../../../assets/img/default_profile.png';
+import http from 'services/http';
+import defaultPicture from 'assets/img/default_profile.png';
 import './character.css';
 import { setRemoveItem } from './actions';
 
@@ -64,19 +64,19 @@ function Character(props) {
             </div>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         userName: state.user.userName,
         characterRemoveItem: state.game.characterRemoveItem,
     };
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
         setRemoveItem: () => dispatch(setRemoveItem(false))
     };
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Character);

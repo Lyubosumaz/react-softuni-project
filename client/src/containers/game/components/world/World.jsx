@@ -4,7 +4,7 @@ import Map from '../map/Map';
 import Player from '../player/Player';
 
 import { tiles } from '../data/maps/1';
-import { store } from '../../../../services/store';
+import { store } from 'services/store';
 import { setTiles } from '../map/actions';
 
 function World(props) {
@@ -40,13 +40,13 @@ function World(props) {
             <Player />
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         level: state.game.level,
     };
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -57,6 +57,6 @@ function mapDispatchToProps(dispatch) {
             }
         }),
     };
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(World);

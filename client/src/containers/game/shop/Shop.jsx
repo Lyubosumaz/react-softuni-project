@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import http from '../../../services/http';
+import http from 'services/http';
 import { toast } from 'react-toastify';
 import ShopCard from './components/shop-card/ShopCard';
 
@@ -40,4 +40,4 @@ export default function Shop() {
             </div>
         </div>
     );
-};
+}

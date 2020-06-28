@@ -1,5 +1,5 @@
-const protocol = 'http://';
-const domain = 'localhost:4000';
+/* eslint-disable import/first */
+import settings from 'settings.json';
 
 const User = {
     register: (userData) => httpPost('/api/user/register', userData),
@@ -57,8 +57,8 @@ const requester = (method, path, options) => {
         data.body = JSON.stringify({ ...options });
     }
 
-    const combinedUrl = `${protocol}${domain}${path}`;
-    return fetch(combinedUrl, data)
+    const combinedURL = `${settings.protocol}${settings.domain}${path}`;
+    return fetch(combinedURL, data)
         .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
 };
 

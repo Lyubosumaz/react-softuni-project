@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Progress() {
+export default function Games() {
     return (
         <div >
-            <h1>Progress</h1>
+            <h1>Games</h1>
             <p>In progress...</p>
         </div>
     );
