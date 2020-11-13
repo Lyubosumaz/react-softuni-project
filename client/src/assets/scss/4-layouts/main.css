@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+* {
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+    display: grid;
+    grid-template-rows: 50px auto 70px;
+    grid-template-areas: "header" "main" "footer";
+    height: 100vh;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin: 1%;
+}
+
+.main-container {
+    text-align: center;
+    overflow-y: scroll;
+    grid-area: main;
+}
+
+.info-container {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.info-button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: dodgerblue;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.main-container.background-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.active-button {
+    text-decoration: none;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    opacity: 0.9;
+    border-radius: 25px;
+    font-size: 20px;
+    width: 40%;
+    cursor: pointer;
+}
+
+.active-button:hover {
+    background-color: green;
+}

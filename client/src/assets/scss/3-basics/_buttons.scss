@@ -1,0 +1,16 @@
+button {
+    line-height: 0;
+}
+
+.form-action-btn {
+    margin: 8px 0;
+    padding: 16px 20px;
+    background-color: $mainButtonColor;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    width: 40%;
+    opacity: 0.9;
+    cursor: pointer;
+}
