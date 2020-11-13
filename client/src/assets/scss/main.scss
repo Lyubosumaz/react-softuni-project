@@ -1,5 +1,28 @@
+// 1 - UTILITIES
 @import '1-utilities/variables';
+@import '1-utilities/functions';
+@import '1-utilities/mixins';
+@import '1-utilities/helpers';
 
+// 2 - VENDORS
+
+// 3 - BASICS
+@import '3-basics/reset';
+@import '3-basics/typography';
+@import '3-basics/basic';
 @import '3-basics/buttons';
+@import '3-basics/links';
+@import '3-basics/animations';
+@import '3-basics/transitions';
 
+// 4 - LAYOUT
 @import '4-layouts/forms';
+@import '4-layouts/layout';
+@import '4-layouts/header';
+@import '4-layouts/footer';
+@import '4-layouts/navigation';
+
+// 5 - MODULES
+@import '5-components/logo';
+
+// 6 - PAGES
