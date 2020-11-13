@@ -12,7 +12,7 @@ import Router from 'router/Router';
 import Header from 'components/header/Header';
 import Footer from 'components/footer/Footer';
 
-import './App.css';
+import './app.scss';
 import 'assets/styles/main.css';
 import 'assets/styles/forms.css';
 import 'assets/styles/list-card.css';
