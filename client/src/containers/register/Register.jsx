@@ -162,29 +162,31 @@ export default function Register() {
                             ))}
                     </div>
 
-                    <div className="form-field">
-                        <p>By creating an account, you agree to our</p>
-                        <button className="info-button" onClick={handleRoute('/terms-and-conditions')}>
-                            Terms &amp; Conditions
-                        </button>
+                    <div className="form-field-actions">
+                        <div className="terms-conditions">
+                            <span>By creating an account, you agree to our</span>
+                            <a className="info-button" onClick={handleRoute('/terms-and-conditions')}>
+                                Terms &amp; Conditions
+                            </a>
+                        </div>
 
-                        <p className="register-checkbox">
-                            I do accept to receive feedback on my email:
-                            <input type="checkbox" onClick={(e) => setSubscribe(e.target.checked)} />
-                            Subscribe.
-                        </p>
+                        <div className="subscribe">
+                            <span>I do accept to receive feedback on my email:</span>
+                            <input type="checkbox" id="register-checkbox" onClick={(e) => setSubscribe(e.target.checked)} />
+                            <label htmlFor="register-checkbox">Subscribe</label>
+                        </div>
                     </div>
 
-                    <div className="form-field">
+                    <div className="form-field-buttons">
                         <input type="submit" className="form-action-btn" value="register" />
                         <input type="reset" className="form-action-btn" value="reset" />
                     </div>
 
                     <div className="info-container">
-                        <p>Already have account? .</p>
-                        <button className="info-button" onClick={handleRoute('/login')}>
+                        <span>Already have account?</span>
+                        <a className="info-button" onClick={handleRoute('/login')}>
                             Sign in
-                        </button>
+                        </a>
                     </div>
                 </div>
             </form>

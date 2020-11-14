@@ -7,19 +7,19 @@
 
     .form-fields-wrapper {
         margin: 0 auto;
-        width: 25em;
+        width: 30em;
     }
 
     .form-field {
         margin-bottom: 0.5em;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
 
         label {
             margin-right: 1em;
             display: flex;
-            flex: 1 1 8em;
+            flex: 0 1 8em;
             text-align: right;
             justify-content: flex-end;
             align-items: center;
@@ -34,15 +34,17 @@
         input[type='email'],
         input[type='password'] {
             padding: 0.5em 1em;
-            flex: 1 1 15em;
-            display: inline-block;
+            flex: 0 1 15em;
             background-color: #f0f0f0;
             border: 0.3em solid transparent;
             border-radius: 0.3em;
+            opacity: 0.9;
             overflow: hidden;
 
+            &:hover,
             &:focus {
                 background-color: #ddd;
+                border-color: #eee;
                 outline: none;
             }
         }
@@ -65,14 +67,58 @@
         }
     }
 
-    .register-checkbox {
-        display: inline-flex;
+    .form-field-actions {
+        margin: 1em 0;
+        .terms-conditions,
+        .subscribe {
+            display: flex;
+            justify-content: center;
+
+            span {
+                margin-right: 0.4em;
+            }
+
+            label {
+                margin-left: 0.3em;
+            }
+        }
+
+        .terms-conditions {
+            margin-bottom: 1.5em;
+        }
+
+        .subscribe {
+            input[type='checkbox'],
+            label {
+                cursor: pointer;
+            }
+
+            input[type='checkbox'] {
+                width: 1em;
+                height: 1em;
+                align-self: center;
+            }
+        }
     }
 
-    input[type='checkbox'] {
-        margin: auto 8px;
-        width: 19px;
-        height: 19px;
-        cursor: pointer;
+    .form-field-buttons {
+        margin: 1.5em 0;
+        display: flex;
+        justify-content: space-evenly;
+
+        input[type='submit'],
+        input[type='reset'] {
+            text-transform: capitalize;
+
+            flex-basis: 45%;
+        }
+    }
+
+    .info-container {
+        margin-bottom: 1em;
+
+        span {
+            margin-right: 0.4em;
+        }
     }
 }
