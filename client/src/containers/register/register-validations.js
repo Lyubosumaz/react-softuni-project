@@ -21,8 +21,8 @@ const schema = Yup.object().shape({
     repeatPassword: Yup
         .string('Repeated password should be String')
         // .oneOf([Yup.ref('password', null)], 'Repeated password doesn\'t match the password')
-        .required('Repeated password is required')
-        .min(5, 'Repeated password should be at least 5 character'),
+        .required('Repeated-Password is required')
+        .min(5, 'Repeated-Password should be at least 5 character'),
 });
 
 export default schema;

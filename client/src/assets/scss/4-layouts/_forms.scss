@@ -1,22 +1,78 @@
-.form-div-container {
-    height: 95px;
-    
-    .form-input[type=text], input[type=password] {
-        width: 25%;
-        padding: 15px;
-        margin: 5px 0 5px 0;
-        display: inline-block;
-        border: none;
-        background: #f1f1f1;
+.form-container.register {
+    text-align: center;
+
+    .form-header {
+        margin: 2em 0;
     }
-    
-    .form-input[type=text]:focus, input[type=password]:focus {
-        background-color: #ddd;
-        outline: none;
+
+    .form-fields-wrapper {
+        margin: 0 auto;
+        width: 25em;
     }
-    
-    .form-input-error {
-        color: white;
-        background-color: #f4511e;
+
+    .form-field {
+        margin-bottom: 0.5em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        label {
+            margin-right: 1em;
+            display: flex;
+            flex: 1 1 8em;
+            text-align: right;
+            justify-content: flex-end;
+            align-items: center;
+
+            span {
+                font-weight: 700;
+                opacity: 0.8;
+            }
+        }
+
+        input[type='text'],
+        input[type='email'],
+        input[type='password'] {
+            padding: 0.5em 1em;
+            flex: 1 1 15em;
+            display: inline-block;
+            background-color: #f0f0f0;
+            border: 0.3em solid transparent;
+            border-radius: 0.3em;
+            overflow: hidden;
+
+            &:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+        }
+
+        .form-error-container,
+        .form-error-message {
+            margin-top: 0.5em;
+            flex-basis: 100%;
+            color: #f0f0f0;
+            background-color: #f4511e;
+            border-radius: 0.3em;
+            font-weight: 700;
+            overflow: hidden;
+        }
+
+        .form-error-container {
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .register-checkbox {
+        display: inline-flex;
+    }
+
+    input[type='checkbox'] {
+        margin: auto 8px;
+        width: 19px;
+        height: 19px;
+        cursor: pointer;
     }
 }
