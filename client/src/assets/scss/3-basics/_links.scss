@@ -4,7 +4,30 @@ a {
     cursor: pointer;
 }
 
-.footer-nav-button {
+.site-header {
+    .nav-bar-button {
+        padding: 0.45em 1em;
+        font-size: 1.2em;
+        color: $secondaryFontColor;
+
+        &.active {
+            background-color: $mainButtonColor;
+        }
+
+        &:focus,
+        &:hover {
+            color: $mainFontColor;
+            text-decoration: underline;
+        }
+
+        &:not(.active):focus,
+        &:not(.active):hover {
+            background-color: $secondaryDarkColor;
+        }
+    }
+}
+
+.site-footer .footer-nav-button {
     color: $secondaryFontColor;
 
     &:focus,

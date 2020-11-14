@@ -1,8 +1,8 @@
-.main-footer li {
+.site-footer li {
     list-style: none outside;
 }
 
-.main-footer {
+.site-footer {
     background-color: $mainDarkColor;
 
     .site-wrapper {
@@ -12,8 +12,7 @@
         align-items: center;
         color: $secondaryFontColor;
 
-        .copy-write {
-        }
+        .copy-write {}
 
         .footer-nav {
             display: flex;

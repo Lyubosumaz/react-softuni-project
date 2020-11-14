@@ -8,7 +8,7 @@ export default function Footer() {
     };
 
     return (
-        <div className="main-footer">
+        <div className="site-footer">
             <div className="site-wrapper">
                 <p className="copy-write">Lyubosumaz SoftUni Final Project. All rights reserved &copy; 2019-2021</p>
 
