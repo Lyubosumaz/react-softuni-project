@@ -1,0 +1,17 @@
+.options-bar {
+    background-color: $mainDarkLighten;
+
+    ul,
+    li {
+        display: flex;
+    }
+
+    li {
+        flex: 1 1 25%;
+    }
+
+    a {
+        text-align: center;
+        flex-basis: 100%;
+    }
+}

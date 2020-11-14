@@ -23,6 +23,8 @@ $secondaryFontColor: #f0f0f0;
 
 /* Background Colors */
 $mainDarkColor: #3a3a3a;
+$mainDarkLighten: lighten($mainDarkColor, 5%);
+$mainDarkHightLighten: lighten($mainDarkColor, 40%);
 $secondaryDarkColor:#b0b0b0;
 $errorColor: #d4511e;
 
@@ -33,4 +35,4 @@ $mainLinkColor: #0083ff;
 
 /* Buttons Color */
 $mainButtonColor: #4caf50;
-// $mainButtonColor: #4caf50;
+$mainButtonDarken: darken($mainButtonColor, 5%);
