@@ -1,0 +1,26 @@
+.main-footer li {
+    list-style: none outside;
+}
+
+.main-footer {
+    background-color: $mainDarkColor;
+
+    .site-wrapper {
+        padding: 1em 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $secondaryFontColor;
+
+        .copy-write {
+        }
+
+        .footer-nav {
+            display: flex;
+
+            li + li {
+                margin-left: 1.5em;
+            }
+        }
+    }
+}

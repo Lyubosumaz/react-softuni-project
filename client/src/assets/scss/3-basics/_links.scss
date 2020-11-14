@@ -3,3 +3,12 @@ a {
     color: $mainLinkColor;
     cursor: pointer;
 }
+
+.footer-nav-button {
+    color: $secondaryFontColor;
+
+    &:focus,
+    &:hover {
+        text-decoration: underline;
+    }
+}
