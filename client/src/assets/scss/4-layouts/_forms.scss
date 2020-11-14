@@ -7,7 +7,7 @@
 
     .form-fields-wrapper {
         margin: 0 auto;
-        width: 30em;
+        width: 60%;
     }
 
     .form-field {
@@ -19,7 +19,7 @@
         label {
             margin-right: 1em;
             display: flex;
-            flex: 0 1 8em;
+            flex: 0 1 20%;
             text-align: right;
             justify-content: flex-end;
             align-items: center;
@@ -34,9 +34,9 @@
         input[type='email'],
         input[type='password'] {
             padding: 0.5em 1em;
-            flex: 0 1 15em;
+            flex: 0 1 40%;
             background-color: #f0f0f0;
-            border: 0.3em solid transparent;
+            border: 0.15em solid transparent;
             border-radius: 0.3em;
             opacity: 0.9;
             overflow: hidden;
@@ -54,7 +54,7 @@
             margin-top: 0.5em;
             flex-basis: 100%;
             color: #f0f0f0;
-            background-color: #f4511e;
+            background-color: $errorColor;
             border-radius: 0.3em;
             font-weight: 700;
             overflow: hidden;
