@@ -1,5 +1,5 @@
 /* eslint-disable import/first */
-import settings from 'settings.json';
+import settings from '../settings.json';
 
 const User = {
     register: (userData) => httpPost('/api/user/register', userData),
@@ -30,36 +30,35 @@ const Game = {
 };
 
 const httpGet = (path) => {
-    return requester("GET", path);
+    return requester('GET', path);
 };
 
 const httpPost = (path, options) => {
-    return requester("POST", path, options);
+    return requester('POST', path, options);
 };
 
 const httpPut = (path, options) => {
-    return requester("PUT", path, options);
+    return requester('PUT', path, options);
 };
 
 const httpDelete = (path) => {
-    return requester("DELETE", path);
+    return requester('DELETE', path);
 };
 
 const requester = (method, path, options) => {
     const data = { method, credentials: 'include' };
 
     data.headers = {
-        "Accept": '*/*',
-        "Content-Type": "application/json"
+        Accept: '*/*',
+        'Content-Type': 'application/json',
     };
 
-    if (method === "POST" || method === "PUT") {
+    if (method === 'POST' || method === 'PUT') {
         data.body = JSON.stringify({ ...options });
     }
 
     const combinedURL = `${settings.protocol}${settings.domain}${path}`;
-    return fetch(combinedURL, data)
-        .then(res => res.text().then(text => res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text)));
+    return fetch(combinedURL, data).then((res) => res.text().then((text) => (res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text))));
 };
 
 export default {

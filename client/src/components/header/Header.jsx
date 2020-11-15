@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from 'utils/handleRoutes';
-import numberGenerator from 'utils/numberGenerator';
+import handleRoute from '../../utils/handleRoutes';
+import numberGenerator from '../../utils/numberGenerator';
 import './header.css';
 
 function Header(props) {

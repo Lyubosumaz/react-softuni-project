@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import secondsToClock from 'utils/secondsToClock';
+import secondsToClock from '../../../../utils/secondsToClock';
 import { setTimeValue } from './actions';
 
 function Clock(props) {

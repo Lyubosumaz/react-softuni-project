@@ -1,10 +1,9 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import history from 'utils/history';
-import handleRoute from 'utils/handleRoutes';
-import http from 'services/http';
+import history from '../../utils/history';
+import handleRoute from '../../utils/handleRoutes';
+import http from '../../services/http';
 import { toast } from 'react-toastify';
-import { removeAllCookies } from 'services/cookies';
+import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
 import { setLogoutValue } from '../login/actions';
 
@@ -45,7 +44,7 @@ function Logout(props) {
             </form>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {

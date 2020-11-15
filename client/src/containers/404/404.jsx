@@ -1,5 +1,4 @@
-import React from 'react';
-import handleRoute from 'utils/handleRoutes';
+import handleRoute from '../../utils/handleRoutes';
 import './404.css';
 
 export default function FourOFour() {

@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import http from 'services/http';
+import http from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './inventory-card.css';
 
@@ -64,7 +63,7 @@ function InventoryCard(props) {
             </div>
         </div>
     );
-};
+}
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -77,6 +76,6 @@ function mapDispatchToProps(dispatch) {
             payload: true,
         }),
     };
-};
+}
 
 export default connect(null, mapDispatchToProps)(InventoryCard);

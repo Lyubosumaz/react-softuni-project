@@ -9,4 +9,4 @@ export default function secondsToClock(time) {
 
     const clock = `${hours}h ${minutes}m ${seconds}s`;
     return clock;
-};
+}

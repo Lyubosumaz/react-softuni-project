@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 import { store } from '../../../../services/store';
@@ -169,12 +169,12 @@ export default function HandleMovement({ children }) {
     };
 
     return (
-        <React.Fragment>
+        <Fragment>
             <KeyboardEventHandler
                 handleKeys={['left', 'right', 'up', 'down']}
                 onKeyEvent={(key, e) => handleKeyDown(e)}
             />
             {children}
-        </React.Fragment>
+        </Fragment>
     );
 };

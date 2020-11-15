@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
 import MemeCard from '../components/meme-card/MemeCard';

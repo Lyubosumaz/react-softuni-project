@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import history from '../../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../../services/http';

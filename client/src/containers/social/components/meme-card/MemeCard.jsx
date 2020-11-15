@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import handleRoute from '../../../../utils/handleRoutes';
 import './meme-card.css';
@@ -14,10 +14,10 @@ function MemeCard(props) {
             <div>
                 <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${props.meme._id}`)}>View</button>
                 {(memeAddedBy === currentUser) && (
-                    <React.Fragment>
+                    <Fragment>
                         <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>Edit</button>
                         <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>Delete</button>
-                    </React.Fragment>
+                    </Fragment>
                 )}
             </div>
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import http from 'services/http';
+import http from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './shop-card.css';
 
@@ -46,4 +45,4 @@ export default function ShopCard(props) {
             </div>
         </div>
     );
-};
+}

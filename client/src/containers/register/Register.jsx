@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import history from 'utils/history';
-import http from 'services/http';
+import { useState } from 'react';
+import history from '../../utils/history';
+import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
 import './register.css';

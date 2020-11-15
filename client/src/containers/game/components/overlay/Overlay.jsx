@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import handleRoute from 'utils/handleRoutes';
+import handleRoute from '../../../../utils/handleRoutes';
 import './overlay.css';
 import { setGameStart, setGameTimer } from './actions'
 

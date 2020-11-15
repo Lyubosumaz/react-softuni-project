@@ -2,10 +2,7 @@ import { createStore, compose } from 'redux';
 import { persistStore } from 'redux-persist';
 import rootReducer from './root-reducer';
 
-export const store = createStore(
-    rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose,
-);
+export const store = createStore(rootReducer, (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || compose);
 
 export const persistor = persistStore(store);
 

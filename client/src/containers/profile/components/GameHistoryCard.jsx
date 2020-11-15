@@ -1,6 +1,5 @@
-import React from 'react';
-import secondsToClock from 'utils/secondsToClock';
-import gameRank from 'assets/img/game_rank.png';
+import secondsToClock from '../../../utils/secondsToClock';
+import gameRank from '../../../assets/img/game_rank.png';
 
 export default function GameHistoryCard(props) {
     return (
@@ -25,4 +24,4 @@ export default function GameHistoryCard(props) {
             </div>
         </div>
     );
-};
+}

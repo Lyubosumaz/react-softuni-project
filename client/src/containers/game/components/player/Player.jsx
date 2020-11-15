@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import HandleMovement from './movement';
 import walkSprite from './sprite/player_walk.png';

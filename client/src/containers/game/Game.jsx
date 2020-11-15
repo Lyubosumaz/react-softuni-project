@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import World from './components/world/World';
 import Overlay from './components/overlay/Overlay';
@@ -17,7 +17,7 @@ function Game(props) {
     }, [props.inGame]);
 
     return (
-        <React.Fragment>
+        <Fragment>
             <div>
                 {props.inGame && <Clock /> || <h1>Level: --, Time: --h --m --s</h1>}
             </div>
@@ -29,7 +29,7 @@ function Game(props) {
             <div>
                 <World />
             </div>
-        </React.Fragment>
+        </Fragment>
     );
 };
 
