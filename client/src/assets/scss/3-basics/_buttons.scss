@@ -1,5 +1,50 @@
 button {
     line-height: 0;
+    color: $mainLinkColor;
+    cursor: pointer;
+}
+
+.site-header .nav-bar-button {
+    padding: 0.55em 1em;
+    font-size: 1.2em;
+    color: $secondaryFontColor;
+
+    &.active {
+        background-color: $mainButtonColor;
+
+        &:focus,
+        &:hover {
+            background-color: $mainButtonDarken;
+        }
+    }
+
+    &:focus,
+    &:hover {
+        color: $mainFontColor;
+        text-decoration: underline;
+        background-color: $mainDarkHightLighten;
+    }
+}
+
+.options-bar .options-bar-button {
+    padding: 0.3em 0;
+    font-size: 0.9em;
+    color: $secondaryFontColor;
+
+    &:hover,
+    &:active {
+        color: $mainFontColor;
+        background-color: $mainDarkHightLighten;
+    }
+}
+
+.site-footer .footer-nav-button {
+    color: $secondaryFontColor;
+
+    &:focus,
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .form-action-btn {
