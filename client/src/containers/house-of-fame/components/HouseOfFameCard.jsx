@@ -1,5 +1,5 @@
 import React from 'react';
-import gameRank from 'assets/img/game_rank.png';
+import gameRank from 'assets/images/game_rank.png';
 import secondsToClock from 'utils/secondsToClock';
 
 export default function HouseOfFameCard(props) {
@@ -10,19 +10,27 @@ export default function HouseOfFameCard(props) {
             </div>
 
             <div>
-                <span><b>Username: {props.data.user.username}</b></span>
+                <span>
+                    <b>Username: {props.data.user.username}</b>
+                </span>
                 <div className="list-card-stats">
                     <div>
-                        <p><b>Games Played: {props.data.totalGames}</b></p>
+                        <p>
+                            <b>Games Played: {props.data.totalGames}</b>
+                        </p>
                     </div>
                     <div>
-                        <p><b>Time Played: {secondsToClock(props.data.totalTime)}</b></p>
+                        <p>
+                            <b>Time Played: {secondsToClock(props.data.totalTime)}</b>
+                        </p>
                     </div>
                     <div>
-                        <p><b>Wealth: {props.data.totalGold} coins</b></p>
+                        <p>
+                            <b>Wealth: {props.data.totalGold} coins</b>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+}
