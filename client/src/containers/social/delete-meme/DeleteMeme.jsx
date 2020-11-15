@@ -11,8 +11,9 @@ function DeleteMeme(props) {
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
-        http.Social.getMeme(memeId)
-            .then((meme) => { setMeme(meme); })
+        http.Social.getMeme(memeId).then((meme) => {
+            setMeme(meme);
+        });
     }, []);
 
     function handleSubmit(e) {
@@ -24,48 +25,60 @@ function DeleteMeme(props) {
                         type: toast.TYPE.ERROR,
                     });
                     history.push('/social');
-                }).catch((err) => {
+                })
+                .catch((err) => {
                     toast(err.message, {
                         type: toast.TYPE.ERROR,
                     });
                 });
         }
-    };
+    }
 
     return (
-        <div className="main-container">
+        <div className="delete-meme-container">
             <form>
                 <h1>Delete Meme</h1>
 
                 <p>Are you sure you want to delete this meme?</p>
 
                 <div className="form-div-container">
-                    <label htmlFor="Title"><b>Title:</b></label>
+                    <label htmlFor="Title">
+                        <b>Title:</b>
+                    </label>
                     {meme && <input type="text" value={meme.title} className="form-input" disabled />}
                 </div>
 
                 <div className="form-div-container">
-                    <label htmlFor="imageUrl"><b>imageUrl:</b></label>
+                    <label htmlFor="imageUrl">
+                        <b>imageUrl:</b>
+                    </label>
                     {meme && <input type="text" value={meme.imageUrl} className="form-input" disabled />}
                 </div>
 
                 <div>
-                    <button type="submit" className="form-action-btn delete" onClick={handleSubmit}>Delete</button>
+                    <button type="submit" className="form-action-btn delete" onClick={handleSubmit}>
+                        Delete
+                    </button>
                 </div>
 
                 <div className="info-container">
-                    <p>Don't delete your meme just continue scrolling <button className="info-button"
-                        onClick={handleRoute('/social')}>Back</button>.</p>
+                    <p>
+                        Don't delete your meme just continue scrolling{' '}
+                        <button className="info-button" onClick={handleRoute('/social')}>
+                            Back
+                        </button>
+                        .
+                    </p>
                 </div>
             </form>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         isLogin: state.user.isLogin,
     };
-};
+}
 
 export default connect(mapStateToProps)(DeleteMeme);

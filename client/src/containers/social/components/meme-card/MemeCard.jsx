@@ -12,11 +12,17 @@ function MemeCard(props) {
             <h1>{props.meme.title}</h1>
 
             <div>
-                <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${props.meme._id}`)}>View</button>
-                {(memeAddedBy === currentUser) && (
+                <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${props.meme._id}`)}>
+                    View
+                </button>
+                {memeAddedBy === currentUser && (
                     <React.Fragment>
-                        <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>Edit</button>
-                        <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>Delete</button>
+                        <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>
+                            Edit
+                        </button>
+                        <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>
+                            Delete
+                        </button>
                     </React.Fragment>
                 )}
             </div>
@@ -26,12 +32,12 @@ function MemeCard(props) {
             </div>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {
         userId: state.user.userId,
     };
-};
+}
 
 export default connect(mapStateToProps)(MemeCard);

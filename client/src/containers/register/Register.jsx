@@ -78,7 +78,7 @@ export default function Register() {
     }
 
     return (
-        <div className="form-container register">
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <header className="form-header">
                     <h1>Register</h1>

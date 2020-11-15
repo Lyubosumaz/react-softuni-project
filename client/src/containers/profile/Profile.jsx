@@ -17,10 +17,10 @@ function Profile(props) {
     }, []);
 
     return (
-        <div className="main-container">
+        <div className="profile-container">
             <h1>Profile</h1>
 
-            {profile &&
+            {profile && (
                 <div className="profile-card">
                     <div>
                         <h1>{props.userName}</h1>
@@ -28,23 +28,42 @@ function Profile(props) {
                     </div>
 
                     <div className="profile-stats">
-                        <p><b>Your Game Profile Records:</b></p>
-                        <p><b>Total Games Played: {profile.totalGames}</b></p>
-                        <p><b>Total Time Played: {secondsToClock(profile.totalTime)}</b></p>
-                        <p><b>Current Gold: {profile.totalGold} coins</b></p>
+                        <p>
+                            <b>Your Game Profile Records:</b>
+                        </p>
+                        <p>
+                            <b>Total Games Played: {profile.totalGames}</b>
+                        </p>
+                        <p>
+                            <b>Total Time Played: {secondsToClock(profile.totalTime)}</b>
+                        </p>
+                        <p>
+                            <b>Current Gold: {profile.totalGold} coins</b>
+                        </p>
                     </div>
-                </div>}
+                </div>
+            )}
 
             <div className="profile-game-history">
-                {profile && profile.gameHistory.slice(0).reverse().map((data, index) => {
-                    return (<GameHistoryCard key={index} data={data} />);
-                })}
+                {profile &&
+                    profile.gameHistory
+                        .slice(0)
+                        .reverse()
+                        .map((data, index) => {
+                            return <GameHistoryCard key={index} data={data} />;
+                        })}
             </div>
 
             <div className="info-container">
-                <p>Play one more game <button className="info-button" onClick={handleRoute('/games')}>Here</button>!</p>
+                <p>
+                    Play one more game{' '}
+                    <button className="info-button" onClick={handleRoute('/games')}>
+                        Here
+                    </button>
+                    !
+                </p>
             </div>
-        </div >
+        </div>
     );
 }
 

@@ -17,13 +17,17 @@ function HouseOfFame(props) {
 
     function handleSearch(e) {
         setSearch(e.target.value);
-    };
+    }
 
     useEffect(() => {
-        if (!users) { return; }
-        setUsers(users.filter((u) => {
-            return u.user.username.toLowerCase().includes(search.toLowerCase());
-        }));
+        if (!users) {
+            return;
+        }
+        setUsers(
+            users.filter((u) => {
+                return u.user.username.toLowerCase().includes(search.toLowerCase());
+            })
+        );
 
         if (search === '') {
             http.User.house().then((allUsers) => {
@@ -33,29 +37,44 @@ function HouseOfFame(props) {
     }, [search]);
 
     return (
-        <div className="main-container">
+        <div className="house-container">
             <h1>House of Fame</h1>
 
-            <p className="house-of-fame-search-p"><b>Username: </b><input type="text" className="my-search" onChange={handleSearch} placeholder="Search.."></input></p>
+            <p className="house-of-fame-search-p">
+                <b>Username: </b>
+                <input type="text" className="my-search" onChange={handleSearch} placeholder="Search.."></input>
+            </p>
 
             <div>
-                {users && users
-                    .sort((a, b) => {
-                        return b.totalGames - a.totalGames;
-                    })
-                    .map((data, index) => {
-                        return (<HouseOfFameCard key={index} data={data} />);
-                    })
-                }
+                {users &&
+                    users
+                        .sort((a, b) => {
+                            return b.totalGames - a.totalGames;
+                        })
+                        .map((data, index) => {
+                            return <HouseOfFameCard key={index} data={data} />;
+                        })}
             </div>
 
             <div className="info-container">
-                {props.isLogin ?
-                    <p>You saw what you need. Now join the game <button className="info-button" onClick={handleRoute('/games')}>Here</button>!</p>
-                    :
-                    <p>Join the race, climb ladder and be the top apex legend <button className="info-button" onClick={handleRoute('/login')}>Sign in</button>.</p>}
+                {props.isLogin ? (
+                    <p>
+                        You saw what you need. Now join the game{' '}
+                        <button className="info-button" onClick={handleRoute('/games')}>
+                            Here
+                        </button>
+                        !
+                    </p>
+                ) : (
+                    <p>
+                        Join the race, climb ladder and be the top apex legend{' '}
+                        <button className="info-button" onClick={handleRoute('/login')}>
+                            Sign in
+                        </button>
+                        .
+                    </p>
+                )}
             </div>
-
         </div>
     );
 }

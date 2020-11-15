@@ -3,7 +3,7 @@ import './about.css';
 
 export default function About() {
     return (
-        <div className="main-container background-image" name="about">
+        <div className="about-container background-image" name="about">
             <h1>About</h1>
         </div>
     );

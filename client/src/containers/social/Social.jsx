@@ -8,27 +8,39 @@ export default function Social() {
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
 
     const observer = useRef();
-    const lastMemeCardRef = useCallback((node) => {
-        if (loading) { return; }
-        if (observer.current) { observer.current.disconnect(); }
-        observer.current = new IntersectionObserver((entires) => {
-            if (entires[0].isIntersecting && hasMore) {
-                setPageNumber(pageNumber + 1);
+    const lastMemeCardRef = useCallback(
+        (node) => {
+            if (loading) {
+                return;
             }
-        })
-        if (node) { observer.current.observe(node); }
-
-    }, [loading, hasMore]);
+            if (observer.current) {
+                observer.current.disconnect();
+            }
+            observer.current = new IntersectionObserver((entires) => {
+                if (entires[0].isIntersecting && hasMore) {
+                    setPageNumber(pageNumber + 1);
+                }
+            });
+            if (node) {
+                observer.current.observe(node);
+            }
+        },
+        [loading, hasMore]
+    );
 
     return (
-        <div className="main-container">
+        <div className="social-container">
             <h1>Social</h1>
 
-            <div >
-                <button className="active-button" onClick={handleRoute('/404')}>Create Meme</button>
+            <div>
+                <button className="active-button" onClick={handleRoute('/404')}>
+                    Create Meme
+                </button>
             </div>
-            <div >
-                <button className="active-button" onClick={handleRoute('/social/add-meme')}>Add Meme</button>
+            <div>
+                <button className="active-button" onClick={handleRoute('/social/add-meme')}>
+                    Add Meme
+                </button>
             </div>
 
             <h1>Memes</h1>
@@ -37,22 +49,30 @@ export default function Social() {
                 {memes.map((meme, index) => {
                     if (memes.length === index + 1) {
                         return (
-                            <div key={meme.index} ref={lastMemeCardRef} >
+                            <div key={meme.index} ref={lastMemeCardRef}>
                                 <MemeCard meme={meme} />
-                            </div>);
+                            </div>
+                        );
                     } else {
                         return (
                             <div key={meme.index}>
                                 <MemeCard meme={meme} />
-                            </div>);
+                            </div>
+                        );
                     }
                 })}
             </div>
-            <div>{loading && "Loading..."}</div>
-            <div>{error && "Error"}</div>
+            <div>{loading && 'Loading...'}</div>
+            <div>{error && 'Error'}</div>
 
             <div className="info-container">
-                <p>Join the race and climb to the top <button className="info-button" onClick={handleRoute('/games')}>Game</button>!</p>
+                <p>
+                    Join the race and climb to the top{' '}
+                    <button className="info-button" onClick={handleRoute('/games')}>
+                        Game
+                    </button>
+                    !
+                </p>
             </div>
         </div>
     );

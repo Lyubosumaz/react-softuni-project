@@ -7,7 +7,7 @@ function Header(props) {
     const isLogged = props.isLogin;
 
     return (
-        <div className="site-header">
+        <header className="site-header">
             <nav className="site-navigation">
                 <ul>
                     <li className="nav-container-left">
@@ -83,7 +83,7 @@ function Header(props) {
                     </li>
                 </ul>
             </nav>
-        </div>
+        </header>
     );
 }
 

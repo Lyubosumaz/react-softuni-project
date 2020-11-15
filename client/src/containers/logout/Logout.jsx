@@ -9,7 +9,6 @@ import './logout.css';
 import { setLogoutValue } from '../login/actions';
 
 function Logout(props) {
-
     const yesButtonHandler = (e) => {
         e.preventDefault();
         http.User.logout()
@@ -18,7 +17,7 @@ function Logout(props) {
                     type: toast.TYPE.SUCCESS,
                 });
                 removeAllCookies();
-                props.setLogoutValue()
+                props.setLogoutValue();
                 history.push('/home');
             })
             .catch((err) => {
@@ -29,23 +28,33 @@ function Logout(props) {
     };
 
     return (
-        <div className="main-container">
+        <div className="form-container">
             <form>
                 <h1>Logout</h1>
                 <p>Do you really want to logout?</p>
 
                 <div>
-                    <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}><span>Yes</span></button>
-                    <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}><span>No!</span></button>
+                    <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>
+                        <span>Yes</span>
+                    </button>
+                    <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}>
+                        <span>No!</span>
+                    </button>
                 </div>
 
                 <div className="info-container">
-                    <p>Check out the new features in latest update <button className="info-button" onClick={handleRoute('/about')}>Here</button>.</p>
+                    <p>
+                        Check out the new features in latest update{' '}
+                        <button className="info-button" onClick={handleRoute('/about')}>
+                            Here
+                        </button>
+                        .
+                    </p>
                 </div>
             </form>
         </div>
     );
-};
+}
 
 function mapStateToProps(state) {
     return {

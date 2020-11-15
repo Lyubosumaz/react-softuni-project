@@ -2,3 +2,23 @@
     width: 90%;
     margin: 0 auto;
 }
+
+.app-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 'header' 'main' 'footer';
+
+    .site-header {
+        grid-area: header;
+    }
+
+    .site-main {
+        overflow-y: scroll;
+        grid-area: main;
+    }
+
+    .site-footer {
+        grid-area: footer;
+    }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Puzzles() {
     return (
-        <div >
+        <div className="puzzles-container">
             <h1>Puzzles</h1>
             <p>In progress...</p>
         </div>
