@@ -1,5 +1,5 @@
-import secondsToClock from '../../../utils/secondsToClock';
-import gameRank from '../../../assets/img/game_rank.png';
+import secondsToClock from '../../../../utils/secondsToClock';
+import gameRank from '../../../../assets/images/game_rank.png';
 
 export default function GameHistoryCard(props) {
     return (

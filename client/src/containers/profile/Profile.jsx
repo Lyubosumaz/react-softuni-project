@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from 'utils/handleRoutes';
-import secondsToClock from 'utils/secondsToClock';
-import http from 'services/http';
+import handleRoute from '../../utils/handleRoutes';
+import secondsToClock from '../../utils/secondsToClock';
+import http from '../../services/http';
 import GameHistoryCard from './components/game-history-card/GameHistoryCard';
-import defaultProfilePic from 'assets/images/default_profile.png';
+import defaultProfilePic from '../../assets/images/default_profile.png';
 import './profile.css';
 
 function Profile(props) {

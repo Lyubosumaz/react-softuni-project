@@ -16,14 +16,14 @@ function MemeCard(props) {
                     View
                 </button>
                 {memeAddedBy === currentUser && (
-                    <React.Fragment>
+                    <Fragment>
                         <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${props.meme._id}`)}>
                             Edit
                         </button>
                         <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${props.meme._id}`)}>
                             Delete
                         </button>
-                    </React.Fragment>
+                    </Fragment>
                 )}
             </div>
 

@@ -1,4 +1,4 @@
-import gameRank from '../../../assets/img/game_rank.png';
+import gameRank from '../../../assets/images/game_rank.png';
 import secondsToClock from '../../../utils/secondsToClock';
 
 export default function HouseOfFameCard(props) {
