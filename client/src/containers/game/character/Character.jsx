@@ -8,20 +8,25 @@ import './character.css';
 import { setRemoveItem } from './actions';
 
 function Character(props) {
-    const [items, setItems] = useState([])
-    const [statistics, setStatistics] = useState([])
+    const [items, setItems] = useState([]);
+    const [statistics, setStatistics] = useState([]);
 
     useEffect(() => {
         http.Game.character()
-            .then(c => {
-                if (!c) { return; }
-                const allStats = c.reduce((a, b) => {
-                    return {
-                        strength: a.strength + b.strength,
-                        agility: a.agility + b.agility,
-                        intelligence: a.intelligence + b.intelligence
-                    }
-                }, { strength: 0, agility: 0, intelligence: 0 });
+            .then((c) => {
+                if (!c) {
+                    return;
+                }
+                const allStats = c.reduce(
+                    (a, b) => {
+                        return {
+                            strength: a.strength + b.strength,
+                            agility: a.agility + b.agility,
+                            intelligence: a.intelligence + b.intelligence,
+                        };
+                    },
+                    { strength: 0, agility: 0, intelligence: 0 }
+                );
 
                 setItems(c);
                 setStatistics(allStats);
@@ -48,18 +53,27 @@ function Character(props) {
                 </div>
 
                 <div className="profile-stats">
-                    <p><b>Your character statistics:</b></p>
-                    <p><b>Total Strength: {statistics.strength}</b></p>
-                    <p><b>Total Agility:  {statistics.agility}</b></p>
-                    <p><b>Total Intelligence:  {statistics.intelligence}</b></p>
+                    <p>
+                        <b>Your character statistics:</b>
+                    </p>
+                    <p>
+                        <b>Total Strength: {statistics.strength}</b>
+                    </p>
+                    <p>
+                        <b>Total Agility: {statistics.agility}</b>
+                    </p>
+                    <p>
+                        <b>Total Intelligence: {statistics.intelligence}</b>
+                    </p>
                 </div>
             </div>
 
             <div className="item-card-container">
                 <div className="item-card-card">
-                    {items && items.map((item, index) => {
-                        return (<CharacterCard key={index} item={item} />);
-                    })}
+                    {items &&
+                        items.map((item, index) => {
+                            return <CharacterCard key={index} item={item} />;
+                        })}
                 </div>
             </div>
         </div>
@@ -75,7 +89,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setRemoveItem: () => dispatch(setRemoveItem(false))
+        setRemoveItem: () => dispatch(setRemoveItem(false)),
     };
 }
 

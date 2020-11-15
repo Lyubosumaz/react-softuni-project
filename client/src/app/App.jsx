@@ -12,11 +12,12 @@ import Router from '../router/Router';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 
-import './app.scss';
-// import '../assets/scss/';
-import '../assets/styles/forms.css';
-import '../assets/styles/list-card.css';
-import '../assets/styles/item-card.css';
+// import './app.scss';
+import '../assets/scss/main.scss';
+// import 'assets/styles/main.css';
+// import 'assets/styles/forms.css';
+// import 'assets/styles/list-card.css';
+// import 'assets/styles/item-card.css';
 
 toast.configure({
     autoClose: 7000,
@@ -43,7 +44,9 @@ export default function App() {
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
                     <Header />
-                    <Router />
+                    <main className="site-main">
+                        <Router />
+                    </main>
                     <Footer />
                 </PersistGate>
             </Provider>

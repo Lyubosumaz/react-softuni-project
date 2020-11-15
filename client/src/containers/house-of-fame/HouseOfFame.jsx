@@ -37,7 +37,7 @@ function HouseOfFame(props) {
     }, [search]);
 
     return (
-        <div className="main-container">
+        <div className="house-container">
             <h1>House of Fame</h1>
 
             <p className="house-of-fame-search-p">

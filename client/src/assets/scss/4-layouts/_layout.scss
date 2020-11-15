@@ -1,0 +1,44 @@
+.site-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.app-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 'header' 'main' 'footer';
+
+    .site-header {
+        grid-area: header;
+    }
+
+    .site-main {
+        overflow-y: scroll;
+        grid-area: main;
+
+        .component-wrapper {
+            height: 100%;
+        }
+
+        .background-image {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            header {
+                padding-top: 3em;
+                text-align: center;
+            }
+
+            h1 {
+                margin: 0;
+                text-shadow: 0.04em 0.04em rgba($color: #000, $alpha: 0.4);
+            }
+        }
+    }
+
+    .site-footer {
+        grid-area: footer;
+    }
+}

@@ -1,3 +1,1 @@
-export const generalActions = {
-
-};
+export const generalActions = {};

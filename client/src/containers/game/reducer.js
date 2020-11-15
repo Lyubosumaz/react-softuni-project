@@ -8,7 +8,7 @@ const initialState = {
     gameItems: [],
     inventorySellItem: false,
     inventoryEquipItem: false,
-    characterRemoveItem: false
+    characterRemoveItem: false,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const gameReducer = (state = initialState, action) => {
             return {
                 ...state,
                 gameItems: action.payload,
-            }
+            };
         case 'GAME_TIMER_STATE':
             return {
                 ...state,
@@ -31,7 +31,7 @@ const gameReducer = (state = initialState, action) => {
         case 'OPEN_GOLD_CHEST':
             return {
                 ...state,
-                gold: state.gold += action.payload,
+                gold: (state.gold += action.payload),
             };
         case 'OPEN_ITEM_CHEST':
             return {
@@ -59,21 +59,21 @@ const gameReducer = (state = initialState, action) => {
         case 'CHARACTER_SELL_ITEM':
             return {
                 ...state,
-                inventorySellItem: action.payload
+                inventorySellItem: action.payload,
             };
         case 'CHARACTER_EQUIP_ITEM':
             return {
                 ...state,
-                inventoryEquipItem: action.payload
+                inventoryEquipItem: action.payload,
             };
         case 'CHARACTER_REMOVE_ITEM':
             return {
                 ...state,
-                characterRemoveItem: action.payload
+                characterRemoveItem: action.payload,
             };
         default:
             return state;
-    };
+    }
 };
 
 export default gameReducer;

@@ -6,8 +6,12 @@ export default function FourOFour() {
         <div className="error-container">
             <h1>Oops! Page not found</h1>
             <h2>404</h2>
-            <p><b>We can't find the page you're looking for</b></p>
-            <button className="active-button" name="404" onClick={handleRoute('/home')}>Go Back Home</button>
+            <p>
+                <b>We can't find the page you're looking for</b>
+            </p>
+            <button className="active-button" name="404" onClick={handleRoute('/home')}>
+                Go Back Home
+            </button>
         </div>
     );
 }

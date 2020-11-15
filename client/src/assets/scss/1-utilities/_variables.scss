@@ -1,0 +1,38 @@
+/* Display Break-Pints */
+$breakpoints: (
+    'huge':   ( min-width: 2561px ),
+    'main':   ( min-width: 1441px ),
+    'laptop': ( min-width: 769px ),
+    'tablet': ( min-width: 426px ),
+    'phone':  ( max-width: 425px ),
+) !default;
+
+/* Font Sizes */
+$hugeFontSize: 24px;     // 2561 < max
+$mainFontSize: 20px;     // 1441 < 2561
+$laptopFontSize: 18px;   // 769  < 1440
+$tabletFontSize: 16px;   // 426  < 768
+$phoneFontSize: 12px;    // min  > 425
+
+
+/* Colors */
+
+/* Font Colors */
+$mainFontColor: #222;
+$secondaryFontColor: #f0f0f0;
+
+/* Background Colors */
+$mainDarkColor: #3a3a3a;
+$mainDarkLighten: lighten($mainDarkColor, 5%);
+$mainDarkHightLighten: lighten($mainDarkColor, 40%);
+$secondaryDarkColor:#b0b0b0;
+$errorColor: #d4511e;
+
+/* Link Color */
+$mainLinkColor: #0083ff;
+// $mainLinkColor: #090;
+
+
+/* Buttons Color */
+$mainButtonColor: #4caf50;
+$mainButtonDarken: darken($mainButtonColor, 5%);

@@ -1,9 +1,9 @@
-import './home.css';
-
 export default function Home() {
     return (
-        <div className="main-container background-image" name="home">
-            <h1>Home</h1>
-        </div>
+        <section className="component-wrapper home-component background-image">
+            <header>
+                <h1>Home</h1>
+            </header>
+        </section>
     );
 }
