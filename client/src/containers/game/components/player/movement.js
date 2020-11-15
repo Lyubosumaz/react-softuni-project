@@ -5,7 +5,7 @@ import { store } from '../../../../services/store';
 import http from '../../../../services/http';
 import { toast } from 'react-toastify';
 import { tiles } from '../data/maps/2';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 export default function HandleMovement({ children }) {
 

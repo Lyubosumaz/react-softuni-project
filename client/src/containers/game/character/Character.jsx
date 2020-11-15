@@ -40,7 +40,7 @@ function Character(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    }, [props.characterRemoveItem]);
+    });
 
     return (
         <div>

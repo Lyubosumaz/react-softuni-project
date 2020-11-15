@@ -6,12 +6,15 @@ import InventoryCard from './components/inventory-card/InventoryCard';
 import { setSellItem, setEquipItem } from './actions';
 
 function Inventory(props) {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
         http.Game.inventory()
             .then((i) => {
-                if (!i) { return; }
+                if (!i) {
+                    return;
+                }
+
                 const rows = [...Array(Math.ceil(i.length / 4))];
                 const arr = rows.map((row, index) => {
                     return i.slice(index * 4, index * 4 + 4);
@@ -28,22 +31,23 @@ function Inventory(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    }, [props.inventorySellItem, props.inventoryEquipItem]);
+    });
 
     return (
-        <div >
+        <div>
             <h1>Inventory</h1>
 
             <div className="item-card-container">
-                {items && items.map((row, i) => {
-                    return (
-                        <div key={i} className="item-card-card">
-                            {row.map((item, index) => {
-                                return (<InventoryCard key={index} item={item} />);
-                            })}
-                        </div>
-                    );
-                })}
+                {items &&
+                    items.map((row, i) => {
+                        return (
+                            <div key={i} className="item-card-card">
+                                {row.map((item, index) => {
+                                    return <InventoryCard key={index} item={item} />;
+                                })}
+                            </div>
+                        );
+                    })}
             </div>
         </div>
     );

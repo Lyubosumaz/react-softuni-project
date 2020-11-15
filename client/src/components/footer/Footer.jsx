@@ -13,14 +13,14 @@ export default function Footer() {
 
                 <ul className="footer-nav">
                     <li>
-                        <a className="footer-nav-button" onClick={handleRoute('/home')}>
+                        <button className="footer-nav-button" onClick={handleRoute('/home')}>
                             Home
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a className="footer-nav-button" onClick={handleRoute('/about')}>
+                        <button className="footer-nav-button" onClick={handleRoute('/about')}>
                             About
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>

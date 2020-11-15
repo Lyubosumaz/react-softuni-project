@@ -1,4 +1,3 @@
-/* eslint-disable import/first */
 import settings from '../settings.json';
 
 const User = {

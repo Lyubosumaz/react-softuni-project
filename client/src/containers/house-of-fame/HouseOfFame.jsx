@@ -11,9 +11,9 @@ function HouseOfFame(props) {
 
     useEffect(() => {
         http.User.house().then((allUsers) => {
-            setUsers(allUsers);
+            setUsers([...users, ...allUsers]);
         });
-    }, []);
+    });
 
     function handleSearch(e) {
         setSearch(e.target.value);
@@ -23,6 +23,7 @@ function HouseOfFame(props) {
         if (!users) {
             return;
         }
+
         setUsers(
             users.filter((u) => {
                 return u.user.username.toLowerCase().includes(search.toLowerCase());
@@ -31,10 +32,10 @@ function HouseOfFame(props) {
 
         if (search === '') {
             http.User.house().then((allUsers) => {
-                setUsers(allUsers);
+                setUsers([...users, ...allUsers]);
             });
         }
-    }, [search]);
+    }, [users, search]);
 
     return (
         <div className="house-container">

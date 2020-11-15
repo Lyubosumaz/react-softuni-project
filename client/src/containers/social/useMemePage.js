@@ -13,16 +13,17 @@ export default function useMemePage(pageNumber) {
 
         http.Social.getScroll({
             pageNumber,
-            itemNumber: 5
+            itemNumber: 5,
         })
             .then((m) => {
                 setMemes([...memes, ...m]);
                 setHasMore(m.length > 0);
                 setLoading(false);
-            }).catch(() => {
-                setError(true);
             })
-    }, [pageNumber]);
+            .catch(() => {
+                setError(true);
+            });
+    }, [memes, pageNumber]);
 
     return { memes, loading, error, hasMore };
-};
+}

@@ -14,7 +14,7 @@ function DeleteMeme(props) {
         http.Social.getMeme(memeId).then((meme) => {
             setMeme(meme);
         });
-    }, []);
+    });
 
     function handleSubmit(e) {
         e.preventDefault();

@@ -13,24 +13,24 @@ function Options(props) {
         <div className="options-bar">
             <ul>
                 <li>
-                    <a className="options-bar-button" onClick={handleRoute('/game/progress')}>
+                    <button className="options-bar-button" onClick={handleRoute('/game/progress')}>
                         Progress
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a className="options-bar-button" onClick={handleRoute('/game/shop')}>
+                    <button className="options-bar-button" onClick={handleRoute('/game/shop')}>
                         Shop
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a className="options-bar-button" onClick={handleRoute('/game/inventory')}>
+                    <button className="options-bar-button" onClick={handleRoute('/game/inventory')}>
                         Inventory
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a className="options-bar-button" onClick={handleRoute('/game/character')}>
+                    <button className="options-bar-button" onClick={handleRoute('/game/character')}>
                         Character
-                    </a>
+                    </button>
                 </li>
             </ul>
         </div>

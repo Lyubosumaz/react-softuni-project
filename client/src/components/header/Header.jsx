@@ -15,32 +15,32 @@ function Header(props) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <a className="nav-bar-button active" onClick={handleRoute('/game')}>
+                                        <button className="nav-bar-button active" onClick={handleRoute('/game')}>
                                             Game
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a className="nav-bar-button active" onClick={handleRoute('/games')}>
+                                        <button className="nav-bar-button active" onClick={handleRoute('/games')}>
                                             Games
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a className="nav-bar-button active" onClick={handleRoute('/puzzles')}>
+                                        <button className="nav-bar-button active" onClick={handleRoute('/puzzles')}>
                                             Puzzles
-                                        </a>
+                                        </button>
                                     </li>
                                 </Fragment>
                             ) : (
                                 <li>
-                                    <a className="nav-bar-button active" onClick={handleRoute('/home')}>
+                                    <button className="nav-bar-button active" onClick={handleRoute('/home')}>
                                         Home
-                                    </a>
+                                    </button>
                                 </li>
                             )}
                             <li>
-                                <a className="nav-bar-button" onClick={handleRoute('/house-of-fame')}>
+                                <button className="nav-bar-button" onClick={handleRoute('/house-of-fame')}>
                                     House of Fame
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </li>
@@ -50,32 +50,32 @@ function Header(props) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <a className="nav-bar-button" onClick={handleRoute('/social')}>
+                                        <button className="nav-bar-button" onClick={handleRoute('/social')}>
                                             Social
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a className="nav-bar-button" onClick={handleRoute('/profile')}>
+                                        <button className="nav-bar-button" onClick={handleRoute('/profile')}>
                                             Profile
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a className="nav-bar-button" onClick={handleRoute('/logout')}>
+                                        <button className="nav-bar-button" onClick={handleRoute('/logout')}>
                                             Logout
-                                        </a>
+                                        </button>
                                     </li>
                                 </Fragment>
                             ) : (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <a className="nav-bar-button" onClick={handleRoute('/register')}>
+                                        <button className="nav-bar-button" onClick={handleRoute('/register')}>
                                             Register
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a className="nav-bar-button" onClick={handleRoute('/login')}>
+                                        <button className="nav-bar-button" onClick={handleRoute('/login')}>
                                             Login
-                                        </a>
+                                        </button>
                                     </li>
                                 </Fragment>
                             )}

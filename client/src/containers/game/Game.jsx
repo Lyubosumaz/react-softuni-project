@@ -8,12 +8,12 @@ import http from '../../services/http';
 function Game(props) {
     useEffect(() => {
         http.Game.shop().then((items) => props.saveGameItems(items));
-    }, []);
+    });
 
     useEffect(() => {
         props.resetPlayerLocation();
         props.resetGameLevel();
-    }, [props.inGame]);
+    });
 
     return (
         <Fragment>

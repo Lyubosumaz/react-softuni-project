@@ -165,9 +165,9 @@ export default function Register() {
                     <div className="form-field-actions">
                         <div className="terms-conditions">
                             <span>By creating an account, you agree to our</span>
-                            <a className="info-button" onClick={handleRoute('/terms-and-conditions')}>
+                            <button className="info-button" onClick={handleRoute('/terms-and-conditions')}>
                                 Terms &amp; Conditions
-                            </a>
+                            </button>
                         </div>
 
                         <div className="subscribe">
@@ -184,9 +184,9 @@ export default function Register() {
 
                     <div className="info-container">
                         <span>Already have account?</span>
-                        <a className="info-button" onClick={handleRoute('/login')}>
+                        <button className="info-button" onClick={handleRoute('/login')}>
                             Sign in
-                        </a>
+                        </button>
                     </div>
                 </div>
             </form>

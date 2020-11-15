@@ -6,4 +6,4 @@ export const store = createStore(rootReducer, (window.__REDUX_DEVTOOLS_EXTENSION
 
 export const persistor = persistStore(store);
 
-export default { store, persistor };
+// export default { store, persistor };

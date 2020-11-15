@@ -7,16 +7,19 @@ function Clock(props) {
     const [count, setCount] = useState(0);
 
     setTimeout(() => {
-        setCount(prevState => (prevState + 1))
+        setCount((prevState) => prevState + 1);
     }, 1000);
 
     useEffect(() => {
-        props.setTimeValue(count);
-    }, [props.handleGameTimer]);
+        const newProp = { ...props };
+        newProp.setTimeValue(count);
+    });
 
     return (
         <div>
-            <h1>Level: {props.level}, Time: {secondsToClock(count)}</h1>
+            <h1>
+                Level: {props.level}, Time: {secondsToClock(count)}
+            </h1>
         </div>
     );
 }

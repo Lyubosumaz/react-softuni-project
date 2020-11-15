@@ -25,7 +25,7 @@ export default function Social() {
                 observer.current.observe(node);
             }
         },
-        [loading, hasMore]
+        [loading, hasMore, pageNumber]
     );
 
     return (

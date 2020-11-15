@@ -19,7 +19,7 @@ function EditMeme(props) {
             setTitle(meme.title);
             setImageUrl(meme.imageUrl);
         });
-    }, []);
+    });
 
     function handleTitle(event) {
         setTitle(event.target.value);
