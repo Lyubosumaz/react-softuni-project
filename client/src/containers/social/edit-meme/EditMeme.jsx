@@ -7,11 +7,11 @@ import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
 
 function EditMeme(props) {
+    const memeId = props.match.params.id;
     const [meme, setMeme] = useState(null);
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState({});
-    const memeId = props.match.params.id;
 
     useEffect(() => {
         http.Social.getMeme(memeId).then((meme) => {
@@ -19,7 +19,7 @@ function EditMeme(props) {
             setTitle(meme.title);
             setImageUrl(meme.imageUrl);
         });
-    });
+    }, [memeId]);
 
     function handleTitle(event) {
         setTitle(event.target.value);

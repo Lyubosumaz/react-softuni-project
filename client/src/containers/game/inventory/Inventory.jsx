@@ -6,6 +6,7 @@ import InventoryCard from './components/inventory-card/InventoryCard';
 import { setSellItem, setEquipItem } from './actions';
 
 function Inventory(props) {
+    const newProps = props;
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -21,9 +22,9 @@ function Inventory(props) {
                 });
                 setItems(arr);
 
-                if (props.inventorySellItem || props.inventoryEquipItem) {
-                    props.setSellItem();
-                    props.setEquipItem();
+                if (newProps.inventorySellItem || newProps.inventoryEquipItem) {
+                    newProps.setSellItem();
+                    newProps.setEquipItem();
                 }
             })
             .catch((err) => {
@@ -31,7 +32,7 @@ function Inventory(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    });
+    }, [newProps]);
 
     return (
         <div>

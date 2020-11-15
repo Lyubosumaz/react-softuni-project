@@ -13,14 +13,17 @@ export default function Social() {
             if (loading) {
                 return;
             }
+
             if (observer.current) {
                 observer.current.disconnect();
             }
+
             observer.current = new IntersectionObserver((entires) => {
                 if (entires[0].isIntersecting && hasMore) {
                     setPageNumber(pageNumber + 1);
                 }
             });
+
             if (node) {
                 observer.current.observe(node);
             }

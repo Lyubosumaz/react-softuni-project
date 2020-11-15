@@ -6,20 +6,21 @@ import Clock from './components/clock/Clock';
 import http from '../../services/http';
 
 function Game(props) {
+    const newProps = props;
     useEffect(() => {
-        http.Game.shop().then((items) => props.saveGameItems(items));
-    });
+        http.Game.shop().then((items) => newProps.saveGameItems(items));
+    }, [newProps]);
 
     useEffect(() => {
-        props.resetPlayerLocation();
-        props.resetGameLevel();
-    });
+        newProps.resetPlayerLocation();
+        newProps.resetGameLevel();
+    }, [newProps]);
 
     return (
         <Fragment>
-            <div>{(props.inGame && <Clock />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
+            <div>{(newProps.inGame && <Clock />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
 
-            <div>{!props.inGame && <Overlay />}</div>
+            <div>{!newProps.inGame && <Overlay />}</div>
 
             <div>
                 <World />
