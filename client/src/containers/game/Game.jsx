@@ -7,6 +7,7 @@ import http from '../../services/http';
 
 function Game(props) {
     const newProps = props;
+
     useEffect(() => {
         http.Game.shop().then((items) => newProps.saveGameItems(items));
     }, [newProps]);

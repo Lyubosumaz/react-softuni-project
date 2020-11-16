@@ -17,6 +17,7 @@ export default function Shop() {
                 const arr = rows.map((row, index) => {
                     return i.slice(index * 4, index * 4 + 4);
                 });
+
                 setItems(arr);
             })
             .catch((err) => {
