@@ -2,12 +2,13 @@
     text-align: center;
 
     .form-header {
-        margin: 0.8em 0 3em 0;
+        padding-top: 0.8em;
+        margin-bottom: 3em;
     }
 
     .form-fields-wrapper {
         margin: 0 auto;
-        width: 60%;
+        width: 40%;
     }
 
     .form-field {
@@ -17,9 +18,9 @@
         justify-content: center;
 
         label {
-            margin-right: 1em;
+            margin-right: 5%;
             display: flex;
-            flex: 0 1 20%;
+            flex: 1 0 25%;
             text-align: right;
             justify-content: flex-end;
             align-items: center;
@@ -34,7 +35,7 @@
         input[type='email'],
         input[type='password'] {
             padding: 0.5em 1em;
-            flex: 0 1 40%;
+            flex: 1 0 65%;
             background-color: #f0f0f0;
             border: 0.15em solid transparent;
             border-radius: 0.3em;
@@ -110,19 +111,11 @@
         input[type='submit'],
         input[type='reset'] {
             text-transform: capitalize;
-            flex-basis: 15%;
+            flex: 0 1 10em;
         }
 
         input + input {
             margin-left: 2em;
-        }
-    }
-
-    .info-container {
-        margin-bottom: 1em;
-
-        span {
-            margin-right: 0.4em;
         }
     }
 }

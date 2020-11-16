@@ -78,14 +78,14 @@ export default function Register() {
     }
 
     return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit}>
-                <header className="form-header">
-                    <h1>Register</h1>
-                    <p>Please fill this form to create your Account.</p>
-                </header>
+        <section className="form-container">
+            <header className="form-header">
+                <h1>Register</h1>
+                <p>Please fill this form to create your Account.</p>
+            </header>
 
-                <div className="form-fields-wrapper">
+            <div className="form-fields-wrapper">
+                <form onSubmit={handleSubmit}>
                     <div className="form-field">
                         <label htmlFor="username">
                             <span>Username:</span>
@@ -174,18 +174,18 @@ export default function Register() {
                     </div>
 
                     <div className="form-field-buttons">
-                        <input type="submit" className="form-action-btn" value="register" />
                         <input type="reset" className="form-action-btn" value="reset" />
+                        <input type="submit" className="form-action-btn" value="register" />
                     </div>
-                </div>
+                </form>
+            </div>
 
-                <div className="info-container">
-                    <span>Already have account?</span>
-                    <button className="info-button" onClick={handleRoute('/login')}>
-                        Sign in
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div className="info-container">
+                <span>Already have account?</span>
+                <button className="info-button" onClick={handleRoute('/login')}>
+                    Sign in
+                </button>
+            </div>
+        </section>
     );
 }

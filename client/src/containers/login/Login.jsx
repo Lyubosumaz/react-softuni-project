@@ -32,6 +32,7 @@ function Login(props) {
                     setErrors({ ...errors, [name]: err.errors });
                 });
         }
+
         return { value, onChange: handleChange };
     }
 
@@ -59,13 +60,14 @@ function Login(props) {
     }
 
     return (
-        <div className="form-container">
-            <form>
-                <header className="form-header">
-                    <h1>Login</h1>
-                    <p>Please enter your Username and Password.</p>
-                </header>
-                <div className="form-fields-wrapper">
+        <section className="form-container">
+            <header className="form-header">
+                <h1>Login</h1>
+                <p>Please enter your Username and Password.</p>
+            </header>
+
+            <div className="form-fields-wrapper">
+                <form>
                     <div className="form-field">
                         <label htmlFor="username">
                             <b>Username:</b>
@@ -101,23 +103,19 @@ function Login(props) {
                     </div>
 
                     <div className="form-field-buttons">
-                        <div>
-                            <input type="submit" className="form-action-btn" onClick={handleSubmit} value="login" />
-                        </div>
+                        <input type="reset" className="form-action-btn" value="reset" />
+                        <input type="submit" className="form-action-btn" onClick={handleSubmit} value="login" />
                     </div>
-                </div>
+                </form>
+            </div>
 
-                <div className="info-container">
-                    <p>
-                        Don't have an account?{' '}
-                        <button className="info-button" onClick={handleRoute('/register')}>
-                            Create account
-                        </button>
-                        .
-                    </p>
-                </div>
-            </form>
-        </div>
+            <div className="info-container">
+                <span>Don't have an account?</span>
+                <button className="info-button" onClick={handleRoute('/register')}>
+                    Create account
+                </button>
+            </div>
+        </section>
     );
 }
 

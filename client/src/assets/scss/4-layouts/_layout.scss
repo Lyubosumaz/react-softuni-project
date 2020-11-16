@@ -17,7 +17,7 @@
         overflow-y: scroll;
         grid-area: main;
 
-        .component-wrapper {
+        & > section {
             height: 100%;
         }
 
@@ -40,5 +40,31 @@
 
     .site-footer {
         grid-area: footer;
+    }
+}
+
+.form-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 'title' 'form' 'info';
+
+    .form-header {
+        grid-area: title;
+    }
+
+    .form-fields-wrapper {
+        grid-area: form;
+    }
+
+    .info-container {
+        grid-area: info;
+    }
+}
+
+.info-container {
+    padding-bottom: 1.5em;
+
+    span {
+        margin-right: 0.4em;
     }
 }
