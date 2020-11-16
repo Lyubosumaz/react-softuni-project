@@ -8,10 +8,9 @@
 
     li {
         flex: 1 1 25%;
-    }
 
-    a {
-        text-align: center;
-        flex-basis: 100%;
+        button {
+            flex-basis: 100%;
+        }
     }
 }

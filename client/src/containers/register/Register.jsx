@@ -181,13 +181,13 @@ export default function Register() {
                         <input type="submit" className="form-action-btn" value="register" />
                         <input type="reset" className="form-action-btn" value="reset" />
                     </div>
+                </div>
 
-                    <div className="info-container">
-                        <span>Already have account?</span>
-                        <button className="info-button" onClick={handleRoute('/login')}>
-                            Sign in
-                        </button>
-                    </div>
+                <div className="info-container">
+                    <span>Already have account?</span>
+                    <button className="info-button" onClick={handleRoute('/login')}>
+                        Sign in
+                    </button>
                 </div>
             </form>
         </div>

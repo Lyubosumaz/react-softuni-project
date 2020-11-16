@@ -1,13 +1,15 @@
 button {
     line-height: 0;
-    color: $mainLinkColor;
+    background: none;
+    color: $secondaryFontColor;
+    outline: none;
+    border: none;
     cursor: pointer;
 }
 
 .site-header .nav-bar-button {
-    padding: 0.55em 1em;
+    padding: 1em 1.2em;
     font-size: 1.2em;
-    color: $secondaryFontColor;
 
     &.active {
         background-color: $mainButtonColor;
@@ -27,19 +29,19 @@ button {
 }
 
 .options-bar .options-bar-button {
-    padding: 0.3em 0;
-    font-size: 0.9em;
-    color: $secondaryFontColor;
+    padding: 1em 0;
+    font-size: 0.8em;
 
     &:hover,
     &:active {
         color: $mainFontColor;
+        text-decoration: underline;
         background-color: $mainDarkHightLighten;
     }
 }
 
 .site-footer .footer-nav-button {
-    color: $secondaryFontColor;
+    padding: 0.8em 0.5em;
 
     &:focus,
     &:hover {
@@ -47,16 +49,12 @@ button {
     }
 }
 
-.form-action-btn {
-    padding: 0.75rem 1.5rem;
-    border: 0.1rem solid transparent;
+.form-container .form-action-btn {
+    border: 0.2rem solid transparent;
     border-radius: 1.5rem;
     background-color: $mainButtonColor;
     color: $secondaryFontColor;
-    font-size: 1.2em;
     font-weight: 700;
-    outline: none;
-    cursor: pointer;
 
     &:focus,
     &:hover {
@@ -64,4 +62,11 @@ button {
         background-color: $secondaryFontColor;
         color: $mainButtonColor;
     }
+}
+
+.info-button,
+.label-sub {
+    padding: 0.2em;
+    word-wrap: break-word;
+    color: $mainLinkColor;
 }

@@ -2,7 +2,7 @@
     text-align: center;
 
     .form-header {
-        margin: 2em 0;
+        margin: 0.8em 0 3em 0;
     }
 
     .form-fields-wrapper {
@@ -69,6 +69,7 @@
 
     .form-field-actions {
         margin: 1em 0;
+
         .terms-conditions,
         .subscribe {
             display: flex;
@@ -84,7 +85,7 @@
         }
 
         .terms-conditions {
-            margin-bottom: 1.5em;
+            margin-bottom: 0.5em;
         }
 
         .subscribe {
@@ -104,13 +105,16 @@
     .form-field-buttons {
         margin: 1.5em 0;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
 
         input[type='submit'],
         input[type='reset'] {
             text-transform: capitalize;
+            flex-basis: 15%;
+        }
 
-            flex-basis: 45%;
+        input + input {
+            margin-left: 2em;
         }
     }
 
