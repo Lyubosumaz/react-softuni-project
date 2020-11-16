@@ -159,7 +159,7 @@ export default function Register() {
                     </div>
 
                     <div className="form-field-actions">
-                        <div className="terms-conditions">
+                        <div className="terms">
                             <span>By creating an account, you agree to our</span>
                             <button className="info-button" onClick={handleRoute('/terms-and-conditions')}>
                                 Terms &amp; Conditions

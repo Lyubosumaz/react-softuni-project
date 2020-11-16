@@ -70,35 +70,28 @@
 
     .form-field-actions {
         margin: 1em 0;
+        text-align: left;
 
-        .terms-conditions,
+        .terms,
         .subscribe {
             display: flex;
-            justify-content: center;
-
-            span {
-                margin-right: 0.4em;
-            }
-
-            label {
-                margin-left: 0.3em;
-            }
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .terms-conditions {
-            margin-bottom: 0.5em;
+        .terms {
+            margin-bottom: 1em;
         }
 
         .subscribe {
-            input[type='checkbox'],
-            label {
-                cursor: pointer;
-            }
-
             input[type='checkbox'] {
+                padding: 0.3em;
                 width: 1em;
                 height: 1em;
-                align-self: center;
+            }
+
+            label {
+                padding: 0.3em;
             }
         }
     }
