@@ -4,16 +4,20 @@ import { toast } from 'react-toastify';
 import ShopCard from './components/shop-card/ShopCard';
 
 export default function Shop() {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
         http.Game.shop()
             .then((i) => {
-                if (!i) { return; }
+                if (!i) {
+                    return;
+                }
+
                 const rows = [...Array(Math.ceil(i.length / 4))];
                 const arr = rows.map((row, index) => {
                     return i.slice(index * 4, index * 4 + 4);
-                })
+                });
+
                 setItems(arr);
             })
             .catch((err) => {
@@ -24,19 +28,20 @@ export default function Shop() {
     }, []);
 
     return (
-        <div >
+        <div>
             <h1>Shop</h1>
 
             <div className="item-card-container">
-                {items && items.map((row, i) => {
-                    return (
-                        <div key={i} className="item-card-card">
-                            {row.map((item, index) => {
-                                return (<ShopCard key={index} item={item} />);
-                            })}
-                        </div>
-                    );
-                })}
+                {items &&
+                    items.map((row, i) => {
+                        return (
+                            <div key={i} className="item-card-card">
+                                {row.map((item, index) => {
+                                    return <ShopCard key={index} item={item} />;
+                                })}
+                            </div>
+                        );
+                    })}
             </div>
         </div>
     );

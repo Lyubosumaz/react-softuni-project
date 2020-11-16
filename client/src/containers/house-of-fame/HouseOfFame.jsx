@@ -8,34 +8,39 @@ import './house-of-fame.css';
 function HouseOfFame(props) {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState('');
+    const [searchBool, setSearchBool] = useState(false); // need reworking
 
     useEffect(() => {
         http.User.house().then((allUsers) => {
-            setUsers([...users, ...allUsers]);
+            setUsers((users) => [...users, ...allUsers]);
         });
-    });
+    }, []);
 
     function handleSearch(e) {
         setSearch(e.target.value);
     }
 
+    // TODO
     useEffect(() => {
+        setSearchBool((searchBool) => (searchBool = true));
+
         if (!users) {
             return;
         }
 
-        setUsers(
-            users.filter((u) => {
+        setUsers((users) => [
+            ...users.filter((u) => {
                 return u.user.username.toLowerCase().includes(search.toLowerCase());
-            })
-        );
+            }),
+        ]);
 
-        if (search === '') {
+        if (searchBool && search === '') {
             http.User.house().then((allUsers) => {
-                setUsers([...users, ...allUsers]);
+                setUsers(allUsers);
             });
         }
-    }, [users, search]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [search]);
 
     return (
         <div className="house-container">

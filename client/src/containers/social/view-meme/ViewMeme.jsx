@@ -11,7 +11,7 @@ export default function ViewMeme(props) {
         http.Social.getMeme(memeId).then((meme) => {
             setMeme(meme);
         });
-    });
+    }, [memeId]);
 
     return (
         <div className="view-meme-container">

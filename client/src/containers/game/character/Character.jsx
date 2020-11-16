@@ -8,6 +8,7 @@ import './character.css';
 import { setRemoveItem } from './actions';
 
 function Character(props) {
+    const newProps = props;
     const [items, setItems] = useState([]);
     const [statistics, setStatistics] = useState([]);
 
@@ -31,8 +32,8 @@ function Character(props) {
                 setItems(c);
                 setStatistics(allStats);
 
-                if (props.characterRemoveItem) {
-                    props.setRemoveItem();
+                if (newProps.characterRemoveItem) {
+                    newProps.setRemoveItem();
                 }
             })
             .catch((err) => {
@@ -40,7 +41,7 @@ function Character(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    });
+    }, [newProps]);
 
     return (
         <div>
