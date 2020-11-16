@@ -59,31 +59,52 @@ function Login(props) {
     }
 
     return (
-        <div className="login-container">
+        <div className="form-container">
             <form>
-                <h1>Login</h1>
-                <p>Please enter your Username and Password.</p>
+                <header className="form-header">
+                    <h1>Login</h1>
+                    <p>Please enter your Username and Password.</p>
+                </header>
+                <div className="form-fields-wrapper">
+                    <div className="form-field">
+                        <label htmlFor="username">
+                            <b>Username:</b>
+                        </label>
+                        <input type="text" placeholder="Enter your Username" name="username" className="form-input" id="username" {...username} />
 
-                <div className="form-div-container">
-                    <label htmlFor="username">
-                        <b>Username:</b>
-                    </label>
-                    <input type="text" placeholder="Enter your Username" name="username" className="form-input" id="username" {...username} />
-                    {errors.username && <div className="form-input-error">{errors.username[0]}</div>}
-                </div>
+                        {Array.isArray(errors.username) && errors.username[0] ? (
+                            <div className="form-error-message">
+                                <span>{errors.username[0]}</span>
+                            </div>
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
+                    </div>
 
-                <div className="form-div-container">
-                    <label htmlFor="password">
-                        <b>Password:</b>
-                    </label>
-                    <input type="password" placeholder="Enter your Password" name="password" className="form-input" id="password" {...password} />
-                    {errors.password && <div className="form-input-error">{errors.password[0]}</div>}
-                </div>
+                    <div className="form-field">
+                        <label htmlFor="password">
+                            <b>Password:</b>
+                        </label>
+                        <input type="password" placeholder="Enter your Password" name="password" className="form-input" id="password" {...password} />
 
-                <div>
-                    <button type="submit" className="form-action-btn" onClick={handleSubmit}>
-                        Login
-                    </button>
+                        {Array.isArray(errors.password) && errors.password[0] ? (
+                            <div className="form-error-message">
+                                <span>{errors.password[0]}</span>
+                            </div>
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="form-field-buttons">
+                        <div>
+                            <input type="submit" className="form-action-btn" onClick={handleSubmit} value="login" />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="info-container">

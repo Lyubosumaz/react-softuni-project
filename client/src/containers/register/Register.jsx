@@ -32,7 +32,7 @@ export default function Register() {
             schema.fields[name]
                 .validate(event.target.value, { abortEarly: false })
                 .then(() => {
-                    setErrors({ ...errors, [name]: null });
+                    setErrors({ ...errors, [name]: [] });
                 })
                 .catch((err) => {
                     setErrors({ ...errors, [name]: err.errors });
@@ -93,16 +93,15 @@ export default function Register() {
 
                         <input type="text" placeholder="Enter your Username" className="form-input" id="username" {...username} />
 
-                        {(errors.username && (
+                        {Array.isArray(errors.username) && errors.username[0] ? (
                             <div className="form-error-message">
                                 <span>{errors.username[0]}</span>
                             </div>
-                        )) ||
-                            (!errors.username && (
-                                <div className="form-error-container">
-                                    <span>Error Container</span>
-                                </div>
-                            ))}
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-field">
@@ -112,16 +111,15 @@ export default function Register() {
 
                         <input type="email" placeholder="Enter your Email" className="form-input" id="email" {...email} />
 
-                        {(errors.email && (
+                        {Array.isArray(errors.email) && errors.email[0] ? (
                             <div className="form-error-message">
                                 <span>{errors.email[0]}</span>
                             </div>
-                        )) ||
-                            (errors.email == null && (
-                                <div className="form-error-container">
-                                    <span>Error Container</span>
-                                </div>
-                            ))}
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-field">
@@ -131,16 +129,15 @@ export default function Register() {
 
                         <input type="password" placeholder="Enter your Password" className="form-input" id="password" {...password} />
 
-                        {(errors.password && (
+                        {Array.isArray(errors.password) && errors.password[0] ? (
                             <div className="form-error-message">
                                 <span>{errors.password[0]}</span>
                             </div>
-                        )) ||
-                            (!errors.password && (
-                                <div className="form-error-container">
-                                    <span>Error Container</span>
-                                </div>
-                            ))}
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-field">
@@ -150,16 +147,15 @@ export default function Register() {
 
                         <input type="password" placeholder="Confirm your Password" className="form-input" id="repeatPassword" {...repeatPassword} />
 
-                        {(errors.repeatPassword && (
+                        {Array.isArray(errors.repeatPassword) && errors.repeatPassword[0] ? (
                             <div className="form-error-message">
                                 <span>{errors.repeatPassword[0]}</span>
                             </div>
-                        )) ||
-                            (!errors.repeatPassword && (
-                                <div className="form-error-container">
-                                    <span>Error Container</span>
-                                </div>
-                            ))}
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-field-actions">
