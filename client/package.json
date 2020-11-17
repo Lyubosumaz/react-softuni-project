@@ -49,7 +49,6 @@
             "react-app/jest"
         ],
         "rules": {
-            "import/no-anonymous-default-export": "off",
             "react/jsx-users-react": "off",
             "react/react-in-jsx-scope": "off"
         }

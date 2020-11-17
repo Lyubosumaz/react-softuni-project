@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from '../../../../utils/handleRoute';
+import { handleRoute } from '../../../../utils/history';
 import './meme-card.css';
 
 function MemeCard(props) {

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import history from '../../../utils/history';
+import { history, handleRoute } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
-import handleRoute from '../../../utils/handleRoute';
 import { toast } from 'react-toastify';
 import './delete-meme.css';
 import Title from '../../../components/title/Title';

@@ -1,4 +1,4 @@
-import handleRoute from '../../utils/handleRoute';
+import { handleRoute } from '../../utils/history';
 import './404.css';
 
 export default function FourOFour() {

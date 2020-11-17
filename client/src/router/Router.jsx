@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import history from '../utils/history';
+import { history } from '../utils/history';
 import OptionBar from '../components/options-bar/OptionsBar';
 import AuthRoute from './auth-route/AuthRoute';
 

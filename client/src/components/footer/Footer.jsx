@@ -1,4 +1,4 @@
-import handleRoute from '../../utils/handleRoute';
+import { handleRoute } from '../../utils/history';
 
 export default function Footer() {
     return (

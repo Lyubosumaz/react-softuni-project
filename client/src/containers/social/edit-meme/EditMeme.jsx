@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import history from '../../../utils/history';
+import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
 import { toast } from 'react-toastify';

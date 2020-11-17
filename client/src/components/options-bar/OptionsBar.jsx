@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import handleRoute from '../../utils/handleRoute';
+import { handleRoute } from '../../utils/history';
 
 function Options(props) {
     const isLogged = props.isLogin;

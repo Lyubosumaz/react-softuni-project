@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import history from '../../utils/history';
-import handleRoute from '../../utils/handleRoute';
+import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';

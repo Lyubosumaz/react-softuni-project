@@ -1,4 +1,4 @@
-import handleRoute from '../../utils/handleRoute';
+import { handleRoute } from '../../utils/history';
 import { archiveReader } from '../../utils/archiveHandler';
 import archive from './site-info-archive.json';
 

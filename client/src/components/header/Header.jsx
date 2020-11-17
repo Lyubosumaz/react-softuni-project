@@ -1,11 +1,10 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from '../../utils/handleRoute';
+import { handleRoute } from '../../utils/history';
 import numberGenerator from '../../utils/numberGenerator';
 
 function Header(props) {
     const isLogged = props.isLogin;
-
     return (
         <header className="site-header">
             <nav className="site-navigation">
