@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
+import Title from '../../../components/title/Title';
 import MemeCard from '../components/meme-card/MemeCard';
 
 export default function ViewMeme(props) {
@@ -15,6 +16,7 @@ export default function ViewMeme(props) {
 
     return (
         <div className="view-meme-container">
+            <Title type={'component'} />
             <h1>View Meme</h1>
 
             {meme && <MemeCard meme={meme} />}

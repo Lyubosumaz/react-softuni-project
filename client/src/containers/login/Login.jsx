@@ -6,6 +6,7 @@ import handleRoute from '../../utils/handleRoutes';
 import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
+import Title from '../../components/title/Title';
 
 function Login(props) {
     const username = useFormInput('');
@@ -61,10 +62,7 @@ function Login(props) {
 
     return (
         <section className="form-container">
-            <header className="form-header">
-                <h1>Login</h1>
-                <p>Please enter your Username and Password.</p>
-            </header>
+            <Title type={'form'} />
 
             <div className="form-fields-wrapper">
                 <form>

@@ -1,0 +1,17 @@
+{
+    "error": "Nothing found in the Site Title Archive",
+    "register": {
+        "title": "Register",
+        "subtitle": "Please fill this form to create your Account."
+    },
+    "login": {
+        "title": "Login",
+        "subtitle": "Please enter your Username and Password."
+    },
+    "profile": { "title": "Profile" },
+    "social": { "title": "Social" },
+    "house-of-fame": { "title": "House of Fame" },
+    "puzzles": { "title": "Puzzles" },
+    "games": { "title": "Games" },
+    "view-meme": { "title": "View Meme" }
+}
