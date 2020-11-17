@@ -8,10 +8,22 @@
         "title": "Login",
         "subtitle": "Please enter your Username and Password."
     },
+
+    "logout": {
+        "title": "Logout",
+        "subtitle": "Do you really want to logout?"
+    },
+
     "profile": { "title": "Profile" },
     "social": { "title": "Social" },
+    "add-meme": {
+        "title": "Add Meme",
+        "subtitle": "Adding meme was never been easier."
+    },
+    "view-meme": { "title": "View Meme" },
+    "edit-meme": { "title": "Edit Meme" },
+    "delete-meme": { "title": "Delete Meme" },
     "house-of-fame": { "title": "House of Fame" },
     "puzzles": { "title": "Puzzles" },
-    "games": { "title": "Games" },
-    "view-meme": { "title": "View Meme" }
+    "games": { "title": "Games" }
 }

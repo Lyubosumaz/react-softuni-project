@@ -6,6 +6,7 @@ import http from '../../services/http';
 import GameHistoryCard from './components/game-history-card/GameHistoryCard';
 import defaultProfilePic from '../../assets/images/default_profile.png';
 import './profile.css';
+import Title from '../../components/title/Title';
 
 function Profile(props) {
     const [profile, setProfile] = useState(null);
@@ -18,9 +19,8 @@ function Profile(props) {
 
     return (
         <section className="component-wrapper">
-            <header className="component-header">
-                <h1>Profile</h1>
-            </header>
+            <Title type={'component'} />
+            <h1>Profile</h1>
 
             <div className="component-data-wrapper">
                 {profile && (

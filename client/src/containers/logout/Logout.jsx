@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
 import { setLogoutValue } from '../login/actions';
+import Title from '../../components/title/Title';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {
@@ -28,10 +29,9 @@ function Logout(props) {
 
     return (
         <section className="component-wrapper">
-            <header className="component-header">
-                <h1>Logout</h1>
-                <p>Do you really want to logout?</p>
-            </header>
+            <Title type={'component'} />
+            <h1>Logout</h1>
+            <p>Do you really want to logout?</p>
 
             <div className="component-data-wrapper">
                 <ul className="buttons-list">

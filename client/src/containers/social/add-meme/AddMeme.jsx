@@ -5,6 +5,7 @@ import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import schema from './add-meme-validations';
+import Title from '../../../components/title/Title';
 
 function AddMeme(props) {
     const title = useFormInput('');
@@ -62,6 +63,7 @@ function AddMeme(props) {
     return (
         <div className="add-meme-container">
             <form>
+                <Title type={'component'} />
                 <h1>Add Meme</h1>
                 <p>Adding meme was never been easier.</p>
 

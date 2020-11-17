@@ -5,6 +5,7 @@ import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
+import Title from '../../../components/title/Title';
 
 function EditMeme(props) {
     const memeId = props.match.params.id;
@@ -72,6 +73,7 @@ function EditMeme(props) {
     return (
         <div className="edit-meme-container">
             <form>
+                <Title type={'component'} />
                 <h1>Edit Meme</h1>
 
                 <p>Editing meme was never been easier.</p>

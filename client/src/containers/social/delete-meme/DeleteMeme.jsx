@@ -5,6 +5,7 @@ import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import './delete-meme.css';
+import Title from '../../../components/title/Title';
 
 function DeleteMeme(props) {
     const memeId = props.match.params.id;
@@ -37,6 +38,7 @@ function DeleteMeme(props) {
     return (
         <div className="delete-meme-container">
             <form>
+                <Title type={'component'} />
                 <h1>Delete Meme</h1>
 
                 <p>Are you sure you want to delete this meme?</p>
