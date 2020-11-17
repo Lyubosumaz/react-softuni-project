@@ -1,15 +1,7 @@
-.form-container {
+.form-fields-wrapper {
     text-align: center;
-
-    .form-header {
-        padding-top: 0.8em;
-        margin-bottom: 3em;
-    }
-
-    .form-fields-wrapper {
-        margin: 0 auto;
-        width: 40%;
-    }
+    margin: 0 auto;
+    width: 40%;
 
     .form-field {
         margin-bottom: 0.5em;
@@ -19,9 +11,8 @@
 
         label {
             margin-right: 5%;
-            display: flex;
             flex: 1 0 25%;
-            text-align: right;
+            display: flex;
             justify-content: flex-end;
             align-items: center;
 
@@ -39,7 +30,6 @@
             background-color: #f0f0f0;
             border: 0.15em solid transparent;
             border-radius: 0.3em;
-            opacity: 0.9;
             overflow: hidden;
 
             &:hover,
@@ -63,8 +53,8 @@
 
         .form-error-container {
             visibility: hidden;
-            opacity: 0;
             pointer-events: none;
+            opacity: 0;
         }
     }
 

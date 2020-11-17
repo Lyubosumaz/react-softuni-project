@@ -27,31 +27,36 @@ function Logout(props) {
     };
 
     return (
-        <div className="form-container">
-            <form>
+        <section className="component-wrapper">
+            <header className="component-header">
                 <h1>Logout</h1>
                 <p>Do you really want to logout?</p>
+            </header>
 
-                <div>
-                    <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>
-                        <span>Yes</span>
-                    </button>
-                    <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}>
-                        <span>No!</span>
-                    </button>
-                </div>
-
-                <div className="info-container">
-                    <p>
-                        Check out the new features in latest update{' '}
-                        <button className="info-button" onClick={handleRoute('/about')}>
-                            Here
+            <div className="component-data-wrapper">
+                <ul className="buttons-list">
+                    <li>
+                        <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>
+                            <span>Yes</span>
                         </button>
-                        .
-                    </p>
-                </div>
-            </form>
-        </div>
+                    </li>
+                    <li>
+                        <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}>
+                            <span>No!</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div className="info-container">
+                <p>
+                    Check out the new features in latest update{' '}
+                    <button className="info-button" onClick={handleRoute('/about')}>
+                        Here
+                    </button>
+                </p>
+            </div>
+        </section>
     );
 }
 
