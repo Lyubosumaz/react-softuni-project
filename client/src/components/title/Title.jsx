@@ -1,41 +1,19 @@
 import { Fragment } from 'react';
+import { archiveValidator, archiveReader } from '../../utils/archiveHandler';
 import archive from './site-title-archive.json';
 
 export default function Title(props) {
     const type = props.type;
-    const pathnameNesting = 1; // Change it for more in-nesting of the url
-
-    function getCurrentPage() {
-        const currentPathname = window.location.pathname.slice(1);
-
-        if (currentPathname.indexOf('/') > -1) {
-            const pathnameArr = currentPathname.split('/');
-
-            if (Array.isArray(pathnameArr) && pathnameArr.length > 1) {
-                return pathnameArr[pathnameNesting];
-            }
-        }
-
-        return currentPathname;
-    }
-
-    function archiveValidator() {
-        return archive[getCurrentPage()] ? Object.keys(archive[getCurrentPage()]).length > 1 : false;
-    }
-
-    function archiveReader(select) {
-        return archive[getCurrentPage()] ? archive[getCurrentPage()][select] : archive.error;
-    }
 
     return (
         <header className={`${type}-header`}>
-            {archiveValidator() ? (
+            {archiveValidator(archive) ? (
                 <Fragment>
-                    <h1>{archiveReader('title')}</h1>
-                    <p>{archiveReader('subtitle')}</p>
+                    <h1>{archiveReader(archive, 'title')}</h1>
+                    <p>{archiveReader(archive, 'subtitle')}</p>
                 </Fragment>
             ) : (
-                <h1>{archiveReader('title')}</h1>
+                <h1>{archiveReader(archive, 'title')}</h1>
             )}
         </header>
     );

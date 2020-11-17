@@ -1,5 +1,5 @@
 import handleRoute from '../../utils/handleRoute';
-import archiveReader from '../../utils/archiveReader';
+import { archiveReader } from '../../utils/archiveHandler';
 import archive from './site-info-archive.json';
 
 export default function Info() {
