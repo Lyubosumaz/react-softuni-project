@@ -3,6 +3,7 @@ import history from '../../utils/history';
 import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
+import Title from '../../components/title/Title';
 // import './register.css';
 
 export default function Register() {
@@ -42,8 +43,6 @@ export default function Register() {
         return { value, onChange: handleChange };
     }
 
-    console.log(errors);
-
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -79,10 +78,7 @@ export default function Register() {
 
     return (
         <section className="form-container">
-            <header className="form-header">
-                <h1>Register</h1>
-                <p>Please fill this form to create your Account.</p>
-            </header>
+            <Title type={'form'} />
 
             <div className="form-fields-wrapper">
                 <form onSubmit={handleSubmit}>
