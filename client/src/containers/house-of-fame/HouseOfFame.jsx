@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { httpUser } from '../../services/http';
 import { handleRoute } from '../../utils/history';
 import HouseOfFameCard from './components/HouseOfFameCard';
-import './house-of-fame.css';
 import Title from '../../components/title/Title';
 
 function HouseOfFame(props) {

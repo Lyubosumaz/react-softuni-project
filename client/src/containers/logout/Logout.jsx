@@ -3,7 +3,6 @@ import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
-import './logout.css';
 import { setLogoutValue } from '../login/actions';
 import Title from '../../components/title/Title';
 import Info from '../../components/info/Info';

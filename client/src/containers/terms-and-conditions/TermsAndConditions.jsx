@@ -1,5 +1,4 @@
 import { handleRoute } from '../../utils/history';
-import './terms-and-conditions.css';
 import Title from '../../components/title/Title';
 
 export default function TermsAndConditions() {

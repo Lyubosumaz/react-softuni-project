@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handleRoute } from '../../../../utils/history';
-import './meme-card.css';
 
 function MemeCard(props) {
     const memeAddedBy = props.meme.addedBy;

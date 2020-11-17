@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { httpUser } from '../services/http';
@@ -11,6 +10,7 @@ import { authCookie, removeAllCookies } from '../services/cookies';
 import Router from '../router/Router';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import './app.scss';
 import '../assets/scss/main.scss';
