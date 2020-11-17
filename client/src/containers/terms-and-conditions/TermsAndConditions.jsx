@@ -1,4 +1,4 @@
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from '../../utils/handleRoute';
 import './terms-and-conditions.css';
 import Title from '../../components/title/Title';
 

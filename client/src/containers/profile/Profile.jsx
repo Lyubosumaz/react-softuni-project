@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from '../../utils/handleRoute';
 import secondsToClock from '../../utils/secondsToClock';
 import http from '../../services/http';
 import GameHistoryCard from './components/game-history-card/GameHistoryCard';

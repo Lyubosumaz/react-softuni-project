@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from '../../utils/handleRoute';
 import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
 import Title from '../../components/title/Title';

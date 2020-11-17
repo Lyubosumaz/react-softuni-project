@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import http from '../../services/http';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from '../../utils/handleRoute';
 import HouseOfFameCard from './components/HouseOfFameCard';
 import './house-of-fame.css';
 import Title from '../../components/title/Title';

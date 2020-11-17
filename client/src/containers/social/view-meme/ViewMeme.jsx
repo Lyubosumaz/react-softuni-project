@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import http from '../../../services/http';
-import handleRoute from '../../../utils/handleRoutes';
+import handleRoute from '../../../utils/handleRoute';
 import Title from '../../../components/title/Title';
 import Info from '../../../components/info/Info';
 import MemeCard from '../components/meme-card/MemeCard';

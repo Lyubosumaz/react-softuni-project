@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import handleRoute from '../../utils/handleRoutes';
+import handleRoute from '../../utils/handleRoute';
 import numberGenerator from '../../utils/numberGenerator';
 
 function Header(props) {

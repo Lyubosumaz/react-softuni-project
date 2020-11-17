@@ -1,11 +1,6 @@
-import history from '../../utils/history';
+import handleRoute from '../../utils/handleRoute';
 
 export default function Footer() {
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    };
-
     return (
         <footer className="site-footer">
             <div className="site-wrapper">
