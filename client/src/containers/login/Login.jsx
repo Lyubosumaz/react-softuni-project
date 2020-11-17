@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { setLoginValue } from './actions';
 import history from '../../utils/history';
-import handleRoute from '../../utils/handleRoute';
 import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';

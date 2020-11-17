@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import history from '../../../utils/history';
 import { connect } from 'react-redux';
 import http from '../../../services/http';
-import handleRoute from '../../../utils/handleRoute';
 import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
 import Title from '../../../components/title/Title';

@@ -1,7 +1,7 @@
 import history from './history';
 
-const handleRoute = (name) => (e) => {
-    e.preventDefault();
+const handleRoute = (name) => (event) => {
+    event.preventDefault();
     history.push(name);
 };
 

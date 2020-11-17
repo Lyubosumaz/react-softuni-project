@@ -1,13 +1,8 @@
 import { connect } from 'react-redux';
-import history from '../../utils/history';
+import handleRoute from '../../utils/handleRoute';
 
 function Options(props) {
     const isLogged = props.isLogin;
-
-    const handleRoute = (name) => (e) => {
-        e.preventDefault();
-        history.push(name);
-    };
 
     return isLogged ? (
         <div className="options-bar">
