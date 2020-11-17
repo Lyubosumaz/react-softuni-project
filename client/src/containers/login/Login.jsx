@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { setLoginValue } from './actions';
 import history from '../../utils/history';
-import http from '../../services/http';
+import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
 import Title from '../../components/title/Title';
@@ -46,7 +46,8 @@ function Login(props) {
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
         if (hasErrors.length === 0 && data.username && data.password) {
-            http.User.login(data)
+            httpUser
+                .login(data)
                 .then((user) => {
                     props.setLoginValue(user);
                     toast('You have Logged successfully!', {

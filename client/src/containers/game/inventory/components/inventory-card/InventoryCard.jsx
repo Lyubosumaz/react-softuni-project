@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import http from '../../../../../services/http';
+import { httpGame } from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './inventory-card.css';
 
 function InventoryCard(props) {
-
     function handleSell() {
-        http.Game.sell(props.item._id)
+        httpGame
+            .sell(props.item._id)
             .then((res) => {
                 toast(res.message, {
                     type: toast.TYPE.INFO,
@@ -18,10 +18,11 @@ function InventoryCard(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    };
+    }
 
     function handleEquip() {
-        http.Game.equip(props.item._id)
+        httpGame
+            .equip(props.item._id)
             .then((res) => {
                 toast(res.message, {
                     type: toast.TYPE.INFO,
@@ -33,12 +34,11 @@ function InventoryCard(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    };
+    }
 
     return (
         <div className={props.styleClass ? props.styleClass : 'item-card'}>
             <div className="item-card-inner">
-
                 <div className="item-card-front">
                     <img src={props.item.imageUrl} alt="Avatar" />
                 </div>
@@ -55,11 +55,14 @@ function InventoryCard(props) {
 
                     <div>
                         <h3>Price: {props.item.price}</h3>
-                        <button className="active-button sell" onClick={handleSell}>Sell</button>
-                        <button className="active-button" onClick={handleEquip}>Equip</button>
+                        <button className="active-button sell" onClick={handleSell}>
+                            Sell
+                        </button>
+                        <button className="active-button" onClick={handleEquip}>
+                            Equip
+                        </button>
                     </div>
                 </div>
-
             </div>
         </div>
     );
@@ -67,14 +70,16 @@ function InventoryCard(props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setSellItem: () => dispatch({
-            type: 'CHARACTER_SELL_ITEM',
-            payload: true,
-        }),
-        setEquipItem: () => dispatch({
-            type: 'CHARACTER_EQUIP_ITEM',
-            payload: true,
-        }),
+        setSellItem: () =>
+            dispatch({
+                type: 'CHARACTER_SELL_ITEM',
+                payload: true,
+            }),
+        setEquipItem: () =>
+            dispatch({
+                type: 'CHARACTER_EQUIP_ITEM',
+                payload: true,
+            }),
     };
 }
 

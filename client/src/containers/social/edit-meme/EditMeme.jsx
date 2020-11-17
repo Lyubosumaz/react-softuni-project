@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import history from '../../../utils/history';
 import { connect } from 'react-redux';
-import http from '../../../services/http';
+import { httpSocial } from '../../../services/http';
 import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
 import Title from '../../../components/title/Title';
@@ -15,7 +15,7 @@ function EditMeme(props) {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        http.Social.getMeme(memeId).then((meme) => {
+        httpSocial.getMeme(memeId).then((meme) => {
             setMeme(meme);
             setTitle(meme.title);
             setImageUrl(meme.imageUrl);
@@ -55,7 +55,8 @@ function EditMeme(props) {
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
         if (hasErrors.length === 0 && data.title && data.imageUrl && props.isLogin) {
-            http.Social.editMeme(data)
+            httpSocial
+                .editMeme(data)
                 .then((res) => {
                     toast(res.message, {
                         type: toast.TYPE.SUCCESS,

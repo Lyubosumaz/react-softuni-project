@@ -2,13 +2,12 @@ import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 import { store } from '../../../../services/store';
-import http from '../../../../services/http';
+import { httpGame } from '../../../../services/http';
 import { toast } from 'react-toastify';
 import { tiles } from '../data/maps/2';
 // import { connect } from 'react-redux';
 
 export default function HandleMovement({ children }) {
-
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -21,8 +20,8 @@ export default function HandleMovement({ children }) {
                 return [oldPos[0], oldPos[1] + SPRITE_SIZE];
             default:
                 break;
-        };
-    };
+        }
+    }
 
     function getSpriteLocation(direction, walkIndex) {
         switch (direction) {
@@ -36,19 +35,17 @@ export default function HandleMovement({ children }) {
                 return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
             default:
                 break;
-        };
-    };
+        }
+    }
 
     function getWalkIndex() {
         const walkIndex = store.getState().player.walkIndex;
         return walkIndex >= 7 ? 0 : walkIndex + 1;
-    };
-
+    }
 
     function observeBoundaries(newPos) {
-        return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
-            (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE);
-    };
+        return newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE && newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE;
+    }
 
     function observeImpassable(newPos) {
         const tiles = store.getState().map.tiles;
@@ -56,7 +53,7 @@ export default function HandleMovement({ children }) {
         const x = newPos[0] / SPRITE_SIZE;
         const nextTile = tiles[y][x];
         return nextTile;
-    };
+    }
 
     function dispatchMove(direction, newPos) {
         const walkIndex = getWalkIndex();
@@ -68,9 +65,9 @@ export default function HandleMovement({ children }) {
                 direction,
                 walkIndex,
                 spriteLocation: getSpriteLocation(direction, walkIndex),
-            }
+            },
         });
-    };
+    }
 
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
@@ -80,7 +77,7 @@ export default function HandleMovement({ children }) {
             handleCurrentTile(observeImpassable(newPos));
             dispatchMove(direction, newPos);
         }
-    };
+    }
 
     function handleKeyDown(e) {
         e.preventDefault();
@@ -96,8 +93,8 @@ export default function HandleMovement({ children }) {
                 return attemptMove('SOUTH');
             default:
                 break;
-        };
-    };
+        }
+    }
 
     function handleCurrentTile(tile) {
         switch (tile) {
@@ -105,7 +102,7 @@ export default function HandleMovement({ children }) {
                 if (store.getState().game.item.length === 0) {
                     store.dispatch({
                         type: 'OPEN_ITEM_CHEST',
-                        payload: { itemName: 'You didn\'t loot anything' },
+                        payload: { itemName: "You didn't loot anything" },
                     });
                 }
 
@@ -116,7 +113,7 @@ export default function HandleMovement({ children }) {
                     })
                 )
                     .then(() => {
-                        http.Game.save({
+                        httpGame.save({
                             totalGold: store.getState().game.gold,
                             totalItem: store.getState().game.item,
                             totalTime: store.getState().game.time,
@@ -136,14 +133,18 @@ export default function HandleMovement({ children }) {
                             type: 'ADD_TILES',
                             payload: {
                                 tiles,
-                            }
+                            },
                         });
                     })
-                    .catch((err) => { console.error(err); });
+                    .catch((err) => {
+                        console.error(err);
+                    });
                 break;
             case 2:
-                if (store.getState().game.gold > 0) { return; }
-                const gold = Math.floor((Math.random() * 10) + 1);
+                if (store.getState().game.gold > 0) {
+                    return;
+                }
+                const gold = Math.floor(Math.random() * 10 + 1);
                 store.dispatch({
                     type: 'OPEN_GOLD_CHEST',
                     payload: gold,
@@ -153,7 +154,9 @@ export default function HandleMovement({ children }) {
                 });
                 break;
             case 3:
-                if (store.getState().game.item.length > 0) { return; }
+                if (store.getState().game.item.length > 0) {
+                    return;
+                }
                 const item = store.getState().game.gameItems[Math.ceil(Math.random() * 7)];
                 store.dispatch({
                     type: 'OPEN_ITEM_CHEST',
@@ -162,19 +165,16 @@ export default function HandleMovement({ children }) {
                 toast(`You have found ${item.itemName}!`, {
                     type: toast.TYPE.SUCCESS,
                 });
-                break
+                break;
             default:
                 break;
-        };
-    };
+        }
+    }
 
     return (
         <Fragment>
-            <KeyboardEventHandler
-                handleKeys={['left', 'right', 'up', 'down']}
-                onKeyEvent={(key, e) => handleKeyDown(e)}
-            />
+            <KeyboardEventHandler handleKeys={['left', 'right', 'up', 'down']} onKeyEvent={(key, e) => handleKeyDown(e)} />
             {children}
         </Fragment>
     );
-};
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import http from '../../../services/http';
+import { httpGame } from '../../../services/http';
 import { toast } from 'react-toastify';
 import InventoryCard from './components/inventory-card/InventoryCard';
 import { setSellItem, setEquipItem } from './actions';
@@ -10,7 +10,8 @@ function Inventory(props) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        http.Game.inventory()
+        httpGame
+            .inventory()
             .then((i) => {
                 if (!i) {
                     return;

@@ -1,11 +1,11 @@
-import http from '../../../../../services/http';
+import { httpGame } from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './shop-card.css';
 
 export default function ShopCard(props) {
-
     function handleBuy() {
-        http.Game.buy(props.item._id)
+        httpGame
+            .buy(props.item._id)
             .then((res) => {
                 toast(res.message, {
                     type: toast.TYPE.INFO,
@@ -16,12 +16,11 @@ export default function ShopCard(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    };
+    }
 
     return (
         <div className={props.styleClass ? props.styleClass : 'item-card'}>
             <div className="item-card-inner">
-
                 <div className="item-card-front">
                     <img src={props.item.imageUrl} alt="Avatar" />
                 </div>
@@ -38,10 +37,11 @@ export default function ShopCard(props) {
 
                     <div>
                         <h3>Price: {props.item.price}</h3>
-                        <button className="active-button buy" onClick={handleBuy}>Buy</button>
+                        <button className="active-button buy" onClick={handleBuy}>
+                            Buy
+                        </button>
                     </div>
                 </div>
-
             </div>
         </div>
     );

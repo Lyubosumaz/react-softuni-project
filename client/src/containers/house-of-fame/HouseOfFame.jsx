@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import http from '../../services/http';
+import { httpUser } from '../../services/http';
 import handleRoute from '../../utils/handleRoute';
 import HouseOfFameCard from './components/HouseOfFameCard';
 import './house-of-fame.css';
@@ -12,7 +12,7 @@ function HouseOfFame(props) {
     const [searchBool, setSearchBool] = useState(false); // need reworking
 
     useEffect(() => {
-        http.User.house().then((allUsers) => {
+        httpUser.house().then((allUsers) => {
             setUsers((users) => [...users, ...allUsers]);
         });
     }, []);
@@ -36,7 +36,7 @@ function HouseOfFame(props) {
         ]);
 
         if (searchBool && search === '') {
-            http.User.house().then((allUsers) => {
+            httpUser.house().then((allUsers) => {
                 setUsers(allUsers);
             });
         }

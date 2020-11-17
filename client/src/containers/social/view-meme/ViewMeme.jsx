@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import http from '../../../services/http';
+import { httpSocial } from '../../../services/http';
 import Title from '../../../components/title/Title';
 import Info from '../../../components/info/Info';
 import MemeCard from '../components/meme-card/MemeCard';
@@ -9,7 +9,7 @@ export default function ViewMeme(props) {
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
-        http.Social.getMeme(memeId).then((meme) => {
+        httpSocial.getMeme(memeId).then((meme) => {
             setMeme(meme);
         });
     }, [memeId]);

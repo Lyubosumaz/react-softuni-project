@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import history from '../../../utils/history';
 import { connect } from 'react-redux';
-import http from '../../../services/http';
+import { httpSocial } from '../../../services/http';
 import { toast } from 'react-toastify';
 import schema from './add-meme-validations';
 import Title from '../../../components/title/Title';
@@ -21,7 +21,8 @@ function AddMeme(props) {
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
         if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
-            http.Social.addMeme(meme)
+            httpSocial
+                .addMeme(meme)
                 .then((res) => {
                     toast(res.message, {
                         type: toast.TYPE.SUCCESS,

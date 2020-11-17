@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import http from '../../services/http';
+import { httpSocial } from '../../services/http';
 
 export default function useMemePage(pageNumber) {
     const [memes, setMemes] = useState([]);
@@ -11,10 +11,11 @@ export default function useMemePage(pageNumber) {
         setLoading(true);
         setError(false);
 
-        http.Social.getScroll({
-            pageNumber,
-            itemNumber: 5,
-        })
+        httpSocial
+            .getScroll({
+                pageNumber,
+                itemNumber: 5,
+            })
             .then((m) => {
                 setMemes((memes) => [...memes, ...m]);
                 setHasMore(m.length > 0);

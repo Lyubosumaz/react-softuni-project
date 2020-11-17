@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import history from '../../utils/history';
 import handleRoute from '../../utils/handleRoute';
-import http from '../../services/http';
+import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
 import Title from '../../components/title/Title';
@@ -58,7 +58,8 @@ export default function Register() {
         }
 
         if (hasErrors.length === 0 && data.username && data.email && data.password) {
-            http.User.register(data)
+            httpUser
+                .register(data)
                 .then((res) => {
                     toast(res.message, {
                         type: toast.TYPE.SUCCESS,

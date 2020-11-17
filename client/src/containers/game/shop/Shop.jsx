@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import http from '../../../services/http';
+import { httpGame } from '../../../services/http';
 import { toast } from 'react-toastify';
 import ShopCard from './components/shop-card/ShopCard';
 
@@ -7,7 +7,8 @@ export default function Shop() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        http.Game.shop()
+        httpGame
+            .shop()
             .then((i) => {
                 if (!i) {
                     return;

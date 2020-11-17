@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import history from '../../utils/history';
 import handleRoute from '../../utils/handleRoute';
-import http from '../../services/http';
+import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
@@ -12,7 +12,8 @@ import Info from '../../components/info/Info';
 function Logout(props) {
     const yesButtonHandler = (e) => {
         e.preventDefault();
-        http.User.logout()
+        httpUser
+            .logout()
             .then((res) => {
                 toast(res.message, {
                     type: toast.TYPE.SUCCESS,

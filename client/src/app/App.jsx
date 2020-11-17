@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import http from '../services/http';
+import { httpUser } from '../services/http';
 import { store, persistor } from '../services/store';
 import { authCookie, removeAllCookies } from '../services/cookies';
 
@@ -32,7 +32,7 @@ export default function App() {
             const userAuthToken = authCookie();
             if (userAuthToken && store.getState().user.isLogin) {
                 // console.log(userAuthToken);
-                http.User.refresh();
+                httpUser.refresh();
             } else if (userAuthToken) {
                 removeAllCookies();
             }

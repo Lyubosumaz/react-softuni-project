@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import http from '../../../../../services/http';
+import { httpGame } from '../../../../../services/http';
 import { toast } from 'react-toastify';
 import './character-card.css';
 
 function CharacterCard(props) {
-
     function handleRemove() {
-        http.Game.remove(props.item._id)
+        httpGame
+            .remove(props.item._id)
             .then((res) => {
-                props.setRemoveItem()
+                props.setRemoveItem();
                 toast(res.message, {
                     type: toast.TYPE.INFO,
                 });
@@ -18,12 +18,11 @@ function CharacterCard(props) {
                     type: toast.TYPE.ERROR,
                 });
             });
-    };
+    }
 
     return (
         <div className={props.styleClass ? props.styleClass : 'item-card'}>
             <div className="item-card-inner">
-
                 <div className="item-card-front">
                     <img src={props.item.imageUrl} alt="Avatar" />
                 </div>
@@ -40,10 +39,11 @@ function CharacterCard(props) {
 
                     <div>
                         <h3>Price: {props.item.price}</h3>
-                        <button className="active-button remove" onClick={handleRemove}>Remove</button>
+                        <button className="active-button remove" onClick={handleRemove}>
+                            Remove
+                        </button>
                     </div>
                 </div>
-
             </div>
         </div>
     );
@@ -51,10 +51,11 @@ function CharacterCard(props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setRemoveItem: () => dispatch({
-            type: 'CHARACTER_REMOVE_ITEM',
-            payload: true,
-        }),
+        setRemoveItem: () =>
+            dispatch({
+                type: 'CHARACTER_REMOVE_ITEM',
+                payload: true,
+            }),
     };
 }
 

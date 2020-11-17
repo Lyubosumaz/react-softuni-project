@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import CharacterCard from './components/character-card/CharacterCard';
-import http from '../../../services/http';
+import { httpGame } from '../../../services/http';
 import defaultPicture from '../../../assets/images/default_profile.png';
 import './character.css';
 import { setRemoveItem } from './actions';
@@ -13,7 +13,8 @@ function Character(props) {
     const [statistics, setStatistics] = useState([]);
 
     useEffect(() => {
-        http.Game.character()
+        httpGame
+            .character()
             .then((c) => {
                 if (!c) {
                     return;

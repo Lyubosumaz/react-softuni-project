@@ -1,4 +1,4 @@
-function parseALLCookies() {
+function parseAllCookies() {
     return document.cookie.split('; ').reduce((acc, cookie) => {
         const [cookieName, cookieValue] = cookie.split('=');
         acc[cookieName] = cookieValue;
@@ -13,8 +13,8 @@ function removeAllCookies() {
 }
 
 function authCookie() {
-    const cookie = parseALLCookies();
+    const cookie = parseAllCookies();
     return cookie['auth_token'];
 }
 
-export { parseALLCookies, removeAllCookies, authCookie };
+export { parseAllCookies, removeAllCookies, authCookie };

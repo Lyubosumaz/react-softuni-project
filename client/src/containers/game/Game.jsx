@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import World from './components/world/World';
 import Overlay from './components/overlay/Overlay';
 import Clock from './components/clock/Clock';
-import http from '../../services/http';
+import { httpGame } from '../../services/http';
 
 function Game(props) {
     const newProps = props;
 
     useEffect(() => {
-        http.Game.shop().then((items) => newProps.saveGameItems(items));
+        httpGame.shop().then((items) => newProps.saveGameItems(items));
     }, [newProps]);
 
     useEffect(() => {

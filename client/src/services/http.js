@@ -1,6 +1,6 @@
 import settings from '../settings.json';
 
-const User = {
+const httpUser = {
     register: (userData) => httpPost('/api/user/register', userData),
     login: (userData) => httpPost('/api/user/login', userData),
     logout: () => httpPost('/api/user/logout'),
@@ -9,7 +9,7 @@ const User = {
     house: () => httpGet('/api/user/house-of-fame'),
 };
 
-const Social = {
+const httpSocial = {
     getScroll: (memeData) => httpPost('/api/social', memeData),
     getMeme: (memeId) => httpGet(`/api/social/view-meme/${memeId}`),
     addMeme: (memeData) => httpPost('/api/social/add-meme', memeData),
@@ -17,7 +17,7 @@ const Social = {
     deleteMeme: (memeId) => httpDelete(`/api/social/delete-meme/${memeId}`),
 };
 
-const Game = {
+const httpGame = {
     shop: () => httpGet('/api/game/shop'),
     save: (gameData) => httpPost('/api/game/save', gameData),
     buy: (itemId) => httpGet(`/api/game/buy/${itemId}`),
@@ -60,8 +60,4 @@ const requester = (method, path, options) => {
     return fetch(combinedURL, data).then((res) => res.text().then((text) => (res.status === 200 ? Promise.resolve(JSON.parse(text)) : Promise.reject(text))));
 };
 
-export default {
-    User,
-    Social,
-    Game,
-};
+export { httpUser, httpSocial, httpGame };

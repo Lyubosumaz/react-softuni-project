@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import history from '../../../utils/history';
 import { connect } from 'react-redux';
-import http from '../../../services/http';
+import { httpSocial } from '../../../services/http';
 import handleRoute from '../../../utils/handleRoute';
 import { toast } from 'react-toastify';
 import './delete-meme.css';
@@ -12,7 +12,7 @@ function DeleteMeme(props) {
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
-        http.Social.getMeme(memeId).then((meme) => {
+        httpSocial.getMeme(memeId).then((meme) => {
             setMeme(meme);
         });
     }, [memeId]);
@@ -20,7 +20,8 @@ function DeleteMeme(props) {
     function handleSubmit(e) {
         e.preventDefault();
         if (props.isLogin) {
-            http.Social.deleteMeme(memeId)
+            httpSocial
+                .deleteMeme(memeId)
                 .then((res) => {
                     toast(res.message, {
                         type: toast.TYPE.ERROR,
