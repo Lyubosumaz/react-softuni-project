@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import http from '../../../services/http';
 import handleRoute from '../../../utils/handleRoutes';
 import Title from '../../../components/title/Title';
+import Info from '../../../components/info/Info';
 import MemeCard from '../components/meme-card/MemeCard';
 
 export default function ViewMeme(props) {
@@ -20,15 +21,7 @@ export default function ViewMeme(props) {
 
             {meme && <MemeCard meme={meme} />}
 
-            <div className="info-container">
-                <p>
-                    Add Meme or just watch others memes{' '}
-                    <button className="info-button" onClick={handleRoute('/social')}>
-                        Back
-                    </button>
-                    .
-                </p>
-            </div>
+            <Info />
         </div>
     );
 }

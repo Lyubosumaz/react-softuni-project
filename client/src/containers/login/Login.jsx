@@ -7,6 +7,7 @@ import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
 import Title from '../../components/title/Title';
+import Info from '../../components/info/Info';
 
 function Login(props) {
     const username = useFormInput('');
@@ -107,12 +108,7 @@ function Login(props) {
                 </form>
             </div>
 
-            <div className="info-container">
-                <span>Don't have an account?</span>
-                <button className="info-button" onClick={handleRoute('/register')}>
-                    Create account
-                </button>
-            </div>
+            <Info />
         </section>
     );
 }

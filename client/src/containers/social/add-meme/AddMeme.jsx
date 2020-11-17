@@ -6,6 +6,7 @@ import handleRoute from '../../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import schema from './add-meme-validations';
 import Title from '../../../components/title/Title';
+import Info from '../../../components/info/Info';
 
 function AddMeme(props) {
     const title = useFormInput('');
@@ -87,15 +88,7 @@ function AddMeme(props) {
                     </button>
                 </div>
 
-                <div className="info-container">
-                    <p>
-                        You could add meme later, maybe play a{' '}
-                        <button className="info-button" onClick={handleRoute('/games')}>
-                            Game
-                        </button>
-                        ?
-                    </p>
-                </div>
+                <Info />
             </form>
         </div>
     );

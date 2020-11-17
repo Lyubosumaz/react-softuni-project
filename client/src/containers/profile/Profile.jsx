@@ -7,6 +7,7 @@ import GameHistoryCard from './components/game-history-card/GameHistoryCard';
 import defaultProfilePic from '../../assets/images/default_profile.png';
 import './profile.css';
 import Title from '../../components/title/Title';
+import Info from '../../components/info/Info';
 
 function Profile(props) {
     const [profile, setProfile] = useState(null);
@@ -20,7 +21,6 @@ function Profile(props) {
     return (
         <section className="component-wrapper">
             <Title type={'component'} />
-            <h1>Profile</h1>
 
             <div className="component-data-wrapper">
                 {profile && (
@@ -58,15 +58,7 @@ function Profile(props) {
                 </div>
             </div>
 
-            <div className="info-container">
-                <p>
-                    Play one more game{' '}
-                    <button className="info-button" onClick={handleRoute('/games')}>
-                        Here
-                    </button>
-                    !
-                </p>
-            </div>
+            <Info />
         </section>
     );
 }

@@ -7,6 +7,7 @@ import { removeAllCookies } from '../../services/cookies';
 import './logout.css';
 import { setLogoutValue } from '../login/actions';
 import Title from '../../components/title/Title';
+import Info from '../../components/info/Info';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {
@@ -46,14 +47,7 @@ function Logout(props) {
                 </ul>
             </div>
 
-            <div className="info-container">
-                <p>
-                    Check out the new features in latest update{' '}
-                    <button className="info-button" onClick={handleRoute('/about')}>
-                        Here
-                    </button>
-                </p>
-            </div>
+            <Info />
         </section>
     );
 }

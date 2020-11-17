@@ -3,6 +3,7 @@ import handleRoute from '../../utils/handleRoutes';
 import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
 import Title from '../../components/title/Title';
+import Info from '../../components/info/Info';
 
 export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);
@@ -69,15 +70,7 @@ export default function Social() {
             <div>{loading && 'Loading...'}</div>
             <div>{error && 'Error'}</div>
 
-            <div className="info-container">
-                <p>
-                    Join the race and climb to the top{' '}
-                    <button className="info-button" onClick={handleRoute('/games')}>
-                        Game
-                    </button>
-                    !
-                </p>
-            </div>
+            <Info />
         </div>
     );
 }

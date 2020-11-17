@@ -1,5 +1,20 @@
 {
     "error": "Nothing found in the Site Title Archive",
+    "": {
+        "text": "Already have account?",
+        "button": "Sign in",
+        "path": "/login"
+    },
+    "home": {
+        "text": "Already have account?",
+        "button": "Sign in",
+        "path": "/login"
+    },
+    "about": {
+        "text": "Already have account?",
+        "button": "Sign in",
+        "path": "/login"
+    },
     "register": {
         "text": "Already have account?",
         "button": "Sign in",
@@ -29,5 +44,35 @@
         "text": "You could add meme later, maybe play a",
         "button": "Game",
         "path": "/games"
+    },
+    "view-meme": {
+        "text": "Add Meme or just watch others memes",
+        "button": "Back",
+        "path": "/social"
+    },
+    "edit-meme": {
+        "text": "Add Meme or just watch others memes",
+        "button": "Back",
+        "path": "/social"
+    },
+    "delete-meme": {
+        "text": "Don't delete your meme just continue scrolling",
+        "button": "Back",
+        "path": "/social"
+    },
+    "house-of-fame": {
+        "text": "You saw what you need. Now join the game",
+        "button": "Here",
+        "path": "/login"
+    },
+    "puzzles": {
+        "text": "Here you can log",
+        "button": "Back",
+        "path": "/login"
+    },
+    "games": {
+        "text": "Here you can log",
+        "button": "Back",
+        "path": "/login"
     }
 }

@@ -6,6 +6,7 @@ import handleRoute from '../../../utils/handleRoutes';
 import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
 import Title from '../../../components/title/Title';
+import Info from '../../../components/info/Info';
 
 function EditMeme(props) {
     const memeId = props.match.params.id;
@@ -97,15 +98,7 @@ function EditMeme(props) {
                     </button>
                 </div>
 
-                <div className="info-container">
-                    <p>
-                        Add Meme or just watch others memes{' '}
-                        <button className="info-button" onClick={handleRoute('/social')}>
-                            Back
-                        </button>
-                        .
-                    </p>
-                </div>
+                <Info />
             </form>
         </div>
     );
