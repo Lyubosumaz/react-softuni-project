@@ -1,34 +1,34 @@
 import { Fragment } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { history } from '../utils/history';
-import OptionBar from '../components/options-bar/OptionsBar';
+import OptionBar from '../components/OptionBar';
 import AuthRoute from './auth-route/AuthRoute';
 
-import Home from '../containers/home/Home';
-import About from '../containers/about/About';
-import HouseOfFame from '../containers/house-of-fame/HouseOfFame';
-import TermsAndConditions from '../containers/terms-and-conditions/TermsAndConditions';
-import FourOFour from '../containers/404/404';
+import Home from '../containers/Home';
+import About from '../containers/About';
+import HouseOfFame from '../containers/HouseOfFame';
+import TermsAndConditions from '../containers/TermsAndConditions';
+import FourOFour from '../containers/404';
 // User
-import Register from '../containers/register/Register';
-import Login from '../containers/login/Login';
-import Logout from '../containers/logout/Logout';
-import Profile from '../containers/profile/Profile';
+import Register from '../containers/Register';
+import Login from '../containers/Login';
+import Logout from '../containers/Logout';
+import Profile from '../containers/Profile';
 // Game
 import Game from '../containers/game/Game';
 import Progress from '../containers/game/progress/Progress'; // TODO
 import Shop from '../containers/game/shop/Shop';
 import Inventory from '../containers/game/inventory/Inventory';
 import Character from '../containers/game/character/Character';
-import Games from '../containers/games/Games'; // TODO
+import Games from '../containers/Games'; // TODO
 // Puzzles
-import Puzzles from '../containers/puzzles/Puzzles'; // TODO
+import Puzzles from '../containers/Puzzles'; // TODO
 // Memes
-import Social from '../containers/social/Social';
-import AddMeme from '../containers/social/add-meme/AddMeme';
-import ViewMeme from '../containers/social/view-meme/ViewMeme';
-import EditMeme from '../containers/social/edit-meme/EditMeme';
-import DeleteMeme from '../containers/social/delete-meme/DeleteMeme';
+import Social from '../containers/Social';
+import AddMeme from '../containers/Social/AddMeme';
+import ViewMeme from '../containers/Social/ViewMeme';
+import EditMeme from '../containers/Social/EditMeme';
+import DeleteMeme from '../containers/Social/DeleteMeme';
 
 export default function AppRouter() {
     return (
