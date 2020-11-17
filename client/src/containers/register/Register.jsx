@@ -4,6 +4,7 @@ import http from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
 import Title from '../../components/title/Title';
+import Info from '../../components/info/Info';
 // import './register.css';
 
 export default function Register() {
@@ -182,6 +183,8 @@ export default function Register() {
                     Sign in
                 </button>
             </div>
+
+            <Info />
         </section>
     );
 }

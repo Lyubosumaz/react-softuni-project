@@ -1,0 +1,33 @@
+{
+    "error": "Nothing found in the Site Title Archive",
+    "register": {
+        "text": "Already have account?",
+        "button": "Sign in",
+        "path": "/login"
+    },
+    "login": {
+        "text": "Don't have an account?",
+        "button": "Create account",
+        "path": "/register"
+    },
+    "logout": {
+        "text": "Check out the new features in latest update",
+        "button": "Here",
+        "path": "/about"
+    },
+    "profile": {
+        "text": "Play one more game",
+        "button": "Here",
+        "path": "/games"
+    },
+    "social": {
+        "text": "Join the race and climb to the top",
+        "button": "Game",
+        "path": "/games"
+    },
+    "add-meme": {
+        "text": "You could add meme later, maybe play a",
+        "button": "Game",
+        "path": "/games"
+    }
+}
