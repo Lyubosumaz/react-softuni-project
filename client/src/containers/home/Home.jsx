@@ -1,9 +1,9 @@
+import Title from '../../components/title/Title';
+
 export default function Home() {
     return (
         <section className="component-wrapper home-component background-image">
-            <header>
-                <h1>Home</h1>
-            </header>
+            <Title type={'component'} />;
         </section>
     );
 }

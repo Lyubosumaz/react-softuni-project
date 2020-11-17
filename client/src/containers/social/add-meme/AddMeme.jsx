@@ -64,8 +64,6 @@ function AddMeme(props) {
         <div className="add-meme-container">
             <form>
                 <Title type={'component'} />
-                <h1>Add Meme</h1>
-                <p>Adding meme was never been easier.</p>
 
                 <div className="form-div-container">
                     <label htmlFor="Title">

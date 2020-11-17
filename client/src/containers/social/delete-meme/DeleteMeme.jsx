@@ -39,9 +39,6 @@ function DeleteMeme(props) {
         <div className="delete-meme-container">
             <form>
                 <Title type={'component'} />
-                <h1>Delete Meme</h1>
-
-                <p>Are you sure you want to delete this meme?</p>
 
                 <div className="form-div-container">
                     <label htmlFor="Title">

@@ -74,9 +74,6 @@ function EditMeme(props) {
         <div className="edit-meme-container">
             <form>
                 <Title type={'component'} />
-                <h1>Edit Meme</h1>
-
-                <p>Editing meme was never been easier.</p>
 
                 <div className="form-div-container">
                     <label htmlFor="Title">

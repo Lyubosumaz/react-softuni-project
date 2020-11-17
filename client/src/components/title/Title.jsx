@@ -20,7 +20,7 @@ export default function Title(props) {
     }
 
     function archiveValidator() {
-        return Object.keys(archive[getCurrentPage()]).length > 1;
+        return archive[getCurrentPage()] ? Object.keys(archive[getCurrentPage()]).length > 1 : false;
     }
 
     function archiveReader(select) {

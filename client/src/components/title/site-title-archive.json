@@ -1,9 +1,12 @@
 {
     "error": "Nothing found in the Site Title Archive",
+    "home": { "title": "Home" },
+    "about": { "title": "About" },
     "register": {
         "title": "Register",
         "subtitle": "Please fill this form to create your Account."
     },
+    "terms-and-conditions": { "title": "Terms & Conditions" },
     "login": {
         "title": "Login",
         "subtitle": "Please enter your Username and Password."
@@ -21,8 +24,14 @@
         "subtitle": "Adding meme was never been easier."
     },
     "view-meme": { "title": "View Meme" },
-    "edit-meme": { "title": "Edit Meme" },
-    "delete-meme": { "title": "Delete Meme" },
+    "edit-meme": {
+        "title": "Edit Meme",
+        "subtitle": "Editing meme was never been easier."
+    },
+    "delete-meme": {
+        "title": "Delete Meme",
+        "subtitle": "Are you sure you want to delete this meme?"
+    },
     "house-of-fame": { "title": "House of Fame" },
     "puzzles": { "title": "Puzzles" },
     "games": { "title": "Games" }

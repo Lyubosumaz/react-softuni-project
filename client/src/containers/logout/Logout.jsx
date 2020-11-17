@@ -30,8 +30,6 @@ function Logout(props) {
     return (
         <section className="component-wrapper">
             <Title type={'component'} />
-            <h1>Logout</h1>
-            <p>Do you really want to logout?</p>
 
             <div className="component-data-wrapper">
                 <ul className="buttons-list">

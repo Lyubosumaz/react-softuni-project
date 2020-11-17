@@ -17,7 +17,6 @@ export default function ViewMeme(props) {
     return (
         <div className="view-meme-container">
             <Title type={'component'} />
-            <h1>View Meme</h1>
 
             {meme && <MemeCard meme={meme} />}
 

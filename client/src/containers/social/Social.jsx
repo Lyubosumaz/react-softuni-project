@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react';
 import handleRoute from '../../utils/handleRoutes';
 import MemeCard from './components/meme-card/MemeCard';
 import useMemePage from './useMemePage';
+import Title from '../../components/title/Title';
 
 export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);
@@ -33,7 +34,7 @@ export default function Social() {
 
     return (
         <div className="social-container">
-            <h1>Social</h1>
+            <Title type={'component'} />
 
             <div>
                 <button className="active-button" onClick={handleRoute('/404')}>

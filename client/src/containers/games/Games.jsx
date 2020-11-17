@@ -1,7 +1,9 @@
+import Title from '../../components/title/Title';
+
 export default function Games() {
     return (
         <div className="games-container">
-            <h1>Games</h1>
+            <Title type={'component'} />
             <p>In progress...</p>
         </div>
     );

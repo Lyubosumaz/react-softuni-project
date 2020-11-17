@@ -4,6 +4,7 @@ import http from '../../services/http';
 import handleRoute from '../../utils/handleRoutes';
 import HouseOfFameCard from './components/HouseOfFameCard';
 import './house-of-fame.css';
+import Title from '../../components/title/Title';
 
 function HouseOfFame(props) {
     const [users, setUsers] = useState([]);
@@ -44,7 +45,7 @@ function HouseOfFame(props) {
 
     return (
         <div className="house-container">
-            <h1>House of Fame</h1>
+            <Title type={'component'} />
 
             <p className="house-of-fame-search-p">
                 <b>Username: </b>

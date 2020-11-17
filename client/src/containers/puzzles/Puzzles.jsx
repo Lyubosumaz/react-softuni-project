@@ -1,7 +1,9 @@
+import Title from '../../components/title/Title';
+
 export default function Puzzles() {
     return (
         <div className="puzzles-container">
-            <h1>Puzzles</h1>
+            <Title type={'component'} />
             <p>In progress...</p>
         </div>
     );
