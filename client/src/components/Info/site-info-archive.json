@@ -1,12 +1,12 @@
 {
     "error": "Nothing found in the Site Title Archive",
     "": {
-        "text": "Already have account?",
+        "text": "You have account?",
         "button": "Sign in",
         "path": "/login"
     },
     "home": {
-        "text": "Already have account?",
+        "text": "You have account?",
         "button": "Sign in",
         "path": "/login"
     },
@@ -17,12 +17,12 @@
     },
     "404": {
         "text": "We can't find the page you're looking for",
-        "button": "Sign in",
+        "button": "Go Back Home",
         "path": "/home"
     },
     "register": {
         "text": "Already have account?",
-        "button": "Go Back Home",
+        "button": "Sign in",
         "path": "/login"
     },
     "login": {
@@ -56,7 +56,7 @@
         "path": "/social"
     },
     "edit-meme": {
-        "text": "Add Meme or just watch others memes",
+        "text": "Edit Meme or just watch others memes",
         "button": "Back",
         "path": "/social"
     },

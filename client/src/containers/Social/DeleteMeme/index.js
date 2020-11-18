@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
 import { toast } from 'react-toastify';
 import Title from '../../../components/Title';
+import Info from '../../../components/Info';
 
 function DeleteMeme(props) {
     const memeId = props.match.params.id;
@@ -59,15 +60,7 @@ function DeleteMeme(props) {
                     </button>
                 </div>
 
-                <div className="info-container">
-                    <p>
-                        Don't delete your meme just continue scrolling{' '}
-                        <button className="info-button" onClick={handleRoute('/social')}>
-                            Back
-                        </button>
-                        .
-                    </p>
-                </div>
+                <Info />
             </form>
         </div>
     );

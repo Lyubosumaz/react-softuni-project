@@ -4,6 +4,7 @@ import { httpUser } from '../../services/http';
 import { handleRoute } from '../../utils/history';
 import HouseOfFameCard from './components/HouseOfFameCard';
 import Title from '../../components/Title';
+import Info from '../../components/Info';
 
 function HouseOfFame(props) {
     const [users, setUsers] = useState([]);

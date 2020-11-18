@@ -173,13 +173,6 @@ export default function Register() {
                 </form>
             </div>
 
-            <div className="info-container">
-                <span>Already have account?</span>
-                <button className="info-button" onClick={handleRoute('/login')}>
-                    Sign in
-                </button>
-            </div>
-
             <Info />
         </section>
     );
