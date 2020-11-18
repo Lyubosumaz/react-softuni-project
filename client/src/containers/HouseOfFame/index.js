@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { httpUser } from '../../services/http';
-import { handleRoute } from '../../utils/history';
 import HouseOfFameCard from './components/HouseOfFameCard';
 import Title from '../../components/Title';
 import Info from '../../components/Info';
 
-function HouseOfFame(props) {
+export default function HouseOfFame() {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState('');
     const [searchBool, setSearchBool] = useState(false); // need reworking
@@ -63,33 +61,7 @@ function HouseOfFame(props) {
                         })}
             </div>
 
-            <div className="info-container">
-                {props.isLogin ? (
-                    <p>
-                        You saw what you need. Now join the game{' '}
-                        <button className="info-button" onClick={handleRoute('/games')}>
-                            Here
-                        </button>
-                        !
-                    </p>
-                ) : (
-                    <p>
-                        Join the race, climb ladder and be the top apex legend{' '}
-                        <button className="info-button" onClick={handleRoute('/login')}>
-                            Sign in
-                        </button>
-                        .
-                    </p>
-                )}
-            </div>
+            <Info />
         </div>
     );
 }
-
-function mapStateToProps(state) {
-    return {
-        isLogin: state.user.isLogin,
-    };
-}
-
-export default connect(mapStateToProps)(HouseOfFame);

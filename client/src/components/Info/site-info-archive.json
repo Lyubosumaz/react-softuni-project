@@ -1,88 +1,127 @@
 {
     "error": "Nothing found in the Site Title Archive",
     "": {
-        "text": "You have account?",
-        "button": "Sign in",
-        "path": "/login"
+        "default": {
+            "text": "You have account?",
+            "button": "Sign in",
+            "path": "/login"
+        }
     },
     "home": {
-        "text": "You have account?",
-        "button": "Sign in",
-        "path": "/login"
+        "default": {
+            "text": "You have account?",
+            "button": "Sign in",
+            "path": "/login"
+        }
     },
     "about": {
-        "text": "Already have account?",
-        "button": "Sign in",
-        "path": "/login"
+        "default": {
+            "text": "Already have account?",
+            "button": "Sign in",
+            "path": "/login"
+        }
     },
     "404": {
-        "text": "We can't find the page you're looking for",
-        "button": "Go Back Home",
-        "path": "/home"
+        "default": {
+            "text": "We can't find the page you're looking for",
+            "button": "Go Back Home",
+            "path": "/home"
+        }
     },
     "register": {
-        "text": "Already have account?",
-        "button": "Sign in",
-        "path": "/login"
+        "default": {
+            "text": "Already have account?",
+            "button": "Sign in",
+            "path": "/login"
+        }
     },
     "login": {
-        "text": "Don't have an account?",
-        "button": "Create account",
-        "path": "/register"
+        "default": {
+            "text": "Don't have an account?",
+            "button": "Create account",
+            "path": "/register"
+        }
     },
     "logout": {
-        "text": "Check out the new features in latest update",
-        "button": "Here",
-        "path": "/about"
+        "default": {
+            "text": "Check out the new features in latest update",
+            "button": "Here",
+            "path": "/about"
+        }
     },
     "profile": {
-        "text": "Play one more game",
-        "button": "Here",
-        "path": "/games"
+        "default": {
+            "text": "Play one more game",
+            "button": "Here",
+            "path": "/games"
+        }
     },
     "social": {
-        "text": "Join the race and climb to the top",
-        "button": "Game",
-        "path": "/games"
+        "default": {
+            "text": "Join the race and climb to the top",
+            "button": "Game",
+            "path": "/games"
+        }
     },
     "add-meme": {
-        "text": "You could add meme later, maybe play a",
-        "button": "Game",
-        "path": "/games"
+        "default": {
+            "text": "You could add meme later, maybe play a",
+            "button": "Game",
+            "path": "/games"
+        }
     },
     "view-meme": {
-        "text": "Add Meme or just watch others memes",
-        "button": "Back",
-        "path": "/social"
+        "default": {
+            "text": "Add Meme or just watch others memes",
+            "button": "Back",
+            "path": "/social"
+        }
     },
     "edit-meme": {
-        "text": "Edit Meme or just watch others memes",
-        "button": "Back",
-        "path": "/social"
+        "default": {
+            "text": "Edit Meme or just watch others memes",
+            "button": "Back",
+            "path": "/social"
+        }
     },
     "delete-meme": {
-        "text": "Don't delete your meme just continue scrolling",
-        "button": "Back",
-        "path": "/social"
+        "default": {
+            "text": "Don't delete your meme just continue scrolling",
+            "button": "Back",
+            "path": "/social"
+        }
     },
     "house-of-fame": {
-        "text": "You saw what you need. Now join the game",
-        "button": "Here",
-        "path": "/login"
+        "default": {
+            "text": " Join the race, climb ladder and be the top apex legend",
+            "button": "Sign in",
+            "path": "/login"
+        },
+        "logged": {
+            "text": "You saw what you need. Now join the game",
+            "button": "Here",
+            "path": "/games"
+        }
     },
     "puzzles": {
-        "text": "Here you can log",
-        "button": "Back",
-        "path": "/login"
+        "default": {
+            "text": "Here you can log",
+            "button": "Back",
+            "path": "/login"
+        }
     },
     "games": {
-        "text": "Here you can log",
-        "button": "Back",
-        "path": "/login"
+        "default": {
+            "text": "Here you can log",
+            "button": "Back",
+            "path": "/login"
+        }
     },
     "terms-and-conditions": {
-        "text": "If you already read the terms and conditions.",
-        "button": "Create account",
-        "path": "/register"
+        "default": {
+            "text": "If you already read the terms and conditions.",
+            "button": "Create account",
+            "path": "/register"
+        }
     }
 }

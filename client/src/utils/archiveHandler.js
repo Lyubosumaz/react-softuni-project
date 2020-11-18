@@ -8,4 +8,14 @@ function archiveReader(archive, select) {
     return archive[currentPage()] ? archive[currentPage()][select] : archive.error;
 }
 
-export { archiveValidator, archiveReader };
+function archiveReaderState(archive, state, select) {
+    switch (state) {
+        case 'logged':
+            return archive[currentPage()].logged ? archive[currentPage()].logged[select] : archive[currentPage()].default ? archive[currentPage()].default[select] : archive.error;
+
+        default:
+            return archive[currentPage()].default ? archive[currentPage()].default[select] : archive.error;
+    }
+}
+
+export { archiveValidator, archiveReader, archiveReaderState };

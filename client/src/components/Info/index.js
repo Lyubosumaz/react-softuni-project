@@ -1,14 +1,27 @@
+import { connect } from 'react-redux';
 import { handleRoute } from '../../utils/history';
-import { archiveReader } from '../../utils/archiveHandler';
+import { archiveReaderState } from '../../utils/archiveHandler';
 import archive from './site-info-archive.json';
 
-export default function Info() {
+function Info(props) {
+    function state() {
+        return props.isLogin ? 'logged' : 'default';
+    }
+
     return (
         <section className="info-component">
-            <span>{archiveReader(archive, 'text')}</span>
-            <button className="info-action-btn" onClick={handleRoute(archiveReader(archive, 'path'))}>
-                {archiveReader(archive, 'button')}
+            <span>{archiveReaderState(archive, 'text', state())}</span>
+            <button className="info-action-btn" onClick={handleRoute(archiveReaderState(archive, 'path', state()))}>
+                {archiveReaderState(archive, 'button', state())}
             </button>
         </section>
     );
 }
+
+function mapStateToProps(state) {
+    return {
+        isLogin: state.user.isLogin,
+    };
+}
+
+export default connect(mapStateToProps)(Info);
