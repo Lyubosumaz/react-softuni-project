@@ -1,6 +1,11 @@
 .site-footer {
     background-color: $mainDarkColor;
 
+    p,
+    ul {
+        padding: 0;
+    }
+
     .site-wrapper {
         padding: 0.5em 0;
         display: flex;

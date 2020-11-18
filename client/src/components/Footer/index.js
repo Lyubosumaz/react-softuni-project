@@ -17,6 +17,11 @@ export default function Footer() {
                             About
                         </button>
                     </li>
+                    <li>
+                        <button className="footer-nav-button" onClick={handleRoute('/terms-and-conditions')}>
+                            Terms
+                        </button>
+                    </li>
                 </ul>
             </div>
         </footer>
