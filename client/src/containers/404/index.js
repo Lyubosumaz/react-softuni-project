@@ -2,15 +2,21 @@ import { handleRoute } from '../../utils/history';
 
 export default function FourOFour() {
     return (
-        <div className="error-container">
-            <h1>Oops! Page not found</h1>
-            <h2>404</h2>
-            <p>
-                <b>We can't find the page you're looking for</b>
-            </p>
-            <button className="active-button" name="404" onClick={handleRoute('/home')}>
-                Go Back Home
-            </button>
-        </div>
+        <section className="error-container">
+            <header className="error-header">
+                <h1>Oops! Page not found</h1>
+            </header>
+
+            <p className="huge-number">404</p>
+
+            <section className="error-info">
+                <div className="error-info-wrapper">
+                    <span>We can't find the page you're looking for</span>
+                    <button className="info-action-btn" onClick={handleRoute('/home')}>
+                        Go Back Home
+                    </button>
+                </div>
+            </section>
+        </section>
     );
 }

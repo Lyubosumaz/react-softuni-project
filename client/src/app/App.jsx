@@ -10,14 +10,9 @@ import { authCookie, removeAllCookies } from '../services/cookies';
 import Router from '../router/Router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import 'react-toastify/dist/ReactToastify.css';
 
-// import './app.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import '../assets/scss/main.scss';
-// import 'assets/styles/main.css';
-// import 'assets/styles/forms.css';
-// import 'assets/styles/list-card.css';
-// import 'assets/styles/item-card.css';
 
 toast.configure({
     autoClose: 7000,

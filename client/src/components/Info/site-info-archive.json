@@ -15,9 +15,14 @@
         "button": "Sign in",
         "path": "/login"
     },
+    "404": {
+        "text": "We can't find the page you're looking for",
+        "button": "Sign in",
+        "path": "/home"
+    },
     "register": {
         "text": "Already have account?",
-        "button": "Sign in",
+        "button": "Go Back Home",
         "path": "/login"
     },
     "login": {
