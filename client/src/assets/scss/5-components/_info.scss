@@ -1,0 +1,21 @@
+.info-component {
+    padding-bottom: 1.5em;
+    background-color: #f1f1f1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    span {
+        margin-right: 0.5em;
+    }
+
+    .info-action-btn {
+        color: $mainLinkColor;
+
+        &:hover,
+        &:focus {
+            color: $mainLinkDarken;
+            text-decoration: underline;
+        }
+    }
+}

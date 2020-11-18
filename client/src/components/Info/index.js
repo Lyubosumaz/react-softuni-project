@@ -6,7 +6,7 @@ export default function Info() {
     return (
         <section className="info-component">
             <span>{archiveReader(archive, 'text')}</span>
-            <button className="info-action-btn " onClick={handleRoute(archiveReader(archive, 'path'))}>
+            <button className="info-action-btn" onClick={handleRoute(archiveReader(archive, 'path'))}>
                 {archiveReader(archive, 'button')}
             </button>
         </section>

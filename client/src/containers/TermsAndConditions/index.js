@@ -1,5 +1,6 @@
 import { handleRoute } from '../../utils/history';
 import Title from '../../components/Title';
+import Info from '../../components/Info';
 
 export default function TermsAndConditions() {
     return (
@@ -23,6 +24,8 @@ export default function TermsAndConditions() {
                     </button>
                 </p>
             </div>
+
+            <Info />
         </div>
     );
 }

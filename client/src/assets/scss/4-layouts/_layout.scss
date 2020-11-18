@@ -35,10 +35,7 @@
 
     .form-header,
     .component-header {
-        padding-top: 0.8em;
-        margin-bottom: 3em;
         grid-area: title;
-        text-align: center;
     }
 
     .form-fields-wrapper,
@@ -48,15 +45,6 @@
 
     .info-container {
         grid-area: info;
-        text-align: center;
-    }
-}
-
-.info-container {
-    padding-bottom: 1.5em;
-
-    span {
-        margin-right: 0.4em;
     }
 }
 

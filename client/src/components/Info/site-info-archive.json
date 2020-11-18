@@ -79,5 +79,10 @@
         "text": "Here you can log",
         "button": "Back",
         "path": "/login"
+    },
+    "terms-and-conditions": {
+        "text": "If you already read the terms and conditions.",
+        "button": "Create account",
+        "path": "/register"
     }
 }

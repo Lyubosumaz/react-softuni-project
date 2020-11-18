@@ -5,6 +5,11 @@ button {
     outline: none;
     border: none;
     cursor: pointer;
+
+    &:focus,
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .site-header .nav-bar-button {
@@ -23,7 +28,6 @@ button {
     &:focus,
     &:hover {
         color: $mainFontColor;
-        text-decoration: underline;
         background-color: $mainDarkHightLighten;
     }
 }
@@ -35,18 +39,12 @@ button {
     &:hover,
     &:active {
         color: $mainFontColor;
-        text-decoration: underline;
         background-color: $mainDarkHightLighten;
     }
 }
 
 .site-footer .footer-nav-button {
     padding: 0.8em 0.5em;
-
-    &:focus,
-    &:hover {
-        text-decoration: underline;
-    }
 }
 
 .error-container .info-action-btn,
@@ -65,9 +63,6 @@ button {
     }
 }
 
-.info-button,
-.label-sub {
-    padding: 0.2em;
-    word-wrap: break-word;
+.info-component .info-action-btn {
     color: $mainLinkColor;
 }

@@ -30,7 +30,7 @@ $errorColor: #d4511e;
 
 /* Link Color */
 $mainLinkColor: #0083ff;
-// $mainLinkColor: #090;
+$mainLinkDarken: darken($mainLinkColor, 20%);
 
 
 /* Buttons Color */
