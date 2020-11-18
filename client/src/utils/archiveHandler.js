@@ -8,7 +8,7 @@ function archiveReader(archive, select) {
     return archive[currentPage()] ? archive[currentPage()][select] : archive.error;
 }
 
-function archiveReaderState(archive, state, select) {
+function archiveReaderState(archive, select, state) {
     switch (state) {
         case 'logged':
             return archive[currentPage()].logged ? archive[currentPage()].logged[select] : archive[currentPage()].default ? archive[currentPage()].default[select] : archive.error;
