@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMeme Component should checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(AddMeme)>
+    <AddMeme
+      dispatch={[Function]}
+      isLogin={true}
+    >
+      <div
+        className="main-container"
+      >
+        <form>
+          <h1>
+            Add Meme
+          </h1>
+          <p>
+            Adding meme was never been easier.
+          </p>
+          <div
+            className="form-div-container"
+          >
+            <label
+              htmlFor="Title"
+            >
+              <b>
+                Title:
+              </b>
+            </label>
+            <input
+              className="form-input"
+              id="title"
+              onChange={[Function]}
+              placeholder="Write some funny title"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="form-div-container"
+          >
+            <label
+              htmlFor="imageUrl"
+            >
+              <b>
+                imageUrl:
+              </b>
+            </label>
+            <input
+              className="form-input"
+              id="imageUrl"
+              onChange={[Function]}
+              placeholder="Copy and Paste your memeURL here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div>
+            <button
+              className="form-action-btn"
+              onClick={[Function]}
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+          <div
+            className="info-container"
+          >
+            <p>
+              You could add meme later, maybe play a 
+              <button
+                className="info-button"
+                onClick={[Function]}
+              >
+                Game
+              </button>
+              ?
+            </p>
+          </div>
+        </form>
+      </div>
+    </AddMeme>
+  </Connect(AddMeme)>
+</Provider>
+`;

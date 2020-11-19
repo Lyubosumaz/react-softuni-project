@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteMeme Component should checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(DeleteMeme)
+    match={
+      Object {
+        "params": Object {
+          "id": "test",
+        },
+      }
+    }
+  >
+    <DeleteMeme
+      dispatch={[Function]}
+      isLogin={true}
+      match={
+        Object {
+          "params": Object {
+            "id": "test",
+          },
+        }
+      }
+    >
+      <div
+        className="main-container"
+      >
+        <form>
+          <h1>
+            Delete Meme
+          </h1>
+          <p>
+            Are you sure you want to delete this meme?
+          </p>
+          <div
+            className="form-div-container"
+          >
+            <label
+              htmlFor="Title"
+            >
+              <b>
+                Title:
+              </b>
+            </label>
+          </div>
+          <div
+            className="form-div-container"
+          >
+            <label
+              htmlFor="imageUrl"
+            >
+              <b>
+                imageUrl:
+              </b>
+            </label>
+          </div>
+          <div>
+            <button
+              className="form-action-btn delete"
+              onClick={[Function]}
+              type="submit"
+            >
+              Delete
+            </button>
+          </div>
+          <div
+            className="info-container"
+          >
+            <p>
+              Don't delete your meme just continue scrolling 
+              <button
+                className="info-button"
+                onClick={[Function]}
+              >
+                Back
+              </button>
+              .
+            </p>
+          </div>
+        </form>
+      </div>
+    </DeleteMeme>
+  </Connect(DeleteMeme)>
+</Provider>
+`;
