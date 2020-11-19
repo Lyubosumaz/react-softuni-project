@@ -1,19 +1,22 @@
 import { Fragment } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { history } from '../utils/history';
-import OptionBar from '../components/OptionBar';
-import AuthRoute from './auth-route/AuthRoute';
+import numberGenerator from '../utils/numberGenerator';
+import AuthRoute from './AuthRoute';
 
+// Default
 import Home from '../containers/home';
 import About from '../containers/about';
 import HouseOfFame from '../containers/house-of-fame';
 import TermsAndConditions from '../containers/terms-and-conditions';
 import FourOFour from '../containers/404';
+
 // User
 import Register from '../containers/register';
 import Login from '../containers/login';
 import Logout from '../containers/logout';
 import Profile from '../containers/profile';
+
 // Game
 import Game from '../containers/game/Game';
 import Progress from '../containers/game/progress/Progress'; // TODO
@@ -21,14 +24,19 @@ import Shop from '../containers/game/shop/Shop';
 import Inventory from '../containers/game/inventory/Inventory';
 import Character from '../containers/game/character/Character';
 import Games from '../containers/games'; // TODO
+
 // Puzzles
 import Puzzles from '../containers/puzzles'; // TODO
+
 // Memes
 import Social from '../containers/social';
 import AddMeme from '../containers/social/add-meme';
 import ViewMeme from '../containers/social/view-meme';
 import EditMeme from '../containers/social/edit-meme';
 import DeleteMeme from '../containers/social/delete-meme';
+
+// Utility
+import OptionBar from '../components/OptionBar';
 
 export default function AppRouter() {
     return (
@@ -46,14 +54,14 @@ export default function AppRouter() {
                 <Route
                     path="/game"
                     render={({ match: { url } }) => (
-                        <div className="main-container">
+                        <Fragment key={numberGenerator()}>
                             <OptionBar />
                             <AuthRoute path={`${url}/`} exact component={Game} />
                             <AuthRoute path={`${url}/progress`} exact component={Progress} />
                             <AuthRoute path={`${url}/shop`} exact component={Shop} />
                             <AuthRoute path={`${url}/inventory`} exact component={Inventory} />
                             <AuthRoute path={`${url}/character`} exact component={Character} />
-                        </div>
+                        </Fragment>
                     )}
                 />
                 <Route path="/games" exact component={Games} />
@@ -61,7 +69,7 @@ export default function AppRouter() {
                 <Route
                     path="/social"
                     render={({ match: { url } }) => (
-                        <Fragment>
+                        <Fragment key={numberGenerator()}>
                             <AuthRoute path={`${url}/`} exact component={Social} />
                             <AuthRoute path={`${url}/add-meme`} exact component={AddMeme} />
                             <AuthRoute path={`${url}/view-meme/:id`} exact component={ViewMeme} />
