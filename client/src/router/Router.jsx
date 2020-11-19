@@ -12,7 +12,7 @@ import FourOFour from '../containers/404';
 // User
 import Register from '../containers/register';
 import Login from '../containers/Login';
-import Logout from '../containers/Logout';
+import Logout from '../containers/logout';
 import Profile from '../containers/profile';
 // Game
 import Game from '../containers/game/Game';

@@ -3,9 +3,7 @@ import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
-import { setLogoutValue } from '../Login/actions';
-import Title from '../../components/Title';
-import Info from '../../components/Info';
+import { setLogoutValue } from '../../containers/Login/actions';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {
@@ -29,8 +27,6 @@ function Logout(props) {
 
     return (
         <section className="component-wrapper">
-            <Title type={'component'} />
-
             <div className="component-data-wrapper">
                 <ul className="buttons-list">
                     <li>
@@ -45,8 +41,6 @@ function Logout(props) {
                     </li>
                 </ul>
             </div>
-
-            <Info />
         </section>
     );
 }
