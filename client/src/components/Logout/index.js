@@ -3,7 +3,7 @@ import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
-import { setLogoutValue } from '../../containers/Login/actions';
+import { setLogoutValue } from '../Login/actions';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {

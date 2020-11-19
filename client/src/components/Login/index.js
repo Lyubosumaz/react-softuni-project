@@ -5,8 +5,6 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
-import Title from '../../components/Title';
-import Info from '../../components/Info';
 
 function Login(props) {
     const username = useFormInput('');
@@ -63,8 +61,6 @@ function Login(props) {
 
     return (
         <section className="form-container">
-            <Title type={'form'} />
-
             <div className="form-fields-wrapper">
                 <form>
                     <div className="form-field">
@@ -107,8 +103,6 @@ function Login(props) {
                     </div>
                 </form>
             </div>
-
-            <Info />
         </section>
     );
 }

@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import playerReducer from '../containers/game/components/player/reducer';
 import mapReducer from '../containers/game/components/map/reducer';
 import gameReducer from '../containers/game/reducer';
-import userReducer from '../containers/Login/reducer';
+import userReducer from '../components/Login/reducer';
 
 const persistConfig = {
     key: 'root',

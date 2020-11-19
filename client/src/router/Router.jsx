@@ -11,7 +11,7 @@ import TermsAndConditions from '../containers/terms-and-conditions';
 import FourOFour from '../containers/404';
 // User
 import Register from '../containers/register';
-import Login from '../containers/Login';
+import Login from '../containers/login';
 import Logout from '../containers/logout';
 import Profile from '../containers/profile';
 // Game
