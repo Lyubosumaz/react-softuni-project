@@ -1,9 +1,9 @@
 import Title from '../../components/Title';
 import Info from '../../components/Info';
 
-export default function Games() {
+export default function PuzzlesContainer() {
     return (
-        <div className="games-container">
+        <div className="puzzles-container">
             <Title type={'component'} />
             <p>In progress...</p>
             <Info />

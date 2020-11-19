@@ -1,6 +1,6 @@
 import { handleRoute } from '../../utils/history';
 
-export default function FourOFour() {
+export default function FourOFourContainer() {
     return (
         <section className="error-container">
             <header className="error-header">
