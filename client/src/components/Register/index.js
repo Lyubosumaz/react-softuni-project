@@ -3,9 +3,6 @@ import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
-import Title from '../../components/Title';
-import Info from '../../components/Info';
-// import './register.css';
 
 export default function Register() {
     const username = useFormInput('');
@@ -75,8 +72,6 @@ export default function Register() {
 
     return (
         <section className="form-container">
-            <Title type={'form'} />
-
             <div className="form-fields-wrapper">
                 <form onSubmit={handleSubmit}>
                     <div className="form-field">
@@ -172,8 +167,6 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-
-            <Info />
         </section>
     );
 }
