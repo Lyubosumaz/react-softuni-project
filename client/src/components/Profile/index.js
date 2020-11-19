@@ -4,8 +4,6 @@ import secondsToClock from '../../utils/secondsToClock';
 import { httpUser } from '../../services/http';
 import GameHistoryCard from './components/GameHistoryCard';
 import defaultProfilePic from '../../assets/images/default_profile.png';
-import Title from '../../components/Title';
-import Info from '../../components/Info';
 
 function Profile(props) {
     const [profile, setProfile] = useState(null);
@@ -18,8 +16,6 @@ function Profile(props) {
 
     return (
         <section className="component-wrapper">
-            <Title type={'component'} />
-
             <div className="component-data-wrapper">
                 {profile && (
                     <div className="profile-card">
@@ -55,8 +51,6 @@ function Profile(props) {
                             })}
                 </div>
             </div>
-
-            <Info />
         </section>
     );
 }

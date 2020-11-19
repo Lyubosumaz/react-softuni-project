@@ -4,25 +4,25 @@ import { history } from '../utils/history';
 import OptionBar from '../components/OptionBar';
 import AuthRoute from './auth-route/AuthRoute';
 
-import Home from '../containers/Home';
-import About from '../containers/About';
+import Home from '../containers/home';
+import About from '../containers/about';
 import HouseOfFame from '../containers/HouseOfFame';
 import TermsAndConditions from '../containers/terms-and-conditions';
 import FourOFour from '../containers/404';
 // User
-import Register from '../containers/Register';
+import Register from '../containers/register';
 import Login from '../containers/Login';
 import Logout from '../containers/Logout';
-import Profile from '../containers/Profile';
+import Profile from '../containers/profile';
 // Game
 import Game from '../containers/game/Game';
 import Progress from '../containers/game/progress/Progress'; // TODO
 import Shop from '../containers/game/shop/Shop';
 import Inventory from '../containers/game/inventory/Inventory';
 import Character from '../containers/game/character/Character';
-import Games from '../containers/Games'; // TODO
+import Games from '../containers/games'; // TODO
 // Puzzles
-import Puzzles from '../containers/Puzzles'; // TODO
+import Puzzles from '../containers/puzzles'; // TODO
 // Memes
 import Social from '../containers/social';
 import AddMeme from '../containers/social/add-meme';

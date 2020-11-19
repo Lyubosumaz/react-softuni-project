@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Component should checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Profile)>
+    <Profile
+      dispatch={[Function]}
+      userName="test"
+    >
+      <div
+        className="main-container"
+      >
+        <h1>
+          Profile
+        </h1>
+        <div
+          className="profile-game-history"
+        />
+        <div
+          className="info-container"
+        >
+          <p>
+            Play one more game 
+            <button
+              className="info-button"
+              onClick={[Function]}
+            >
+              Here
+            </button>
+            !
+          </p>
+        </div>
+      </div>
+    </Profile>
+  </Connect(Profile)>
+</Provider>
+`;
