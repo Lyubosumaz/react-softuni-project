@@ -3,11 +3,10 @@ import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
 import { toast } from 'react-toastify';
-import Title from '../../../components/Title';
-import Info from '../../../components/Info';
+import { componentData } from '../../../class-names.json';
 
 function DeleteMeme(props) {
-    const memeId = props.match.params.id;
+    const memeId = props.memeId;
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
@@ -36,10 +35,8 @@ function DeleteMeme(props) {
     }
 
     return (
-        <div className="delete-meme-container">
+        <section className={`${componentData}`}>
             <form>
-                <Title type={'component'} />
-
                 <div className="form-div-container">
                     <label htmlFor="Title">
                         <b>Title:</b>
@@ -59,10 +56,8 @@ function DeleteMeme(props) {
                         Delete
                     </button>
                 </div>
-
-                <Info />
             </form>
-        </div>
+        </section>
     );
 }
 

@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { httpSocial } from '../../../services/http';
-import Title from '../../../components/Title';
-import Info from '../../../components/Info';
 import MemeCard from '../components/MemeCard';
+import { componentData } from '../../../class-names.json';
 
 export default function ViewMeme(props) {
-    const memeId = props.match.params.id;
+    const memeId = props.memeId;
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
@@ -14,13 +13,5 @@ export default function ViewMeme(props) {
         });
     }, [memeId]);
 
-    return (
-        <div className="view-meme-container">
-            <Title type={'component'} />
-
-            {meme && <MemeCard meme={meme} />}
-
-            <Info />
-        </div>
-    );
+    return <section className={`${componentData}`}>{meme && <MemeCard meme={meme} />}</section>;
 }

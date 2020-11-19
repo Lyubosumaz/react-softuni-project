@@ -7,7 +7,7 @@ import AuthRoute from './auth-route/AuthRoute';
 import Home from '../containers/Home';
 import About from '../containers/About';
 import HouseOfFame from '../containers/HouseOfFame';
-import TermsAndConditions from '../containers/TermsAndConditions';
+import TermsAndConditions from '../containers/terms-and-conditions';
 import FourOFour from '../containers/404';
 // User
 import Register from '../containers/Register';
@@ -24,11 +24,11 @@ import Games from '../containers/Games'; // TODO
 // Puzzles
 import Puzzles from '../containers/Puzzles'; // TODO
 // Memes
-import Social from '../containers/Social';
-import AddMeme from '../containers/Social/AddMeme';
-import ViewMeme from '../containers/Social/ViewMeme';
-import EditMeme from '../containers/Social/EditMeme';
-import DeleteMeme from '../containers/Social/DeleteMeme';
+import Social from '../containers/social';
+import AddMeme from '../containers/social/add-meme';
+import ViewMeme from '../containers/social/view-meme';
+import EditMeme from '../containers/social/edit-meme';
+import DeleteMeme from '../containers/social/delete-meme';
 
 export default function AppRouter() {
     return (

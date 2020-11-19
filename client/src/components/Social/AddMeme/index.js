@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
 import { toast } from 'react-toastify';
 import schema from './add-meme-validations';
-import Title from '../../../components/Title';
-import Info from '../../../components/Info';
+import { componentData } from '../../../class-names.json';
 
 function AddMeme(props) {
     const title = useFormInput('');
@@ -62,10 +61,8 @@ function AddMeme(props) {
     }
 
     return (
-        <div className="add-meme-container">
+        <section className={`${componentData}`}>
             <form>
-                <Title type={'component'} />
-
                 <div className="form-div-container">
                     <label htmlFor="Title">
                         <b>Title:</b>
@@ -87,10 +84,8 @@ function AddMeme(props) {
                         Submit
                     </button>
                 </div>
-
-                <Info />
             </form>
-        </div>
+        </section>
     );
 }
 
