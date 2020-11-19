@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HouseOfFame Component should checks for html changes 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(HouseOfFame)>
+    <HouseOfFame
+      dispatch={[Function]}
+      isLogin={true}
+    >
+      <div
+        className="main-container"
+      >
+        <h1>
+          House of Fame
+        </h1>
+        <p
+          className="house-of-fame-search-p"
+        >
+          <b>
+            Username: 
+          </b>
+          <input
+            className="my-search"
+            onChange={[Function]}
+            placeholder="Search.."
+            type="text"
+          />
+        </p>
+        <div />
+        <div
+          className="info-container"
+        >
+          <p>
+            You saw what you need. Now join the game 
+            <button
+              className="info-button"
+              onClick={[Function]}
+            >
+              Here
+            </button>
+            !
+          </p>
+        </div>
+      </div>
+    </HouseOfFame>
+  </Connect(HouseOfFame)>
+</Provider>
+`;

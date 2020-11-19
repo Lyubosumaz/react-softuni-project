@@ -6,7 +6,7 @@ import AuthRoute from './auth-route/AuthRoute';
 
 import Home from '../containers/home';
 import About from '../containers/about';
-import HouseOfFame from '../containers/HouseOfFame';
+import HouseOfFame from '../containers/house-of-fame';
 import TermsAndConditions from '../containers/terms-and-conditions';
 import FourOFour from '../containers/404';
 // User
