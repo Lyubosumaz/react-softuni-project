@@ -6,7 +6,7 @@ import { componentWrapper } from '../../class-names.json';
 export default function TermsAndConditionsContainer() {
     return (
         <section className={`${componentWrapper}`}>
-            <Title type={'component'} />
+            <Title />
             <TermsAndConditions />
             <Info />
         </section>

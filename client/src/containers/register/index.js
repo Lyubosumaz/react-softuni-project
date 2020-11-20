@@ -5,7 +5,7 @@ import Info from '../../components/Info';
 export default function RegisterContainer() {
     return (
         <section className="form-container">
-            <Title type={'form'} />
+            <Title />
             <Register />
             <Info />
         </section>

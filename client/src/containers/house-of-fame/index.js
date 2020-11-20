@@ -5,7 +5,7 @@ import Info from '../../components/Info';
 export default function HouseOfFameContainer() {
     return (
         <div className="house-container">
-            <Title type={'component'} />
+            <Title />
             <HouseOfFame />
             <Info />
         </div>

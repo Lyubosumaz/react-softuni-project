@@ -6,7 +6,7 @@ import { componentWrapper } from '../../class-names.json';
 export default function SocialContainer() {
     return (
         <section className={`${componentWrapper}`}>
-            <Title type={'component'} />
+            <Title />
             <Social />
             <Info />
         </section>

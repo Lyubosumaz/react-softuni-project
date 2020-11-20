@@ -43,7 +43,7 @@ export default function HouseOfFame() {
 
     return (
         <div className="house-container">
-            <Title type={'component'} />
+            <Title />
 
             <p className="house-of-fame-search-p">
                 <b>Username: </b>

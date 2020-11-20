@@ -1,4 +1,4 @@
-import currentPage from './currentPage';
+import { currentPage } from './currentPage';
 
 function archiveValidator(archive) {
     return archive[currentPage()] ? Object.keys(archive[currentPage()]).length > 1 : false;

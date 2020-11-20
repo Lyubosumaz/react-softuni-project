@@ -5,7 +5,7 @@ import Info from '../../components/Info';
 export default function ProfileContainer() {
     return (
         <section className="component-wrapper">
-            <Title type={'component'} />
+            <Title />
             <Profile />
             <Info />
         </section>

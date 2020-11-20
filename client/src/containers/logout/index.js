@@ -5,7 +5,7 @@ import Info from '../../components/Info';
 export default function LogoutContainer() {
     return (
         <section className="component-wrapper">
-            <Title type={'component'} />
+            <Title />
             <Logout />
             <Info />
         </section>

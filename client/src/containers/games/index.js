@@ -4,7 +4,7 @@ import Info from '../../components/Info';
 export default function GamesContainer() {
     return (
         <div className="games-container">
-            <Title type={'component'} />
+            <Title />
             <p>In progress...</p>
             <Info />
         </div>

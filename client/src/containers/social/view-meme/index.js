@@ -6,7 +6,7 @@ import { componentWrapper } from '../../../class-names.json';
 export default function ViewMemeContainer(props) {
     return (
         <section className={`${componentWrapper}`}>
-            <Title type={'component'} />
+            <Title />
             <ViewMeme memeId={props.match.params.id} />
             <Info />
         </section>
