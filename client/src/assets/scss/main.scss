@@ -46,35 +46,3 @@
 @import './meme-card.css';
 @import './list-card.css';
 @import './profile.css';
-
-.app-container {
-    display: grid;
-    grid-template-rows: 50px auto 70px;
-    grid-template-areas: 'header' 'main' 'footer';
-    height: 100vh;
-}
-
-.main-container.background-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-.active-button {
-    text-decoration: none;
-    border: none;
-    background-color: #4caf50;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    opacity: 0.9;
-    border-radius: 25px;
-    font-size: 20px;
-    width: 40%;
-    cursor: pointer;
-}
-
-.active-button:hover {
-    background-color: green;
-}
