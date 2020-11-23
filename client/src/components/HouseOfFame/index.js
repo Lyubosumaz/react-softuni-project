@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
 import HouseOfFameCard from './components/HouseOfFameCard';
+import { componentData } from '../../class-names.json';
 
 export default function HouseOfFame() {
     const [users, setUsers] = useState([]);
@@ -40,7 +41,7 @@ export default function HouseOfFame() {
     }, [search]);
 
     return (
-        <div className="house-container">
+        <section className={`${componentData}`}>
             <p className="house-of-fame-search-p">
                 <b>Username: </b>
                 <input type="text" className="my-search" onChange={handleSearch} placeholder="Search.."></input>
@@ -56,6 +57,6 @@ export default function HouseOfFame() {
                             return <HouseOfFameCard key={index} data={data} />;
                         })}
             </div>
-        </div>
+        </section>
     );
 }

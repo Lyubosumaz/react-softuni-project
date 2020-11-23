@@ -4,6 +4,7 @@ import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
+import { componentData } from '../../class-names.json';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {
@@ -26,7 +27,7 @@ function Logout(props) {
     };
 
     return (
-        <section className="component-wrapper terms-container">
+        <section className={`${componentData}`}>
             <ul className="buttons-list">
                 <li>
                     <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>

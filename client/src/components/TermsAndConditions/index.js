@@ -1,9 +1,11 @@
+import { componentData } from '../../class-names.json';
+
 export default function TermsAndConditions() {
     const siteName = "'Dqvol 4'";
     const siteAddress = 'http://localhost:3000/';
 
     return (
-        <section className="component-data-wrapper terms-container">
+        <section className={`${componentData} terms-container`}>
             <h3>Welcome to Lyubosumaz's site {`${siteName}`}!</h3>
             <p>
                 These terms and conditions outline the rules and regulations for the use of {`${siteName}`}'s Website, located at {`${siteAddress}`}.

@@ -1,4 +1,6 @@
 {
+    "formComponent": "form-component",
+    "formFieldsWrapper": "form-fields-wrapper",
     "containerWrapper": "container-wrapper",
     "componentData": "component-data"
 }

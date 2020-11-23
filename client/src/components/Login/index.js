@@ -5,6 +5,7 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './login-validations';
+import { formComponent, formFieldsWrapper } from '../../class-names.json';
 
 function Login(props) {
     const username = useFormInput('');
@@ -60,8 +61,8 @@ function Login(props) {
     }
 
     return (
-        <section className="form-container">
-            <div className="form-fields-wrapper">
+        <section className={`${formComponent}`}>
+            <div className={`${formFieldsWrapper}`}>
                 <form>
                     <div className="form-field">
                         <label htmlFor="username">

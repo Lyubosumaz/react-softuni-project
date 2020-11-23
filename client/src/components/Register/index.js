@@ -3,6 +3,7 @@ import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { toast } from 'react-toastify';
 import schema from './register-validations';
+import { formComponent, formFieldsWrapper } from '../../class-names.json';
 
 export default function Register() {
     const username = useFormInput('');
@@ -71,8 +72,8 @@ export default function Register() {
     }
 
     return (
-        <section className="form-container">
-            <div className="form-fields-wrapper">
+        <section className={`${formComponent}`}>
+            <div className={`${formFieldsWrapper}`}>
                 <form onSubmit={handleSubmit}>
                     <div className="form-field">
                         <label htmlFor="username">
