@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import CharacterCard from './components/character-card/CharacterCard';
+import MainStatistic from '../../../components/MainStatistic';
 import { httpGame } from '../../../services/http';
-import defaultPicture from '../../../assets/images/default_profile.png';
 import './character.css';
 import { setRemoveItem } from './actions';
 
@@ -48,27 +48,7 @@ function Character(props) {
         <div>
             <h1>Character</h1>
 
-            <div className="profile-card">
-                <div>
-                    <h1>{props.userName}</h1>
-                    <img src={defaultPicture} alt="Profile" />
-                </div>
-
-                <div className="profile-stats">
-                    <p>
-                        <b>Your character statistics:</b>
-                    </p>
-                    <p>
-                        <b>Total Strength: {statistics.strength}</b>
-                    </p>
-                    <p>
-                        <b>Total Agility: {statistics.agility}</b>
-                    </p>
-                    <p>
-                        <b>Total Intelligence: {statistics.intelligence}</b>
-                    </p>
-                </div>
-            </div>
+            {statistics && <MainStatistic content={statistics} />}
 
             <div className="item-card-container">
                 <div className="item-card-card">
