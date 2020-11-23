@@ -1,13 +1,14 @@
 import Title from '../../components/Title';
 import HouseOfFame from '../../components/HouseOfFame';
 import Info from '../../components/Info';
+import { containerWrapper } from '../../class-names.json';
 
 export default function HouseOfFameContainer() {
     return (
-        <div className="house-container">
+        <section className={`${containerWrapper}`}>
             <Title />
             <HouseOfFame />
             <Info />
-        </div>
+        </section>
     );
 }

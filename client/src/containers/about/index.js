@@ -1,11 +1,12 @@
 import Title from '../../components/Title';
 import Info from '../../components/Info';
+import { containerWrapper, componentData } from '../../class-names.json';
 
 export default function AboutContainer() {
     return (
-        <section className="component-wrapper about-component background-image">
+        <section className={`${containerWrapper} about-component background-image`}>
             <Title />
-            <div className="component-data-wrapper"></div>
+            <section className={`${componentData}`}></section>
             <Info />
         </section>
     );

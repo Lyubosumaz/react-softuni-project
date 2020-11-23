@@ -1,10 +1,11 @@
 import Title from '../../components/Title';
 import Register from '../../components/Register';
 import Info from '../../components/Info';
+import { containerWrapper } from '../../class-names.json';
 
 export default function RegisterContainer() {
     return (
-        <section className="form-container">
+        <section className={`${containerWrapper}`}>
             <Title />
             <Register />
             <Info />

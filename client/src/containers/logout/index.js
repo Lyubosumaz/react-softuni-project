@@ -1,10 +1,11 @@
 import Title from '../../components/Title';
 import Logout from '../../components/Logout';
 import Info from '../../components/Info';
+import { containerWrapper } from '../../class-names.json';
 
 export default function LogoutContainer() {
     return (
-        <section className="component-wrapper">
+        <section className={`${containerWrapper}`}>
             <Title />
             <Logout />
             <Info />

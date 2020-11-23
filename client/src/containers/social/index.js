@@ -1,11 +1,11 @@
 import Title from '../../components/Title';
 import Social from '../../components/Social';
 import Info from '../../components/Info';
-import { componentWrapper } from '../../class-names.json';
+import { containerWrapper } from '../../class-names.json';
 
 export default function SocialContainer() {
     return (
-        <section className={`${componentWrapper}`}>
+        <section className={`${containerWrapper}`}>
             <Title />
             <Social />
             <Info />

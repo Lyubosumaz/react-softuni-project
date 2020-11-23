@@ -26,21 +26,19 @@ function Logout(props) {
     };
 
     return (
-        <section className="component-wrapper">
-            <div className="component-data-wrapper">
-                <ul className="buttons-list">
-                    <li>
-                        <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>
-                            <span>Yes</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}>
-                            <span>No!</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+        <section className="component-wrapper terms-container">
+            <ul className="buttons-list">
+                <li>
+                    <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>
+                        <span>Yes</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}>
+                        <span>No!</span>
+                    </button>
+                </li>
+            </ul>
         </section>
     );
 }

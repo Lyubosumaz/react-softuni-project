@@ -28,7 +28,7 @@
 }
 
 .form-container,
-.component-wrapper {
+.container-wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 'title' 'data' 'info';
@@ -39,7 +39,7 @@
     }
 
     .form-fields-wrapper,
-    .component-data-wrapper {
+    .component-data {
         grid-area: data;
     }
 

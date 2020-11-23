@@ -1,12 +1,13 @@
 import Title from '../../components/Title';
 import Info from '../../components/Info';
+import { containerWrapper } from '../../class-names.json';
 
 export default function PuzzlesContainer() {
     return (
-        <div className="puzzles-container">
+        <section className={`${containerWrapper}`}>
             <Title />
             <p>In progress...</p>
             <Info />
-        </div>
+        </section>
     );
 }
