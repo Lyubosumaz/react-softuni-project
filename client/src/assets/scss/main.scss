@@ -33,10 +33,10 @@
 @import '6-pages/home';
 @import '6-pages/about';
 @import '6-pages/profile';
-@import './6-pages/404';
+@import '6-pages/404';
+@import '6-pages/terms-and-conditions';
 
 // TODO
-@import './terms-and-conditions';
 @import './delete-meme';
 @import './meme-card';
 @import './logout';

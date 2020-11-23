@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
 import HouseOfFameCard from './components/HouseOfFameCard';
-import Title from '../../components/Title';
-import Info from '../../components/Info';
 
 export default function HouseOfFame() {
     const [users, setUsers] = useState([]);
@@ -43,8 +41,6 @@ export default function HouseOfFame() {
 
     return (
         <div className="house-container">
-            <Title />
-
             <p className="house-of-fame-search-p">
                 <b>Username: </b>
                 <input type="text" className="my-search" onChange={handleSearch} placeholder="Search.."></input>
@@ -60,8 +56,6 @@ export default function HouseOfFame() {
                             return <HouseOfFameCard key={index} data={data} />;
                         })}
             </div>
-
-            <Info />
         </div>
     );
 }
