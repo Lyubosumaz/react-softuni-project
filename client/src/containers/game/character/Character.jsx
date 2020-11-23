@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import CharacterCard from './components/character-card/CharacterCard';
 import MainStatistic from '../../../components/MainStatistic';
+import ItemCard from '../../../components/ItemCard';
 import { httpGame } from '../../../services/http';
 import './character.css';
 import { setRemoveItem } from './actions';
@@ -54,7 +54,7 @@ function Character(props) {
                 <div className="item-card-card">
                     {items &&
                         items.map((item, index) => {
-                            return <CharacterCard key={index} item={item} />;
+                            return <ItemCard key={index} item={item} />;
                         })}
                 </div>
             </div>

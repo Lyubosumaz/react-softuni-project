@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { httpGame } from '../../../services/http';
 import { toast } from 'react-toastify';
-import ShopCard from './components/shop-card/ShopCard';
+import ItemCard from '../../../components/ItemCard';
 
 export default function Shop() {
     const [items, setItems] = useState([]);
@@ -38,7 +38,7 @@ export default function Shop() {
                         return (
                             <div key={i} className="item-card-card">
                                 {row.map((item, index) => {
-                                    return <ShopCard key={index} item={item} />;
+                                    return <ItemCard key={index} item={item} />;
                                 })}
                             </div>
                         );

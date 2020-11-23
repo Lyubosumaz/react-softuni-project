@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
 import { toast } from 'react-toastify';
-import InventoryCard from './components/inventory-card/InventoryCard';
+import ItemCard from '../../../components/ItemCard';
 import { setSellItem, setEquipItem } from './actions';
 
 function Inventory(props) {
@@ -45,7 +45,7 @@ function Inventory(props) {
                         return (
                             <div key={i} className="item-card-card">
                                 {row.map((item, index) => {
-                                    return <InventoryCard key={index} item={item} />;
+                                    return <ItemCard key={index} item={item} />;
                                 })}
                             </div>
                         );
