@@ -27,16 +27,16 @@ function Logout(props) {
     };
 
     return (
-        <section className={`${componentData}`}>
-            <ul className="buttons-list">
+        <section className={`${componentData} logout`}>
+            <ul className="ul-buttons-list">
                 <li>
-                    <button type="submit" className="logout-button" name="yes-btn" onClick={yesButtonHandler}>
-                        <span>Yes</span>
+                    <button type="submit" className="logout-action-btn" onClick={handleRoute('/home')}>
+                        <span>No!</span>
                     </button>
                 </li>
                 <li>
-                    <button type="submit" className="logout-button" name="no-btn" onClick={handleRoute('/home')}>
-                        <span>No!</span>
+                    <button type="submit" className="logout-action-btn" onClick={yesButtonHandler}>
+                        <span>Yes</span>
                     </button>
                 </li>
             </ul>

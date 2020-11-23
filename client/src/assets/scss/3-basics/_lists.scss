@@ -1,0 +1,20 @@
+.ul-buttons-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+    li {
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    li + li {
+        margin-left: 2em;
+    }
+
+    li:nth-child(1) button {
+        background: $errorColor;
+    }
+}
