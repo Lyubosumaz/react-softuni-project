@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
-import HouseOfFameCard from './components/HouseOfFameCard';
+import LesserStatistic from '../LesserStatistic';
 import { componentData } from '../../class-names.json';
 
 export default function HouseOfFame() {
@@ -54,7 +54,7 @@ export default function HouseOfFame() {
                             return b.totalGames - a.totalGames;
                         })
                         .map((data, index) => {
-                            return <HouseOfFameCard key={index} data={data} />;
+                            return <LesserStatistic key={index} data={data} />;
                         })}
             </div>
         </section>

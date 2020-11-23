@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
-import GameHistoryCard from './components/GameHistoryCard';
+import LesserStatistic from '../LesserStatistic';
 import { componentData } from '../../class-names.json';
 
 import MainStatistic from '../MainStatistic';
@@ -24,7 +24,7 @@ export default function Profile() {
                         .slice(0)
                         .reverse()
                         .map((data, index) => {
-                            return <GameHistoryCard key={index} data={data} />;
+                            return <LesserStatistic key={index} data={data} />;
                         })}
             </div>
         </section>
