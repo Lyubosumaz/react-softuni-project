@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { httpSocial } from '../../../services/http';
-import MemeCard from '../components/MemeCard';
+import MemeCard from '../../MemeCard';
 import { componentData } from '../../../class-names.json';
 
 export default function ViewMeme(props) {

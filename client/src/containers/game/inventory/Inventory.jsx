@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
-import { toast } from 'react-toastify';
 import ItemCard from '../../../components/ItemCard';
 import { setSellItem, setEquipItem } from './actions';
 import { toastError } from '../../../utils/toastHandler';

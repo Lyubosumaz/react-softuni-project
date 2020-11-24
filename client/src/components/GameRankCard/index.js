@@ -4,7 +4,7 @@ import { currentPage } from '../../utils/currentPage';
 import numberGenerator from '../../utils/numberGenerator';
 import gameRank from '../../assets/images/game_rank.png';
 
-export default function HouseOfFameCard(props) {
+export default function GameRankCard(props) {
     const content = props.data;
     let card;
 

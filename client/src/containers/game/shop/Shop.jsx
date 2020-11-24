@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { httpGame } from '../../../services/http';
-import { toast } from 'react-toastify';
 import ItemCard from '../../../components/ItemCard';
 import { toastError } from '../../../utils/toastHandler';
 

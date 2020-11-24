@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
-import LesserStatistic from '../LesserStatistic';
-import { componentData } from '../../class-names.json';
-
 import MainStatistic from '../MainStatistic';
+import GameRankCard from '../GameRankCard';
+import { componentData } from '../../class-names.json';
 
 export default function Profile() {
     const [profile, setProfile] = useState(null);
@@ -24,7 +23,7 @@ export default function Profile() {
                         .slice(0)
                         .reverse()
                         .map((data, index) => {
-                            return <LesserStatistic key={index} data={data} />;
+                            return <GameRankCard key={index} data={data} />;
                         })}
             </div>
         </section>
