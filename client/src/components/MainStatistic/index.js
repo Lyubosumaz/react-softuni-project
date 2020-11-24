@@ -14,9 +14,15 @@ function MainStatistic(props) {
             card = (
                 <Fragment key={numberGenerator()}>
                     <p>Your Game Profile Records:</p>
-                    <p>Total Games Played: {content.totalGames}</p>
-                    <p>Total Time Played: {secondsToClock(content.totalTime)}</p>
-                    <p>Current Gold: {content.totalGold} coins</p>
+                    <p>
+                        Total Games Played:<span>{content.totalGames}</span>
+                    </p>
+                    <p>
+                        Total Time Played:<span>{secondsToClock(content.totalTime)}</span>
+                    </p>
+                    <p>
+                        Current Gold:<span>{content.totalGold} coins</span>
+                    </p>
                 </Fragment>
             );
             break;
@@ -24,9 +30,15 @@ function MainStatistic(props) {
             card = (
                 <Fragment key={numberGenerator()}>
                     <p>Your character statistics:</p>
-                    <p>Total Strength: {content.strength}</p>
-                    <p>Total Agility: {content.agility}</p>
-                    <p>Total Intelligence: {content.intelligence}</p>
+                    <p>
+                        Total Strength:<span>{content.strength}</span>
+                    </p>
+                    <p>
+                        Total Agility:<span>{content.agility}</span>
+                    </p>
+                    <p>
+                        Total Intelligence:<span>{content.intelligence}</span>
+                    </p>
                 </Fragment>
             );
             break;
@@ -35,14 +47,18 @@ function MainStatistic(props) {
     }
 
     return (
-        <div className="profile-card">
-            <header>
-                <h1>{props.userName}</h1>
-                <img src={defaultProfilePic} alt="Avatar" />
+        <section className="statistic-card">
+            <header className="statistic-card-header">
+                <p>Account:</p>
+                <h2>{props.userName}</h2>
             </header>
 
-            <div className="profile-stats">{card}</div>
-        </div>
+            <div className="statistic-card-avatar">
+                <img src={defaultProfilePic} alt="Avatar" />
+            </div>
+
+            <div className="statistic-card-details">{card}</div>
+        </section>
     );
 }
 
