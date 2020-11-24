@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { httpGame } from '../../services/http';
 import { currentPage } from '../../utils/currentPage';
 import numberGenerator from '../../utils/numberGenerator';
-import { toast } from 'react-toastify';
+import { toastInfo, toastError } from '../../utils/toastHandler';
 
 function ItemCard(props) {
     const item = props.item;
@@ -13,14 +13,10 @@ function ItemCard(props) {
         httpGame
             .buy(item._id)
             .then((res) => {
-                toast(res.message, {
-                    type: toast.TYPE.INFO,
-                });
+                toastInfo(res);
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }
 
@@ -28,15 +24,11 @@ function ItemCard(props) {
         httpGame
             .sell(item._id)
             .then((res) => {
-                toast(res.message, {
-                    type: toast.TYPE.INFO,
-                });
+                toastInfo(res);
                 props.setSellItem();
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }
 
@@ -44,15 +36,11 @@ function ItemCard(props) {
         httpGame
             .equip(item._id)
             .then((res) => {
-                toast(res.message, {
-                    type: toast.TYPE.INFO,
-                });
+                toastInfo(res);
                 props.setEquipItem();
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }
 
@@ -61,14 +49,10 @@ function ItemCard(props) {
             .remove(item._id)
             .then((res) => {
                 props.setRemoveItem();
-                toast(res.message, {
-                    type: toast.TYPE.INFO,
-                });
+                toastInfo(res);
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }
 

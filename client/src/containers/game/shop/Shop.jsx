@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { httpGame } from '../../../services/http';
 import { toast } from 'react-toastify';
 import ItemCard from '../../../components/ItemCard';
+import { toastError } from '../../../utils/toastHandler';
 
 export default function Shop() {
     const [items, setItems] = useState([]);
@@ -22,9 +23,7 @@ export default function Shop() {
                 setItems(arr);
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }, []);
 

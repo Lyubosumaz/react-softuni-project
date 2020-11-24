@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { toast } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { httpUser } from '../services/http';
@@ -13,12 +12,6 @@ import Footer from '../components/Footer';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/scss/main.scss';
-
-toast.configure({
-    autoClose: 7000,
-    draggable: false,
-    position: toast.POSITION.BOTTOM_CENTER,
-});
 
 export default function App() {
     // REFRESHING TOKEN EVERY 9 MINUTES = 9*60*1000

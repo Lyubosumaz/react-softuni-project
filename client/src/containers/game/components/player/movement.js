@@ -3,7 +3,7 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 import { store } from '../../../../services/store';
 import { httpGame } from '../../../../services/http';
-import { toast } from 'react-toastify';
+import { toastSuccess } from '../../../../utils/toastHandler';
 import { tiles } from '../data/maps/2';
 // import { connect } from 'react-redux';
 
@@ -120,9 +120,7 @@ export default function HandleMovement({ children }) {
                             level: store.getState().game.level,
                         });
 
-                        toast('Welcome the next level!', {
-                            type: toast.TYPE.SUCCESS,
-                        });
+                        toastSuccess('Welcome the next level!');
 
                         store.dispatch({
                             type: 'END_THE_GAME',
@@ -149,9 +147,7 @@ export default function HandleMovement({ children }) {
                     type: 'OPEN_GOLD_CHEST',
                     payload: gold,
                 });
-                toast(`You have picked up ${gold} gold!`, {
-                    type: toast.TYPE.SUCCESS,
-                });
+                toastSuccess(`You have picked up ${gold} gold!`);
                 break;
             case 3:
                 if (store.getState().game.item.length > 0) {
@@ -162,9 +158,7 @@ export default function HandleMovement({ children }) {
                     type: 'OPEN_ITEM_CHEST',
                     payload: item,
                 });
-                toast(`You have found ${item.itemName}!`, {
-                    type: toast.TYPE.SUCCESS,
-                });
+                toastSuccess(`You have found ${item.itemName}!`);
                 break;
             default:
                 break;

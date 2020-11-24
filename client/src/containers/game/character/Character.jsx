@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 import MainStatistic from '../../../components/MainStatistic';
 import ItemCard from '../../../components/ItemCard';
 import { httpGame } from '../../../services/http';
 import './character.css';
 import { setRemoveItem } from './actions';
+import { toastError } from '../../../utils/toastHandler';
 
 function Character(props) {
     const newProps = props;
@@ -38,9 +38,7 @@ function Character(props) {
                 }
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }, [newProps]);
 

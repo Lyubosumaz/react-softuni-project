@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
-import { toast } from 'react-toastify';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { componentData } from '../../class-names.json';
+import { toastSuccess, toastError } from '../../utils/toastHandler';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {
@@ -12,17 +12,13 @@ function Logout(props) {
         httpUser
             .logout()
             .then((res) => {
-                toast(res.message, {
-                    type: toast.TYPE.SUCCESS,
-                });
+                toastSuccess(res);
                 removeAllCookies();
                 props.setLogoutValue();
                 history.push('/home');
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     };
 

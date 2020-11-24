@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
-import { toast } from 'react-toastify';
 import schema from './register-validations';
+import { toastSuccess, toastError } from '../../utils/toastHandler';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
 
 export default function Register() {
@@ -58,15 +58,11 @@ export default function Register() {
             httpUser
                 .register(data)
                 .then((res) => {
-                    toast(res.message, {
-                        type: toast.TYPE.SUCCESS,
-                    });
+                    toastSuccess(res);
                     history.push('/login');
                 })
                 .catch((err) => {
-                    toast(err.message, {
-                        type: toast.TYPE.ERROR,
-                    });
+                    toastError(err);
                 });
         }
     }

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
-import { toast } from 'react-toastify';
 import schema from './edit-meme-validations';
+import { toastSuccess, toastError } from '../../../utils/toastHandler';
 import { componentData } from '../../../class-names.json';
 
 function EditMeme(props) {
@@ -57,15 +57,11 @@ function EditMeme(props) {
             httpSocial
                 .editMeme(data)
                 .then((res) => {
-                    toast(res.message, {
-                        type: toast.TYPE.SUCCESS,
-                    });
+                    toastSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    toast(err.message, {
-                        type: toast.TYPE.ERROR,
-                    });
+                    toastError(err);
                 });
         }
     }

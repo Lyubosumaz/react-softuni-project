@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
-import { toast } from 'react-toastify';
+import { toastSuccess, toastError } from '../../../utils/toastHandler';
 import { componentData } from '../../../class-names.json';
 
 function DeleteMeme(props) {
@@ -21,15 +21,11 @@ function DeleteMeme(props) {
             httpSocial
                 .deleteMeme(memeId)
                 .then((res) => {
-                    toast(res.message, {
-                        type: toast.TYPE.ERROR,
-                    });
+                    toastSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    toast(err.message, {
-                        type: toast.TYPE.ERROR,
-                    });
+                    toastError(err);
                 });
         }
     }

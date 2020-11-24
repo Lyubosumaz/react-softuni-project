@@ -4,6 +4,7 @@ import { httpGame } from '../../../services/http';
 import { toast } from 'react-toastify';
 import ItemCard from '../../../components/ItemCard';
 import { setSellItem, setEquipItem } from './actions';
+import { toastError } from '../../../utils/toastHandler';
 
 function Inventory(props) {
     const newProps = props;
@@ -29,9 +30,7 @@ function Inventory(props) {
                 }
             })
             .catch((err) => {
-                toast(err.message, {
-                    type: toast.TYPE.ERROR,
-                });
+                toastError(err);
             });
     }, [newProps]);
 

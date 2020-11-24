@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
-import { toast } from 'react-toastify';
 import schema from './add-meme-validations';
+import { toastSuccess, toastError } from '../../../utils/toastHandler';
 import { componentData } from '../../../class-names.json';
 
 function AddMeme(props) {
@@ -23,15 +23,11 @@ function AddMeme(props) {
             httpSocial
                 .addMeme(meme)
                 .then((res) => {
-                    toast(res.message, {
-                        type: toast.TYPE.SUCCESS,
-                    });
+                    toastSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    toast(err.message, {
-                        type: toast.TYPE.ERROR,
-                    });
+                    toastError(err);
                 });
         }
     }

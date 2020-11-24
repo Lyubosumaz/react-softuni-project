@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { setLoginValue } from './actions';
 import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
-import { toast } from 'react-toastify';
 import schema from './login-validations';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
+import { toastSuccess } from '../../utils/toastHandler';
 
 function Login(props) {
     const username = useFormInput('');
@@ -49,9 +49,7 @@ function Login(props) {
                 .login(data)
                 .then((user) => {
                     props.setLoginValue(user);
-                    toast('You have Logged successfully!', {
-                        type: toast.TYPE.SUCCESS,
-                    });
+                    toastSuccess('You have Logged successfully!');
                     history.push('/home');
                 })
                 .catch((err) => {
