@@ -47,17 +47,17 @@ function MainStatistic(props) {
     }
 
     return (
-        <section className="statistic-card">
-            <header className="statistic-card-header">
+        <section className="statistic-component">
+            <header className="statistic-header">
                 <p>Account:</p>
                 <h2>{props.userName}</h2>
             </header>
 
-            <div className="statistic-card-avatar">
+            <div className="statistic-avatar">
                 <img src={defaultProfilePic} alt="Avatar" />
             </div>
 
-            <div className="statistic-card-details">{card}</div>
+            <div className="statistic-details">{card}</div>
         </section>
     );
 }
