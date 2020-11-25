@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
-import GameRankCard from '../GameHistoryCard';
+import GameHistoryList from '../GameHistoryList';
 import { componentData } from '../../class-names.json';
 
 export default function HouseOfFame() {
@@ -47,16 +47,7 @@ export default function HouseOfFame() {
                 <input type="text" className="my-search" onChange={handleSearch} placeholder="Search.."></input>
             </p>
 
-            <ul className="game-history-component">
-                {users &&
-                    users
-                        .sort((a, b) => {
-                            return b.totalGames - a.totalGames;
-                        })
-                        .map((data, index) => {
-                            return <GameRankCard key={index} data={data} />;
-                        })}
-            </ul>
+            {users && <GameHistoryList content={users} />}
         </section>
     );
 }
