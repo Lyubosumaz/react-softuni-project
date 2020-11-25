@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import MainStatistic from '../../../components/MainStatistic';
-import ItemCard from '../../../components/ItemCard';
-import { httpGame } from '../../../services/http';
-import './character.css';
 import { setRemoveItem } from './actions';
+import { httpGame } from '../../../services/http';
 import { toastError } from '../../../utils/toastHandler';
+import MainStatistic from '../../../components/MainStatistic';
+import ItemsList from '../../../components/ItemsList';
 
 function Character(props) {
     const newProps = props;
@@ -15,11 +14,11 @@ function Character(props) {
     useEffect(() => {
         httpGame
             .character()
-            .then((c) => {
-                if (!c) {
+            .then((i) => {
+                if (!i) {
                     return;
                 }
-                const allStats = c.reduce(
+                const allStats = i.reduce(
                     (a, b) => {
                         return {
                             strength: a.strength + b.strength,
@@ -30,7 +29,7 @@ function Character(props) {
                     { strength: 0, agility: 0, intelligence: 0 }
                 );
 
-                setItems(c);
+                setItems(i);
                 setStatistics(allStats);
 
                 if (newProps.characterRemoveItem) {
@@ -48,14 +47,7 @@ function Character(props) {
 
             {statistics && <MainStatistic content={statistics} />}
 
-            <div className="item-card-container">
-                <div className="item-card-card">
-                    {items &&
-                        items.map((item, index) => {
-                            return <ItemCard key={index} item={item} />;
-                        })}
-                </div>
-            </div>
+            <ItemsList items={items} />
         </div>
     );
 }

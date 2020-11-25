@@ -1,0 +1,79 @@
+.items-list-component {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .item-card {
+        height: 400px;
+        margin-bottom: 1%;
+        flex: 0 1 24%;
+        background-color: transparent;
+        border: 1px solid #f1f1f1;
+        perspective: 1000px;
+
+        &:hover .item-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        &-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        &-front,
+        &-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        &-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        &-back {
+            background-color: dodgerblue;
+            color: white;
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+// Character
+.active-button.remove {
+    background-color: #333;
+}
+
+.active-button.remove:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+// Inventory
+.active-button.sell {
+    background-color: #333;
+}
+
+.active-button.sell:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+// Shop
+.active-button.buy {
+    background-color: #333;
+}
+
+.active-button.buy:hover {
+    background-color: #ddd;
+    color: black;
+}

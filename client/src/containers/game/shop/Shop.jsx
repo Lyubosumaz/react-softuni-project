@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { httpGame } from '../../../services/http';
-import ItemCard from '../../../components/ItemCard';
 import { toastError } from '../../../utils/toastHandler';
+import ItemsList from '../../../components/ItemsList';
 
 export default function Shop() {
     const [items, setItems] = useState([]);
@@ -14,12 +14,7 @@ export default function Shop() {
                     return;
                 }
 
-                const rows = [...Array(Math.ceil(i.length / 4))];
-                const arr = rows.map((row, index) => {
-                    return i.slice(index * 4, index * 4 + 4);
-                });
-
-                setItems(arr);
+                setItems(i);
             })
             .catch((err) => {
                 toastError(err);
@@ -30,18 +25,7 @@ export default function Shop() {
         <div>
             <h1>Shop</h1>
 
-            <div className="item-card-container">
-                {items &&
-                    items.map((row, i) => {
-                        return (
-                            <div key={i} className="item-card-card">
-                                {row.map((item, index) => {
-                                    return <ItemCard key={index} item={item} />;
-                                })}
-                            </div>
-                        );
-                    })}
-            </div>
+            <ItemsList items={items} />
         </div>
     );
 }
