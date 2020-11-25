@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    box-shadow: 0 0.2em 1.2em 0.2em rgba($color: #000, $alpha: 0.2);
+    box-shadow: $mainShadow;
     margin-bottom: 2em;
 
     span {

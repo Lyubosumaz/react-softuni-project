@@ -1,0 +1,51 @@
+.game-history-component {
+    padding: 1.5em;
+
+    .game-history-card {
+        margin-bottom: 2em;
+        padding: 1.5em;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: $mainShadow;
+
+        .image-wrapper {
+            width: 10em;
+            height: 10em;
+            position: relative;
+
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .statistics-wrapper {
+            flex: 0 1 75%;
+
+            .statistics-header {
+                margin-bottom: 1.5em;
+
+                h2 {
+                    text-decoration: underline;
+                }
+            }
+
+            .statistics-main {
+                p {
+                    padding-bottom: 1em;
+                }
+
+                p:last-child {
+                    padding: 0;
+                }
+
+                span {
+                    font-weight: 700;
+                    margin-left: 0.75em;
+                }
+            }
+        }
+    }
+}

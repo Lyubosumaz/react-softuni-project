@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
 import MainStatistic from '../MainStatistic';
-import GameRankCard from '../GameRankCard';
+import GameRankCard from '../GameHistoryCard';
 import { componentData } from '../../class-names.json';
 
 export default function Profile() {
@@ -17,7 +17,7 @@ export default function Profile() {
         <section className={`${componentData}`}>
             {profile && <MainStatistic content={profile} />}
 
-            <div className="profile-game-history">
+            <ul className="game-history-component">
                 {profile &&
                     profile.gameHistory
                         .slice(0)
@@ -25,7 +25,7 @@ export default function Profile() {
                         .map((data, index) => {
                             return <GameRankCard key={index} data={data} />;
                         })}
-            </div>
+            </ul>
         </section>
     );
 }
