@@ -1,40 +1,61 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleRoute } from '../../utils/history';
 import { currentPage } from '../../utils/currentPage';
 import numberGenerator from '../../utils/numberGenerator';
+import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/imageCalc';
 
 function MemeCard(props) {
+    const imageRef = useRef(null);
     const meme = props.meme;
     const currentUser = props.userId;
+    const [ratio, setRatio] = useState(0);
+    const [orientation, setOrientation] = useState('');
+
+    useEffect(() => {
+        const width = imageRef.current.clientWidth;
+        const height = imageRef.current.clientHeight;
+        const divider = gcd(width, height);
+        setRatio(imageRatio(width / divider, height / divider));
+        setOrientation(imageOrientation(width, height));
+    }, [ratio, orientation]);
 
     return (
-        <div className="meme-card">
-            <h1>{meme.title}</h1>
+        <Fragment>
+            <style>{`.meme-card-image-wrapper.meme-order-${props.num}::before {
+                padding-top: ${ratio}%;
+            }`}</style>
+            <li className="meme-card">
+                <header className="meme-card-header">
+                    <h3>{meme.title}</h3>
+                </header>
 
-            <div>
-                {currentPage() !== 'view-meme' && (
-                    <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${meme._id}`)}>
-                        View
-                    </button>
-                )}
-
-                {meme.addedBy === currentUser && (
-                    <Fragment key={numberGenerator()}>
-                        <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${meme._id}`)}>
-                            Edit
+                <div className="meme-card-buttons">
+                    {currentPage() !== 'view-meme' && (
+                        <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${meme._id}`)}>
+                            View
                         </button>
-                        <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${meme._id}`)}>
-                            Delete
-                        </button>
-                    </Fragment>
-                )}
-            </div>
+                    )}
 
-            <div>
-                <img src={meme.imageUrl} alt={meme.title} />
-            </div>
-        </div>
+                    {meme.addedBy === currentUser && (
+                        <Fragment key={numberGenerator()}>
+                            <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${meme._id}`)}>
+                                Edit
+                            </button>
+                            <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${meme._id}`)}>
+                                Delete
+                            </button>
+                        </Fragment>
+                    )}
+                </div>
+
+                <div className="meme-card-image">
+                    <div className={`meme-card-image-wrapper meme-order-${props.num}`}>
+                        <img ref={imageRef} src={meme.imageUrl} className={`meme-orientation-${orientation}`} alt={imageAltName(meme.title)} />
+                    </div>
+                </div>
+            </li>
+        </Fragment>
     );
 }
 

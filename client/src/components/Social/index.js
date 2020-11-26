@@ -47,23 +47,24 @@ export default function Social() {
 
             <h1>Memes</h1>
 
-            <div className="memes-container">
-                {memes.map((meme, index) => {
-                    if (memes.length === index + 1) {
-                        return (
-                            <div key={meme.index} ref={lastMemeCardRef}>
-                                <MemeCard meme={meme} />
-                            </div>
-                        );
-                    } else {
-                        return (
-                            <div key={meme.index}>
-                                <MemeCard meme={meme} />
-                            </div>
-                        );
-                    }
-                })}
-            </div>
+            <ul className="memes-list-container">
+                {memes &&
+                    memes.map((meme, index) => {
+                        if (memes.length === index + 1) {
+                            return (
+                                <div key={meme.index} ref={lastMemeCardRef}>
+                                    <MemeCard num={index} meme={meme} />
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div key={meme.index}>
+                                    <MemeCard num={index} meme={meme} />
+                                </div>
+                            );
+                        }
+                    })}
+            </ul>
             <div>{loading && 'Loading...'}</div>
             <div>{error && 'Error'}</div>
         </section>
