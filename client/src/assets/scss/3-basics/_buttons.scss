@@ -106,3 +106,43 @@ button {
         }
     }
 }
+
+// MEME
+.meme-card-button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    min-width: fit-content;
+    color: white;
+    background-color: #555;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.meme-card-button:hover {
+    background-color: #333;
+}
+
+.meme-card-button.delete {
+    background-color: #f4511e;
+}
+
+.meme-card-button.delete:hover {
+    background-color: red;
+}
+
+.meme-card-button.edit {
+    background-color: #4caf50;
+}
+
+.meme-card-button.edit:hover {
+    background-color: green;
+}
+
+// delete meme
+.form-action-btn.delete {
+    background-color: #f4511e;
+}
+// MEME

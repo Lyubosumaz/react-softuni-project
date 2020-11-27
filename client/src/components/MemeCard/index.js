@@ -22,10 +22,10 @@ function MemeCard(props) {
 
     return (
         <Fragment>
-            <style>{`.meme-card-image-wrapper.meme-order-${props.num}::before {
-                padding-top: ${ratio}%;
-            }`}</style>
             <li className="meme-card">
+                <style>{`.meme-card-image-wrapper.meme-order-${props.num}::before {
+                    padding-top: ${ratio}%;
+                }`}</style>
                 <header className="meme-card-header">
                     <h3>{meme.title}</h3>
                 </header>

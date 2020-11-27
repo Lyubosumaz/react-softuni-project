@@ -47,8 +47,9 @@ export default function Social() {
 
             <h1>Memes</h1>
 
+            {console.log(memes)}
             <ul className="memes-list-container">
-                {memes &&
+                {memes.length &&
                     memes.map((meme, index) => {
                         if (memes.length === index + 1) {
                             return (
