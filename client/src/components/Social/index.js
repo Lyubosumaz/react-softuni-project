@@ -49,19 +49,19 @@ export default function Social() {
 
             {console.log(memes)}
             <ul className="memes-list-container">
-                {memes.length &&
+                {memes &&
                     memes.map((meme, index) => {
                         if (memes.length === index + 1) {
                             return (
-                                <div key={meme.index} ref={lastMemeCardRef}>
+                                <li key={meme.index} ref={lastMemeCardRef}>
                                     <MemeCard num={index} meme={meme} />
-                                </div>
+                                </li>
                             );
                         } else {
                             return (
-                                <div key={meme.index}>
+                                <li key={meme.index}>
                                     <MemeCard num={index} meme={meme} />
-                                </div>
+                                </li>
                             );
                         }
                     })}

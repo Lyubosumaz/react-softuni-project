@@ -6,11 +6,20 @@ import numberGenerator from '../../utils/numberGenerator';
 import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/imageCalc';
 
 function MemeCard(props) {
-    const imageRef = useRef(null);
+    const imageRef = useRef();
     const meme = props.meme;
+    // const [meme, setMeme] = useState(undefined);
+    console.log(meme);
     const currentUser = props.userId;
     const [ratio, setRatio] = useState(0);
     const [orientation, setOrientation] = useState('');
+
+    const renders = useRef(0);
+    console.log('hello renders: ', renders.current++);
+
+    // useEffect(() => {
+    //     setMeme(props.meme);
+    // }, []);
 
     useEffect(() => {
         const width = imageRef.current.clientWidth;
@@ -22,39 +31,42 @@ function MemeCard(props) {
 
     return (
         <Fragment>
-            <li className="meme-card">
-                <style>{`.meme-card-image-wrapper.meme-order-${props.num}::before {
+            {console.log(meme)}
+            {meme && (
+                <section className="meme-card">
+                    <style>{`.meme-card-image-wrapper.meme-order-${props.num}::before {
                     padding-top: ${ratio}%;
                 }`}</style>
-                <header className="meme-card-header">
-                    <h3>{meme.title}</h3>
-                </header>
+                    <header className="meme-card-header">
+                        <h3>{meme.title}</h3>
+                    </header>
 
-                <div className="meme-card-buttons">
-                    {currentPage() !== 'view-meme' && (
-                        <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${meme._id}`)}>
-                            View
-                        </button>
-                    )}
-
-                    {meme.addedBy === currentUser && (
-                        <Fragment key={numberGenerator()}>
-                            <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${meme._id}`)}>
-                                Edit
+                    <div className="meme-card-buttons">
+                        {currentPage() !== 'view-meme' && (
+                            <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${meme._id}`)}>
+                                View
                             </button>
-                            <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${meme._id}`)}>
-                                Delete
-                            </button>
-                        </Fragment>
-                    )}
-                </div>
+                        )}
 
-                <div className="meme-card-image">
-                    <div className={`meme-card-image-wrapper meme-order-${props.num}`}>
-                        <img ref={imageRef} src={meme.imageUrl} className={`meme-orientation-${orientation}`} alt={imageAltName(meme.title)} />
+                        {meme.addedBy === currentUser && (
+                            <Fragment key={numberGenerator()}>
+                                <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${meme._id}`)}>
+                                    Edit
+                                </button>
+                                <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${meme._id}`)}>
+                                    Delete
+                                </button>
+                            </Fragment>
+                        )}
                     </div>
-                </div>
-            </li>
+
+                    <div className="meme-card-image">
+                        <div className={`meme-card-image-wrapper meme-order-${props.num}`}>
+                            <img ref={imageRef} src={meme.imageUrl} className={`meme-orientation-${orientation}`} alt={imageAltName(meme.title)} />
+                        </div>
+                    </div>
+                </section>
+            )}
         </Fragment>
     );
 }
