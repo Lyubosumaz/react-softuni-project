@@ -9,17 +9,9 @@ function MemeCard(props) {
     const imageRef = useRef();
     const meme = props.meme;
     // const [meme, setMeme] = useState(undefined);
-    console.log(meme);
     const currentUser = props.userId;
     const [ratio, setRatio] = useState(0);
     const [orientation, setOrientation] = useState('');
-
-    const renders = useRef(0);
-    console.log('hello renders: ', renders.current++);
-
-    // useEffect(() => {
-    //     setMeme(props.meme);
-    // }, []);
 
     useEffect(() => {
         const width = imageRef.current.clientWidth;
