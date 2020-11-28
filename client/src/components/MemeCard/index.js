@@ -6,24 +6,24 @@ import numberGenerator from '../../utils/numberGenerator';
 import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/imageCalc';
 
 function MemeCard(props) {
-    const imageRef = useRef();
     const meme = props.meme;
-    // const [meme, setMeme] = useState(undefined);
+    console.log(props.meme);
     const currentUser = props.userId;
+    const imageRef = useRef();
     const [ratio, setRatio] = useState(0);
     const [orientation, setOrientation] = useState('');
 
     useEffect(() => {
         const width = imageRef.current.clientWidth;
         const height = imageRef.current.clientHeight;
+        console.log('-------------', width, height);
         const divider = gcd(width, height);
         setRatio(imageRatio(width / divider, height / divider));
         setOrientation(imageOrientation(width, height));
-    }, [ratio, orientation]);
+    }, []);
 
     return (
         <Fragment>
-            {console.log(meme)}
             {meme && (
                 <section className="meme-card">
                     <style>{`.meme-card-image-wrapper.meme-order-${props.num}::before {

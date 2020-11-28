@@ -6,7 +6,6 @@ import numberGenerator from '../../utils/numberGenerator';
 import { toastInfo, toastError } from '../../utils/toastHandler';
 
 function ItemsList(props) {
-    console.log('here');
     const items = props.items;
 
     function getButtons(item) {

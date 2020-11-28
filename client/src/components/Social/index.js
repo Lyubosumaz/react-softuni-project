@@ -47,7 +47,6 @@ export default function Social() {
 
             <h1>Memes</h1>
 
-            {console.log(memes)}
             <ul className="memes-list-container">
                 {memes &&
                     memes.map((meme, index) => {

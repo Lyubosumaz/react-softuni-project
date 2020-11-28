@@ -12,7 +12,7 @@ function imageOrientation(a, b) {
 
 function imageAltName(a) {
     a
-        ? console.log(a)
+        ? console.log(a, '----------------------------')
         : // a.split(' ').array.forEach((element) => {
           //     console.log(element);
           // });
