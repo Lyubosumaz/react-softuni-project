@@ -2,6 +2,7 @@ const router = require('express').Router();
 const controller = require('../controllers');
 const { auth } = require('../utils');
 
+router.get('/', auth(), controller.social.get.all);
 router.post('/', auth(), controller.social.post.scroll);
 router.post('/add-meme', auth(), controller.social.post.add);
 router.get('/view-meme/:id', auth(), controller.social.get.view);

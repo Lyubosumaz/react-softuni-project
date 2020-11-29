@@ -7,7 +7,9 @@ module.exports = {
         house: (req, res) => {
             models.GameProfile.find()
                 .populate('user')
-                .then((users) => { res.send(users) })
+                .then((users) => {
+                    res.send(users);
+                })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try later.' });
                     console.error(err);
@@ -17,7 +19,9 @@ module.exports = {
             const userId = req.user._id;
 
             models.GameProfile.findOne({ user: userId })
-                .then((profile) => { res.send(profile); })
+                .then((profile) => {
+                    res.send(profile);
+                })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try later.' });
                     console.error(err);
@@ -29,7 +33,7 @@ module.exports = {
             const { username, email, password, subscribe, repeatPassword } = req.body;
 
             if (password !== repeatPassword) {
-                res.status(401).send({ message: 'Passwords don\'t match! Try again.' });
+                res.status(401).send({ message: "Passwords don't match! Try again." });
                 return;
             }
 
@@ -53,9 +57,8 @@ module.exports = {
             const { username, password } = req.body;
 
             models.User.findOne({ username })
-                .then(user => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
+                .then((user) => (!!user ? Promise.all([user, user.matchPassword(password)]) : [null, false]))
                 .then(([user, match]) => {
-
                     if (!user) {
                         res.status(401).send('Username is not found! Try again.');
                         return;
@@ -79,8 +82,7 @@ module.exports = {
 
             models.BlacklistToken.create({ token })
                 .then(() => {
-                    res.clearCookie(config.cookie)
-                        .send({ message: 'You Logout successfully!' });
+                    res.clearCookie(config.cookie).send({ message: 'You Logout successfully!' });
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try to Logout later.' });
@@ -95,9 +97,7 @@ module.exports = {
                 .then(() => {
                     const newToken = utils.jwt.createToken({ id: userId });
 
-                    res.clearCookie(config.cookie)
-                        .cookie(config.cookie, newToken)
-                        .send({ message: 'You received new authorization token' });
+                    res.clearCookie(config.cookie).cookie(config.cookie, newToken).send({ message: 'You received new authorization token' });
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, with your authorization.' });

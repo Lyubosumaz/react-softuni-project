@@ -10,6 +10,7 @@ const httpUser = {
 };
 
 const httpSocial = {
+    getAllMemes: () => httpPost('/api/social'),
     getScroll: (memeData) => httpPost('/api/social', memeData),
     getMeme: (memeId) => httpGet(`/api/social/view-meme/${memeId}`),
     addMeme: (memeData) => httpPost('/api/social/add-meme', memeData),

@@ -16,29 +16,26 @@ module.exports = {
             const userId = req.user._id;
             const itemId = req.params.id;
 
-            Promise.all([
-                models.GameProfile.findOne({ user: userId }),
-                models.GameItem.findOne({ _id: itemId })
-            ])
+            Promise.all([models.GameProfile.findOne({ user: userId }), models.GameItem.findOne({ _id: itemId })])
                 .then(([profile, item]) => {
-
                     if (profile.totalGold >= item.price) {
                         Promise.resolve(
-                            models.GameProfile.updateOne({ user: userId },
+                            models.GameProfile.updateOne(
+                                { user: userId },
                                 {
                                     $push: { totalItem: item._id },
-                                    $inc: { totalGold: item.price * -1 }
+                                    $inc: { totalGold: item.price * -1 },
                                 }
-                            ))
-                            .catch((err) => {
-                                res.send({ message: 'There is a problem, please try to Buy later.' });
-                                console.error(err);
-                            });
+                            )
+                        ).catch((err) => {
+                            res.send({ message: 'There is a problem, please try to Buy later.' });
+                            console.error(err);
+                        });
 
                         return res.send({ message: 'You have bought the Item successfully!' });
                     }
 
-                    return res.send({ message: 'You don\'t have enough Gold to buy this Item.' });
+                    return res.send({ message: "You don't have enough Gold to buy this Item." });
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try to Buy later.' });
@@ -50,7 +47,7 @@ module.exports = {
 
             models.GameProfile.findOne({ user: userId })
                 .populate('totalItem')
-                .then(profile => {
+                .then((profile) => {
                     res.send(profile.totalItem);
                 })
                 .catch((err) => {
@@ -62,33 +59,31 @@ module.exports = {
             const userId = req.user._id;
             const itemId = req.params.id;
 
-            Promise.all([
-                models.GameProfile.findOne({ user: userId }),
-                models.GameItem.findOne({ _id: itemId })
-            ])
+            Promise.all([models.GameProfile.findOne({ user: userId }), models.GameItem.findOne({ _id: itemId })])
                 .then(([profile, item]) => {
                     const sellItemIndex = profile.totalItem.indexOf(itemId);
 
                     if (sellItemIndex > -1) {
                         profile.totalItem.splice(sellItemIndex, 1);
-                        const sellPrice = Math.ceil(item.price / 2)
+                        const sellPrice = Math.ceil(item.price / 2);
 
                         Promise.resolve(
-                            models.GameProfile.updateOne({ user: userId },
+                            models.GameProfile.updateOne(
+                                { user: userId },
                                 {
                                     totalItem: profile.totalItem,
-                                    $inc: { totalGold: sellPrice }
+                                    $inc: { totalGold: sellPrice },
                                 }
-                            ))
-                            .catch((err) => {
-                                res.send({ message: 'There is a problem, please try to Sell later.' });
-                                console.error(err);
-                            });
+                            )
+                        ).catch((err) => {
+                            res.send({ message: 'There is a problem, please try to Sell later.' });
+                            console.error(err);
+                        });
 
                         return res.send({ message: `You have sold the Item successfully for ${sellPrice} gold!` });
                     }
 
-                    return res.send({ message: 'You don\'t have this Item in your Inventory' });
+                    return res.send({ message: "You don't have this Item in your Inventory" });
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try to Sell later.' });
@@ -108,21 +103,22 @@ module.exports = {
                             profile.totalItem.splice(equipItemIndex, 1);
 
                             Promise.resolve(
-                                models.GameProfile.updateOne({ user: userId },
+                                models.GameProfile.updateOne(
+                                    { user: userId },
                                     {
                                         totalItem: profile.totalItem,
-                                        $push: { equipItem: itemId }
+                                        $push: { equipItem: itemId },
                                     }
-                                ))
-                                .catch((err) => {
-                                    res.send({ message: 'There is a problem, please try to Equip later.' });
-                                    console.error(err);
-                                });
+                                )
+                            ).catch((err) => {
+                                res.send({ message: 'There is a problem, please try to Equip later.' });
+                                console.error(err);
+                            });
 
                             return res.send({ message: 'You have Equip the Item successfully!' });
                         }
 
-                        return res.send({ message: 'You don\'t have this Item in your Inventory' });
+                        return res.send({ message: "You don't have this Item in your Inventory" });
                     }
 
                     return res.send({ message: 'You cannot Equip more than 3 Items!' });
@@ -157,50 +153,55 @@ module.exports = {
                         profile.equipItem.splice(removeItemIndex, 1);
 
                         Promise.resolve(
-                            models.GameProfile.updateOne({ user: userId },
+                            models.GameProfile.updateOne(
+                                { user: userId },
                                 {
                                     equipItem: profile.equipItem,
-                                    $push: { totalItem: itemId }
+                                    $push: { totalItem: itemId },
                                 }
-                            ))
-                            .catch((err) => {
-                                res.send({ message: 'There is a problem, please try to Remove later.' });
-                                console.error(err);
-                            });
+                            )
+                        ).catch((err) => {
+                            res.send({ message: 'There is a problem, please try to Remove later.' });
+                            console.error(err);
+                        });
 
                         return res.send({ message: 'You Equipped the Item successfully!' });
                     }
 
-                    return res.send({ message: 'You don\'t have this Item in your Character' });
+                    return res.send({ message: "You don't have this Item in your Character" });
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try to Remove later.' });
                     console.error(err);
                 });
-        }
+        },
     },
     post: {
         save: (req, res) => {
             const userId = req.user._id;
             const { totalItem, totalGold, totalTime, level } = req.body;
 
-            models.GameProfile.updateOne({ user: userId },
+            models.GameProfile.updateOne(
+                { user: userId },
                 {
-                    $push: totalItem[0]._id ?
-                        {
-                            totalItem: totalItem[0]._id,
-                            gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level }
-                        } :
-                        {
-                            gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level }
-                        },
+                    $push: totalItem[0]._id
+                        ? {
+                              totalItem: totalItem[0]._id,
+                              gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level },
+                          }
+                        : {
+                              gameHistory: { loot: totalItem[0].itemName, gold: totalGold, time: totalTime, level },
+                          },
                     $inc: {
                         totalGold: totalGold,
                         totalTime: totalTime,
-                        totalGames: 1
-                    }
+                        totalGames: 1,
+                    },
+                }
+            )
+                .then(() => {
+                    res.send({ message: 'You Save the Game successfully!' });
                 })
-                .then(() => { res.send({ message: 'You Save the Game successfully!' }); })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, cannot Finish the Game!' });
                     console.error(err);
@@ -225,5 +226,5 @@ module.exports = {
             //         });
             // }
         },
-    }
+    },
 };

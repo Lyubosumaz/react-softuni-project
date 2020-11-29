@@ -7,7 +7,7 @@ import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/ima
 
 function MemeCard(props) {
     const meme = props.meme;
-    console.log(props.meme);
+    // console.log(props.meme);
     const currentUser = props.userId;
     const imageRef = useRef();
     const [ratio, setRatio] = useState(0);
