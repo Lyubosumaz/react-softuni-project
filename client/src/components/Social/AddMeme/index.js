@@ -19,17 +19,34 @@ function AddMeme(props) {
         };
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
-            httpSocial
-                .addMeme(meme)
-                .then((res) => {
-                    toastSuccess(res);
-                    history.push('/social');
-                })
-                .catch((err) => {
-                    toastError(err);
-                });
+        console.log(imageUrl);
+
+        const test = 'https://img-9gag-fun.9cache.com/photo/aZy609p_460swp.webp';
+        async function fetchData() {
+            const response = await fetch(test, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+                },
+            });
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
         }
+        fetchData();
+
+        // if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
+        //     httpSocial
+        //         .addMeme(meme)
+        //         .then((res) => {
+        //             toastSuccess(res);
+        //             history.push('/social');
+        //         })
+        //         .catch((err) => {
+        //             toastError(err);
+        //         });
+        // }
     }
 
     function useFormInput(initialValue) {
