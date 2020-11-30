@@ -8,16 +8,16 @@ function Options(props) {
         <div className="options-bar">
             <ul>
                 <li>
-                    <Button buttonClass="options-bar-button" direction="game/progress" buttonName="Progress" />
+                    <Button additionalClassName="options-bar-button" buttonText="Progress" direction="game/progress" />
                 </li>
                 <li>
-                    <Button buttonClass="options-bar-button" direction="game/shop" buttonName="Shop" />
+                    <Button additionalClassName="options-bar-button" buttonText="Shop" direction="game/shop" />
                 </li>
                 <li>
-                    <Button buttonClass="options-bar-button" direction="game/inventory" buttonName="Inventory" />
+                    <Button additionalClassName="options-bar-button" buttonText="Inventory" direction="game/inventory" />
                 </li>
                 <li>
-                    <Button buttonClass="options-bar-button" direction="game/character" buttonName="Character" />
+                    <Button additionalClassName="options-bar-button" buttonText="Character" direction="game/character" />
                 </li>
             </ul>
         </div>

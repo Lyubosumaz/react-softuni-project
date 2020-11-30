@@ -23,7 +23,7 @@ function Overlay(props) {
                 <button type="submit" className="form-action-btn" onClick={handleSubmit}>
                     Ready!
                 </button>
-                <Button buttonClass="form-action-btn home" direction="home" buttonName="Home" />
+                <Button additionalClassName="form-action-btn home" buttonText="Home" direction="home" />
             </div>
         </section>
     );

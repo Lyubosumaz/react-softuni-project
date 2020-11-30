@@ -27,7 +27,7 @@ function Logout(props) {
         <section className={`${componentData} logout`}>
             <ul className="ul-buttons-list">
                 <li>
-                    <Button buttonClass="logout-action-btn" direction="home" buttonName="No!" />
+                    <Button additionalClassName="logout-action-btn" buttonText="No!" direction="home" />
                 </li>
                 <li>
                     <button type="submit" className="logout-action-btn" onClick={yesButtonHandler}>

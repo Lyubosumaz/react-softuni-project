@@ -12,7 +12,7 @@ export default function FourOFourContainer() {
             <section className="error-info">
                 <div className="error-info-wrapper">
                     <span>We can't find the page you're looking for</span>
-                    <Button buttonClass="info-action-btn" direction="home" buttonName="Go Back Home" />
+                    <Button additionalClassName="info-action-btn" buttonText="Go Back Home" direction="home" />
                 </div>
             </section>
         </section>

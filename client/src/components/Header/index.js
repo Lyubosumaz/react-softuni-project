@@ -14,22 +14,22 @@ function Header(props) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <Button buttonClass="nav-bar-button active" direction="game" buttonName="Game" />
+                                        <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" />
                                     </li>
                                     <li>
-                                        <Button buttonClass="nav-bar-button active" direction="games" buttonName="Games" />
+                                        <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" />
                                     </li>
                                     <li>
-                                        <Button buttonClass="nav-bar-button active" direction="puzzles" buttonName="Puzzles" />
+                                        <Button additionalClassName="nav-bar-button active" buttonText="Puzzles" direction="puzzles" />
                                     </li>
                                 </Fragment>
                             ) : (
                                 <li>
-                                    <Button buttonClass="nav-bar-button active" direction="home" buttonName="Home" />
+                                    <Button additionalClassName="nav-bar-button active" buttonText="Home" direction="home" />
                                 </li>
                             )}
                             <li>
-                                <Button buttonClass="nav-bar-button" direction="house-of-fame" buttonName="House of Fame" />
+                                <Button additionalClassName="nav-bar-button" buttonText="House of Fame" direction="house-of-fame" />
                             </li>
                         </ul>
                     </li>
@@ -39,22 +39,22 @@ function Header(props) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <Button buttonClass="nav-bar-button" direction="social" buttonName="Social" />
+                                        <Button additionalClassName="nav-bar-button" buttonText="Social" direction="social" />
                                     </li>
                                     <li>
-                                        <Button buttonClass="nav-bar-button" direction="profile" buttonName="Profile" />
+                                        <Button additionalClassName="nav-bar-button" buttonText="Profile" direction="profile" />
                                     </li>
                                     <li>
-                                        <Button buttonClass="nav-bar-button" direction="logout" buttonName="Logout" />
+                                        <Button additionalClassName="nav-bar-button" buttonText="Logout" direction="logout" />
                                     </li>
                                 </Fragment>
                             ) : (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <Button buttonClass="nav-bar-button" direction="register" buttonName="Register" />
+                                        <Button additionalClassName="nav-bar-button" buttonText="Register" direction="register" />
                                     </li>
                                     <li>
-                                        <Button buttonClass="nav-bar-button" direction="login" buttonName="Login" />
+                                        <Button additionalClassName="nav-bar-button" buttonText="Login" direction="login" />
                                     </li>
                                 </Fragment>
                             )}

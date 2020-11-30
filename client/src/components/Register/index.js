@@ -147,7 +147,7 @@ export default function Register() {
                     <div className="form-field-actions">
                         <div className="terms">
                             <span>By creating an account, you agree to our</span>
-                            <Button buttonClass="info-button" direction="terms-and-conditions" buttonName="Terms &amp; Conditions" />
+                            <Button additionalClassName="info-button" buttonText="Terms &amp; Conditions" direction="terms-and-conditions" />
                         </div>
 
                         <div className="subscribe">

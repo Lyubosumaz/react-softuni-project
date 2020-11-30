@@ -8,13 +8,13 @@ export default function Footer() {
 
                 <ul className="footer-nav">
                     <li>
-                        <Button buttonClass="footer-nav-button" direction="home" buttonName="Home" />
+                        <Button additionalClassName="footer-nav-button" buttonText="Home" direction="home" />
                     </li>
                     <li>
-                        <Button buttonClass="footer-nav-button" direction="about" buttonName="About" />
+                        <Button additionalClassName="footer-nav-button" buttonText="About" direction="about" />
                     </li>
                     <li>
-                        <Button buttonClass="footer-nav-button" direction="terms-and-conditions" buttonName="Terms" />
+                        <Button additionalClassName="footer-nav-button" buttonText="Terms" direction="terms-and-conditions" />
                     </li>
                 </ul>
             </div>

@@ -70,10 +70,10 @@ export default function Social() {
         <Fragment>
             {/* <section className={`${componentData}`}> */}
             <div>
-                <Button buttonClass="active-button" direction="404" buttonName="Create Meme" />
+                <Button additionalClassName="active-button" buttonText="Create Meme" direction="404" />
             </div>
             <div>
-                <Button buttonClass="active-button" direction="/social/add-meme" buttonName="Add Meme" />
+                <Button additionalClassName="active-button" buttonText="Add Meme" direction="/social/add-meme" />
             </div>
 
             <h1>Memes</h1>
