@@ -73,7 +73,7 @@ export default function Social() {
                 <Button additionalClassName="active-button" buttonText="Create Meme" direction="404" />
             </div>
             <div>
-                <Button additionalClassName="active-button" buttonText="Add Meme" direction="/social/add-meme" />
+                <Button additionalClassName="active-button" buttonText="Add Meme" direction="social/add-meme" />
             </div>
 
             <h1>Memes</h1>

@@ -4,124 +4,124 @@
         "default": {
             "text": "You have account?",
             "button": "Sign in",
-            "path": "/login"
+            "path": "login"
         }
     },
     "home": {
         "default": {
             "text": "You have account?",
             "button": "Sign in",
-            "path": "/login"
+            "path": "login"
         }
     },
     "about": {
         "default": {
             "text": "Already have account?",
             "button": "Sign in",
-            "path": "/login"
+            "path": "login"
         }
     },
     "404": {
         "default": {
             "text": "We can't find the page you're looking for",
             "button": "Go Back Home",
-            "path": "/home"
+            "path": "home"
         }
     },
     "register": {
         "default": {
             "text": "Already have account?",
             "button": "Sign in",
-            "path": "/login"
+            "path": "login"
         }
     },
     "login": {
         "default": {
             "text": "Don't have an account?",
             "button": "Create account",
-            "path": "/register"
+            "path": "register"
         }
     },
     "logout": {
         "default": {
             "text": "Check out the new features in latest update",
             "button": "Here",
-            "path": "/about"
+            "path": "about"
         }
     },
     "profile": {
         "default": {
             "text": "Play one more game",
             "button": "Here",
-            "path": "/games"
+            "path": "games"
         }
     },
     "social": {
         "default": {
             "text": "Join the race and climb to the top",
             "button": "Game",
-            "path": "/games"
+            "path": "games"
         }
     },
     "add-meme": {
         "default": {
             "text": "You could add meme later, maybe play a",
             "button": "Game",
-            "path": "/games"
+            "path": "games"
         }
     },
     "view-meme": {
         "default": {
             "text": "Add Meme or just watch others memes",
             "button": "Back",
-            "path": "/social"
+            "path": "social"
         }
     },
     "edit-meme": {
         "default": {
             "text": "Edit Meme or just watch others memes",
             "button": "Back",
-            "path": "/social"
+            "path": "social"
         }
     },
     "delete-meme": {
         "default": {
             "text": "Don't delete your meme just continue scrolling",
             "button": "Back",
-            "path": "/social"
+            "path": "social"
         }
     },
     "house-of-fame": {
         "default": {
             "text": " Join the race, climb ladder and be the top apex legend",
             "button": "Sign in",
-            "path": "/login"
+            "path": "login"
         },
         "logged": {
             "text": "You saw what you need. Now join the game",
             "button": "Here",
-            "path": "/games"
+            "path": "games"
         }
     },
     "puzzles": {
         "default": {
             "text": "Here you can log",
             "button": "Back",
-            "path": "/login"
+            "path": "login"
         }
     },
     "games": {
         "default": {
             "text": "Here you can log",
             "button": "Back",
-            "path": "/login"
+            "path": "login"
         }
     },
     "terms-and-conditions": {
         "default": {
             "text": "If you already read the terms and conditions.",
             "button": "Create account",
-            "path": "/register"
+            "path": "register"
         }
     }
 }

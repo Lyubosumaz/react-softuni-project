@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { handleRoute } from '../../utils/history';
 import { archiveReaderState } from '../../utils/archiveHandler';
 import archive from './site-info-archive.json';
+import Button from '../Button';
 
 function Info(props) {
     function state() {
@@ -11,9 +11,11 @@ function Info(props) {
     return (
         <section className="info-component">
             <span>{archiveReaderState(archive, 'text', state())}</span>
-            <button className="info-action-btn" onClick={handleRoute(archiveReaderState(archive, 'path', state()))}>
-                {archiveReaderState(archive, 'button', state())}
-            </button>
+            <Button
+                additionalClassName="info-action-btn"
+                buttonText={archiveReaderState(archive, 'button', state())}
+                direction={archiveReaderState(archive, 'path', state())}
+            />
         </section>
     );
 }

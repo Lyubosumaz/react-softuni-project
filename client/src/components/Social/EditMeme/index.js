@@ -5,6 +5,7 @@ import { httpSocial } from '../../../services/http';
 import schema from './edit-meme-validations';
 import { toastSuccess, toastError } from '../../../utils/toastHandler';
 import { componentData } from '../../../class-names.json';
+import Button from '../../Button';
 
 function EditMeme(props) {
     const memeId = props.memeId;
@@ -44,7 +45,7 @@ function EditMeme(props) {
             });
     }
 
-    function handleSubmit(e) {
+    function handleEdit(e) {
         e.preventDefault();
         const data = {
             id: memeId,
@@ -86,9 +87,7 @@ function EditMeme(props) {
                 </div>
 
                 <div>
-                    <button type="submit" className="form-action-btn" onClick={handleSubmit}>
-                        Edit
-                    </button>
+                    <Button additionalClassName="form-action-btn" buttonText="Edit" functionPressButton={handleEdit} />
                 </div>
             </form>
         </section>

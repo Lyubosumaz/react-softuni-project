@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { history, handleRoute } from '../../utils/history';
+import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
@@ -30,9 +30,7 @@ function Logout(props) {
                     <Button additionalClassName="logout-action-btn" buttonText="No!" direction="home" />
                 </li>
                 <li>
-                    <button type="submit" className="logout-action-btn" onClick={yesButtonHandler}>
-                        <span>Yes</span>
-                    </button>
+                    <Button additionalClassName="logout-action-btn" buttonText="Yes" functionPressButton={yesButtonHandler} />
                 </li>
             </ul>
         </section>

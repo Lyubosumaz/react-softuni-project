@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
 import { toastSuccess, toastError } from '../../../utils/toastHandler';
 import { componentData } from '../../../class-names.json';
+import Button from '../../Button';
 
 function DeleteMeme(props) {
     const memeId = props.memeId;
@@ -15,7 +16,7 @@ function DeleteMeme(props) {
         });
     }, [memeId]);
 
-    function handleSubmit(e) {
+    function handleDelete(e) {
         e.preventDefault();
         if (props.isLogin) {
             httpSocial
@@ -48,9 +49,7 @@ function DeleteMeme(props) {
                 </div>
 
                 <div>
-                    <button type="submit" className="form-action-btn delete" onClick={handleSubmit}>
-                        Delete
-                    </button>
+                    <Button additionalClassName="form-action-btn" buttonText="Delete" functionPressButton={handleDelete} />
                 </div>
             </form>
         </section>

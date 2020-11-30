@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { handleRoute } from '../../utils/history';
 import { currentPage } from '../../utils/currentPage';
 import numberGenerator from '../../utils/numberGenerator';
 import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/imageCalc';
+import Button from '../Button';
 
 function MemeCard(props) {
     const meme = props.meme;
@@ -34,20 +34,12 @@ function MemeCard(props) {
                     </header>
 
                     <div className="meme-card-buttons">
-                        {currentPage() !== 'view-meme' && (
-                            <button className="meme-card-button" onClick={handleRoute(`/social/view-meme/${meme._id}`)}>
-                                View
-                            </button>
-                        )}
+                        {currentPage() !== 'view-meme' && <Button additionalClassName="meme-card-button" buttonText="View" direction={`social/view-meme/${meme._id}`} />}
 
                         {meme.addedBy === currentUser && (
                             <Fragment key={numberGenerator()}>
-                                <button className="meme-card-button edit" onClick={handleRoute(`/social/edit-meme/${meme._id}`)}>
-                                    Edit
-                                </button>
-                                <button className="meme-card-button delete" onClick={handleRoute(`/social/delete-meme/${meme._id}`)}>
-                                    Delete
-                                </button>
+                                <Button additionalClassName="meme-card-button edit" buttonText="Edit" direction={`social/edit-meme/${meme._id}`} />
+                                <Button additionalClassName="meme-card-button delete" buttonText="Delete" direction={`social/delete-meme/${meme._id}`} />
                             </Fragment>
                         )}
                     </div>

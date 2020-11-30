@@ -5,6 +5,7 @@ import { httpSocial } from '../../../services/http';
 import schema from './add-meme-validations';
 import { toastSuccess, toastError } from '../../../utils/toastHandler';
 import { componentData } from '../../../class-names.json';
+import Button from '../../Button';
 
 function AddMeme(props) {
     const title = useFormInput('');
@@ -98,9 +99,7 @@ function AddMeme(props) {
                 </div>
 
                 <div>
-                    <button type="submit" className="form-action-btn" onClick={handleSubmit}>
-                        Submit
-                    </button>
+                    <Button additionalClassName="form-action-btn" buttonText="Submit" functionPressButton={handleSubmit} />
                 </div>
             </form>
         </section>

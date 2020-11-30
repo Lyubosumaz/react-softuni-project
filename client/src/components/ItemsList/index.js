@@ -4,6 +4,7 @@ import { httpGame } from '../../services/http';
 import { currentPage } from '../../utils/currentPage';
 import numberGenerator from '../../utils/numberGenerator';
 import { toastInfo, toastError } from '../../utils/toastHandler';
+import Button from '../Button';
 
 function ItemsList(props) {
     const items = props.items;
@@ -63,9 +64,7 @@ function ItemsList(props) {
                 buttons = (
                     <Fragment key={numberGenerator()}>
                         <h3>Price: {item.price}</h3>
-                        <button className="active-button buy" onClick={handleBuy}>
-                            Buy
-                        </button>
+                        <Button additionalClassName="active-button buy" buttonText="Buy" functionPressButton={handleBuy} />
                     </Fragment>
                 );
                 break;
@@ -73,12 +72,8 @@ function ItemsList(props) {
                 buttons = (
                     <Fragment key={numberGenerator()}>
                         <h3>Price: {item.price}</h3>
-                        <button className="active-button sell" onClick={handleSell}>
-                            Sell
-                        </button>
-                        <button className="active-button" onClick={handleEquip}>
-                            Equip
-                        </button>
+                        <Button additionalClassName="active-button sell" buttonText="Sell" functionPressButton={handleSell} />
+                        <Button additionalClassName="active-button sell" buttonText="Equip" functionPressButton={handleEquip} />
                     </Fragment>
                 );
                 break;
@@ -86,9 +81,7 @@ function ItemsList(props) {
                 buttons = (
                     <Fragment key={numberGenerator()}>
                         <h3>Price: {item.price}</h3>
-                        <button className="active-button remove" onClick={handleRemove}>
-                            Remove
-                        </button>
+                        <Button additionalClassName="active-button remove" buttonText="Remove" functionPressButton={handleRemove} />
                     </Fragment>
                 );
                 break;
