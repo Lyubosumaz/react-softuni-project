@@ -4,6 +4,7 @@ import MemeCard from '../MemeCard';
 // import useMemePage from './useMemePage';
 import { componentData } from '../../class-names.json';
 import { httpSocial } from '../../services/http';
+import Button from '../Button';
 
 export default function Social() {
     // const [pageNumber, setPageNumber] = useState(1);
@@ -69,14 +70,10 @@ export default function Social() {
         <Fragment>
             {/* <section className={`${componentData}`}> */}
             <div>
-                <button className="active-button" onClick={handleRoute('/404')}>
-                    Create Meme
-                </button>
+                <Button buttonClass="active-button" direction="404" buttonName="Create Meme" />
             </div>
             <div>
-                <button className="active-button" onClick={handleRoute('/social/add-meme')}>
-                    Add Meme
-                </button>
+                <Button buttonClass="active-button" direction="/social/add-meme" buttonName="Add Meme" />
             </div>
 
             <h1>Memes</h1>

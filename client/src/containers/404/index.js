@@ -1,4 +1,4 @@
-import { handleRoute } from '../../utils/history';
+import Button from '../../components/Button';
 
 export default function FourOFourContainer() {
     return (
@@ -12,9 +12,7 @@ export default function FourOFourContainer() {
             <section className="error-info">
                 <div className="error-info-wrapper">
                     <span>We can't find the page you're looking for</span>
-                    <button className="info-action-btn" onClick={handleRoute('/home')}>
-                        Go Back Home
-                    </button>
+                    <Button buttonClass="info-action-btn" direction="home" buttonName="Go Back Home" />
                 </div>
             </section>
         </section>

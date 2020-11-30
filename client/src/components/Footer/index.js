@@ -1,4 +1,3 @@
-import { handleRoute } from '../../utils/history';
 import Button from '../Button';
 
 export default function Footer() {
@@ -10,19 +9,12 @@ export default function Footer() {
                 <ul className="footer-nav">
                     <li>
                         <Button buttonClass="footer-nav-button" direction="home" buttonName="Home" />
-                        <button className="footer-nav-button" onClick={handleRoute('/home')}>
-                            Home
-                        </button>
                     </li>
                     <li>
-                        <button className="footer-nav-button" onClick={handleRoute('/about')}>
-                            About
-                        </button>
+                        <Button buttonClass="footer-nav-button" direction="about" buttonName="About" />
                     </li>
                     <li>
-                        <button className="footer-nav-button" onClick={handleRoute('/terms-and-conditions')}>
-                            Terms
-                        </button>
+                        <Button buttonClass="footer-nav-button" direction="terms-and-conditions" buttonName="Terms" />
                     </li>
                 </ul>
             </div>

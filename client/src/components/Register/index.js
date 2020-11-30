@@ -4,6 +4,7 @@ import { httpUser } from '../../services/http';
 import schema from './register-validations';
 import { toastSuccess, toastError } from '../../utils/toastHandler';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
+import Button from '../Button';
 
 export default function Register() {
     const username = useFormInput('');
@@ -146,9 +147,7 @@ export default function Register() {
                     <div className="form-field-actions">
                         <div className="terms">
                             <span>By creating an account, you agree to our</span>
-                            <button className="info-button" onClick={handleRoute('/terms-and-conditions')}>
-                                Terms &amp; Conditions
-                            </button>
+                            <Button buttonClass="info-button" direction="terms-and-conditions" buttonName="Terms &amp; Conditions" />
                         </div>
 
                         <div className="subscribe">

@@ -5,6 +5,7 @@ import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { componentData } from '../../class-names.json';
 import { toastSuccess, toastError } from '../../utils/toastHandler';
+import Button from '../Button';
 
 function Logout(props) {
     const yesButtonHandler = (e) => {
@@ -26,9 +27,7 @@ function Logout(props) {
         <section className={`${componentData} logout`}>
             <ul className="ul-buttons-list">
                 <li>
-                    <button type="submit" className="logout-action-btn" onClick={handleRoute('/home')}>
-                        <span>No!</span>
-                    </button>
+                    <Button buttonClass="logout-action-btn" direction="home" buttonName="No!" />
                 </li>
                 <li>
                     <button type="submit" className="logout-action-btn" onClick={yesButtonHandler}>

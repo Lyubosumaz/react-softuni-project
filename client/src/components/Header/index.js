@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { handleRoute } from '../../utils/history';
 import numberGenerator from '../../utils/numberGenerator';
+import Button from '../Button';
 
 function Header(props) {
     const isLogged = props.isLogin;
@@ -14,32 +14,22 @@ function Header(props) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <button className="nav-bar-button active" onClick={handleRoute('/game')}>
-                                            Game
-                                        </button>
+                                        <Button buttonClass="nav-bar-button active" direction="game" buttonName="Game" />
                                     </li>
                                     <li>
-                                        <button className="nav-bar-button active" onClick={handleRoute('/games')}>
-                                            Games
-                                        </button>
+                                        <Button buttonClass="nav-bar-button active" direction="games" buttonName="Games" />
                                     </li>
                                     <li>
-                                        <button className="nav-bar-button active" onClick={handleRoute('/puzzles')}>
-                                            Puzzles
-                                        </button>
+                                        <Button buttonClass="nav-bar-button active" direction="puzzles" buttonName="Puzzles" />
                                     </li>
                                 </Fragment>
                             ) : (
                                 <li>
-                                    <button className="nav-bar-button active" onClick={handleRoute('/home')}>
-                                        Home
-                                    </button>
+                                    <Button buttonClass="nav-bar-button active" direction="home" buttonName="Home" />
                                 </li>
                             )}
                             <li>
-                                <button className="nav-bar-button" onClick={handleRoute('/house-of-fame')}>
-                                    House of Fame
-                                </button>
+                                <Button buttonClass="nav-bar-button" direction="house-of-fame" buttonName="House of Fame" />
                             </li>
                         </ul>
                     </li>
@@ -49,32 +39,22 @@ function Header(props) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <button className="nav-bar-button" onClick={handleRoute('/social')}>
-                                            Social
-                                        </button>
+                                        <Button buttonClass="nav-bar-button" direction="social" buttonName="Social" />
                                     </li>
                                     <li>
-                                        <button className="nav-bar-button" onClick={handleRoute('/profile')}>
-                                            Profile
-                                        </button>
+                                        <Button buttonClass="nav-bar-button" direction="profile" buttonName="Profile" />
                                     </li>
                                     <li>
-                                        <button className="nav-bar-button" onClick={handleRoute('/logout')}>
-                                            Logout
-                                        </button>
+                                        <Button buttonClass="nav-bar-button" direction="logout" buttonName="Logout" />
                                     </li>
                                 </Fragment>
                             ) : (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <button className="nav-bar-button" onClick={handleRoute('/register')}>
-                                            Register
-                                        </button>
+                                        <Button buttonClass="nav-bar-button" direction="register" buttonName="Register" />
                                     </li>
                                     <li>
-                                        <button className="nav-bar-button" onClick={handleRoute('/login')}>
-                                            Login
-                                        </button>
+                                        <Button buttonClass="nav-bar-button" direction="login" buttonName="Login" />
                                     </li>
                                 </Fragment>
                             )}

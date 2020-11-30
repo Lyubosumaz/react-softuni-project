@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { handleRoute } from '../../utils/history';
+import Button from '../Button';
 
 function Options(props) {
     const isLogged = props.isLogin;
@@ -8,24 +8,16 @@ function Options(props) {
         <div className="options-bar">
             <ul>
                 <li>
-                    <button className="options-bar-button" onClick={handleRoute('/game/progress')}>
-                        Progress
-                    </button>
+                    <Button buttonClass="options-bar-button" direction="game/progress" buttonName="Progress" />
                 </li>
                 <li>
-                    <button className="options-bar-button" onClick={handleRoute('/game/shop')}>
-                        Shop
-                    </button>
+                    <Button buttonClass="options-bar-button" direction="game/shop" buttonName="Shop" />
                 </li>
                 <li>
-                    <button className="options-bar-button" onClick={handleRoute('/game/inventory')}>
-                        Inventory
-                    </button>
+                    <Button buttonClass="options-bar-button" direction="game/inventory" buttonName="Inventory" />
                 </li>
                 <li>
-                    <button className="options-bar-button" onClick={handleRoute('/game/character')}>
-                        Character
-                    </button>
+                    <Button buttonClass="options-bar-button" direction="game/character" buttonName="Character" />
                 </li>
             </ul>
         </div>
