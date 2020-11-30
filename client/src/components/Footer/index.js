@@ -1,4 +1,5 @@
 import { handleRoute } from '../../utils/history';
+import Button from '../Button';
 
 export default function Footer() {
     return (
@@ -8,6 +9,7 @@ export default function Footer() {
 
                 <ul className="footer-nav">
                     <li>
+                        <Button buttonClass="footer-nav-button" direction="home" buttonName="Home" />
                         <button className="footer-nav-button" onClick={handleRoute('/home')}>
                             Home
                         </button>
