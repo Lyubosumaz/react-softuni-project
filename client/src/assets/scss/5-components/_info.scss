@@ -4,23 +4,12 @@
     display: flex;
     justify-content: center;
 
-    span {
+    &-wrapper > span {
         margin-right: 0.5em;
-    }
-
-    .info-action-btn {
-        color: $mainLinkColor;
-
-        &:hover,
-        &:focus {
-            color: $mainLinkDarken;
-            text-decoration: underline;
-        }
     }
 }
 
-.home-component.background-image,
-.about-component.background-image {
+.container-wrapper.background-image {
     .info-component {
         text-shadow: 0.1em 0.1em rgba($color: #000, $alpha: 0.2);
         background-color: transparent;

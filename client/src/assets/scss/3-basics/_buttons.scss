@@ -9,9 +9,12 @@ button {
     &:focus,
     &:hover {
         text-decoration: underline;
+        color: $mainFontColor;
+        background-color: $mainDarkHightLighten;
     }
 }
 
+// Header Buttons
 .site-header .nav-bar-button {
     padding: 1em 1.2em;
     font-size: 1.2em;
@@ -24,30 +27,36 @@ button {
             background-color: $mainButtonDarken;
         }
     }
-
-    &:focus,
-    &:hover {
-        color: $mainFontColor;
-        background-color: $mainDarkHightLighten;
-    }
 }
 
+// Option Buttons
 .options-bar .options-bar-button {
     padding: 1em 0;
     font-size: 0.8em;
+}
+
+// Info Component Buttons
+.info-component .info-action-btn {
+    color: $mainLinkColor;
 
     &:hover,
-    &:active {
-        color: $mainFontColor;
-        background-color: $mainDarkHightLighten;
+    &:focus {
+        color: $mainLinkDarken;
     }
 }
 
+// Footer Buttons
 .site-footer .footer-nav-button {
     padding: 0.8em 0.5em;
+
+    &:hover,
+    &:focus {
+        color: $secondaryFontColor;
+        background-color: transparent;
+    }
 }
 
-.error-container .info-action-btn,
+// Form Buttons
 .form-component .form-action-btn {
     border: 0.2rem solid transparent;
     border-radius: 1.5rem;
@@ -61,18 +70,12 @@ button {
         background-color: $secondaryFontColor;
         color: $mainButtonColor;
     }
-
-    .info-button {
-    }
 }
 
-.info-component .info-action-btn {
-    color: $mainLinkColor;
-}
-
+// Logout Buttons
 .logout-action-btn {
-    line-height: 1.5;
     width: 6em;
+    line-height: 1.5;
     border-radius: 0.2em;
     background-color: $mainButtonColor;
     font-size: 2em;

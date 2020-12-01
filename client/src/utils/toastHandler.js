@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 toast.configure({
     autoClose: 6000,
     draggable: false,
-    position: toast.POSITION.BOTTOM_CENTER,
+    position: toast.POSITION.TOP_RIGHT,
 });
 
 function toastSuccess(res) {

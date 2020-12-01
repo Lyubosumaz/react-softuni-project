@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
@@ -26,6 +26,10 @@ export default function App() {
             }
         }, 9 * 60 * 1000);
     });
+
+    // Re-Rendering Log
+    const renders = useRef(0);
+    console.log('times was rendered: ', renders.current++);
 
     return (
         <div className="app-container">

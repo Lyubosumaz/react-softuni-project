@@ -8,6 +8,11 @@
         margin: 0;
         padding: 0;
         display: flex;
+
+        &:hover button {
+            color: $secondaryFontColor;
+            background: $mainButtonColor;
+        }
     }
 
     li + li {

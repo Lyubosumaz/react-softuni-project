@@ -12,6 +12,7 @@ function Info(props) {
         <section className="info-component">
             <div className="info-component-wrapper">
                 <span>{archiveReaderState(archive, 'text', state())}</span>
+
                 <Button
                     additionalClassName="info-action-btn"
                     buttonText={archiveReaderState(archive, 'button', state())}
