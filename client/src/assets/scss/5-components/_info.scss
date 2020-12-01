@@ -23,7 +23,13 @@
 .about-component.background-image {
     .info-component {
         text-shadow: 0.1em 0.1em rgba($color: #000, $alpha: 0.2);
-        font-weight: 700;
         background-color: transparent;
+        font-weight: 700;
+
+        &-wrapper {
+            padding: 0.5em 1.5em;
+            background-color: $secondaryFontColor;
+            border-radius: 5em;
+        }
     }
 }

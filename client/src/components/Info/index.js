@@ -10,12 +10,14 @@ function Info(props) {
 
     return (
         <section className="info-component">
-            <span>{archiveReaderState(archive, 'text', state())}</span>
-            <Button
-                additionalClassName="info-action-btn"
-                buttonText={archiveReaderState(archive, 'button', state())}
-                direction={archiveReaderState(archive, 'path', state())}
-            />
+            <div className="info-component-wrapper">
+                <span>{archiveReaderState(archive, 'text', state())}</span>
+                <Button
+                    additionalClassName="info-action-btn"
+                    buttonText={archiveReaderState(archive, 'button', state())}
+                    direction={archiveReaderState(archive, 'path', state())}
+                />
+            </div>
         </section>
     );
 }
