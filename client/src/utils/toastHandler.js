@@ -27,13 +27,10 @@ function toastSuccess(res) {
     // customToast.success('+++++++++++++++++');
     toast(res.message ? res.message : res, {
         className: css({
-            background: 'black',
+            background: 'black !important',
         }),
         bodyClassName: css({
             fontSize: '60px',
-        }),
-        progressClassName: css({
-            background: 'repeating-radial-gradient(circle at center, red 0, blue, green 30px)',
         }),
     });
 }

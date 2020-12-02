@@ -1,5 +1,4 @@
 button {
-    line-height: 0;
     background: none;
     color: $secondaryFontColor;
     outline: none;
@@ -17,6 +16,7 @@ button {
 // Header Buttons
 .site-header .nav-bar-button {
     padding: 1em 1.2em;
+    line-height: 0;
     font-size: 1.2em;
 
     &.active {
@@ -32,6 +32,7 @@ button {
 // Option Buttons
 .options-bar .options-bar-button {
     padding: 1em 0;
+    line-height: 0;
     font-size: 0.8em;
 }
 
@@ -48,6 +49,7 @@ button {
 // Footer Buttons
 .site-footer .footer-nav-button {
     padding: 0.8em 0.5em;
+    line-height: 0;
 
     &:hover,
     &:focus {
@@ -57,6 +59,7 @@ button {
 }
 
 // Form Buttons
+.component-data .social-action-btn,
 .form-component .form-action-btn {
     border: 0.2rem solid transparent;
     border-radius: 1.5rem;

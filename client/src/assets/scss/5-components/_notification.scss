@@ -1,0 +1,12 @@
+.notification {
+    position: absolute;
+    top: 4em;
+    right: 2.5em;
+
+    span {
+        padding: 2em;
+        color: #fff;
+        background: #000;
+        display: inline-flex;
+    }
+}

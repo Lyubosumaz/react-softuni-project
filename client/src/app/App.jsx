@@ -9,6 +9,7 @@ import { authCookie, removeAllCookies } from '../services/cookies';
 import Router from '../router/Router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Notification from '../components/Notification';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/scss/main.scss';
@@ -40,6 +41,7 @@ export default function App() {
                         <Router />
                     </main>
                     <Footer />
+                    <Notification />
                 </PersistGate>
             </Provider>
         </div>

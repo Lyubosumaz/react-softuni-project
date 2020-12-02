@@ -68,40 +68,38 @@ export default function Social() {
 
     return (
         <Fragment>
-            {/* <section className={`${componentData}`}> */}
-            <div>
-                <Button additionalClassName="active-button" buttonText="Create Meme" direction="404" />
-            </div>
-            <div>
-                <Button additionalClassName="active-button" buttonText="Add Meme" direction="social/add-meme" />
-            </div>
+            <section className={`${componentData}`}>
+                <div className="social-action">
+                    <Button additionalClassName="social-action-btn" buttonText="Create Meme" direction="404" />
+                    <Button additionalClassName="social-action-btn" buttonText="Add Meme" direction="social/add-meme" />
+                </div>
 
-            <h1>Memes</h1>
+                <h1>Memes</h1>
 
-            <ul className="memes-list-container">
-                {memes &&
-                    memes.map((meme, index) => {
-                        if (memes.length === index + 1) {
-                            return (
-                                <li
-                                    key={meme.index}
-                                    // ref={lastMemeCardRef}
-                                >
-                                    <MemeCard num={index} meme={meme} />
-                                </li>
-                            );
-                        } else {
-                            return (
-                                <li key={meme.index}>
-                                    <MemeCard num={index} meme={meme} />
-                                </li>
-                            );
-                        }
-                    })}
-            </ul>
-            {/* <div>{loading && 'Loading...'}</div>
-            <div>{error && 'Error'}</div>
-        </section> */}
+                <ul className="memes-list-container">
+                    {memes &&
+                        memes.map((meme, index) => {
+                            if (memes.length === index + 1) {
+                                return (
+                                    <li
+                                        key={meme.index}
+                                        // ref={lastMemeCardRef}
+                                    >
+                                        <MemeCard num={index} meme={meme} />
+                                    </li>
+                                );
+                            } else {
+                                return (
+                                    <li key={meme.index}>
+                                        <MemeCard num={index} meme={meme} />
+                                    </li>
+                                );
+                            }
+                        })}
+                </ul>
+                {/* <div>{loading && 'Loading...'}</div>
+                <div>{error && 'Error'}</div> */}
+            </section>
         </Fragment>
     );
 }

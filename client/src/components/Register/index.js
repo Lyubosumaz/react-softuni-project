@@ -146,14 +146,16 @@ export default function Register() {
 
                     <div className="form-field-actions">
                         <div className="terms">
-                            <span>By creating an account, you agree to our</span>
+                            <span>By creating an account, you agree to our:</span>
                             <Button additionalClassName="info-button" buttonText="Terms &amp; Conditions" direction="terms-and-conditions" />
                         </div>
 
                         <div className="subscribe">
                             <span>I do accept to receive feedback on my email:</span>
-                            <input type="checkbox" id="register-checkbox" onClick={(e) => setSubscribe(e.target.checked)} />
-                            <label htmlFor="register-checkbox">Subscribe</label>
+                            <span>
+                                <input type="checkbox" id="register-checkbox" onClick={(e) => setSubscribe(e.target.checked)} />
+                                <label htmlFor="register-checkbox">Subscribe</label>
+                            </span>
                         </div>
                     </div>
 
