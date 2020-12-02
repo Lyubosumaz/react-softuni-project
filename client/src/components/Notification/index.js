@@ -1,12 +1,15 @@
+import { connect } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
 
-export default function Notification() {
-    const testText = 'sadsadadsasdasdasda dasd a d adasdasdasd das dasdd!';
+function Notification(props, { notifications, msg, vis }) {
+    console.log(props, notifications, msg, vis);
+    const testText = msg;
     const testTime = 2;
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--notification-animation-duration', `${testTime}s`);
+        setVisible(vis);
         autoClose();
     }, []);
 
@@ -37,3 +40,11 @@ export default function Notification() {
         </section>
     );
 }
+
+function mapStateToProps(state) {
+    return {
+        notifications: state.user.notifications,
+    };
+}
+
+export default connect(mapStateToProps)(Notification);

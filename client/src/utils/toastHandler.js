@@ -1,11 +1,18 @@
 import { toast } from 'react-toastify';
 import { css } from 'glamor';
+import Notification from '../components/Notification';
 
 toast.configure({
     autoClose: 6000,
     draggable: false,
     position: toast.POSITION.TOP_RIGHT,
 });
+
+function notificationSuccess(res) {
+    console.log('here');
+
+    <Notification msg={res.message ? res.message : res} vis={true} />;
+}
 
 const customToast = {
     success(msg, options = {}) {
@@ -47,4 +54,4 @@ function toastError(err) {
     });
 }
 
-export { toastSuccess, toastInfo, toastError };
+export { notificationSuccess, toastSuccess, toastInfo, toastError };

@@ -4,7 +4,7 @@ import { httpUser } from '../../services/http';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { componentData } from '../../class-names.json';
-import { toastSuccess, toastError } from '../../utils/toastHandler';
+import { notificationSuccess, toastSuccess, toastError } from '../../utils/toastHandler';
 import Button from '../Button';
 
 function Logout(props) {
@@ -13,10 +13,11 @@ function Logout(props) {
         httpUser
             .logout()
             .then((res) => {
-                toastSuccess(res);
-                removeAllCookies();
-                props.setLogoutValue();
-                history.push('/home');
+                // toastSuccess(res);
+                notificationSuccess(res);
+                // removeAllCookies();
+                // props.setLogoutValue();
+                // history.push('/home');
             })
             .catch((err) => {
                 toastError(err);

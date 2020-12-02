@@ -6,19 +6,21 @@ import playerReducer from '../containers/game/components/player/reducer';
 import mapReducer from '../containers/game/components/map/reducer';
 import gameReducer from '../containers/game/reducer';
 import userReducer from '../components/Login/reducer';
-
-const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ['player', 'map', 'game', 'user'],
-};
+import notificationReducer from '../components/Notification/reducer';
 
 const appReducer = combineReducers({
     player: playerReducer,
     map: mapReducer,
     game: gameReducer,
     user: userReducer,
+    notification: notificationReducer,
 });
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['player', 'map', 'game', 'user'],
+};
 
 const rootReducer = (state, action) => {
     // if (action.type === 'USER_LOGOUT') {
