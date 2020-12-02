@@ -1,3 +1,7 @@
+:root {
+    --notification-animation-duration: 5s;
+}
+
 /* Display Break-Pints */
 $breakpoints: (
     'huge':   ( min-width: 2561px ),
