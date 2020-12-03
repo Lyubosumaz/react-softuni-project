@@ -1,6 +1,5 @@
 import { toast } from 'react-toastify';
 import { css } from 'glamor';
-import Notification from '../components/Notification';
 
 toast.configure({
     autoClose: 6000,
@@ -10,35 +9,17 @@ toast.configure({
 
 function notificationSuccess(res) {
     console.log('here');
-
-    <Notification msg={res.message ? res.message : res} vis={true} />;
 }
 
-const customToast = {
-    success(msg, options = {}) {
-        return toast.success(msg, {
-            className: {
-                borderRadius: '10px',
-            },
-            ...options,
-        });
-    },
+const notificationType = {
+    success: 'success',
+    info: {},
+    error: {},
 };
 
 function toastSuccess(res) {
-    // toast(res.message ? res.message : res, {
-    //     type: toast.TYPE.SUCCESS,
-    // });
-
-    console.log('here');
-    // customToast.success('+++++++++++++++++');
     toast(res.message ? res.message : res, {
-        className: css({
-            background: 'black !important',
-        }),
-        bodyClassName: css({
-            fontSize: '60px',
-        }),
+        type: toast.TYPE.SUCCESS,
     });
 }
 
@@ -54,4 +35,4 @@ function toastError(err) {
     });
 }
 
-export { notificationSuccess, toastSuccess, toastInfo, toastError };
+export { notificationType, notificationSuccess, toastSuccess, toastInfo, toastError };

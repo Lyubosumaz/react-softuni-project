@@ -3,8 +3,9 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
+import { setNotification } from '../Notification/actions';
 import { componentData } from '../../class-names.json';
-import { notificationSuccess, toastSuccess, toastError } from '../../utils/toastHandler';
+import { notificationType, notificationSuccess, toastSuccess, toastError } from '../../utils/toastHandler';
 import Button from '../Button';
 
 function Logout(props) {
@@ -15,6 +16,7 @@ function Logout(props) {
             .then((res) => {
                 // toastSuccess(res);
                 notificationSuccess(res);
+                props.setNotification({ msg: 'Test Message Here', type: notificationType.success });
                 // removeAllCookies();
                 // props.setLogoutValue();
                 // history.push('/home');
@@ -47,6 +49,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setLogoutValue: () => dispatch(setLogoutValue()),
+        setNotification: (data) => dispatch(setNotification(data)),
     };
 }
 

@@ -1,7 +1,7 @@
 import { generalActions } from './actions';
 
 const initialState = {
-    notifications: [],
+    notifications: [{ msg: 'lol' }],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const userReducer = (state = initialState, action) => {
             console.log(action.payload);
             return {
                 ...state,
-                // notifications: [...notifications, action.payload],
+                notifications: [...state.notifications, action.payload],
             };
         default:
             return state;
