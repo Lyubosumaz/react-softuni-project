@@ -41,7 +41,7 @@ export default function App() {
                         <Router />
                     </main>
                     <Footer />
-                    <Notification />
+                    <Notification duration={3} />
                 </PersistGate>
             </Provider>
         </div>

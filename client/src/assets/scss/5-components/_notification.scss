@@ -1,5 +1,5 @@
 .notification {
-    max-width: 20em;
+    width: 20em;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
@@ -32,14 +32,11 @@
                 background: #369;
                 position: absolute;
                 top: 0;
-                // right: 0;
                 bottom: 0;
                 left: 0;
-                // animation: barAnimation 3s linear;
                 animation-name: barAnimation;
                 animation-duration: var(--notification-animation-duration);
                 animation-timing-function: linear;
-                // animation-fill-mode: both;
             }
         }
     }
@@ -48,10 +45,8 @@
 @keyframes barAnimation {
     from {
         right: 0%;
-        // left: 100%;
     }
     to {
         right: 100%;
-        // left: 0%;
     }
 }
