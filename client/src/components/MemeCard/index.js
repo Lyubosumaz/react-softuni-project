@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { currentPage } from '../../utils/currentPage';
-import numberGenerator from '../../utils/numberGenerator';
+import { numberGenerator } from '../../utils/numberGenerator';
 import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/imageCalc';
 import Button from '../Button';
 

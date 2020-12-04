@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import numberGenerator from '../../utils/numberGenerator';
+import { numberGenerator } from '../../utils/numberGenerator';
 import Button from '../Button';
 
 function Header(props) {

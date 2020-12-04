@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import { httpGame } from '../../services/http';
 import { currentPage } from '../../utils/currentPage';
-import numberGenerator from '../../utils/numberGenerator';
+import { numberGenerator } from '../../utils/numberGenerator';
 import { toastInfo, toastError } from '../../utils/toastHandler';
 import Button from '../Button';
 
