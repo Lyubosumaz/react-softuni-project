@@ -3,18 +3,11 @@ import { useEffect, useState, useRef, Fragment } from 'react';
 import { removeNotification, removeAllNotification } from './actions';
 
 function Notification(props) {
-    const renders = useRef(0);
-    // console.log('Notification times was rendered: ', renders.current++);
     const testTime = props.duration;
-
     const notifications = props.notifications;
     const [notificationsArr, setNotificationsArr] = useState([]);
     const notificationList = useRef();
-    const notificationsRef = useRef([]);
-
-    useEffect(() => {
-        renders.current = renders.current + 1;
-    });
+    let notificationsRef = useRef([]);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--notification-animation-duration', `${testTime}s`);
@@ -23,8 +16,8 @@ function Notification(props) {
 
     useEffect(() => {
         if (notifications.length) {
-            notificationList.current.className = 'notifications-list';
             setNotificationsArr(notifications);
+            notificationList.current.className = 'notifications-list';
             autoClose();
         }
     }, [notifications]);
@@ -33,7 +26,10 @@ function Notification(props) {
         let interval = setTimeout(() => {
             let bool = true;
 
-            console.log(notificationsRef);
+            const findNull = notificationsRef.current.indexOf(null);
+            if (findNull != -1) {
+                notificationsRef.current = notificationsRef.current.slice(0, findNull);
+            }
 
             notificationsRef.current.forEach((el) => {
                 const classesArr = el.className.split(' ');
@@ -44,22 +40,22 @@ function Notification(props) {
                 }
             });
 
-            // handleRefs();
+            if (handleRefs()) {
+                notificationList.current.className = notificationList.current.className.split(' ')[notificationList.current.className.split(' ').length - 1] === 'hidden' ? notificationList.current.className : notificationList.current.className + ' ' + 'hidden';
+                props.removeAllNotification();
+                setNotificationsArr([]);
+            }
         }, testTime * 1000);
 
         return () => clearTimeout(interval);
     }
 
     function btnHandlerClose(id) {
-        console.log(notificationsRef);
-
         notificationsRef.current.forEach((el) => {
             if (el.className.split(' ')[0] === id) {
                 el.className = el.className + ' ' + 'hidden';
             }
         });
-
-        handleRefs();
     }
 
     function handleRefs() {
@@ -73,17 +69,11 @@ function Notification(props) {
             }
         });
 
-        if (deleteRef) {
-            // notificationRef.current = [];
-            notificationList.current.className = notificationList.current.className.split(' ')[notificationList.current.className.split(' ').length - 1] === 'hidden' ? notificationList.current.className : notificationList.current.className + ' ' + 'hidden';
-            props.removeAllNotification();
-            setNotificationsArr([]);
-        }
+        return deleteRef;
     }
 
     return (
         <Fragment>
-            <div>{renders.current}</div>
             <ul ref={notificationList} className={`notifications-list`}>
                 {notificationsArr &&
                     notificationsArr.map((notification, index) => {
