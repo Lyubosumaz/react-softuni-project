@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import secondsToClock from '../../utils/secondsToClock';
+import { secondsToClock } from '../../utils/secondsToClock';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
 import gameRank from '../../assets/images/game_rank.png';

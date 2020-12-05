@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
-import secondsToClock from '../../utils/secondsToClock';
+import { secondsToClock } from '../../utils/secondsToClock';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
 import defaultProfilePic from '../../assets/images/default_profile.png';

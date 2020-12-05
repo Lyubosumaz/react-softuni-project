@@ -1,4 +1,4 @@
-export default function secondsToClock(time) {
+export function secondsToClock(time) {
     const hours = Math.floor(time / (60 * 60));
 
     const divisorMinutes = time % (60 * 60);

@@ -4,21 +4,22 @@
     "description": "This is my front-end for the site Dqvol 4",
     "authors": "Lubosumaz",
     "private": true,
-    "dependencies": {
+    "devDependencies": {
         "@testing-library/jest-dom": "^5.11.6",
         "@testing-library/react": "^11.2.2",
-        "@testing-library/user-event": "^12.3.0",
+        "@testing-library/user-event": "^12.5.0",
         "@types/enzyme": "^3.10.8",
         "@types/enzyme-adapter-react-16": "^1.0.6",
         "@types/node-sass": "^4.11.1",
         "@types/react-redux": "^7.1.11",
         "@types/react-router-dom": "^5.1.6",
         "@types/react-test-renderer": "^17.0.0",
-        "@types/react-toastify": "^4.1.0",
         "@types/redux": "^3.6.31",
         "@types/redux-persist": "^4.3.1",
         "@types/redux-thunk": "^2.1.32",
-        "@types/yup": "^0.29.9",
+        "@types/yup": "^0.29.10"
+    },
+    "dependencies": {
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.5",
         "jest-enzyme": "^7.1.2",
@@ -30,12 +31,11 @@
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.1",
         "react-test-renderer": "^17.0.1",
-        "react-toastify": "^6.1.0",
         "redux": "^4.0.5",
         "redux-persist": "^6.0.0",
         "redux-thunk": "^2.3.0",
         "web-vitals": "^1.0.1",
-        "yup": "^0.31.1"
+        "yup": "^0.32.1"
     },
     "scripts": {
         "start": "react-scripts start",
