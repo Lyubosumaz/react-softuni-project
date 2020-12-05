@@ -44,9 +44,9 @@ module.exports = {
         },
         add: (req, res) => {
             const userId = req.user._id;
-            const { title, imageUrl } = req.body;
+            const { title, imageUrl, imageWidth, imageHeight, imageRatio, imageOrientation, imageAltName } = req.body;
 
-            models.Meme.create({ title, imageUrl, addedBy: userId })
+            models.Meme.create({ title, imageUrl, imageWidth, imageHeight, imageRatio, imageOrientation, imageAltName, addedBy: userId })
                 .then(() => {
                     res.send({ message: 'You Added the meme successfully!' });
                 })

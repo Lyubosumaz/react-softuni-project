@@ -16,7 +16,7 @@ function MemeCard(props) {
     useEffect(() => {
         const width = imageRef.current.clientWidth;
         const height = imageRef.current.clientHeight;
-        console.log('-------------', width, height);
+        // console.log('-------------', width, height);
         const divider = gcd(width, height);
         setRatio(imageRatio(width / divider, height / divider));
         setOrientation(imageOrientation(width, height));

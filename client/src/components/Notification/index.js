@@ -76,7 +76,6 @@ function Notification(props) {
         <ul ref={notificationList} className={`notifications-list`}>
             {notificationsArr &&
                 notificationsArr.map((notification, index) => {
-                    console.log(notification);
                     return (
                         <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification.id}__${index}`} className={`${notification.id} notification notification-${notification.options.class}`}>
                             <p>{notification.msg}</p>

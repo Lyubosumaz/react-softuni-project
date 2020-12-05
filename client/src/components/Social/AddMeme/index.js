@@ -40,17 +40,17 @@ function AddMeme(props) {
 
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
-        // if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
-        //     httpSocial
-        //         .addMeme(meme)
-        //         .then((res) => {
-        //             props.setNotificationSuccess(res);
-        //             history.push('/social');
-        //         })
-        //         .catch((err) => {
-        //             props.setNotificationError(err);
-        //         });
-        // }
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
+            httpSocial
+                .addMeme(meme)
+                .then((res) => {
+                    props.setNotificationSuccess(res);
+                    history.push('/social');
+                })
+                .catch((err) => {
+                    props.setNotificationError(err);
+                });
+        }
     }
 
     function useFormInput(initialValue) {
