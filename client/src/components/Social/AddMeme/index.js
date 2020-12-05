@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
+import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageCalc';
 import schema from './add-meme-validations';
 import { setNotification } from '../../Notification/actions';
 import { componentData } from '../../../class-names.json';
@@ -12,35 +13,32 @@ function AddMeme(props) {
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
+
+        if (!title.value || !imageUrl.value) {
+            return;
+        }
+
         const meme = {
             title: title.value,
             imageUrl: imageUrl.value,
         };
+
+        const image = await getImage(meme.imageUrl);
+        const width = image.width;
+        const height = image.height;
+        meme.imageWidth = width;
+        meme.imageHeight = height;
+
+        const divider = gcd(width, height);
+        meme.imageRatio = imageRatio(width, height, divider);
+        meme.imageOrientation = imageOrientation(width, height);
+        meme.imageAltName = imageAltName(title.value);
+
+        console.log(meme);
+
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
-
-        console.log(imageUrl);
-
-        const test = 'https://img-9gag-fun.9cache.com/photo/aZy609p_460swp.webp';
-        const img = new Image();
-        img.src = test;
-
-        console.log(img.width);
-        console.log(img.height);
-        // async function fetchData() {
-        //     const response = await fetch(test, {
-        //         headers: {
-        //             'Access-Control-Allow-Origin': '*',
-        //             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-        //             'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-        //         },
-        //     });
-        //     console.log(response);
-        //     const data = await response.json();
-        //     console.log(data);
-        // }
-        // fetchData();
 
         // if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
         //     httpSocial

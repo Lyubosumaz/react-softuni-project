@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
-import { httpUser } from '../services/http';
 import { store, persistor } from '../services/store';
+import { httpUser } from '../services/http';
 import { authCookie, removeAllCookies } from '../services/cookies';
 
 import Router from '../router/Router';
