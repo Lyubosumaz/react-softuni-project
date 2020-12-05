@@ -10,16 +10,19 @@ module.exports = {
         console.log(target, `${target}`);
         models.BlacklistToken.find({ createdAt: { $lte: target } })
             .then((result) => {
-                if (result.length === 0) { return console.log('***There is Nothing to Remove!***'); }
+                if (result.length === 0) {
+                    return console.log('***There is Nothing to Remove!***');
+                }
 
-                return (
-                    models.BlacklistToken.deleteMany({ createdAt: { $lte: target } })
-                        .then(console.log(`***Database remove script is successfully! Everything before ${target} is removed!***`))
-                        .catch((err) => {
-                            console.log('***Database remove script is failed! Nothing is removed!***');
-                            console.log(err);
-                        })
-                );
-            }).catch((err) => { console.error(err); });
+                return models.BlacklistToken.deleteMany({ createdAt: { $lte: target } })
+                    .then(console.log(`***Database remove script is successfully! Everything before ${target} is removed!***`))
+                    .catch((err) => {
+                        console.log('***Database remove script is failed! Nothing is removed!***');
+                        console.log(err);
+                    });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }),
 };

@@ -6,7 +6,7 @@ const gameItemSchema = new mongoose.Schema({
     strength: { type: Number, required: true },
     agility: { type: Number, required: true },
     price: { type: Number, required: true },
-    intelligence: { type: Number, required: true }
+    intelligence: { type: Number, required: true },
 });
 
 const GameItem = mongoose.model('GameItem', gameItemSchema);

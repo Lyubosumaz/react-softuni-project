@@ -73,29 +73,23 @@ function Notification(props) {
     }
 
     return (
-        <Fragment>
-            <ul ref={notificationList} className={`notifications-list`}>
-                {notificationsArr &&
-                    notificationsArr.map((notification, index) => {
-                        console.log(notification);
-                        return (
-                            <li
-                                ref={(el) => (notificationsRef.current[index] = el)}
-                                key={`${notification.id}__${index}`}
-                                className={`${notification.id} notification notification-${notification.options.class}`}
-                            >
-                                <p>{notification.msg}</p>
+        <ul ref={notificationList} className={`notifications-list`}>
+            {notificationsArr &&
+                notificationsArr.map((notification, index) => {
+                    console.log(notification);
+                    return (
+                        <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification.id}__${index}`} className={`${notification.id} notification notification-${notification.options.class}`}>
+                            <p>{notification.msg}</p>
 
-                                <button onClick={() => btnHandlerClose(notification.id)}>Close</button>
+                            <button onClick={() => btnHandlerClose(notification.id)}>Close</button>
 
-                                <div className="progress-bar">
-                                    <span className="bar"></span>
-                                </div>
-                            </li>
-                        );
-                    })}
-            </ul>
-        </Fragment>
+                            <div className="progress-bar">
+                                <span className="bar"></span>
+                            </div>
+                        </li>
+                    );
+                })}
+        </ul>
     );
 }
 
