@@ -17,8 +17,7 @@ module.exports = {
         all: (req, res) => {
             models.Meme.find()
                 .then((allMemes) => {
-                    console.log(allMemes);
-                    // res.send(oneMeme);
+                    res.send(allMemes);
                 })
                 .catch((err) => {
                     res.send({ message: 'There is a problem, please try to Social later.' });

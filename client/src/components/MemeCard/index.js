@@ -1,26 +1,12 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
-import { gcd, imageRatio, imageOrientation, imageAltName } from '../../utils/imageCalc';
 import Button from '../Button';
 
 function MemeCard(props) {
     const meme = props.meme;
-    // console.log(props.meme);
     const currentUser = props.userId;
-    const imageRef = useRef();
-    const [ratio, setRatio] = useState(0);
-    const [orientation, setOrientation] = useState('');
-
-    useEffect(() => {
-        const width = imageRef.current.clientWidth;
-        const height = imageRef.current.clientHeight;
-        // console.log('-------------', width, height);
-        const divider = gcd(width, height);
-        setRatio(imageRatio(width / divider, height / divider));
-        setOrientation(imageOrientation(width, height));
-    }, []);
 
     return (
         <Fragment>
@@ -28,7 +14,7 @@ function MemeCard(props) {
                 <section className="meme-card">
                     <style>{`
                         .meme-card-image-wrapper.meme-order-${props.num}::before {
-                            padding-top: ${ratio}%;
+                            padding-top: ${meme.imageRatio}%;
                         }
                     `}</style>
                     <header className="meme-card-header">
@@ -48,7 +34,7 @@ function MemeCard(props) {
 
                     <div className="meme-card-image">
                         <div className={`meme-card-image-wrapper meme-order-${props.num}`}>
-                            <img ref={imageRef} src={meme.imageUrl} className={`meme-orientation-${orientation}`} alt={imageAltName(meme.title)} />
+                            <img src={meme.imageUrl} className={`meme-orientation-${meme.imageOrientation}`} alt={meme.imageAltName} />
                         </div>
                     </div>
                 </section>

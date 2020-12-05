@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { useEffect, useState, useRef, Fragment } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { removeAllNotification } from './actions';
 
 function Notification(props) {
