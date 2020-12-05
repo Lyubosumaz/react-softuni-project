@@ -1,9 +1,10 @@
+import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { httpGame } from '../../../services/http';
-import { toastError } from '../../../utils/toastHandler';
+import { setNotification } from '../../../components/Notification/actions';
 import ItemsList from '../../../components/ItemsList';
 
-export default function Shop() {
+function Shop(props) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -17,7 +18,7 @@ export default function Shop() {
                 setItems(i);
             })
             .catch((err) => {
-                toastError(err);
+                props.setNotificationError(err);
             });
     }, []);
 
@@ -29,3 +30,11 @@ export default function Shop() {
         </div>
     );
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Shop);

@@ -1,12 +1,13 @@
+import { connect } from 'react-redux';
 import { useState } from 'react';
 import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './register-validations';
-import { toastSuccess, toastError } from '../../utils/toastHandler';
+import { setNotification } from '../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
 import Button from '../Button';
 
-export default function Register() {
+function Register(props) {
     const username = useFormInput('');
     const email = useFormInput('');
     const password = useFormInput('');
@@ -59,11 +60,11 @@ export default function Register() {
             httpUser
                 .register(data)
                 .then((res) => {
-                    toastSuccess(res);
+                    props.setNotificationSuccess(res);
                     history.push('/login');
                 })
                 .catch((err) => {
-                    toastError(err);
+                    props.setNotificationError(err);
                 });
         }
     }
@@ -168,3 +169,12 @@ export default function Register() {
         </section>
     );
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Register);

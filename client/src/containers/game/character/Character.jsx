@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setRemoveItem } from './actions';
 import { httpGame } from '../../../services/http';
-import { toastError } from '../../../utils/toastHandler';
+import { setNotification } from '../../../components/Notification/actions';
 import MainStatistic from '../../../components/MainStatistic';
 import ItemsList from '../../../components/ItemsList';
 
@@ -37,7 +37,7 @@ function Character(props) {
                 }
             })
             .catch((err) => {
-                toastError(err);
+                props.setNotificationError(err);
             });
     }, [newProps]);
 
@@ -62,6 +62,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setRemoveItem: () => dispatch(setRemoveItem(false)),
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 

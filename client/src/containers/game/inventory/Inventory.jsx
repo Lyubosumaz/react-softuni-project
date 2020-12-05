@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setSellItem, setEquipItem } from './actions';
 import { httpGame } from '../../../services/http';
-import { toastError } from '../../../utils/toastHandler';
+import { setNotification } from '../../../components/Notification/actions';
 import ItemsList from '../../../components/ItemsList';
 
 function Inventory(props) {
@@ -25,7 +25,7 @@ function Inventory(props) {
                 }
             })
             .catch((err) => {
-                toastError(err);
+                props.setNotificationError(err);
             });
     }, [newProps]);
 
@@ -49,6 +49,7 @@ function mapDispatchToProps(dispatch) {
     return {
         setSellItem: () => dispatch(setSellItem(false)),
         setEquipItem: () => dispatch(setEquipItem(false)),
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 

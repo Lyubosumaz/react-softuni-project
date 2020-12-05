@@ -3,7 +3,7 @@ import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
 import schema from './edit-meme-validations';
-import { toastSuccess, toastError } from '../../../utils/toastHandler';
+import { setNotification } from '../../Notification/actions';
 import { componentData } from '../../../class-names.json';
 import Button from '../../Button';
 
@@ -58,11 +58,11 @@ function EditMeme(props) {
             httpSocial
                 .editMeme(data)
                 .then((res) => {
-                    toastSuccess(res);
+                    props.setNotificationSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    toastError(err);
+                    props.setNotificationError(err);
                 });
         }
     }
@@ -100,4 +100,11 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(EditMeme);
+function mapDispatchToProps(dispatch) {
+    return {
+        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditMeme);

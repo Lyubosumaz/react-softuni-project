@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { httpGame } from '../../services/http';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
-import { toastInfo, toastError } from '../../utils/toastHandler';
+import { setNotification } from '../Notification/actions';
 import Button from '../Button';
 
 function ItemsList(props) {
@@ -16,10 +16,10 @@ function ItemsList(props) {
             httpGame
                 .buy(item._id)
                 .then((res) => {
-                    toastInfo(res);
+                    props.setNotificationInfo(res);
                 })
                 .catch((err) => {
-                    toastError(err);
+                    props.setNotificationError(err);
                 });
         }
 
@@ -27,11 +27,11 @@ function ItemsList(props) {
             httpGame
                 .sell(item._id)
                 .then((res) => {
-                    toastInfo(res);
+                    props.setNotificationInfo(res);
                     props.setSellItem();
                 })
                 .catch((err) => {
-                    toastError(err);
+                    props.setNotificationError(err);
                 });
         }
 
@@ -39,11 +39,11 @@ function ItemsList(props) {
             httpGame
                 .equip(item._id)
                 .then((res) => {
-                    toastInfo(res);
+                    props.setNotificationInfo(res);
                     props.setEquipItem();
                 })
                 .catch((err) => {
-                    toastError(err);
+                    props.setNotificationError(err);
                 });
         }
 
@@ -51,11 +51,11 @@ function ItemsList(props) {
             httpGame
                 .remove(item._id)
                 .then((res) => {
+                    props.setNotificationInfo(res);
                     props.setRemoveItem();
-                    toastInfo(res);
                 })
                 .catch((err) => {
-                    toastError(err);
+                    props.setNotificationError(err);
                 });
         }
 
@@ -140,6 +140,8 @@ function mapDispatchToProps(dispatch) {
                 type: 'CHARACTER_REMOVE_ITEM',
                 payload: true,
             }),
+        setNotificationInfo: (data) => dispatch(setNotification().info(data)),
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 

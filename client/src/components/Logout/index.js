@@ -5,8 +5,6 @@ import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { setNotification } from '../Notification/actions';
 import { componentData } from '../../class-names.json';
-import { toastError } from '../../utils/toastHandler';
-import { notificationType } from '../../settings.json';
 import Button from '../Button';
 
 function Logout(props) {
@@ -15,20 +13,13 @@ function Logout(props) {
         httpUser
             .logout()
             .then((res) => {
-                // toastSuccess(res);
-                console.log(res);
                 props.setNotificationSuccess(res);
-                // props.setNotification({
-                //     msg: res.message ? res.message : res,
-                //     // type: notificationType.success
-                // });
-                // removeAllCookies();
-                // props.setLogoutValue();
-                // history.push('/home');
+                removeAllCookies();
+                props.setLogoutValue();
+                history.push('/home');
             })
             .catch((err) => {
-                console.log(err.message);
-                props.setNotificationError(err.message);
+                props.setNotificationError(err);
             });
     };
 

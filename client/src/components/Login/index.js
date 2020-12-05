@@ -4,8 +4,8 @@ import { setLoginValue } from './actions';
 import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './login-validations';
+import { setNotification } from '../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
-import { toastSuccess } from '../../utils/toastHandler';
 
 function Login(props) {
     const username = useFormInput('');
@@ -49,7 +49,7 @@ function Login(props) {
                 .login(data)
                 .then((user) => {
                     props.setLoginValue(user);
-                    toastSuccess('You have Logged successfully!');
+                    props.setNotificationSuccess('You have Logged successfully!');
                     history.push('/home');
                 })
                 .catch((err) => {
@@ -115,6 +115,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setLoginValue: (data) => dispatch(setLoginValue(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
     };
 }
 
