@@ -21,7 +21,6 @@
         "@types/yup": "^0.29.9",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.5",
-        "glamor": "^2.20.40",
         "jest-enzyme": "^7.1.2",
         "node-sass": "^4.14.1",
         "react": "^17.0.1",

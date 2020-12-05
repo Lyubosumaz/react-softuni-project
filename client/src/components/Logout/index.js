@@ -5,7 +5,8 @@ import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { setNotification } from '../Notification/actions';
 import { componentData } from '../../class-names.json';
-import { notificationType, notificationSuccess, toastSuccess, toastError } from '../../utils/toastHandler';
+import { toastError } from '../../utils/toastHandler';
+import { notificationType } from '../../settings.json';
 import Button from '../Button';
 
 function Logout(props) {
@@ -15,14 +16,19 @@ function Logout(props) {
             .logout()
             .then((res) => {
                 // toastSuccess(res);
-                notificationSuccess(res);
-                props.setNotification({ msg: 'Test Message Here', type: notificationType.success });
+                console.log(res);
+                props.setNotificationSuccess(res);
+                // props.setNotification({
+                //     msg: res.message ? res.message : res,
+                //     // type: notificationType.success
+                // });
                 // removeAllCookies();
                 // props.setLogoutValue();
                 // history.push('/home');
             })
             .catch((err) => {
-                toastError(err);
+                console.log(err.message);
+                props.setNotificationError(err.message);
             });
     };
 
@@ -49,7 +55,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setLogoutValue: () => dispatch(setLogoutValue()),
-        setNotification: (data) => dispatch(setNotification(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
+        setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 

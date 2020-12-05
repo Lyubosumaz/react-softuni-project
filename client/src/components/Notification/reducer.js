@@ -1,5 +1,4 @@
 import { generalActions } from './actions';
-import { indexGenerator } from '../../utils/numberGenerator';
 
 const initialState = {
     notifications: [],
@@ -10,7 +9,7 @@ const userReducer = (state = initialState, action) => {
         case generalActions.ADD_NEW_NOTIFICATION:
             return {
                 ...state,
-                notifications: [...state.notifications, { ...action.payload, id: indexGenerator() }],
+                notifications: [...state.notifications, action.payload],
             };
         case generalActions.REMOVE_NOTIFICATION:
             return {

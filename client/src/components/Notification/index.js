@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { useEffect, useState, useRef, Fragment } from 'react';
-import { removeNotification, removeAllNotification } from './actions';
+import { removeAllNotification } from './actions';
 
 function Notification(props) {
     const testTime = props.duration;
@@ -77,11 +77,14 @@ function Notification(props) {
             <ul ref={notificationList} className={`notifications-list`}>
                 {notificationsArr &&
                     notificationsArr.map((notification, index) => {
+                        console.log(notification);
                         return (
-                            <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification.id}__${index}`} className={`${notification.id} notification`}>
-                                <p>
-                                    {notification.msg} {index}
-                                </p>
+                            <li
+                                ref={(el) => (notificationsRef.current[index] = el)}
+                                key={`${notification.id}__${index}`}
+                                className={`${notification.id} notification notification-${notification.options.class}`}
+                            >
+                                <p>{notification.msg}</p>
 
                                 <button onClick={() => btnHandlerClose(notification.id)}>Close</button>
 
@@ -104,7 +107,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeNotification: (data) => dispatch(removeNotification(data)),
         removeAllNotification: () => dispatch(removeAllNotification()),
     };
 }

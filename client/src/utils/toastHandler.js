@@ -1,21 +1,16 @@
 import { toast } from 'react-toastify';
-import { css } from 'glamor';
+
+const notificationType = {
+    success: { class: 'success' },
+    info: { class: 'info' },
+    error: { class: 'error' },
+};
 
 toast.configure({
     autoClose: 6000,
     draggable: false,
     position: toast.POSITION.TOP_RIGHT,
 });
-
-function notificationSuccess(res) {
-    console.log('here');
-}
-
-const notificationType = {
-    success: 'success',
-    info: {},
-    error: {},
-};
 
 function toastSuccess(res) {
     toast(res.message ? res.message : res, {
@@ -35,4 +30,4 @@ function toastError(err) {
     });
 }
 
-export { notificationType, notificationSuccess, toastSuccess, toastInfo, toastError };
+export { notificationType, toastSuccess, toastInfo, toastError };

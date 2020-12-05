@@ -1,4 +1,9 @@
 {
     "protocol": "http://",
-    "domain": "localhost:4000"
+    "domain": "localhost:4000",
+    "notificationType": {
+        "success": { "class": "success" },
+        "info": { "class": "info" },
+        "error": { "class": "error" }
+    }
 }
