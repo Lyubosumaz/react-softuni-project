@@ -1,7 +1,7 @@
 .notifications-list {
     width: 20em;
-    padding: 0;
     max-height: 50vh;
+    padding: 0.3em;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
@@ -10,7 +10,22 @@
     border-radius: 0.5em;
     overflow: hidden;
     overflow-y: scroll;
-    background-color: #fff;
+    background-color: $secondaryFontColor;
+
+    &::-webkit-scrollbar {
+        width: 0.85em;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #cfd8dc;
+        border-radius: 0.5em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #90a4ae;
+        border-radius: 0.5em;
+        border: 0.25em solid #cfd8dc;
+    }
 
     li + li {
         margin-top: 0.5em;
@@ -27,7 +42,7 @@
 
         & > p {
             flex-basis: 100%;
-            color: #fff;
+            color: $secondaryFontColor;
             font-weight: 700;
         }
 
@@ -53,11 +68,11 @@
             border: 0.3em solid transparent;
 
             .bar {
-                background-color: var(--notification-bar-color-main);
                 position: absolute;
                 top: -1px;
                 bottom: -1px;
                 left: 0;
+                background-color: var(--notification-bar-color-main);
                 animation-name: barAnimation;
                 animation-duration: var(--notification-animation-duration);
                 animation-timing-function: linear;
