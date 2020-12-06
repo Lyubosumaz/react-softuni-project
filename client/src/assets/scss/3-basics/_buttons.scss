@@ -80,9 +80,15 @@ button {
     width: 6em;
     line-height: 1.5;
     border-radius: 0.2em;
-    background-color: $mainButtonSuccessColor;
     font-size: 2em;
     transition: all 0.5s;
+    background-color: $mainButtonSuccessColor;
+    
+    &:focus,
+    &:hover {
+        color: #fff;
+        background-color: $mainButtonSuccessColor;
+    }
 
     span {
         display: inline-block;
