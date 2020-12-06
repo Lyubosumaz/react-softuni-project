@@ -1,12 +1,11 @@
 global.__basedir = __dirname;
-const DELETE_BLACKLIST_TOKENS_SCRIPT = require('./utils');
+const app = require('express')();
+const config = require('./config/constants');
 const dbConnector = require('./config/database');
+const DELETE_BLACKLIST_TOKENS_SCRIPT = require('./utils');
 
 dbConnector()
     .then(() => {
-        const config = require('./config/constants');
-        const app = require('express')();
-
         require('./config/express')(app);
         require('./routes/routes')(app);
 
