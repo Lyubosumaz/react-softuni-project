@@ -1,5 +1,13 @@
 :root {
     --notification-animation-duration: 0s;
+    --notification-max-width: 0rem;
+    --notification-max-height: 0rem;
+    --notification-success-color: #4caf50;
+    --notification-info-color: #0083ff;
+    --notification-error-color: #f4511e;
+    --notification-bar-border-color: #369;
+    --notification-bar-color-main: #369;
+    --notification-bar-color-secondary: #f0f0f0;
 }
 
 /* Display Break-Pints */
@@ -18,9 +26,12 @@ $laptopFontSize: 18px;   // 769  < 1440
 $tabletFontSize: 16px;   // 426  < 768
 $phoneFontSize: 14px;    // min  > 425
 
-
 $mainShadow: 0 0.2em 1.2em 0.2em rgba($color: #000, $alpha: 0.2);
+
 /* Colors */
+$mainRedColor: #f4511e;
+$mainGreenColor: #4caf50;
+$mainBlueColor: #0083ff;
 
 /* Font Colors */
 $mainFontColor: #222;
@@ -30,16 +41,23 @@ $secondaryFontColor: #f0f0f0;
 $mainDarkColor: #3a3a3a;
 $mainDarkLighten: lighten($mainDarkColor, 5%);
 $mainDarkHightLighten: lighten($mainDarkColor, 40%);
-$secondaryDarkColor:#b0b0b0;
-$errorColor: #d4511e;
+$secondaryDarkColor: #b0b0b0;
+$secondaryDarkLighten: lighten($secondaryDarkColor, 5%);
+
+/* Notifications */
+$mainSuccessColor: $mainGreenColor;
+$mainSuccessDarken: darken($mainSuccessColor, 5%);
+$mainInfoColor: $mainBlueColor;
+$mainInfoDarken: darken($mainInfoColor, 10%);
+$mainErrorColor: $mainRedColor;
+$mainErrorDarken: darken($mainErrorColor, 15%);
 
 /* Link Color */
-$mainLinkColor: #0083ff;
+$mainLinkColor: $mainBlueColor;
 $mainLinkDarken: darken($mainLinkColor, 20%);
 
-
 /* Buttons Color */
-$mainButtonColor: #4caf50;
-$mainButtonDarken: darken($mainButtonColor, 5%);
-// background-color: #4caf50;
-// background-color: #f4511e;
+$mainButtonSuccessColor: $mainGreenColor;
+$mainButtonSuccessDarken: darken($mainButtonSuccessColor, 5%);
+$mainButtonErrorColor: $mainRedColor;
+$mainButtonErrorDarken: darken($mainButtonErrorColor, 5%);

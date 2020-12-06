@@ -20,11 +20,11 @@ button {
     font-size: 1.2em;
 
     &.active {
-        background-color: $mainButtonColor;
+        background-color: $mainButtonSuccessColor;
 
         &:focus,
         &:hover {
-            background-color: $mainButtonDarken;
+            background-color: $mainButtonSuccessDarken;
         }
     }
 }
@@ -63,15 +63,15 @@ button {
 .form-component .form-action-btn {
     border: 0.2rem solid transparent;
     border-radius: 1.5rem;
-    background-color: $mainButtonColor;
+    background-color: $mainButtonSuccessColor;
     color: $secondaryFontColor;
     font-weight: 700;
 
     &:focus,
     &:hover {
-        border-color: $mainButtonColor;
+        border-color: $mainButtonSuccessColor;
         background-color: $secondaryFontColor;
-        color: $mainButtonColor;
+        color: $mainButtonSuccessColor;
     }
 }
 
@@ -80,7 +80,7 @@ button {
     width: 6em;
     line-height: 1.5;
     border-radius: 0.2em;
-    background-color: $mainButtonColor;
+    background-color: $mainButtonSuccessColor;
     font-size: 2em;
     transition: all 0.5s;
 
