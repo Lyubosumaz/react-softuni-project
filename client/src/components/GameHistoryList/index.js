@@ -3,9 +3,10 @@ import { secondsToClock } from '../../utils/secondsToClock';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
 import gameRank from '../../assets/images/game_rank.png';
+import PropTypes from 'prop-types';
 
-export default function GameHistoryList(props) {
-    const content = props.content;
+export default function GameHistoryList({ content }) {
+    const content = content;
     const currentUrl = currentPage();
 
     function getOrder() {
@@ -100,3 +101,7 @@ export default function GameHistoryList(props) {
 
     return <ul className="game-history-component">{content && getOrder()}</ul>;
 }
+
+SetTabsArray.propTypes = {
+    content: PropTypes.string.isRequired,
+};
