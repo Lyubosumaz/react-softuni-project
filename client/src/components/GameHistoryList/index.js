@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { secondsToClock } from '../../utils/secondsToClock';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
 import gameRank from '../../assets/images/game_rank.png';
-import PropTypes from 'prop-types';
 
 export default function GameHistoryList({ content }) {
-    const content = content;
+    const memeContent = content;
     const currentUrl = currentPage();
 
     function getOrder() {
@@ -23,7 +23,7 @@ export default function GameHistoryList({ content }) {
 
         switch (currentUrl) {
             case 'profile':
-                map = content
+                map = memeContent
                     .slice(0)
                     .reverse()
                     .map((data, index) => {
@@ -31,7 +31,7 @@ export default function GameHistoryList({ content }) {
                     });
                 break;
             case 'house-of-fame':
-                map = content
+                map = memeContent
                     .sort((a, b) => {
                         return b.totalGames - a.totalGames;
                     })
@@ -46,7 +46,7 @@ export default function GameHistoryList({ content }) {
         return map;
     }
 
-    function getStatistics(content) {
+    function getStatistics(memeContent) {
         let statistics;
 
         switch (currentUrl) {
@@ -54,18 +54,18 @@ export default function GameHistoryList({ content }) {
                 statistics = (
                     <Fragment key={numberGenerator()}>
                         <header className="statistics-header">
-                            <h2>Level: {content.level}</h2>
+                            <h2>Level: {memeContent.level}</h2>
                         </header>
 
                         <div className="statistics-main">
                             <p>
-                                Your time is:<span>{secondsToClock(content.time)}</span>
+                                Your time is:<span>{secondsToClock(memeContent.time)}</span>
                             </p>
                             <p>
-                                Collected gold:<span>{content.gold}</span>
+                                Collected gold:<span>{memeContent.gold}</span>
                             </p>
                             <p>
-                                Loot:<span>{content.loot}</span>
+                                Loot:<span>{memeContent.loot}</span>
                             </p>
                         </div>
                     </Fragment>
@@ -75,18 +75,18 @@ export default function GameHistoryList({ content }) {
                 statistics = (
                     <Fragment key={numberGenerator()}>
                         <header className="statistics-header">
-                            <h2>Username: {content.user.username}</h2>
+                            <h2>Username: {memeContent.user.username}</h2>
                         </header>
 
                         <div className="statistics-main">
                             <p>
-                                Games Played:<span>{content.totalGames}</span>
+                                Games Played:<span>{memeContent.totalGames}</span>
                             </p>
                             <p>
-                                Time Played:<span>{secondsToClock(content.totalTime)}</span>
+                                Time Played:<span>{secondsToClock(memeContent.totalTime)}</span>
                             </p>
                             <p>
-                                Wealth:<span>{content.totalGold} coins</span>
+                                Wealth:<span>{memeContent.totalGold} coins</span>
                             </p>
                         </div>
                     </Fragment>
@@ -99,9 +99,9 @@ export default function GameHistoryList({ content }) {
         return statistics;
     }
 
-    return <ul className="game-history-component">{content && getOrder()}</ul>;
+    return <ul className="game-history-component">{memeContent && getOrder()}</ul>;
 }
 
-SetTabsArray.propTypes = {
-    content: PropTypes.string.isRequired,
+GameHistoryList.propTypes = {
+    content: PropTypes.array.isRequired,
 };
