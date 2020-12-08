@@ -166,7 +166,7 @@ ItemsList.propTypes = {
             agility: PropTypes.number.isRequired,
             intelligence: PropTypes.number.isRequired,
             __v: PropTypes.number.isRequired,
-        })
+        }).isRequired
     ),
     setSellItem: PropTypes.func.isRequired,
     setEquipItem: PropTypes.func.isRequired,

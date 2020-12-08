@@ -1,15 +1,16 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { secondsToClock } from '../../utils/secondsToClock';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
 import defaultProfilePic from '../../assets/images/default_profile.png';
 
-function MainStatistic(props) {
-    const content = props.content;
-    let card;
+function MainStatistic({ userName, content }) {
+    const page = currentPage();
 
-    switch (currentPage()) {
+    let card;
+    switch (page) {
         case 'profile':
             card = (
                 <Fragment key={numberGenerator()}>
@@ -50,7 +51,7 @@ function MainStatistic(props) {
         <section className="statistic-component">
             <header className="statistic-header">
                 <p>Account:</p>
-                <h2>{props.userName}</h2>
+                <h2>{userName}</h2>
             </header>
 
             <div className="statistic-avatar">
@@ -69,3 +70,25 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(MainStatistic);
+
+MainStatistic.propTypes = {
+    userName: PropTypes.string.isRequired,
+    content: function (page) {
+        switch (page) {
+            case 'profile':
+                return PropTypes.shape({
+                    totalGold: PropTypes.number.isRequired,
+                    totalTime: PropTypes.number.isRequired,
+                    totalGold: PropTypes.number.isRequired,
+                });
+            case 'character':
+                return PropTypes.shape({
+                    strength: PropTypes.number.isRequired,
+                    agility: PropTypes.number.isRequired,
+                    intelligence: PropTypes.number.isRequired,
+                });
+            default:
+                break;
+        }
+    },
+};
