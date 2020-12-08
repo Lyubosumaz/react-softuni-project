@@ -1,10 +1,12 @@
 import { Fragment } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { numberGenerator } from '../../utils/numberGenerator';
 import Button from '../Button';
 
-function Header(props) {
-    const isLogged = props.isLogin;
+function Header({ isLogin }) {
+    const isLogged = isLogin;
+
     return (
         <header className="site-header">
             <nav className="site-navigation">
@@ -73,3 +75,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+    isLogin: PropTypes.bool.isRequired,
+};

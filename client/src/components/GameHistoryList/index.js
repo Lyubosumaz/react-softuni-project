@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 import { secondsToClock } from '../../utils/secondsToClock';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
