@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 import { httpGame } from '../../../services/http';
 import { setNotification } from '../../../components/Notification/actions';
 import ItemsList from '../../../components/ItemsList';
 
-function Shop(props) {
+function Shop({ setNotificationError }) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ function Shop(props) {
                 setItems(i);
             })
             .catch((err) => {
-                props.setNotificationError(err);
+                setNotificationError(err);
             });
     }, []);
 
@@ -38,3 +39,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(Shop);
+
+Shop.propTypes = {
+    setNotificationError: PropTypes.func.isRequired,
+};

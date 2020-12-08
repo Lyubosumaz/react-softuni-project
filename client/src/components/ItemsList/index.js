@@ -1,13 +1,21 @@
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
+import { PropTypes } from 'prop-types';
 import { httpGame } from '../../services/http';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
 import { setNotification } from '../Notification/actions';
 import Button from '../Button';
 
-function ItemsList(props) {
-    const items = props.items;
+function ItemsList({
+    items,
+    setSellItem,
+    setEquipItem,
+    setRemoveItem,
+    setNotificationInfo,
+    setNotificationError,
+}) {
+    const itemsList = items;
 
     function getButtons(item) {
         let buttons;
@@ -16,10 +24,10 @@ function ItemsList(props) {
             httpGame
                 .buy(item._id)
                 .then((res) => {
-                    props.setNotificationInfo(res);
+                    setNotificationInfo(res);
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
 
@@ -27,11 +35,11 @@ function ItemsList(props) {
             httpGame
                 .sell(item._id)
                 .then((res) => {
-                    props.setNotificationInfo(res);
-                    props.setSellItem();
+                    setNotificationInfo(res);
+                    setSellItem();
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
 
@@ -39,11 +47,11 @@ function ItemsList(props) {
             httpGame
                 .equip(item._id)
                 .then((res) => {
-                    props.setNotificationInfo(res);
-                    props.setEquipItem();
+                    setNotificationInfo(res);
+                    setEquipItem();
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
 
@@ -51,11 +59,11 @@ function ItemsList(props) {
             httpGame
                 .remove(item._id)
                 .then((res) => {
-                    props.setNotificationInfo(res);
-                    props.setRemoveItem();
+                    setNotificationInfo(res);
+                    setRemoveItem();
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
 
@@ -94,8 +102,8 @@ function ItemsList(props) {
 
     return (
         <ul className="items-list-component">
-            {items &&
-                items.map((item, index) => {
+            {itemsList &&
+                itemsList.map((item, index) => {
                     return (
                         <li key={index} className="item-card">
                             <div className="item-card-inner">
@@ -146,3 +154,23 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(ItemsList);
+
+ItemsList.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.exact({
+            _id: PropTypes.string.isRequired,
+            imageUrl: PropTypes.string.isRequired,
+            itemName: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            strength: PropTypes.number.isRequired,
+            agility: PropTypes.number.isRequired,
+            intelligence: PropTypes.number.isRequired,
+            __v: PropTypes.number.isRequired,
+        })
+    ),
+    setSellItem: PropTypes.func.isRequired,
+    setEquipItem: PropTypes.func.isRequired,
+    setRemoveItem: PropTypes.func.isRequired,
+    setNotificationInfo: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};
