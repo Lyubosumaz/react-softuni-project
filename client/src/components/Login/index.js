@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { setLoginValue } from './actions';
 import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
@@ -7,7 +8,7 @@ import schema from './login-validations';
 import { setNotification } from '../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
 
-function Login(props) {
+function Login({ setLoginValue, setNotificationSuccess }) {
     const username = useFormInput('');
     const password = useFormInput('');
     const [errors, setErrors] = useState({});
@@ -48,8 +49,8 @@ function Login(props) {
             httpUser
                 .login(data)
                 .then((user) => {
-                    props.setLoginValue(user);
-                    props.setNotificationSuccess('You have Logged successfully!');
+                    setLoginValue(user);
+                    setNotificationSuccess('You have Logged successfully!');
                     history.push('/home');
                 })
                 .catch((err) => {
@@ -120,3 +121,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+Login.propTypes = {
+    setLoginValue: PropTypes.func.isRequired,
+    setNotificationSuccess: PropTypes.func.isRequired,
+};
