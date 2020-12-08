@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { archiveReaderState } from '../../utils/archiveHandler';
 import archive from './site-info-archive.json';
 import Button from '../Button';
 
-function Info(props) {
+function Info({ isLogin }) {
     function state() {
-        return props.isLogin ? 'logged' : 'default';
+        return isLogin ? 'logged' : 'default';
     }
 
     return (
@@ -30,3 +31,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Info);
+
+Info.propTypes = {
+    isLogin: PropTypes.bool.isRequired,
+};
