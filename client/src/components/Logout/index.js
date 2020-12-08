@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import { removeAllCookies } from '../../services/cookies';
@@ -7,19 +8,19 @@ import { setNotification } from '../Notification/actions';
 import { componentData } from '../../class-names.json';
 import Button from '../Button';
 
-function Logout(props) {
+function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {
     const yesButtonHandler = (e) => {
         e.preventDefault();
         httpUser
             .logout()
             .then((res) => {
-                props.setNotificationSuccess(res);
+                setNotificationSuccess(res);
                 removeAllCookies();
-                props.setLogoutValue();
+                setLogoutValueProps();
                 history.push('/home');
             })
             .catch((err) => {
-                props.setNotificationError(err);
+                setNotificationError(err);
             });
     };
 
@@ -45,10 +46,16 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLogoutValue: () => dispatch(setLogoutValue()),
+        setLogoutValueProps: () => dispatch(setLogoutValue()),
         setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
         setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Logout);
+
+Logout.propTypes = {
+    setLogoutValueProps: PropTypes.func.isRequired,
+    setNotificationSuccess: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};
