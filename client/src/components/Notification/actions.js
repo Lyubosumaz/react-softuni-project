@@ -13,7 +13,7 @@ export const setNotification = () => {
             type: generalActions.ADD_NEW_NOTIFICATION,
             payload: {
                 msg: data.message ? data.message : data,
-                id: indexGenerator(),
+                _id: indexGenerator(),
                 options: notificationType.success,
             },
         }),
@@ -21,7 +21,7 @@ export const setNotification = () => {
             type: generalActions.ADD_NEW_NOTIFICATION,
             payload: {
                 msg: data.message ? data.message : data,
-                id: indexGenerator(),
+                _id: indexGenerator(),
                 options: notificationType.info,
             },
         }),
@@ -29,7 +29,7 @@ export const setNotification = () => {
             type: generalActions.ADD_NEW_NOTIFICATION,
             payload: {
                 msg: data.message ? data.message : data,
-                id: indexGenerator(),
+                _id: indexGenerator(),
                 options: notificationType.error,
             },
         }),

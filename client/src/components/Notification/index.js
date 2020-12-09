@@ -1,10 +1,12 @@
-import { connect } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { removeAllNotification } from './actions';
 
-function Notification(props) {
-    const testTime = props.duration;
-    const notifications = props.notifications;
+function Notification({ duration, notifications, removeAllNotificationProps }) {
+    const testTime = duration;
+    const notificationsProps = notifications;
+    console.log(notificationsProps);
     const [notificationsArr, setNotificationsArr] = useState([]);
     const notificationList = useRef();
     let notificationsRef = useRef([]);
@@ -15,12 +17,12 @@ function Notification(props) {
     }, []);
 
     useEffect(() => {
-        if (notifications.length) {
-            setNotificationsArr(notifications);
+        if (notificationsProps.length) {
+            setNotificationsArr(notificationsProps);
             notificationList.current.className = 'notifications-list';
             autoClose();
         }
-    }, [notifications]);
+    }, [notificationsProps]);
 
     function autoClose() {
         let interval = setTimeout(() => {
@@ -42,7 +44,7 @@ function Notification(props) {
 
             if (handleRefs()) {
                 notificationList.current.className = notificationList.current.className.split(' ')[notificationList.current.className.split(' ').length - 1] === 'hidden' ? notificationList.current.className : notificationList.current.className + ' ' + 'hidden';
-                props.removeAllNotification();
+                removeAllNotificationProps();
                 setNotificationsArr([]);
             }
         }, testTime * 1000);
@@ -77,10 +79,10 @@ function Notification(props) {
             {notificationsArr &&
                 notificationsArr.map((notification, index) => {
                     return (
-                        <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification.id}__${index}`} className={`${notification.id} notification notification-${notification.options.class}`}>
+                        <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification._id}__${index}`} className={`${notification._id} notification notification-${notification.options.class}`}>
                             <p>{notification.msg}</p>
 
-                            <button onClick={() => btnHandlerClose(notification.id)}>Close</button>
+                            <button onClick={() => btnHandlerClose(notification._id)}>Close</button>
 
                             <div className="progress-bar">
                                 <span className="bar"></span>
@@ -100,8 +102,22 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeAllNotification: () => dispatch(removeAllNotification()),
+        removeAllNotificationProps: () => dispatch(removeAllNotification()),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
+
+Notification.propTypes = {
+    duration: PropTypes.number.isRequired,
+    notifications: PropTypes.arrayOf(
+        PropTypes.exact({
+            _id: PropTypes.string.isRequired,
+            msg: PropTypes.string.isRequired,
+            options: PropTypes.exact({
+                class: PropTypes.string.isRequired,
+            }),
+        }).isRequired
+    ),
+    removeAllNotificationProps: PropTypes.func.isRequired,
+};
