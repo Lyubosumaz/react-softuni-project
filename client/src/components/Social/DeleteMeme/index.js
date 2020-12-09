@@ -1,32 +1,34 @@
 import { useState, useEffect } from 'react';
-import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import { setNotification } from '../../Notification/actions';
 import { componentData } from '../../../class-names.json';
 import Button from '../../Button';
 
-function DeleteMeme(props) {
-    const memeId = props.memeId;
+function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
+    const isLogged = isLogin;
+    const memeIdProps = memeId;
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
-        httpSocial.getMeme(memeId).then((meme) => {
+        httpSocial.getMeme(memeIdProps).then((meme) => {
             setMeme(meme);
         });
-    }, [memeId]);
+    }, [memeIdProps]);
 
     function handleDelete(e) {
         e.preventDefault();
-        if (props.isLogin) {
+        if (isLogged) {
             httpSocial
-                .deleteMeme(memeId)
+                .deleteMeme(memeIdProps)
                 .then((res) => {
-                    props.setNotificationSuccess(res);
+                    setNotificationSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
     }
@@ -70,3 +72,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeleteMeme);
+
+DeleteMeme.propTypes = {
+    isLogin: PropTypes.bool.isRequired,
+    memeId: PropTypes.string.isRequired,
+    setNotificationSuccess: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};

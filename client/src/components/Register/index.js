@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 import { history, handleRoute } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './register-validations';
@@ -7,7 +8,7 @@ import { setNotification } from '../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
 import Button from '../Button';
 
-function Register(props) {
+function Register({ setNotificationSuccess, setNotificationError }) {
     const username = useFormInput('');
     const email = useFormInput('');
     const password = useFormInput('');
@@ -60,11 +61,11 @@ function Register(props) {
             httpUser
                 .register(data)
                 .then((res) => {
-                    props.setNotificationSuccess(res);
+                    setNotificationSuccess(res);
                     history.push('/login');
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
     }
@@ -178,3 +179,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(Register);
+
+Register.propTypes = {
+    setNotificationSuccess: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};

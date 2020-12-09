@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 import { httpSocial } from '../../../services/http';
 import MemeCard from '../../MemeCard';
 import { componentData } from '../../../class-names.json';
 
-export default function ViewMeme(props) {
-    const memeId = props.memeId;
+export default function ViewMeme({ memeId }) {
+    const memeIdProps = memeId;
     const [meme, setMeme] = useState(null);
 
     useEffect(() => {
-        httpSocial.getMeme(memeId).then((meme) => {
+        httpSocial.getMeme(memeIdProps).then((meme) => {
             setMeme(meme);
         });
-    }, [memeId]);
+    }, [memeIdProps]);
 
-    return <section className={`${componentData}`}>{meme && <MemeCard meme={meme} />}</section>;
+    return <section className={`${componentData}`}>{meme && <MemeCard num={0} meme={meme} />}</section>;
 }
+
+ViewMeme.propTypes = {
+    memeId: PropTypes.string.isRequired,
+};

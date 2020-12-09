@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageCalc';
 import schema from './add-meme-validations';
@@ -8,7 +9,8 @@ import { setNotification } from '../../Notification/actions';
 import { componentData } from '../../../class-names.json';
 import Button from '../../Button';
 
-function AddMeme(props) {
+function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
+    const isLogged = isLogin;
     const title = useFormInput('');
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
@@ -40,15 +42,15 @@ function AddMeme(props) {
 
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && meme.title && meme.imageUrl && props.isLogin) {
+        if (hasErrors.length === 0 && meme.title && meme.imageUrl && isLogged) {
             httpSocial
                 .addMeme(meme)
                 .then((res) => {
-                    props.setNotificationSuccess(res);
+                    setNotificationSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
     }
@@ -118,3 +120,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMeme);
+
+AddMeme.propTypes = {
+    isLogin: PropTypes.bool.isRequired,
+    setNotificationSuccess: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};

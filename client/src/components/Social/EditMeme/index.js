@@ -1,26 +1,28 @@
 import { useState, useEffect } from 'react';
-import { history } from '../../../utils/history';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import schema from './edit-meme-validations';
 import { setNotification } from '../../Notification/actions';
 import { componentData } from '../../../class-names.json';
 import Button from '../../Button';
 
-function EditMeme(props) {
-    const memeId = props.memeId;
+function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
+    const isLogged = isLogin;
+    const memeIdProps = memeId;
     const [meme, setMeme] = useState(null);
     const [title, setTitle] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        httpSocial.getMeme(memeId).then((meme) => {
+        httpSocial.getMeme(memeIdProps).then((meme) => {
             setMeme(meme);
             setTitle(meme.title);
             setImageUrl(meme.imageUrl);
         });
-    }, [memeId]);
+    }, [memeIdProps]);
 
     function handleTitle(event) {
         setTitle(event.target.value);
@@ -48,21 +50,21 @@ function EditMeme(props) {
     function handleEdit(e) {
         e.preventDefault();
         const data = {
-            id: memeId,
+            id: memeIdProps,
             title,
             imageUrl,
         };
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
-        if (hasErrors.length === 0 && data.title && data.imageUrl && props.isLogin) {
+        if (hasErrors.length === 0 && data.title && data.imageUrl && isLogged) {
             httpSocial
                 .editMeme(data)
                 .then((res) => {
-                    props.setNotificationSuccess(res);
+                    setNotificationSuccess(res);
                     history.push('/social');
                 })
                 .catch((err) => {
-                    props.setNotificationError(err);
+                    setNotificationError(err);
                 });
         }
     }
@@ -108,3 +110,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditMeme);
+
+EditMeme.propTypes = {
+    isLogin: PropTypes.bool.isRequired,
+    memeId: PropTypes.string.isRequired,
+    setNotificationSuccess: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};
