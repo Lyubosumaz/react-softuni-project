@@ -77,7 +77,7 @@ MainStatistic.propTypes = {
         switch (page) {
             case 'profile':
                 return PropTypes.shape({
-                    totalGold: PropTypes.number.isRequired,
+                    totalGames: PropTypes.number.isRequired,
                     totalTime: PropTypes.number.isRequired,
                     totalGold: PropTypes.number.isRequired,
                 });

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { history, handleRoute } from '../../utils/history';
+import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './register-validations';
 import { setNotification } from '../Notification/actions';

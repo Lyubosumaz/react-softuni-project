@@ -3,5 +3,5 @@ export function numberGenerator() {
 }
 
 export function indexGenerator() {
-    return '_id' + '__' + numberGenerator() + '__' + numberGenerator();
+    return `_id__${numberGenerator()}__${numberGenerator()}`;
 }

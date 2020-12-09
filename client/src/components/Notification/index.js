@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { removeAllNotification } from './actions';
 
 function Notification({ duration, notifications, removeAllNotificationProps }) {
+    // TODO EXPAND COMPONENT OPTIONS
     const testTime = duration;
     const notificationsProps = notifications;
     const [notificationsArr, setNotificationsArr] = useState([]);
@@ -12,7 +13,8 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
 
     useEffect(() => {
         document.documentElement.style.setProperty('--notification-animation-duration', `${testTime}s`);
-        notificationList.current.className = notificationList.current.className + ' ' + 'hidden';
+        notificationList.current.className = `${notificationList.current.className} hidden`;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -21,6 +23,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             notificationList.current.className = 'notifications-list scroll';
             autoClose();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [notificationsProps]);
 
     function autoClose() {
@@ -28,7 +31,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             let bool = true;
 
             const findNull = notificationsRef.current.indexOf(null);
-            if (findNull != -1) {
+            if (findNull !== -1) {
                 notificationsRef.current = notificationsRef.current.slice(0, findNull);
             }
 
@@ -36,13 +39,13 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                 const classesArr = el.className.split(' ');
 
                 if (classesArr[classesArr.length - 1] !== 'hidden' && bool) {
-                    el.className = el.className + ' ' + 'hidden';
+                    el.className = `${el.className} hidden`;
                     bool = false;
                 }
             });
 
             if (handleRefs()) {
-                notificationList.current.className = notificationList.current.className.split(' ')[notificationList.current.className.split(' ').length - 1] === 'hidden' ? notificationList.current.className : notificationList.current.className + ' ' + 'hidden';
+                notificationList.current.className = notificationList.current.className.split(' ')[notificationList.current.className.split(' ').length - 1] === 'hidden' ? notificationList.current.className : `${notificationList.current.className} hidden`;
                 removeAllNotificationProps();
                 setNotificationsArr([]);
             }
@@ -54,7 +57,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
     function btnHandlerClose(id) {
         notificationsRef.current.forEach((el) => {
             if (el.className.split(' ')[0] === id) {
-                el.className = el.className + ' ' + 'hidden';
+                el.className = `${el.className} hidden`;
             }
         });
     }

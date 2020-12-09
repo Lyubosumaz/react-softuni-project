@@ -11,7 +11,7 @@ function imageOrientation(a, b) {
 }
 
 function imageAltName(a) {
-    return a.split(' ').length != 1 ? a.replace(/\s+/g, '-').toLowerCase() : a;
+    return a.split(' ').length !== 1 ? a.replace(/\s+/g, '-').toLowerCase() : a;
 }
 
 function imageLoad(url, crossOrigin) {
