@@ -1,3 +1,21 @@
 .hidden {
     display: none !important;
 }
+
+.scroll {
+    background: transparent;
+
+    &::-webkit-scrollbar {
+        width: 0.75em;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #cfd8dc;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #90a4ae;
+        border-radius: 0.75em;
+        border: 0.2em solid #cfd8dc;
+    }
+}

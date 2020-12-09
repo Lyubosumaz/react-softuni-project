@@ -35,7 +35,7 @@ export default function App() {
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
                     <Header />
-                    <main className="site-main">
+                    <main className="site-main scroll">
                         <Router />
                     </main>
                     <Footer />

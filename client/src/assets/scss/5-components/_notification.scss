@@ -12,21 +12,6 @@
     overflow-y: scroll;
     background-color: $secondaryFontColor;
 
-    &::-webkit-scrollbar {
-        width: 0.85em;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #cfd8dc;
-        border-radius: 0.5em;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: #90a4ae;
-        border-radius: 0.5em;
-        border: 0.25em solid #cfd8dc;
-    }
-
     li + li {
         margin-top: 0.5em;
     }

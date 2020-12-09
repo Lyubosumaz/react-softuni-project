@@ -6,7 +6,6 @@ import { removeAllNotification } from './actions';
 function Notification({ duration, notifications, removeAllNotificationProps }) {
     const testTime = duration;
     const notificationsProps = notifications;
-    console.log(notificationsProps);
     const [notificationsArr, setNotificationsArr] = useState([]);
     const notificationList = useRef();
     let notificationsRef = useRef([]);
@@ -19,7 +18,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
     useEffect(() => {
         if (notificationsProps.length) {
             setNotificationsArr(notificationsProps);
-            notificationList.current.className = 'notifications-list';
+            notificationList.current.className = 'notifications-list scroll';
             autoClose();
         }
     }, [notificationsProps]);
@@ -75,7 +74,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
     }
 
     return (
-        <ul ref={notificationList} className={`notifications-list`}>
+        <ul ref={notificationList} className={`notifications-list scroll`}>
             {notificationsArr &&
                 notificationsArr.map((notification, index) => {
                     return (
