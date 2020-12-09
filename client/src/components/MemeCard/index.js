@@ -6,15 +6,16 @@ import { numberGenerator } from '../../utils/numberGenerator';
 import Button from '../Button';
 
 function MemeCard({ userId, num, meme }) {
-    const currentMeme = meme;
     const currentUser = userId;
+    const memePosition = num;
+    const currentMeme = meme;
 
     return (
         <Fragment>
             {currentMeme && (
                 <section className="meme-card">
                     <style>{`
-                        .meme-card-image-wrapper.meme-order-${num}::before {
+                        .meme-card-image-wrapper.meme-order-${memePosition}::before {
                             padding-top: ${currentMeme.imageRatio}%;
                         }
                     `}</style>
@@ -34,7 +35,7 @@ function MemeCard({ userId, num, meme }) {
                     </div>
 
                     <div className="meme-card-image">
-                        <div className={`meme-card-image-wrapper meme-order-${num}`}>
+                        <div className={`meme-card-image-wrapper meme-order-${memePosition}`}>
                             <img src={currentMeme.imageUrl} className={`meme-orientation-${currentMeme.imageOrientation}`} alt={currentMeme.imageAltName} />
                         </div>
                     </div>

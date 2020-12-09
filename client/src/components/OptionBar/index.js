@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import Button from '../Button';
 
-function Options(props) {
-    const isLogged = props.isLogin;
+function Options({ isLogin }) {
+    const isLogged = isLogin;
 
     return isLogged ? (
         <div className="options-bar">
@@ -31,3 +32,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Options);
+
+Options.propTypes = {
+    isLogin: PropTypes.bool.isRequired,
+};
