@@ -8,6 +8,7 @@ export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
 
+    // NEED TO REWORK THE MEMECARD COMPONENT HERE IT FORCES RERENDERING
     const renders = useRef(0);
     console.log('times was rendered: ', renders.current++);
 
@@ -59,13 +60,13 @@ export default function Social() {
                     memes.map((meme, index) => {
                         if (memes.length === index + 1) {
                             return (
-                                <li key={meme.index} ref={lastMemeCardRef}>
+                                <li key={index} ref={lastMemeCardRef}>
                                     <MemeCard num={index} meme={meme} />
                                 </li>
                             );
                         } else {
                             return (
-                                <li key={meme.index}>
+                                <li key={index}>
                                     <MemeCard num={index} meme={meme} />
                                 </li>
                             );
