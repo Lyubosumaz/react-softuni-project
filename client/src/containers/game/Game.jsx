@@ -1,27 +1,27 @@
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import World from './components/world/World';
 import Overlay from './components/overlay/Overlay';
 import Clock from './components/clock/Clock';
 import { httpGame } from '../../services/http';
 
-function Game(props) {
-    const newProps = props;
+function Game({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {
+    // TODO Game component should be reworked overall
+    useEffect(() => {
+        httpGame.shop().then((items) => saveGameItems(items));
+    }, []);
 
     useEffect(() => {
-        httpGame.shop().then((items) => newProps.saveGameItems(items));
-    }, [newProps]);
-
-    useEffect(() => {
-        newProps.resetPlayerLocation();
-        newProps.resetGameLevel();
-    }, [newProps]);
+        resetPlayerLocation();
+        resetGameLevel();
+    }, []);
 
     return (
         <Fragment>
-            <div>{(newProps.inGame && <Clock />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
+            <div>{(inGame && <Clock />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
 
-            <div>{!newProps.inGame && <Overlay />}</div>
+            <div>{!inGame && <Overlay />}</div>
 
             <div>
                 <World />
@@ -56,3 +56,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
+
+Game.propTypes = {
+    inGame: PropTypes.bool.isRequired,
+    time: PropTypes.number.isRequired,
+    resetPlayerLocation: PropTypes.func.isRequired,
+    resetGameLevel: PropTypes.func.isRequired,
+    saveGameItems: PropTypes.func.isRequired,
+};
