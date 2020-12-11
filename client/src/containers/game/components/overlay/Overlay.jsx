@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import './overlay.css';
 import { setGameStart, setGameTimer } from './actions';
 import Button from '../../../../components/Button';
 
-function Overlay(props) {
+function Overlay({ setGameStartProps, setGameTimerProps }) {
     const handleSubmit = () => {
-        props.setGameStart();
-        props.setGameTimer();
+        setGameStartProps();
+        setGameTimerProps();
     };
 
     return (
@@ -29,9 +30,14 @@ function Overlay(props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setGameStart: () => dispatch(setGameStart(true)),
-        setGameTimer: () => dispatch(setGameTimer(true)),
+        setGameStartProps: () => dispatch(setGameStart(true)),
+        setGameTimerProps: () => dispatch(setGameTimer(true)),
     };
 }
 
 export default connect(null, mapDispatchToProps)(Overlay);
+
+Overlay.propTypes = {
+    setGameStartProps: PropTypes.func.isRequired,
+    setGameTimerProps: PropTypes.func.isRequired,
+};
