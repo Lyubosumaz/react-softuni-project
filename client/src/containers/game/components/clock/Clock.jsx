@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { secondsToClock } from '../../../../utils/secondsToClock';
 import { setTimeValue } from './actions';
 
-function Clock(props) {
-    const newProp = props;
+function Clock({ handleGameTimer, level, setTimeValue }) {
     const [count, setCount] = useState(0);
 
     // TODO
@@ -19,14 +19,14 @@ function Clock(props) {
     }, [count]);
 
     useEffect(() => {
-        newProp.setTimeValue(count);
+        setTimeValue(count);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [newProp]);
+    }, [handleGameTimer]);
 
     return (
         <div>
             <h1>
-                Level: {newProp.level}, Time: {secondsToClock(count)}
+                Level: {level}, Time: {secondsToClock(count)}
             </h1>
         </div>
     );
@@ -46,3 +46,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clock);
+
+Clock.propTypes = {
+    handleGameTimer: PropTypes.bool.isRequired,
+    level: PropTypes.number.isRequired,
+    setTimeValue: PropTypes.func.isRequired,
+};

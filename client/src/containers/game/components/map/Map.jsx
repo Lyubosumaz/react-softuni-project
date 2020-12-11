@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { SPRITE_SIZE } from '../../constants';
 import './map.css';
 
@@ -26,29 +27,26 @@ function getTileSprite(type) {
             return 'oak-tree';
         default:
             break;
-    };
+    }
 }
 
-function MapTile(props) {
-    return <div
-        className={`tile ${getTileSprite(props.tile)}`}
-        style={{
-            height: SPRITE_SIZE,
-            width: SPRITE_SIZE,
-        }} />
-}
-
-function MapRow(props) {
+function MapTile({ tile }) {
     return (
-        <div className="row">
-            {
-                props.tiles && props.tiles.map((tile, index) => <MapTile key={index} tile={tile} />)
-            }
-        </div>
+        <div
+            className={`tile ${getTileSprite(tile)}`}
+            style={{
+                height: SPRITE_SIZE,
+                width: SPRITE_SIZE,
+            }}
+        />
     );
 }
 
-function Map(props) {
+function MapRow({ tiles }) {
+    return <div className="row">{tiles.length && tiles.map((tile, index) => <MapTile key={index} tile={tile} />)}</div>;
+}
+
+function Map({ tiles }) {
     return (
         <div
             style={{
@@ -58,18 +56,29 @@ function Map(props) {
                 width: '1600px',
                 height: '650px',
                 border: '4px solid white',
-            }}>
-            {
-                props.tiles && props.tiles.map((row, index) => <MapRow key={index} tiles={row} />)
-            }
+            }}
+        >
+            {tiles.length && tiles.map((row, index) => <MapRow key={index} tiles={row} />)}
         </div>
     );
 }
 
 function mapStateToProps(state) {
     return {
-        tiles: state.map.tiles
+        tiles: state.map.tiles,
     };
 }
 
 export default connect(mapStateToProps)(Map);
+
+MapTile.propTypes = {
+    tile: PropTypes.number.isRequired,
+};
+
+MapRow.propTypes = {
+    tiles: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+Map.propTypes = {
+    tiles: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number).isRequired).isRequired,
+};

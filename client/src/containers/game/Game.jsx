@@ -6,7 +6,13 @@ import Overlay from './components/overlay/Overlay';
 import Clock from './components/clock/Clock';
 import { httpGame } from '../../services/http';
 
-function Game({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {
+function Game({
+    inGame,
+    time,
+    resetPlayerLocation,
+    resetGameLevel,
+    saveGameItems
+}) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveGameItems(items));
