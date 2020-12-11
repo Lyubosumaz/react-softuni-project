@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { setSellItem, setEquipItem } from './actions';
 import { httpGame } from '../../../services/http';
 import { setNotification } from '../../../components/Notification/actions';
 import ItemsList from '../../../components/ItemsList';
 
-function Inventory(props) {
-    const newProps = props;
+function Inventory({
+    inventorySellItem,
+    inventoryEquipItem,
+    setSellItemProps,
+    setEquipItemProps,
+    setNotificationError
+}) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -19,15 +25,15 @@ function Inventory(props) {
 
                 setItems(i);
 
-                if (newProps.inventorySellItem || newProps.inventoryEquipItem) {
-                    newProps.setSellItem();
-                    newProps.setEquipItem();
+                if (inventorySellItem || inventoryEquipItem) {
+                    setSellItemProps();
+                    setEquipItemProps();
                 }
             })
             .catch((err) => {
-                props.setNotificationError(err);
+                setNotificationError(err);
             });
-    }, [newProps]);
+    }, [inventorySellItem, inventoryEquipItem]);
 
     return (
         <div>
@@ -47,10 +53,18 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setSellItem: () => dispatch(setSellItem(false)),
-        setEquipItem: () => dispatch(setEquipItem(false)),
+        setSellItemProps: () => dispatch(setSellItem(false)),
+        setEquipItemProps: () => dispatch(setEquipItem(false)),
         setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inventory);
+
+Inventory.propTypes = {
+    inventorySellItem: PropTypes.bool.isRequired,
+    inventoryEquipItem: PropTypes.bool.isRequired,
+    setSellItemProps: PropTypes.func.isRequired,
+    setEquipItemProps: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};
