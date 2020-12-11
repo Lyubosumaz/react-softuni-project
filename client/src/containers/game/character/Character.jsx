@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { setRemoveItem } from './actions';
 import { httpGame } from '../../../services/http';
 import { setNotification } from '../../../components/Notification/actions';
 import MainStatistic from '../../../components/MainStatistic';
 import ItemsList from '../../../components/ItemsList';
 
-function Character(props) {
-    const newProps = props;
+function Character({ characterRemoveItem, setRemoveItemProps, setNotificationError }) {
     const [items, setItems] = useState([]);
     const [statistics, setStatistics] = useState([]);
 
@@ -18,6 +18,7 @@ function Character(props) {
                 if (!i) {
                     return;
                 }
+
                 const allStats = i.reduce(
                     (a, b) => {
                         return {
@@ -32,14 +33,14 @@ function Character(props) {
                 setItems(i);
                 setStatistics(allStats);
 
-                if (newProps.characterRemoveItem) {
-                    newProps.setRemoveItem();
+                if (characterRemoveItem) {
+                    setRemoveItemProps();
                 }
             })
             .catch((err) => {
-                props.setNotificationError(err);
+                setNotificationError(err);
             });
-    }, [newProps]);
+    }, [characterRemoveItem]);
 
     return (
         <div>
@@ -54,16 +55,21 @@ function Character(props) {
 
 function mapStateToProps(state) {
     return {
-        userName: state.user.userName,
         characterRemoveItem: state.game.characterRemoveItem,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        setRemoveItem: () => dispatch(setRemoveItem(false)),
+        setRemoveItemProps: () => dispatch(setRemoveItem(false)),
         setNotificationError: (data) => dispatch(setNotification().error(data)),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Character);
+
+Character.propTypes = {
+    characterRemoveItem: PropTypes.bool.isRequired,
+    setRemoveItemProps: PropTypes.func.isRequired,
+    setNotificationError: PropTypes.func.isRequired,
+};
