@@ -21,6 +21,7 @@ function Shop({ setNotificationError }) {
             .catch((err) => {
                 setNotificationError(err);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

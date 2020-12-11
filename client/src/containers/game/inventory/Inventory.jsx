@@ -33,6 +33,7 @@ function Inventory({
             .catch((err) => {
                 setNotificationError(err);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inventorySellItem, inventoryEquipItem]);
 
     return (

@@ -16,11 +16,13 @@ function Game({
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveGameItems(items));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         resetPlayerLocation();
         resetGameLevel();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
