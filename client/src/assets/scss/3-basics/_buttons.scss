@@ -129,20 +129,22 @@ button {
     &:hover {
         background-color: $secondaryDarkLighten;
     }
-}
 
-.meme-card-button.delete {
-    background-color: $mainErrorColor;
-}
+    &.delete {
+        background-color: $mainErrorColor;
 
-.meme-card-button.delete:hover {
-    background-color: $mainErrorDarken;
-}
+        &:focus,
+        &:hover {
+            background-color: $mainErrorDarken;
+        }
+    }
 
-.meme-card-button.edit {
-    background-color: $mainSuccessColor;
-}
+    &.edit {
+        background-color: $mainSuccessColor;
 
-.meme-card-button.edit:hover {
-    background-color: $mainSuccessDarken;
+        &:focus,
+        &:hover {
+            background-color: $mainSuccessDarken;
+        }
+    }
 }
