@@ -121,40 +121,28 @@ button {
 
 // MEME
 .meme-card-button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    min-width: fit-content;
-    color: white;
-    background-color: #555;
-    border-radius: 25px;
-    text-align: center;
-    font-size: 20px;
-    cursor: pointer;
-}
+    padding: 1em 3em;
+    background-color: $secondaryDarkColor;
+    border-radius: 1em;
 
-.meme-card-button:hover {
-    background-color: #333;
+    &:focus,
+    &:hover {
+        background-color: $secondaryDarkLighten;
+    }
 }
 
 .meme-card-button.delete {
-    background-color: #f4511e;
+    background-color: $mainErrorColor;
 }
 
 .meme-card-button.delete:hover {
-    background-color: red;
+    background-color: $mainErrorDarken;
 }
 
 .meme-card-button.edit {
-    background-color: #4caf50;
+    background-color: $mainSuccessColor;
 }
 
 .meme-card-button.edit:hover {
-    background-color: green;
+    background-color: $mainSuccessDarken;
 }
-
-// delete meme
-.form-action-btn.delete {
-    background-color: #f4511e;
-}
-// MEME
