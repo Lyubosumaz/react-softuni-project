@@ -53,7 +53,7 @@ export default function Social() {
                 <Button additionalClassName="social-action-btn" buttonText="Add Meme" direction="social/add-meme" />
             </div>
 
-            <h1>Memes</h1>
+            <h1 className={`secund-header`}>Memes</h1>
 
             <ul className="memes-list-container">
                 {memes &&
