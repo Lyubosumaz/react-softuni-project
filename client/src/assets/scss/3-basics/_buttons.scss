@@ -1,8 +1,8 @@
 button {
+    border: none;
+    outline: none;
     background: none;
     color: $secondaryFontColor;
-    outline: none;
-    border: none;
     cursor: pointer;
 
     &:focus,
@@ -10,6 +10,22 @@ button {
         text-decoration: underline;
         color: $mainFontColor;
         background-color: $mainDarkHightLighten;
+    }
+}
+
+input[type='reset'],
+input[type='submit'] {
+    border: 0.2rem solid transparent;
+    outline: none;
+    color: $secondaryFontColor;
+    background-color: $mainButtonSuccessColor;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+        border-color: $mainButtonSuccessColor;
+        background-color: $secondaryFontColor;
+        color: $mainButtonSuccessColor;
     }
 }
 
@@ -61,18 +77,8 @@ button {
 // Form Buttons
 .component-data .social-action-btn,
 .form-component .form-action-btn {
-    border: 0.2rem solid transparent;
     border-radius: 1.5rem;
-    background-color: $mainButtonSuccessColor;
-    color: $secondaryFontColor;
     font-weight: 700;
-
-    &:focus,
-    &:hover {
-        border-color: $mainButtonSuccessColor;
-        background-color: $secondaryFontColor;
-        color: $mainButtonSuccessColor;
-    }
 }
 
 // Logout Buttons
