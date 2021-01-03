@@ -7,6 +7,10 @@ import Button from '../Button';
 function Header({ isLogin }) {
     const isLogged = isLogin;
 
+    function handleCallBack(currentTarget) {
+        currentTarget.classList.add('isClicked');
+    }
+
     return (
         <header className="site-header">
             <nav className="site-navigation">
@@ -16,7 +20,7 @@ function Header({ isLogin }) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" />
+                                        <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} />
                                     </li>
                                     <li>
                                         <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" />

@@ -18,10 +18,19 @@ function currentPageClass() {
         case 'register':
         case 'login':
             return 'form';
-
         default:
             return 'component';
     }
 }
 
-export { currentPage, currentPageClass };
+function currentPagePathList() {
+    const currentPathname = window.location.pathname.split('/');
+
+    if (currentPathname.length > 1) {
+        return currentPathname.slice(1);
+    }
+
+    return currentPathname;
+}
+
+export { currentPage, currentPageClass, currentPagePathList };

@@ -29,6 +29,20 @@ input[type='submit'] {
     }
 }
 
+// Header Menus Buttons
+.site-header .nav-bar-button,
+.options-bar .options-bar-button {
+    &.isClicked {
+        color: aquamarine;
+        // background-color: $mainButtonSuccessColor;
+
+        // &:focus,
+        // &:hover {
+        //     background-color: $mainButtonSuccessDarken;
+        // }
+    }
+}
+
 // Header Buttons
 .site-header .nav-bar-button {
     padding: 1em 1.2em;
@@ -50,6 +64,15 @@ input[type='submit'] {
     padding: 1em 0;
     line-height: 0;
     font-size: 0.8em;
+
+    &.active {
+        background-color: $mainButtonSuccessColor;
+
+        &:focus,
+        &:hover {
+            background-color: $mainButtonSuccessDarken;
+        }
+    }
 }
 
 // Info Component Buttons
@@ -127,9 +150,13 @@ input[type='submit'] {
 
 // MEME
 .meme-card-button {
-    padding: 1em 3em;
+    padding: 0.3em 3em;
     background-color: $secondaryDarkColor;
     border-radius: 1em;
+
+    span {
+        max-width: 8em;
+    }
 
     &:focus,
     &:hover {
