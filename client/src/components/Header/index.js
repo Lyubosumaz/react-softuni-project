@@ -1,15 +1,18 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { numberGenerator } from '../../utils/numberGenerator';
 import Button from '../Button';
 
 function Header({ isLogin }) {
+    const [activated, setActivated] = useState();
     const isLogged = isLogin;
 
-    // function handleCallBack(currentTarget) {
-    //     currentTarget.classList.add('isClicked');
-    // }
+    function handleCallBack(data) {
+        // currentTarget.classList.add('isClicked');
+        console.log(data);
+        setActivated(data);
+    }
 
     return (
         <header className="site-header">
@@ -19,18 +22,8 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>
-                                        <Button
-                                            additionalClassName="nav-bar-button active"
-                                            buttonText="Game"
-                                            direction="game"
-                                            // callbackButtonText={handleCallBack}
-                                            // onClick={selectPage('game')}
-                                        />
-                                    </li>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" />
-                                    </li>
+                                    <li>{activated ? <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} />}</li>
+                                    {/* <li>{activated === 'games' ? <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" /> : <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" />}</li> */}
                                     <li>
                                         <Button additionalClassName="nav-bar-button active" buttonText="Puzzles" direction="puzzles" />
                                     </li>
