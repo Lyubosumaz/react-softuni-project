@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { history, handleRoute } from '../../utils/history';
 import { currentPagePathList } from '../../utils/currentPage';
 
-export default function Button({ additionalClassName, buttonText, direction, functionPressButton, callbackButtonText }) {
+export default function Button({
+    additionalClassName,
+    buttonText,
+    direction,
+    functionPressButton,
+    // callbackButtonText
+}) {
     const [isClicked, setClicked] = useState(false);
 
     function changeStyles(currentTarget) {
@@ -27,7 +33,7 @@ export default function Button({ additionalClassName, buttonText, direction, fun
                 handleRoute(`/${direction}`);
                 history.push(`/${direction}`);
                 changeStyles(event.currentTarget);
-                callbackButtonText(event.currentTarget);
+                // callbackButtonText(event.currentTarget);
             }}
         >
             <span>{buttonText}</span>

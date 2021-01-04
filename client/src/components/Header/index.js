@@ -7,9 +7,9 @@ import Button from '../Button';
 function Header({ isLogin }) {
     const isLogged = isLogin;
 
-    function handleCallBack(currentTarget) {
-        currentTarget.classList.add('isClicked');
-    }
+    // function handleCallBack(currentTarget) {
+    //     currentTarget.classList.add('isClicked');
+    // }
 
     return (
         <header className="site-header">
@@ -20,7 +20,13 @@ function Header({ isLogin }) {
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
                                     <li>
-                                        <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} />
+                                        <Button
+                                            additionalClassName="nav-bar-button active"
+                                            buttonText="Game"
+                                            direction="game"
+                                            // callbackButtonText={handleCallBack}
+                                            // onClick={selectPage('game')}
+                                        />
                                     </li>
                                     <li>
                                         <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" />
