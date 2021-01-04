@@ -22,8 +22,8 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>{activated ? <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} />}</li>
-                                    {/* <li>{activated === 'games' ? <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" /> : <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" />}</li> */}
+                                    <li>{activated === 'game' ? <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={false} />}</li>
+                                    <li>{activated === 'games' ? <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" callbackButtonText={handleCallBack} isClicked={false} />}</li>
                                     <li>
                                         <Button additionalClassName="nav-bar-button active" buttonText="Puzzles" direction="puzzles" />
                                     </li>
