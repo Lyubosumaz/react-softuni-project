@@ -2,13 +2,16 @@ import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { currentPage } from '../../utils/currentPage';
+import { factoryButtons } from '../../utils/factory';
 import { numberGenerator } from '../../utils/numberGenerator';
-import Button from '../Button';
 
 function MemeCard({ userId, num, meme }) {
     const currentUser = userId;
     const memePosition = num;
     const currentMeme = meme;
+
+    const memeCardAttributes = { buttonStyles: 'meme-card-button' };
+    const initializedMemeCardBtn = factoryButtons(memeCardAttributes);
 
     return (
         <Fragment>
@@ -24,12 +27,12 @@ function MemeCard({ userId, num, meme }) {
                     </header>
 
                     <div className="meme-card-buttons">
-                        {currentPage() !== 'view-meme' && <Button additionalClassName="meme-card-button" buttonText="View" direction={`social/view-meme/${currentMeme._id}`} />}
+                        {currentPage() !== 'view-meme' && initializedMemeCardBtn(`social/view-meme/${currentMeme._id}`, 'View')}
 
                         {currentMeme.addedBy === currentUser && (
                             <Fragment key={numberGenerator()}>
-                                <Button additionalClassName="meme-card-button edit" buttonText="Edit" direction={`social/edit-meme/${currentMeme._id}`} />
-                                <Button additionalClassName="meme-card-button delete" buttonText="Delete" direction={`social/delete-meme/${currentMeme._id}`} />
+                                {initializedMemeCardBtn(`social/edit-meme/${currentMeme._id}`, 'Edit', 'edit')}
+                                {initializedMemeCardBtn(`social/delete-meme/${currentMeme._id}`, 'Delete', 'delete')}
                             </Fragment>
                         )}
                     </div>

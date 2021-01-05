@@ -4,10 +4,10 @@ import { capitalizeFirstLetter } from './stringHandler';
 function factoryButtons({ activated, handleCallBack, buttonStyles }) {
     return function (direction, buttonText, additionalClass) {
         const options = {
-            buttonClass: !additionalClass ? buttonStyles : `${buttonStyles} ${additionalClass}`,
-            buttonText: buttonText ? buttonText : capitalizeFirstLetter(direction),
-            direction: direction,
-            callbackDirection: handleCallBack,
+            buttonClass: !additionalClass ? (buttonStyles ? buttonStyles : null) : `${buttonStyles} ${additionalClass}`,
+            buttonText: !buttonText ? (direction ? capitalizeFirstLetter(direction) : null) : buttonText,
+            direction: direction ? direction : null,
+            callbackDirection: handleCallBack ? handleCallBack : null,
             isClicked: activated === direction ? true : false,
         };
 
