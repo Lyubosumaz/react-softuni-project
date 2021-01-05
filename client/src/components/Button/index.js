@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import { history, handleRoute } from '../../utils/history';
 import { currentPagePathList } from '../../utils/currentPage';
 
-export default function Button({ additionalClassName, buttonText, direction, functionPressButton, callbackButtonText, isClicked }) {
+export default function Button({ buttonClass, buttonText, direction, functionPressButton, callbackButtonText, isClicked }) {
     // const [isClicked, setClicked] = useState(false);
-    console.log('1', additionalClassName, '2', buttonText, '3', direction, '4', functionPressButton, '5', callbackButtonText, '6', isClicked);
+    console.log('1', buttonClass, '2', buttonText, '3', direction, '4', functionPressButton, '5', callbackButtonText, '6', isClicked);
 
     function changeStyles(currentTarget) {
         // setClicked(!isClicked);
@@ -21,7 +20,7 @@ export default function Button({ additionalClassName, buttonText, direction, fun
 
     return direction ? (
         <button
-            className={`${additionalClassName} ${isClicked ? 'isClicked' : ''}`}
+            className={`${buttonClass} ${isClicked ? 'isClicked' : ''}`}
             onClick={(event) => {
                 event.preventDefault();
                 // console.log(event.currentTarget);
@@ -34,7 +33,7 @@ export default function Button({ additionalClassName, buttonText, direction, fun
             <span>{buttonText}</span>
         </button>
     ) : (
-        <button className={`${additionalClassName}`} onClick={functionPressButton}>
+        <button className={`${buttonClass}`} onClick={functionPressButton}>
             <span>{buttonText}</span>
         </button>
     );

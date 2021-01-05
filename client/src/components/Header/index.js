@@ -16,11 +16,11 @@ function Header({ isLogin }) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    function factorButtons(direction, buttonText, buttonClass) {
-        const navBarButtonStyles = 'nav-bar-button';
+    function factorButtons(direction, buttonText, additionalClass) {
+        const buttonStyles = 'nav-bar-button';
 
         const options = {
-            additionalClassName: !buttonClass ? navBarButtonStyles : `${navBarButtonStyles} ${buttonClass}`, // TODO fix names additionalClassName and buttonClass
+            buttonClass: !additionalClass ? buttonStyles : `${buttonStyles} ${additionalClass}`,
             buttonText: buttonText ? buttonText : capitalizeFirstLetter(direction),
             direction: direction,
             callbackButtonText: handleCallBack,
