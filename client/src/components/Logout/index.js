@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { history } from '../../utils/history';
+import { factoryButtons } from '../../utils/factory';
 import { httpUser } from '../../services/http';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
@@ -9,6 +10,9 @@ import { componentData } from '../../class-names.json';
 import Button from '../Button';
 
 function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {
+    const logoutAttributes = { buttonStyles: 'logout-action-btn' };
+    const initializedLogoutBtn = factoryButtons(logoutAttributes);
+
     const yesButtonHandler = (e) => {
         e.preventDefault();
         httpUser
@@ -27,9 +31,7 @@ function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationEr
     return (
         <section className={`${componentData} logout`}>
             <ul className="ul-buttons-list">
-                <li>
-                    <Button additionalClassName="logout-action-btn" buttonText="No!" direction="home" />
-                </li>
+                <li>{initializedLogoutBtn('home', 'No!')}</li>
                 <li>
                     <Button additionalClassName="logout-action-btn" buttonText="Yes" functionPressButton={yesButtonHandler} />
                 </li>
