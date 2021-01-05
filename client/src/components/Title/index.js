@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { currentPageClass } from '../../utils/currentPage';
+import { currentPageClass } from '../../utils/pathHandler';
 import { archiveValidator, archiveReader } from '../../utils/archiveHandler';
 import archive from './site-title-archive.json';
 

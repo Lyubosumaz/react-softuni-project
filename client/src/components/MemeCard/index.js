@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { currentPage } from '../../utils/currentPage';
+import { currentPage } from '../../utils/pathHandler';
 import { factoryButtons } from '../../utils/factory';
-import { numberGenerator } from '../../utils/numberGenerator';
+import { numberGenerator } from '../../utils/stringHandler';
 
 function MemeCard({ userId, num, meme }) {
     const initializedMemeCardBtn = factoryButtons({ buttonStyles: 'meme-card-button' });

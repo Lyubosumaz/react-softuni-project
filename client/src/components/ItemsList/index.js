@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
 import { httpGame } from '../../services/http';
-import { currentPage } from '../../utils/currentPage';
-import { numberGenerator } from '../../utils/numberGenerator';
+import { currentPage } from '../../utils/pathHandler';
+import { numberGenerator } from '../../utils/stringHandler';
 import { factoryButtons } from '../../utils/factory';
 import { setNotification } from '../Notification/actions';
 

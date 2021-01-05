@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import './overlay.css';
 import { setGameStart, setGameTimer } from './actions';
-import Button from '../../../../components/Button';
 import { factoryButtons } from '../../../../utils/factory';
 
 function Overlay({ setGameStartProps, setGameTimerProps }) {

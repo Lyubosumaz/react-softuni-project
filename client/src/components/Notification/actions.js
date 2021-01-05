@@ -1,5 +1,5 @@
 import { notificationType } from '../../settings.json';
-import { indexGenerator } from '../../utils/numberGenerator';
+import { indexGenerator } from '../../utils/stringHandler';
 
 export const generalActions = {
     ADD_NEW_NOTIFICATION: 'ADD_NEW_NOTIFICATION',

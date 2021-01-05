@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { history } from '../utils/history';
-import { numberGenerator } from '../utils/numberGenerator';
+import { numberGenerator } from '../utils/stringHandler';
 import AuthRoute from './AuthRoute';
 
 // Default

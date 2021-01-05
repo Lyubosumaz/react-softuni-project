@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
-import { secondsToClock } from '../../utils/secondsToClock';
-import { currentPage } from '../../utils/currentPage';
-import { numberGenerator } from '../../utils/numberGenerator';
+import { secondsToClock } from '../../utils/stringHandler';
+import { currentPage } from '../../utils/pathHandler';
+import { numberGenerator } from '../../utils/stringHandler';
 import gameRank from '../../assets/images/game_rank.png';
 
 export default function GameHistoryList({ content }) {

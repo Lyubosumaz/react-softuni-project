@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { numberGenerator } from '../../utils/numberGenerator';
+import { numberGenerator } from '../../utils/stringHandler';
 import { factoryButtons } from '../../utils/factory';
 
 function Header({ isLogin }) {

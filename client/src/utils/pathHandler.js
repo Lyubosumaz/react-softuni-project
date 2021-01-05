@@ -23,14 +23,4 @@ function currentPageClass() {
     }
 }
 
-function currentPagePathList() {
-    const currentPathname = window.location.pathname.split('/');
-
-    if (currentPathname.length > 1) {
-        return currentPathname.slice(1);
-    }
-
-    return currentPathname;
-}
-
-export { currentPage, currentPageClass, currentPagePathList };
+export { currentPage, currentPageClass };

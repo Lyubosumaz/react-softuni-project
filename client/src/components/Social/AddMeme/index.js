@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
-import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageCalc';
+import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageHandler';
 import schema from './add-meme-validations';
 import { setNotification } from '../../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';

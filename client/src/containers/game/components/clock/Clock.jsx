@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { secondsToClock } from '../../../../utils/secondsToClock';
+import { secondsToClock } from '../../../../utils/stringHandler';
 import { setTimeValue } from './actions';
 
 function Clock({ handleGameTimer, level, setTimeValue }) {

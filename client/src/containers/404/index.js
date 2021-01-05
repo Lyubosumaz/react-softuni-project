@@ -1,4 +1,3 @@
-import Button from '../../components/Button';
 import { factoryButtons } from '../../utils/factory';
 
 export default function FourOFourContainer() {
