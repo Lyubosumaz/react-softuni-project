@@ -1,4 +1,5 @@
 import Button from '../../components/Button';
+import { factoryButtons } from '../../utils/factory';
 
 export default function FourOFourContainer() {
     return (
@@ -12,7 +13,7 @@ export default function FourOFourContainer() {
             <section className="error-info">
                 <div className="error-info-wrapper">
                     <span>We can't find the page you're looking for</span>
-                    <Button additionalClassName="info-action-btn" buttonText="Go Back Home" direction="home" />
+                    {factoryButtons({ buttonStyles: 'info-action-btn' })('home', 'Go Back Home') /* TODO styles.. */}
                 </div>
             </section>
         </section>

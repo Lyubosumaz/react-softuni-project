@@ -6,7 +6,7 @@ import { httpUser } from '../../services/http';
 import schema from './register-validations';
 import { setNotification } from '../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../class-names.json';
-import Button from '../Button';
+import { factoryButtons } from '../../utils/factory';
 
 function Register({ setNotificationSuccess, setNotificationError }) {
     const username = useFormInput('');
@@ -149,7 +149,7 @@ function Register({ setNotificationSuccess, setNotificationError }) {
                     <div className="form-field-actions">
                         <div className="terms">
                             <span>By creating an account, you agree to our:</span>
-                            <Button additionalClassName="info-button" buttonText="Terms &amp; Conditions" direction="terms-and-conditions" />
+                            {factoryButtons({ buttonStyles: 'info-button' })('terms-and-conditions', 'Terms & Conditions')}
                         </div>
 
                         <div className="subscribe">

@@ -3,8 +3,12 @@ import { PropTypes } from 'prop-types';
 import './overlay.css';
 import { setGameStart, setGameTimer } from './actions';
 import Button from '../../../../components/Button';
+import { factoryButtons } from '../../../../utils/factory';
 
 function Overlay({ setGameStartProps, setGameTimerProps }) {
+    const overlayAttributes = { buttonStyles: 'form-action-btn' };
+    const initializedOverlayBtn = factoryButtons(overlayAttributes);
+
     const handleSubmit = () => {
         setGameStartProps();
         setGameTimerProps();
@@ -22,7 +26,7 @@ function Overlay({ setGameStartProps, setGameTimerProps }) {
 
             <div>
                 <Button additionalClassName="form-action-btn" buttonText="Ready!" functionPressButton={handleSubmit} />
-                <Button additionalClassName="form-action-btn home" buttonText="Home" direction="home" />
+                {initializedOverlayBtn('home', null, 'home')}
             </div>
         </section>
     );

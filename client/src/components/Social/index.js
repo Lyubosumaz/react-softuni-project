@@ -1,12 +1,15 @@
 import { useState, useRef, useCallback } from 'react';
 import MemeCard from '../MemeCard';
-import Button from '../Button';
 import useMemePage from './useMemePage';
 import { componentData } from '../../class-names.json';
+import { factoryButtons } from '../../utils/factory';
 
 export default function Social() {
     const [pageNumber, setPageNumber] = useState(1);
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
+
+    const socialAttributes = { buttonStyles: 'social-action-btn' };
+    const initializedSocialBtn = factoryButtons(socialAttributes);
 
     // NEED TO REWORK THE MEMECARD COMPONENT HERE IT FORCES RERENDERING
     const renders = useRef(0);
@@ -49,8 +52,8 @@ export default function Social() {
     return (
         <section className={`${componentData}`}>
             <div className="social-action">
-                <Button additionalClassName="social-action-btn" buttonText="Create Meme" direction="404" />
-                <Button additionalClassName="social-action-btn" buttonText="Add Meme" direction="social/add-meme" />
+                {initializedSocialBtn('404', 'Create Meme') /* TODO not present functionality*/}
+                {initializedSocialBtn('social/add-meme', 'Add Meme')}
             </div>
 
             <h1 className={`secund-header`}>Memes</h1>
