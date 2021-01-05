@@ -1,20 +1,21 @@
 import { handleRoute } from '../../utils/history';
 
-export default function Button({ buttonClass, buttonText, direction, functionPressButton, callbackButtonText, isClicked }) {
-    return direction ? (
-        <button
-            className={`${buttonClass} ${isClicked ? 'isClicked' : ''}`}
-            onClick={(event) => {
-                event.preventDefault();
+export default function Button({ buttonClass, buttonText, direction, myFunc, callbackDirection, isClicked }) {
+    const options = direction
+        ? {
+              onClick: (event) => {
+                  event.preventDefault();
 
-                handleRoute(`/${direction}`);
-                if (callbackButtonText) callbackButtonText(direction);
-            }}
-        >
-            <span>{buttonText}</span>
-        </button>
-    ) : (
-        <button className={`${buttonClass}`} onClick={functionPressButton}>
+                  handleRoute(`/${direction}`);
+                  if (callbackDirection) callbackDirection(direction);
+              },
+          }
+        : {
+              onClick: { myFunc },
+          };
+
+    return (
+        <button className={`${buttonClass} ${isClicked ? 'isClicked' : ''}`} {...options}>
             <span>{buttonText}</span>
         </button>
     );

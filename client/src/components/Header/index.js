@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { numberGenerator } from '../../utils/numberGenerator';
-import { factorButtons } from '../../utils/factory';
+import { factoryButtons } from '../../utils/factory';
 
 function Header({ isLogin }) {
     const isLogged = isLogin;
@@ -13,7 +13,7 @@ function Header({ isLogin }) {
     }
 
     const navAttributes = { activated, handleCallBack, buttonStyles: 'nav-bar-button' };
-    const initializedNavBtn = factorButtons(navAttributes);
+    const initializedNavBtn = factoryButtons(navAttributes);
 
     // holder for the additional button classes
     const additionalClasses = 'main-site-functionalities';

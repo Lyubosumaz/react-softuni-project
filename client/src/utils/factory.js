@@ -1,13 +1,13 @@
 import Button from '../components/Button';
 import { capitalizeFirstLetter } from './stringHandler';
 
-function factorButtons({ activated, handleCallBack, buttonStyles }) {
+function factoryButtons({ activated, handleCallBack, buttonStyles }) {
     return function (direction, buttonText, additionalClass) {
         const options = {
             buttonClass: !additionalClass ? buttonStyles : `${buttonStyles} ${additionalClass}`,
             buttonText: buttonText ? buttonText : capitalizeFirstLetter(direction),
             direction: direction,
-            callbackButtonText: handleCallBack,
+            callbackDirection: handleCallBack,
             isClicked: activated === direction ? true : false,
         };
 
@@ -15,4 +15,4 @@ function factorButtons({ activated, handleCallBack, buttonStyles }) {
     };
 }
 
-export { factorButtons };
+export { factoryButtons };
