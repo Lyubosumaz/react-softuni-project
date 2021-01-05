@@ -1,4 +1,4 @@
-import { notificationType } from '../../settings.json';
+import { notificationType } from '../../utils/notification-type.json';
 import { indexGenerator } from '../../utils/stringHandler';
 
 export const generalActions = {

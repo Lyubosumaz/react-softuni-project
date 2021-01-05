@@ -1,0 +1,7 @@
+{
+    "notificationType": {
+        "success": { "class": "success" },
+        "info": { "class": "info" },
+        "error": { "class": "error" }
+    }
+}
