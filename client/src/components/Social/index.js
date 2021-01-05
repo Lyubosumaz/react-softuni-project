@@ -5,11 +5,9 @@ import { componentData } from '../../class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
 export default function Social() {
+    const initializedSocialBtn = factoryButtons({ buttonStyles: 'social-action-btn' });
     const [pageNumber, setPageNumber] = useState(1);
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
-
-    const socialAttributes = { buttonStyles: 'social-action-btn' };
-    const initializedSocialBtn = factoryButtons(socialAttributes);
 
     // NEED TO REWORK THE MEMECARD COMPONENT HERE IT FORCES RERENDERING
     const renders = useRef(0);

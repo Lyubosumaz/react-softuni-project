@@ -9,8 +9,7 @@ import { setNotification } from '../Notification/actions';
 import { componentData } from '../../class-names.json';
 
 function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {
-    const logoutAttributes = { buttonStyles: 'logout-action-btn' };
-    const initializedLogoutBtn = factoryButtons(logoutAttributes);
+    const initializedLogoutBtn = factoryButtons({ buttonStyles: 'logout-action-btn' });
 
     const yesButtonHandler = (e) => {
         e.preventDefault();

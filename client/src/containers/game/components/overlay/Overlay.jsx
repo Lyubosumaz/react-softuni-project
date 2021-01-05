@@ -6,8 +6,7 @@ import Button from '../../../../components/Button';
 import { factoryButtons } from '../../../../utils/factory';
 
 function Overlay({ setGameStartProps, setGameTimerProps }) {
-    const overlayAttributes = { buttonStyles: 'form-action-btn' };
-    const initializedOverlayBtn = factoryButtons(overlayAttributes);
+    const initializedOverlayBtn = factoryButtons({ buttonStyles: 'form-action-btn' });
 
     const handleSubmit = () => {
         setGameStartProps();

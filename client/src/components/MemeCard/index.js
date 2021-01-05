@@ -6,12 +6,10 @@ import { factoryButtons } from '../../utils/factory';
 import { numberGenerator } from '../../utils/numberGenerator';
 
 function MemeCard({ userId, num, meme }) {
+    const initializedMemeCardBtn = factoryButtons({ buttonStyles: 'meme-card-button' });
     const currentUser = userId;
     const memePosition = num;
     const currentMeme = meme;
-
-    const memeCardAttributes = { buttonStyles: 'meme-card-button' };
-    const initializedMemeCardBtn = factoryButtons(memeCardAttributes);
 
     return (
         <Fragment>

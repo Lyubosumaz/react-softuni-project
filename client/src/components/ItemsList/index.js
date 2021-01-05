@@ -8,11 +8,8 @@ import { factoryButtons } from '../../utils/factory';
 import { setNotification } from '../Notification/actions';
 
 function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotificationInfo, setNotificationError }) {
+    const initializedItemsListBtn = factoryButtons({ buttonStyles: 'active-button' });
     const itemsList = items;
-
-    // TODO remove this extra variable from the project => factoryButtons({ buttonStyles: 'active-button' });
-    const itemsListAttributes = { buttonStyles: 'active-button' };
-    const initializedItemsListBtn = factoryButtons(itemsListAttributes);
 
     function getButtons(item) {
         let buttons;
