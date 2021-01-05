@@ -5,8 +5,7 @@ import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import schema from './edit-meme-validations';
 import { setNotification } from '../../Notification/actions';
-import { componentData } from '../../../class-names.json';
-import Button from '../../Button';
+import { formComponent, formFieldsWrapper } from '../../../class-names.json';
 
 function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -70,28 +69,51 @@ function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationErro
     }
 
     return (
-        <section className={`${componentData}`}>
-            <form>
-                <div className="form-div-container">
-                    <label htmlFor="Title">
-                        <b>Title:</b>
-                    </label>
-                    {meme && <input type="text" placeholder="Write some funny title" className="form-input" id="title" onChange={handleTitle} value={title} />}
-                    {errors.title && <div className="form-input-error">{errors.title[0]}</div>}
-                </div>
+        <section className={`${formComponent}`}>
+            <div className={`${formFieldsWrapper}`}>
+                <form onSubmit={handleEdit}>
+                    <div className="form-field">
+                        <label htmlFor="Title">
+                            <span>Title:</span>
+                        </label>
 
-                <div className="form-div-container">
-                    <label htmlFor="imageUrl">
-                        <b>imageUrl:</b>
-                    </label>
-                    {meme && <input type="text" placeholder="Copy and Paste your memeURL here" className="form-input" id="imageUrl" onChange={handleInputUrl} value={imageUrl} />}
-                    {errors.imageUrl && <div className="form-input-error">{errors.imageUrl[0]}</div>}
-                </div>
+                        {meme && <input type="text" placeholder="Write some funny title" className="form-input" id="title" onChange={handleTitle} value={title} />}
 
-                <div>
-                    <Button additionalClassName="form-action-btn" buttonText="Edit" functionPressButton={handleEdit} />
-                </div>
-            </form>
+                        {Array.isArray(errors.title) && errors.title[0] ? (
+                            <div className="form-error-message">
+                                <span>{errors.title[0]}</span>
+                            </div>
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="form-field">
+                        <label htmlFor="imageUrl">
+                            <span>imageUrl:</span>
+                        </label>
+
+                        {meme && <input type="text" placeholder="Copy and Paste your memeURL here" className="form-input" id="imageUrl" onChange={handleInputUrl} value={imageUrl} />}
+
+                        {Array.isArray(errors.imageUrl) && errors.imageUrl[0] ? (
+                            <div className="form-error-message">
+                                <span>{errors.imageUrl[0]}</span>
+                            </div>
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="form-field-buttons">
+                        <input type="reset" className="form-action-btn" value="reset" />
+                        <input type="submit" className="form-action-btn" value="edit meme" />
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }

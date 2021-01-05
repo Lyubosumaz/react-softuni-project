@@ -5,7 +5,6 @@ import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import { setNotification } from '../../Notification/actions';
 import { formComponent, formFieldsWrapper } from '../../../class-names.json';
-import Button from '../../Button';
 
 function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -36,7 +35,7 @@ function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationEr
     return (
         <section className={`${formComponent}`}>
             <div className={`${formFieldsWrapper}`}>
-                <form>
+                <form onSubmit={handleDelete}>
                     <div className="form-field">
                         <label htmlFor="Title">
                             <span>Title:</span>
