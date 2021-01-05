@@ -4,6 +4,7 @@ import { currentPagePathList } from '../../utils/currentPage';
 
 export default function Button({ additionalClassName, buttonText, direction, functionPressButton, callbackButtonText, isClicked }) {
     // const [isClicked, setClicked] = useState(false);
+    console.log('1', additionalClassName, '2', buttonText, '3', direction, '4', functionPressButton, '5', callbackButtonText, '6', isClicked);
 
     function changeStyles(currentTarget) {
         // setClicked(!isClicked);

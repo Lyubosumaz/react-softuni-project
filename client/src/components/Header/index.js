@@ -8,10 +8,24 @@ function Header({ isLogin }) {
     const [activated, setActivated] = useState();
     const isLogged = isLogin;
 
-    function handleCallBack(data) {
-        // currentTarget.classList.add('isClicked');
-        console.log(data);
-        setActivated(data);
+    function handleCallBack(buttonDirection) {
+        setActivated(buttonDirection);
+    }
+
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function factorButtons(direction, buttonText) {
+        const options = {
+            additionalClassName: 'nav-bar-button active',
+            buttonText: buttonText ? buttonText : capitalizeFirstLetter(direction),
+            direction: direction,
+            callbackButtonText: handleCallBack,
+            isClicked: activated === direction ? true : false,
+        };
+
+        return <Button {...options} />;
     }
 
     return (
@@ -22,6 +36,8 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
+                                    <li>{factorButtons('game', 'Game')}</li>
+                                    <li>{factorButtons('games')}</li>
                                     <li>{activated === 'game' ? <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={false} />}</li>
                                     <li>{activated === 'games' ? <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" callbackButtonText={handleCallBack} isClicked={false} />}</li>
                                     <li>
