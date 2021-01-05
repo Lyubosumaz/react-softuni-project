@@ -25,7 +25,7 @@ function Overlay({ setGameStartProps, setGameTimerProps }) {
             </div>
 
             <div>
-                <Button additionalClassName="form-action-btn" buttonText="Ready!" functionPressButton={handleSubmit} />
+                {initializedOverlayBtn(null, 'Ready!', null, handleSubmit)}
                 {initializedOverlayBtn('home', null, 'home')}
             </div>
         </section>
