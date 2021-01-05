@@ -7,7 +7,6 @@ import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { setNotification } from '../Notification/actions';
 import { componentData } from '../../class-names.json';
-import Button from '../Button';
 
 function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {
     const logoutAttributes = { buttonStyles: 'logout-action-btn' };
@@ -32,9 +31,7 @@ function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationEr
         <section className={`${componentData} logout`}>
             <ul className="ul-buttons-list">
                 <li>{initializedLogoutBtn('home', 'No!')}</li>
-                <li>
-                    <Button additionalClassName="logout-action-btn" buttonText="Yes" functionPressButton={yesButtonHandler} />
-                </li>
+                <li>{initializedLogoutBtn(null, 'Yes', null, yesButtonHandler)}</li>
             </ul>
         </section>
     );
