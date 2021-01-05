@@ -14,6 +14,7 @@
         "Register": "info-button",
         "Social": "social-action-btn",
         "404": "info-action-btn",
+        "Notification": "notifications-button",
         "Overlay": "form-action-btn"
     },
     "inputBtnClass": {},

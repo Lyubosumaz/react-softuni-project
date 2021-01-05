@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { removeAllNotification } from './actions';
+import { factoryButtons } from '../../utils/factory';
 
 function Notification({ duration, notifications, removeAllNotificationProps }) {
     // TODO EXPAND COMPONENT OPTIONS
@@ -84,7 +85,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                         <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification._id}__${index}`} className={`${notification._id} notification notification-${notification.options.class}`}>
                             <p>{notification.msg}</p>
 
-                            <button onClick={() => btnHandlerClose(notification._id)}>Close</button>
+                            {factoryButtons({ buttonStyles: 'notifications-button' })(null, 'Close', null, () => btnHandlerClose(notification._id))}
 
                             <div className="progress-bar">
                                 <span className="bar"></span>
