@@ -2,33 +2,21 @@ import { Fragment, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { numberGenerator } from '../../utils/numberGenerator';
-import Button from '../Button';
+import { factorButtons } from '../../utils/factory';
 
 function Header({ isLogin }) {
-    const [activated, setActivated] = useState();
     const isLogged = isLogin;
+    const [activated, setActivated] = useState();
 
     function handleCallBack(buttonDirection) {
         setActivated(buttonDirection);
     }
 
-    function capitalizeFirstLetter(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
+    const navAttributes = { activated, handleCallBack, buttonStyles: 'nav-bar-button' };
+    const initializedNavBtn = factorButtons(navAttributes);
 
-    function factorButtons(direction, buttonText, additionalClass) {
-        const buttonStyles = 'nav-bar-button';
-
-        const options = {
-            buttonClass: !additionalClass ? buttonStyles : `${buttonStyles} ${additionalClass}`,
-            buttonText: buttonText ? buttonText : capitalizeFirstLetter(direction),
-            direction: direction,
-            callbackButtonText: handleCallBack,
-            isClicked: activated === direction ? true : false,
-        };
-
-        return <Button {...options} />;
-    }
+    // holder for the additional button classes
+    const additionalClasses = 'main-site-functionalities';
 
     return (
         <header className="site-header">
@@ -38,14 +26,14 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>{factorButtons('game', null, 'active')}</li>
-                                    <li>{factorButtons('games', null, 'active')}</li>
-                                    <li>{factorButtons('puzzles', null, 'active')}</li>
+                                    <li>{initializedNavBtn('game', null, additionalClasses)}</li>
+                                    <li>{initializedNavBtn('games', null, additionalClasses)}</li>
+                                    <li>{initializedNavBtn('puzzles', null, additionalClasses)}</li>
                                 </Fragment>
                             ) : (
-                                <li>{factorButtons('home', 'active')}</li>
+                                <li>{initializedNavBtn('home', null, additionalClasses)}</li>
                             )}
-                            <li>{factorButtons('house-of-fame', 'House of Fame')}</li>
+                            <li>{initializedNavBtn('house-of-fame', 'House of Fame')}</li>
                         </ul>
                     </li>
 
@@ -53,14 +41,14 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>{factorButtons('social')}</li>
-                                    <li>{factorButtons('profile')}</li>
-                                    <li>{factorButtons('logout')}</li>
+                                    <li>{initializedNavBtn('social')}</li>
+                                    <li>{initializedNavBtn('profile')}</li>
+                                    <li>{initializedNavBtn('logout')}</li>
                                 </Fragment>
                             ) : (
                                 <Fragment key={numberGenerator()}>
-                                    <li>{factorButtons('register')}</li>
-                                    <li>{factorButtons('login')}</li>
+                                    <li>{initializedNavBtn('register')}</li>
+                                    <li>{initializedNavBtn('login')}</li>
                                 </Fragment>
                             )}
                         </ul>

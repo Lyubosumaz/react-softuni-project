@@ -33,13 +33,12 @@ input[type='submit'] {
 .site-header .nav-bar-button,
 .options-bar .options-bar-button {
     &.isClicked {
-        color: aquamarine;
-        // background-color: $mainButtonSuccessColor;
+        color: $mainFontColor;
+        background-color: $mainDarkHightLighten;
+    }
 
-        // &:focus,
-        // &:hover {
-        //     background-color: $mainButtonSuccessDarken;
-        // }
+    &.main-site-functionalities.isClicked {
+        background-color: $mainButtonSuccessDarken;
     }
 }
 
@@ -49,7 +48,7 @@ input[type='submit'] {
     line-height: 0;
     font-size: 1.2em;
 
-    &.active {
+    &.main-site-functionalities {
         background-color: $mainButtonSuccessColor;
 
         &:focus,
@@ -65,7 +64,7 @@ input[type='submit'] {
     line-height: 0;
     font-size: 0.8em;
 
-    &.active {
+    &.main-site-functionalities {
         background-color: $mainButtonSuccessColor;
 
         &:focus,

@@ -54,4 +54,4 @@ async function getImage(url) {
     }
 }
 
-export { getImage, gcd, imageRatio, imageOrientation, imageAltName };
+export { gcd, imageRatio, imageOrientation, imageAltName, getImage };
