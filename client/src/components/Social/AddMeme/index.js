@@ -6,8 +6,7 @@ import { httpSocial } from '../../../services/http';
 import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageCalc';
 import schema from './add-meme-validations';
 import { setNotification } from '../../Notification/actions';
-import { componentData } from '../../../class-names.json';
-import Button from '../../Button';
+import { formComponent, formFieldsWrapper } from '../../../class-names.json';
 
 function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -80,28 +79,50 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
     }
 
     return (
-        <section className={`${componentData}`}>
-            <form>
-                <div className="form-div-container">
-                    <label htmlFor="Title">
-                        <b>Title:</b>
-                    </label>
-                    <input type="text" placeholder="Write some funny title" className="form-input" id="title" onChange={useFormInput} {...title} />
-                    {errors.title && <div className="form-input-error">{errors.title[0]}</div>}
-                </div>
+        <section className={`${formComponent}`}>
+            <div className={`${formFieldsWrapper}`}>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-field">
+                        <label htmlFor="Title">
+                            <span>Title:</span>
+                        </label>
+                        <input type="text" placeholder="Write some funny title" className="form-input" id="title" {...title} />
 
-                <div className="form-div-container">
-                    <label htmlFor="imageUrl">
-                        <b>imageUrl:</b>
-                    </label>
-                    <input type="text" placeholder="Copy and Paste your memeURL here" className="form-input" id="imageUrl" onChange={useFormInput} {...imageUrl} />
-                    {errors.imageUrl && <div className="form-input-error">{errors.imageUrl[0]}</div>}
-                </div>
+                        {Array.isArray(errors.title) && errors.title[0] ? (
+                            <div className="form-error-message">
+                                <span>{errors.title[0]}</span>
+                            </div>
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
+                    </div>
 
-                <div>
-                    <Button additionalClassName="form-action-btn" buttonText="Submit" functionPressButton={handleSubmit} />
-                </div>
-            </form>
+                    <div className="form-field">
+                        <label htmlFor="imageUrl">
+                            <span>imageUrl:</span>
+                        </label>
+
+                        <input type="text" placeholder="Copy and Paste your memeURL here" className="form-input" id="imageUrl" {...imageUrl} />
+
+                        {Array.isArray(errors.imageUrl) && errors.imageUrl[0] ? (
+                            <div className="form-error-message">
+                                <span>{errors.imageUrl[0]}</span>
+                            </div>
+                        ) : (
+                            <div className="form-error-container">
+                                <span>Error Container</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="form-field-buttons">
+                        <input type="reset" className="form-action-btn" value="reset" />
+                        <input type="submit" className="form-action-btn" value="submit" />
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }
