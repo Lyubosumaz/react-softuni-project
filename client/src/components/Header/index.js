@@ -16,9 +16,11 @@ function Header({ isLogin }) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    function factorButtons(direction, buttonText) {
+    function factorButtons(direction, buttonText, buttonClass) {
+        const navBarButtonStyles = 'nav-bar-button';
+
         const options = {
-            additionalClassName: 'nav-bar-button active',
+            additionalClassName: !buttonClass ? navBarButtonStyles : `${navBarButtonStyles} ${buttonClass}`, // TODO fix names additionalClassName and buttonClass
             buttonText: buttonText ? buttonText : capitalizeFirstLetter(direction),
             direction: direction,
             callbackButtonText: handleCallBack,
@@ -36,22 +38,14 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>{factorButtons('game', 'Game')}</li>
-                                    <li>{factorButtons('games')}</li>
-                                    <li>{activated === 'game' ? <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Game" direction="game" callbackButtonText={handleCallBack} isClicked={false} />}</li>
-                                    <li>{activated === 'games' ? <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" callbackButtonText={handleCallBack} isClicked={true} /> : <Button additionalClassName="nav-bar-button active" buttonText="Games" direction="games" callbackButtonText={handleCallBack} isClicked={false} />}</li>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button active" buttonText="Puzzles" direction="puzzles" />
-                                    </li>
+                                    <li>{factorButtons('game', null, 'active')}</li>
+                                    <li>{factorButtons('games', null, 'active')}</li>
+                                    <li>{factorButtons('puzzles', null, 'active')}</li>
                                 </Fragment>
                             ) : (
-                                <li>
-                                    <Button additionalClassName="nav-bar-button active" buttonText="Home" direction="home" />
-                                </li>
+                                <li>{factorButtons('home', 'active')}</li>
                             )}
-                            <li>
-                                <Button additionalClassName="nav-bar-button" buttonText="House of Fame" direction="house-of-fame" />
-                            </li>
+                            <li>{factorButtons('house-of-fame', 'House of Fame')}</li>
                         </ul>
                     </li>
 
@@ -59,24 +53,14 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button" buttonText="Social" direction="social" />
-                                    </li>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button" buttonText="Profile" direction="profile" />
-                                    </li>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button" buttonText="Logout" direction="logout" />
-                                    </li>
+                                    <li>{factorButtons('social')}</li>
+                                    <li>{factorButtons('profile')}</li>
+                                    <li>{factorButtons('logout')}</li>
                                 </Fragment>
                             ) : (
                                 <Fragment key={numberGenerator()}>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button" buttonText="Register" direction="register" />
-                                    </li>
-                                    <li>
-                                        <Button additionalClassName="nav-bar-button" buttonText="Login" direction="login" />
-                                    </li>
+                                    <li>{factorButtons('register')}</li>
+                                    <li>{factorButtons('login')}</li>
                                 </Fragment>
                             )}
                         </ul>
