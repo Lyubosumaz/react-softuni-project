@@ -2,5 +2,20 @@
     "formComponent": "form-component",
     "formFieldsWrapper": "form-fields-wrapper",
     "containerWrapper": "container-wrapper",
-    "componentData": "component-data"
+    "componentData": "component-data",
+    "buttonClass": {
+        "Header": "nav-bar-button",
+        "Footer": "footer-nav-button",
+        "OptionBar": "options-bar-button",
+        "Info": "info-action-btn",
+        "ItemList": "active-button",
+        "Logout": "logout-action-btn",
+        "MemeCard": "meme-card-button",
+        "Register": "info-button",
+        "Social": "social-action-btn",
+        "404": "info-action-btn",
+        "Overlay": "form-action-btn"
+    },
+    "inputBtnClass": {},
+    "aClass": {}
 }

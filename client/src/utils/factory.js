@@ -1,7 +1,7 @@
 import { capitalizeFirstLetter } from './stringHandler';
 import Button from '../components/Button';
 
-function factoryButtons({ activated, handleCallBack, buttonStyles }) {
+export function factoryButtons({ activated, handleCallBack, buttonStyles }) {
     return function (direction, buttonText, additionalClass, myFunc) {
         const options = {
             buttonClass: !additionalClass ? (buttonStyles ? buttonStyles : null) : `${buttonStyles} ${additionalClass}`,
@@ -15,5 +15,3 @@ function factoryButtons({ activated, handleCallBack, buttonStyles }) {
         return <Button {...options} />;
     };
 }
-
-export { factoryButtons };

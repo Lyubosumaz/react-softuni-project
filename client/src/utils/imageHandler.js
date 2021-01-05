@@ -1,19 +1,3 @@
-function gcd(a, b) {
-    return b === 0 ? a : gcd(b, a % b);
-}
-
-function imageRatio(a, b, c) {
-    return ((b / c / (a / c)) * 100).toFixed(2);
-}
-
-function imageOrientation(a, b) {
-    return b > a ? 'portrait' : 'landscape';
-}
-
-function imageAltName(a) {
-    return a.split(' ').length !== 1 ? a.replace(/\s+/g, '-').toLowerCase() : a;
-}
-
 function imageLoad(url, crossOrigin) {
     const img = new Image();
 
@@ -46,7 +30,7 @@ function imageLoad(url, crossOrigin) {
     }
 }
 
-async function getImage(url) {
+export async function getImage(url) {
     try {
         return await imageLoad(url, false);
     } catch (err) {
@@ -54,4 +38,18 @@ async function getImage(url) {
     }
 }
 
-export { gcd, imageRatio, imageOrientation, imageAltName, getImage };
+export function gcd(a, b) {
+    return b === 0 ? a : gcd(b, a % b);
+}
+
+export function imageRatio(a, b, c) {
+    return ((b / c / (a / c)) * 100).toFixed(2);
+}
+
+export function imageOrientation(a, b) {
+    return b > a ? 'portrait' : 'landscape';
+}
+
+export function imageAltName(a) {
+    return a.split(' ').length !== 1 ? a.replace(/\s+/g, '-').toLowerCase() : a;
+}

@@ -1,4 +1,4 @@
-function currentPage() {
+export function currentPage() {
     const pathnameNesting = 1; // Change it for more in-nesting of the url
     const currentPathname = window.location.pathname.slice(1);
 
@@ -13,7 +13,7 @@ function currentPage() {
     return currentPathname;
 }
 
-function currentPageClass() {
+export function currentPageClass() {
     switch (currentPage()) {
         case 'register':
         case 'login':
@@ -22,5 +22,3 @@ function currentPageClass() {
             return 'component';
     }
 }
-
-export { currentPage, currentPageClass };

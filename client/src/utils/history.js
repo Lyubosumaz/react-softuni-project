@@ -1,9 +1,7 @@
 import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory({ basename: '/' });
+export const history = createBrowserHistory({ basename: '/' });
 
-const handleRoute = (direction) => {
+export const handleRoute = (direction) => {
     history.push(direction);
 };
-
-export { history, handleRoute };
