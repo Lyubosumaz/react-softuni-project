@@ -1,6 +1,6 @@
 import Title from '../../components/Title';
 import Info from '../../components/Info';
-import { containerWrapper, componentData } from '../../class-names.json';
+import { containerWrapper, componentData } from '../../utils/class-names.json';
 
 export default function HomeContainer() {
     return (

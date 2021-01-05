@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import MemeCard from '../MemeCard';
 import useMemePage from './useMemePage';
-import { componentData } from '../../class-names.json';
+import { componentData } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
 export default function Social() {

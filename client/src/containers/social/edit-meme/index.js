@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import Title from '../../../components/Title';
 import EditMeme from '../../../components/Social/EditMeme';
 import Info from '../../../components/Info';
-import { containerWrapper } from '../../../class-names.json';
+import { containerWrapper } from '../../../utils/class-names.json';
 
 export default function EditMemeContainer({ match }) {
     const memeId = match.params.id;

@@ -1,4 +1,4 @@
-import { componentData } from '../../class-names.json';
+import { componentData } from '../../utils/class-names.json';
 
 export default function TermsAndConditions() {
     const siteName = "'Dqvol 4'";

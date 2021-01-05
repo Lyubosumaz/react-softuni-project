@@ -6,7 +6,7 @@ import { httpSocial } from '../../../services/http';
 import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageCalc';
 import schema from './add-meme-validations';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../../class-names.json';
+import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
 
 function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;

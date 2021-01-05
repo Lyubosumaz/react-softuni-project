@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../../class-names.json';
+import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
 
 function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;

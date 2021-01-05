@@ -5,7 +5,7 @@ import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import schema from './edit-meme-validations';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../../class-names.json';
+import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
 
 function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;

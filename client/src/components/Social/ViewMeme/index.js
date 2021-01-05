@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { httpSocial } from '../../../services/http';
 import MemeCard from '../../MemeCard';
-import { componentData } from '../../../class-names.json';
+import { componentData } from '../../../utils/class-names.json';
 
 export default function ViewMeme({ memeId }) {
     const memeIdProps = memeId;

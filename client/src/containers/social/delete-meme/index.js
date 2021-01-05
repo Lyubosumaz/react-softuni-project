@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import Title from '../../../components/Title';
 import DeleteMeme from '../../../components/Social/DeleteMeme';
 import Info from '../../../components/Info';
-import { containerWrapper } from '../../../class-names.json';
+import { containerWrapper } from '../../../utils/class-names.json';
 
 export default function DeleteMemeContainer({ match }) {
     const memeId = match.params.id;

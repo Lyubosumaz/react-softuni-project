@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { httpUser } from '../../services/http';
 import Search from '../Search';
 import GameHistoryList from '../GameHistoryList';
-import { componentData } from '../../class-names.json';
+import { componentData } from '../../utils/class-names.json';
 
 export default function HouseOfFame() {
     const [usersDefault, setUsersDefault] = useState([]);

@@ -6,7 +6,7 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './login-validations';
 import { setNotification } from '../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../class-names.json';
+import { formComponent, formFieldsWrapper } from '../../utils/class-names.json';
 
 function Login({ setLoginValue, setNotificationSuccess }) {
     const username = useFormInput('');

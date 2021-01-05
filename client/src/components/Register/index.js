@@ -5,7 +5,7 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './register-validations';
 import { setNotification } from '../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../class-names.json';
+import { formComponent, formFieldsWrapper } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
 function Register({ setNotificationSuccess, setNotificationError }) {

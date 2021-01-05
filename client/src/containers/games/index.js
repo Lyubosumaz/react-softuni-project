@@ -1,6 +1,6 @@
 import Title from '../../components/Title';
 import Info from '../../components/Info';
-import { containerWrapper } from '../../class-names.json';
+import { containerWrapper } from '../../utils/class-names.json';
 
 export default function GamesContainer() {
     return (
