@@ -4,18 +4,14 @@ import { PropTypes } from 'prop-types';
 import { httpGame } from '../../services/http';
 import { currentPage } from '../../utils/currentPage';
 import { numberGenerator } from '../../utils/numberGenerator';
+import { factoryButtons } from '../../utils/factory';
 import { setNotification } from '../Notification/actions';
-import Button from '../Button';
 
-function ItemsList({
-    items,
-    setSellItem,
-    setEquipItem,
-    setRemoveItem,
-    setNotificationInfo,
-    setNotificationError,
-}) {
+function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotificationInfo, setNotificationError }) {
     const itemsList = items;
+
+    const itemsListAttributes = { buttonStyles: 'active-button' };
+    const initializedItemsListBtn = factoryButtons(itemsListAttributes);
 
     function getButtons(item) {
         let buttons;
@@ -72,7 +68,7 @@ function ItemsList({
                 buttons = (
                     <Fragment key={numberGenerator()}>
                         <h3>Price: {item.price}</h3>
-                        <Button additionalClassName="active-button buy" buttonText="Buy" functionPressButton={handleBuy} />
+                        {initializedItemsListBtn(null, 'Buy', 'buy', handleBuy)}
                     </Fragment>
                 );
                 break;
@@ -80,8 +76,8 @@ function ItemsList({
                 buttons = (
                     <Fragment key={numberGenerator()}>
                         <h3>Price: {item.price}</h3>
-                        <Button additionalClassName="active-button sell" buttonText="Sell" functionPressButton={handleSell} />
-                        <Button additionalClassName="active-button sell" buttonText="Equip" functionPressButton={handleEquip} />
+                        {initializedItemsListBtn(null, 'Sell', 'sell', handleSell)}
+                        {initializedItemsListBtn(null, 'Equip', 'equip', handleEquip)}
                     </Fragment>
                 );
                 break;
@@ -89,7 +85,7 @@ function ItemsList({
                 buttons = (
                     <Fragment key={numberGenerator()}>
                         <h3>Price: {item.price}</h3>
-                        <Button additionalClassName="active-button remove" buttonText="Remove" functionPressButton={handleRemove} />
+                        {initializedItemsListBtn(null, 'Remove', 'remove', handleRemove)}
                     </Fragment>
                 );
                 break;
