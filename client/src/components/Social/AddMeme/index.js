@@ -86,6 +86,7 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
                         <label htmlFor="Title">
                             <span>Title:</span>
                         </label>
+
                         <input type="text" placeholder="Write some funny title" className="form-input" id="title" {...title} />
 
                         {Array.isArray(errors.title) && errors.title[0] ? (
@@ -119,7 +120,7 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
 
                     <div className="form-field-buttons">
                         <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" value="submit" />
+                        <input type="submit" className="form-action-btn" value="add meme" />
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import { setNotification } from '../../Notification/actions';
-import { componentData } from '../../../class-names.json';
+import { formComponent, formFieldsWrapper } from '../../../class-names.json';
 import Button from '../../Button';
 
 function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
@@ -34,26 +34,31 @@ function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationEr
     }
 
     return (
-        <section className={`${componentData}`}>
-            <form>
-                <div className="form-div-container">
-                    <label htmlFor="Title">
-                        <b>Title:</b>
-                    </label>
-                    {meme && <input type="text" value={meme.title} className="form-input" disabled />}
-                </div>
+        <section className={`${formComponent}`}>
+            <div className={`${formFieldsWrapper}`}>
+                <form>
+                    <div className="form-field">
+                        <label htmlFor="Title">
+                            <span>Title:</span>
+                        </label>
 
-                <div className="form-div-container">
-                    <label htmlFor="imageUrl">
-                        <b>imageUrl:</b>
-                    </label>
-                    {meme && <input type="text" value={meme.imageUrl} className="form-input" disabled />}
-                </div>
+                        {meme && <input type="text" className="form-input" id="title" value={meme.title} disabled />}
+                    </div>
 
-                <div>
-                    <Button additionalClassName="form-action-btn" buttonText="Delete" functionPressButton={handleDelete} />
-                </div>
-            </form>
+                    <div className="form-field">
+                        <label htmlFor="imageUrl">
+                            <span>imageUrl:</span>
+                        </label>
+
+                        {meme && <input type="text" className="form-input" id="imageUrl" value={meme.imageUrl} disabled />}
+                    </div>
+
+                    <div className="form-field-buttons">
+                        <input type="reset" className="form-action-btn" value="reset" />
+                        <input type="submit" className="form-action-btn" value="delete meme" />
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }
