@@ -5,8 +5,16 @@ import { removeAllNotification } from './actions';
 import { factoryButtons } from '../../utils/factory';
 import { buttonClass } from '../../utils/class-names.json';
 
+// TODO need to rework this component
+
 function Notification({ duration, notifications, removeAllNotificationProps }) {
+    // used classes
+    // const componentClass = 'notifications-list scroll-notification';
+    const componentClass = 'notifications-list';
+    const additionalClass = 'scroll-notification';
+    const hiddenClass = 'hidden';
     // TODO EXPAND COMPONENT OPTIONS
+    const applyScroll = 2;
     const testTime = duration;
     const notificationsProps = notifications;
     const [notificationsArr, setNotificationsArr] = useState([]);
@@ -15,17 +23,19 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
 
     useEffect(() => {
         document.documentElement.style.setProperty('--notification-animation-duration', `${testTime}s`);
-        notificationList.current.className = `${notificationList.current.className} hidden`;
+        notificationList.current.className = `${notificationList.current.className} ${hiddenClass}`;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         if (notificationsProps.length) {
             setNotificationsArr(notificationsProps);
-            notificationList.current.className = 'notifications-list scroll';
+            notificationList.current.className = componentClass;
             // TODO commented for fixing styles
-            // autoClose();
+            autoClose();
+            addAdditionalClass();
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [notificationsProps]);
 
@@ -41,26 +51,63 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             notificationsRef.current.forEach((el) => {
                 const classesArr = el.className.split(' ');
 
-                if (classesArr[classesArr.length - 1] !== 'hidden' && bool) {
-                    el.className = `${el.className} hidden`;
+                if (classesArr[classesArr.length - 1] !== hiddenClass && bool) {
+                    el.className = `${el.className} ${hiddenClass}`;
                     bool = false;
                 }
             });
 
             if (handleRefs()) {
-                notificationList.current.className = notificationList.current.className.split(' ')[notificationList.current.className.split(' ').length - 1] === 'hidden' ? notificationList.current.className : `${notificationList.current.className} hidden`;
+                const currentNotificationClassArr = notificationList.current.className.split(' ');
+                notificationList.current.className = currentNotificationClassArr[currentNotificationClassArr.length - 1] === hiddenClass ? notificationList.current.className : `${notificationList.current.className} ${hiddenClass}`;
                 removeAllNotificationProps();
                 setNotificationsArr([]);
             }
+
+            removeAdditionalClass();
         }, testTime * 1000);
 
         return () => clearTimeout(interval);
     }
 
+    function addAdditionalClass() {
+        if (numberOfNonHiddenNotifications() >= applyScroll) {
+            if (!notificationList.current.className.includes(additionalClass)) {
+                notificationList.current.className = `${notificationList.current.className} ${additionalClass}`;
+            }
+        }
+    }
+
+    function removeAdditionalClass() {
+        if (numberOfNonHiddenNotifications() >= applyScroll) {
+            if (notificationList.current.className.includes(additionalClass)) {
+                const additionalClassIndex = notificationsRef.current.indexOf(additionalClass);
+                console.log(addAdditionalClass);
+
+                if (additionalClassIndex !== -1) {
+                    notificationsRef.current = notificationsRef.current.slice(0, additionalClassIndex);
+                }
+
+                console.log(notificationsRef);
+            }
+        }
+    }
+
+    function numberOfNonHiddenNotifications() {
+        let count = 0;
+
+        const allDOMNotifications = notificationList.current.children;
+        for (const element of allDOMNotifications) {
+            if (!element.className.includes(hiddenClass)) count++;
+        }
+
+        return count;
+    }
+
     function btnHandlerClose(id) {
         notificationsRef.current.forEach((el) => {
             if (el.className.split(' ')[0] === id) {
-                el.className = `${el.className} hidden`;
+                el.className = `${el.className} ${hiddenClass}`;
             }
         });
     }
@@ -71,7 +118,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
         notificationsRef.current.forEach((el) => {
             const classesArr = el.className.split(' ');
 
-            if (classesArr[classesArr.length - 1] !== 'hidden') {
+            if (classesArr[classesArr.length - 1] !== hiddenClass) {
                 deleteRef = false;
             }
         });
@@ -80,7 +127,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
     }
 
     return (
-        <ul ref={notificationList} className={`notifications-list scroll`}>
+        <ul ref={notificationList} className={componentClass}>
             {notificationsArr &&
                 notificationsArr.map((notification, index) => {
                     return (

@@ -19,3 +19,21 @@
         border: 0.2em solid #cfd8dc;
     }
 }
+
+.scroll-notification {
+    background: transparent;
+
+    &::-webkit-scrollbar {
+        width: 0.4em;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #cfd8dc;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #cfd8dc;
+        border-radius: 0.75em;
+        border: 0.2em solid #90a4ae;
+    }
+}

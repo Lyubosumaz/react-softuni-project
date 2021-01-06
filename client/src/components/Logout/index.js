@@ -17,9 +17,9 @@ function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationEr
             .logout()
             .then((res) => {
                 setNotificationSuccess(res);
-                removeAllCookies();
-                setLogoutValueProps();
-                history.push('/home');
+                // removeAllCookies();
+                // setLogoutValueProps();
+                // history.push('/home');
             })
             .catch((err) => {
                 setNotificationError(err);

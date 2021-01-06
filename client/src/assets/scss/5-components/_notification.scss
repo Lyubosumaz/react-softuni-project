@@ -1,20 +1,19 @@
+.notifications-list.scroll-notification {
+    overflow-y: scroll;
+}
+
 .notifications-list {
     width: 20em;
     max-height: 50vh;
-    padding: 0.3em;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
     top: 4em;
     right: 2.5em;
-    border-radius: 0.5em;
+    // border-radius: 0.3em;
+    background-color: transparent;
     overflow: hidden;
-    overflow-y: scroll;
-    background-color: $secondaryFontColor;
-
-    li + li {
-        margin-top: 0.5em;
-    }
 
     li {
         padding: 0.5em;
