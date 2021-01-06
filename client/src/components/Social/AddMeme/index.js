@@ -14,7 +14,31 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
     const imageUrl = useFormInput('');
     const [errors, setErrors] = useState({});
 
-    async function handleSubmit(e) {
+    function useFormInput(initialValue) {
+        const [value, setValue] = useState(initialValue);
+
+        function handleChange(event) {
+            setValue(event.target.value);
+            validate(event);
+        }
+
+        function validate(event) {
+            const name = event.target.id;
+
+            schema.fields[name]
+                .validate(event.target.value, { abortEarly: false })
+                .then(() => {
+                    setErrors({ ...errors, [name]: [] });
+                })
+                .catch((err) => {
+                    setErrors({ ...errors, [name]: err.errors });
+                });
+        }
+
+        return { value, onChange: handleChange };
+    }
+
+    async function handleAddMeme(e) {
         e.preventDefault();
 
         if (!title.value || !imageUrl.value) {
@@ -54,34 +78,10 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
         }
     }
 
-    function useFormInput(initialValue) {
-        const [value, setValue] = useState(initialValue);
-
-        function handleChange(event) {
-            setValue(event.target.value);
-            validate(event);
-        }
-
-        function validate(event) {
-            const name = event.target.id;
-
-            schema.fields[name]
-                .validate(event.target.value, { abortEarly: false })
-                .then(() => {
-                    setErrors({ ...errors, [name]: [] });
-                })
-                .catch((err) => {
-                    setErrors({ ...errors, [name]: err.errors });
-                });
-        }
-
-        return { value, onChange: handleChange };
-    }
-
     return (
         <section className={`${formComponent}`}>
             <div className={`${formFieldsWrapper}`}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleAddMeme}>
                     <div className="form-field">
                         <label htmlFor="Title">
                             <span>Title:</span>

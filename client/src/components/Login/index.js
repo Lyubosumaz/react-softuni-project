@@ -37,7 +37,7 @@ function Login({ setLoginValue, setNotificationSuccess }) {
         return { value, onChange: handleChange };
     }
 
-    function handleSubmit(e) {
+    function handleLogin(e) {
         e.preventDefault();
         const data = {
             username: username.value,
@@ -62,7 +62,7 @@ function Login({ setLoginValue, setNotificationSuccess }) {
     return (
         <section className={`${formComponent}`}>
             <div className={`${formFieldsWrapper}`}>
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="form-field">
                         <label htmlFor="username">
                             <b>Username:</b>
@@ -99,7 +99,7 @@ function Login({ setLoginValue, setNotificationSuccess }) {
 
                     <div className="form-field-buttons">
                         <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" onClick={handleSubmit} value="login" />
+                        <input type="submit" className="form-action-btn" value="login" />
                     </div>
                 </form>
             </div>

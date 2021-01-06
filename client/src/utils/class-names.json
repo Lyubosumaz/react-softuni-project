@@ -17,6 +17,5 @@
         "Notification": "notifications-button",
         "Overlay": "form-action-btn"
     },
-    "inputBtnClass": {},
-    "aClass": {}
+    "formBtnClass": "form-action-btn"
 }

@@ -17,7 +17,7 @@ function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationEr
         });
     }, [memeIdProps]);
 
-    function handleDelete(e) {
+    function handleDeleteMeme(e) {
         e.preventDefault();
         if (isLogged) {
             httpSocial
@@ -35,7 +35,7 @@ function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationEr
     return (
         <section className={`${formComponent}`}>
             <div className={`${formFieldsWrapper}`}>
-                <form onSubmit={handleDelete}>
+                <form onSubmit={handleDeleteMeme}>
                     <div className="form-field">
                         <label htmlFor="Title">
                             <span>Title:</span>

@@ -46,7 +46,7 @@ function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationErro
             });
     }
 
-    function handleEdit(e) {
+    function handleEditMeme(e) {
         e.preventDefault();
         const data = {
             id: memeIdProps,
@@ -71,7 +71,7 @@ function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationErro
     return (
         <section className={`${formComponent}`}>
             <div className={`${formFieldsWrapper}`}>
-                <form onSubmit={handleEdit}>
+                <form onSubmit={handleEditMeme}>
                     <div className="form-field">
                         <label htmlFor="Title">
                             <span>Title:</span>

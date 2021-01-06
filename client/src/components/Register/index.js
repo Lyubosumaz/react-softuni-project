@@ -40,7 +40,7 @@ function Register({ setNotificationSuccess, setNotificationError }) {
         return { value, onChange: handleChange };
     }
 
-    function handleSubmit(e) {
+    function handleRegister(e) {
         e.preventDefault();
 
         const data = {
@@ -73,7 +73,7 @@ function Register({ setNotificationSuccess, setNotificationError }) {
     return (
         <section className={`${formComponent}`}>
             <div className={`${formFieldsWrapper}`}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleRegister}>
                     <div className="form-field">
                         <label htmlFor="username">
                             <span>Username:</span>
