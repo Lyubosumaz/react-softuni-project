@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { removeAllNotification } from './actions';
 import { factoryButtons } from '../../utils/factory';
+import { buttonClass } from '../../utils/class-names.json';
 
 function Notification({ duration, notifications, removeAllNotificationProps }) {
     // TODO EXPAND COMPONENT OPTIONS
@@ -22,7 +23,8 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
         if (notificationsProps.length) {
             setNotificationsArr(notificationsProps);
             notificationList.current.className = 'notifications-list scroll';
-            autoClose();
+            // TODO commented for fixing styles
+            // autoClose();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [notificationsProps]);
@@ -85,7 +87,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                         <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification._id}__${index}`} className={`${notification._id} notification notification-${notification.options.class}`}>
                             <p>{notification.msg}</p>
 
-                            {factoryButtons({ buttonStyles: 'notifications-button' })(null, 'Close', null, () => btnHandlerClose(notification._id))}
+                            {factoryButtons({ buttonStyles: buttonClass.Notification })(null, 'Close', null, () => btnHandlerClose(notification._id))}
 
                             <div className="progress-bar">
                                 <span className="bar"></span>

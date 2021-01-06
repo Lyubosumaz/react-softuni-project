@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { numberGenerator } from '../../utils/stringHandler';
 import { factoryButtons } from '../../utils/factory';
+import { buttonClass } from '../../utils/class-names.json';
 
 function Header({ isLogin }) {
     const isLogged = isLogin;
@@ -12,7 +13,7 @@ function Header({ isLogin }) {
         setActivated(buttonDirection);
     }
 
-    const navAttributes = { activated, handleCallBack, buttonStyles: 'nav-bar-button' };
+    const navAttributes = { activated, handleCallBack, buttonStyles: buttonClass.Header };
     const initializedNavBtn = factoryButtons(navAttributes);
 
     // holder for the additional button classes

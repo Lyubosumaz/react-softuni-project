@@ -1,11 +1,11 @@
 import { useState, useRef, useCallback } from 'react';
 import MemeCard from '../MemeCard';
 import useMemePage from './useMemePage';
-import { componentData } from '../../utils/class-names.json';
+import { componentData, buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
 export default function Social() {
-    const initializedSocialBtn = factoryButtons({ buttonStyles: 'social-action-btn' });
+    const initializedSocialBtn = factoryButtons({ buttonStyles: buttonClass.Social });
     const [pageNumber, setPageNumber] = useState(1);
     const { memes, loading, error, hasMore } = useMemePage(pageNumber);
 

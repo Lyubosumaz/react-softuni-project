@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { factoryButtons } from '../../utils/factory';
+import { buttonClass } from '../../utils/class-names.json';
 
 export default function Footer() {
     const [activated, setActivated] = useState();
@@ -8,7 +9,7 @@ export default function Footer() {
         setActivated(buttonDirection);
     }
 
-    const footerAttributes = { activated, handleCallBack, buttonStyles: 'footer-nav-button' };
+    const footerAttributes = { activated, handleCallBack, buttonStyles: buttonClass.Footer };
     const initializedFooterBtn = factoryButtons(footerAttributes);
 
     return (

@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { factoryButtons } from '../../utils/factory';
+import { buttonClass } from '../../utils/class-names.json';
 
-// TODO rename this component to GameOptionBar
 // TODO need to fix the Router, atm it makes re-rendering
 // TODO make this component reusable for many games
-function Options({ isLogin }) {
+function GameOptionBar({ isLogin }) {
     const isLogged = isLogin;
     const [activated, setActivated] = useState();
 
@@ -14,7 +14,7 @@ function Options({ isLogin }) {
         setActivated(buttonDirection);
     }
 
-    const optionsAttributes = { activated, handleCallBack, buttonStyles: 'options-bar-button' };
+    const optionsAttributes = { activated, handleCallBack, buttonStyles: buttonClass.GameOptionBar };
     const initializedOptionsBtn = factoryButtons(optionsAttributes);
 
     return isLogged ? (
@@ -35,8 +35,8 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Options);
+export default connect(mapStateToProps)(GameOptionBar);
 
-Options.propTypes = {
+GameOptionBar.propTypes = {
     isLogin: PropTypes.bool.isRequired,
 };

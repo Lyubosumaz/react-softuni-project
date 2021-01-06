@@ -61,8 +61,8 @@
     .form-field-actions {
         margin: 1em 0;
 
-        .terms,
-        .subscribe {
+        .terms-actions,
+        .subscribe-actions {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -72,15 +72,11 @@
             }
         }
 
-        .terms {
+        .terms-actions {
             margin-bottom: 1em;
-
-            .info-button {
-                color: $mainLinkColor;
-            }
         }
 
-        .subscribe {
+        .subscribe-actions {
             span:nth-child(2) {
                 display: flex;
                 display: flex;

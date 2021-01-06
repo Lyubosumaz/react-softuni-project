@@ -5,7 +5,7 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './register-validations';
 import { setNotification } from '../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../utils/class-names.json';
+import { formComponent, formFieldsWrapper, buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
 function Register({ setNotificationSuccess, setNotificationError }) {
@@ -147,12 +147,12 @@ function Register({ setNotificationSuccess, setNotificationError }) {
                     </div>
 
                     <div className="form-field-actions">
-                        <div className="terms">
+                        <div className="terms-actions">
                             <span>By creating an account, you agree to our:</span>
-                            {factoryButtons({ buttonStyles: 'info-button' })('terms-and-conditions', 'Terms & Conditions')}
+                            {factoryButtons({ buttonStyles: buttonClass.Register })('terms-and-conditions', 'Terms & Conditions', 'terms')}
                         </div>
 
-                        <div className="subscribe">
+                        <div className="subscribe-actions">
                             <span>I do accept to receive feedback on my email:</span>
                             <span>
                                 <input type="checkbox" id="register-checkbox" onClick={(e) => setSubscribe(e.target.checked)} />

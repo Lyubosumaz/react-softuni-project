@@ -6,10 +6,10 @@ import { httpUser } from '../../services/http';
 import { removeAllCookies } from '../../services/cookies';
 import { setLogoutValue } from '../Login/actions';
 import { setNotification } from '../Notification/actions';
-import { componentData } from '../../utils/class-names.json';
+import { componentData, buttonClass } from '../../utils/class-names.json';
 
 function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {
-    const initializedLogoutBtn = factoryButtons({ buttonStyles: 'logout-action-btn' });
+    const initializedLogoutBtn = factoryButtons({ buttonStyles: buttonClass.Logout });
 
     const yesButtonHandler = (e) => {
         e.preventDefault();

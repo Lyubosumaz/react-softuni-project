@@ -6,9 +6,10 @@ import { currentPage } from '../../utils/pathHandler';
 import { numberGenerator } from '../../utils/stringHandler';
 import { factoryButtons } from '../../utils/factory';
 import { setNotification } from '../Notification/actions';
+import { buttonClass } from '../../utils/class-names.json';
 
 function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotificationInfo, setNotificationError }) {
-    const initializedItemsListBtn = factoryButtons({ buttonStyles: 'active-button' });
+    const initializedItemsListBtn = factoryButtons({ buttonStyles: buttonClass.ItemList });
     const itemsList = items;
 
     function getButtons(item) {

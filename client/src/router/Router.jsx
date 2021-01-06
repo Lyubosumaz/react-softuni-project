@@ -36,7 +36,7 @@ import EditMeme from '../containers/social/edit-meme';
 import DeleteMeme from '../containers/social/delete-meme';
 
 // Utility
-import OptionBar from '../components/OptionBar';
+import GameOptionBar from '../components/GameOptionBar';
 
 export default function AppRouter() {
     return (
@@ -55,7 +55,7 @@ export default function AppRouter() {
                     path="/game"
                     render={({ match: { url } }) => (
                         <Fragment key={numberGenerator()}>
-                            <OptionBar />
+                            <GameOptionBar />
                             <AuthRoute path={`${url}/`} exact component={Game} />
                             <AuthRoute path={`${url}/progress`} exact component={Progress} />
                             <AuthRoute path={`${url}/shop`} exact component={Shop} />

@@ -4,9 +4,10 @@ import { PropTypes } from 'prop-types';
 import { currentPage } from '../../utils/pathHandler';
 import { factoryButtons } from '../../utils/factory';
 import { numberGenerator } from '../../utils/stringHandler';
+import { buttonClass } from '../../utils/class-names.json';
 
 function MemeCard({ userId, num, meme }) {
-    const initializedMemeCardBtn = factoryButtons({ buttonStyles: 'meme-card-button' });
+    const initializedMemeCardBtn = factoryButtons({ buttonStyles: buttonClass.MemeCard });
     const currentUser = userId;
     const memePosition = num;
     const currentMeme = meme;
@@ -24,7 +25,7 @@ function MemeCard({ userId, num, meme }) {
                         <h3>{currentMeme.title}</h3>
                     </header>
 
-                    <div className="meme-card-buttons">
+                    <div className="meme-card-buttons-wrapper">
                         {currentPage() !== 'view-meme' && initializedMemeCardBtn(`social/view-meme/${currentMeme._id}`, 'View')}
 
                         {currentMeme.addedBy === currentUser && (

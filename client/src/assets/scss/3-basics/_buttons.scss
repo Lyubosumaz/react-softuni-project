@@ -28,8 +28,8 @@ input[type='submit'] {
 }
 
 // Header Menus Buttons
-.site-header .nav-bar-button,
-.options-bar .options-bar-button {
+.site-header .header-button,
+.options-bar .option-button {
     &.isClicked {
         color: $mainFontColor;
         background-color: $mainDarkHightLighten;
@@ -41,7 +41,7 @@ input[type='submit'] {
 }
 
 // Header Buttons
-.site-header .nav-bar-button {
+.site-header .header-button {
     padding: 1em 1.2em;
     line-height: 0;
     font-size: 1.2em;
@@ -57,7 +57,7 @@ input[type='submit'] {
 }
 
 // Option Buttons
-.options-bar .options-bar-button {
+.options-bar .option-button {
     padding: 1em 0;
     line-height: 0;
     font-size: 0.8em;
@@ -72,8 +72,8 @@ input[type='submit'] {
     }
 }
 
-// Info Component Buttons
-.info-component .info-action-btn {
+// Info Buttons
+.info-component .info-button {
     color: $mainLinkColor;
 
     &:hover,
@@ -83,7 +83,7 @@ input[type='submit'] {
 }
 
 // Footer Buttons
-.site-footer .footer-nav-button {
+.site-footer .footer-button {
     padding: 0.7em 0.5em;
     border-radius: 0.5rem;
     line-height: 0;
@@ -105,14 +105,15 @@ input[type='submit'] {
 }
 
 // Form Buttons
-.component-data .social-action-btn,
-.form-component .form-action-btn {
+.component-data .social-button,
+.four-o-four-button {
     border-radius: 1.5rem;
     font-weight: 700;
+    background-color: $mainSuccessColor;
 }
 
 // Logout Buttons
-.logout-action-btn {
+.logout-button {
     width: 6em;
     line-height: 1.5;
     border-radius: 0.2em;
@@ -155,6 +156,11 @@ input[type='submit'] {
     }
 }
 
+// Register Buttons
+.register-button.terms {
+    color: $mainLinkColor;
+}
+
 // MEME
 .meme-card-button {
     padding: 0.3em 3em;
@@ -186,5 +192,102 @@ input[type='submit'] {
         &:hover {
             background-color: $mainSuccessDarken;
         }
+    }
+}
+
+// ItemList Buttons
+.item-card-button {
+    &.buy {
+        background-color: $itemCardBuy;
+        &:hover {
+            background-color: $itemCardLightenBuy;
+        }
+    }
+
+    &.sell {
+        background-color: $itemCardSell;
+        &:hover {
+            background-color: $itemCardLightenSell;
+        }
+    }
+
+    &.equip {
+        background-color: $itemCardEquip;
+        &:hover {
+            background-color: $itemCardLightenEquip;
+        }
+    }
+
+    &.remove {
+        background-color: $itemCardRemove;
+
+        &:hover {
+            background-color: $itemCardLightenRemove;
+            color: black;
+        }
+    }
+}
+
+// Notification Buttons
+.notifications-list {
+    .notifications-button {
+        font-size: 1.2em;
+        border-radius: 0.5em;
+        border: 0.2em solid transparent;
+        font-weight: 700;
+
+        &:hover {
+            text-decoration: none;
+            background-color: $secondaryFontColor;
+        }
+    }
+
+    .notification-success {
+        .notifications-button {
+            background-color: $mainSuccessDarken;
+
+            &:hover {
+                background-color: $secondaryFontColor;
+                color: $mainSuccessDarken;
+                border-color: $mainSuccessDarken;
+            }
+        }
+    }
+
+    .notification-info {
+        .notifications-button {
+            background-color: $mainInfoDarken;
+
+            &:hover {
+                background-color: $secondaryFontColor;
+                color: $mainInfoDarken;
+                border-color: $mainInfoDarken;
+            }
+        }
+    }
+
+    .notification-error {
+        .notifications-button {
+            background-color: $mainErrorDarken;
+
+            &:hover {
+                background-color: $secondaryFontColor;
+                color: $mainErrorDarken;
+                border-color: $mainErrorDarken;
+            }
+        }
+    }
+}
+
+// Overlay
+.overlay-button {
+    margin: 5px;
+
+    &.ready {
+        background-color: #a55;
+    }
+
+    &.home {
+        background-color: #f4511e;
     }
 }

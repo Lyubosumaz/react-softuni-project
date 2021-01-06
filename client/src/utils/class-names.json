@@ -4,18 +4,18 @@
     "containerWrapper": "container-wrapper",
     "componentData": "component-data",
     "buttonClass": {
-        "Header": "nav-bar-button",
-        "Footer": "footer-nav-button",
-        "OptionBar": "options-bar-button",
-        "Info": "info-action-btn",
-        "ItemList": "active-button",
-        "Logout": "logout-action-btn",
+        "Header": "header-button",
+        "Footer": "footer-button",
+        "GameOptionBar": "option-button",
+        "Info": "info-button",
+        "ItemList": "item-card-button",
+        "Logout": "logout-button",
         "MemeCard": "meme-card-button",
-        "Register": "info-button",
-        "Social": "social-action-btn",
-        "404": "info-action-btn",
+        "Register": "register-button",
+        "Social": "social-button",
+        "404": "four-o-four-button",
         "Notification": "notifications-button",
-        "Overlay": "form-action-btn"
+        "Overlay": "overlay-button"
     },
     "formBtnClass": "form-action-btn"
 }

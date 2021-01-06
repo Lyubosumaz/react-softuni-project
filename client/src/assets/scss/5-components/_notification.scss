@@ -33,15 +33,6 @@
 
         & > button {
             flex-basis: 100%;
-            font-size: 1.2em;
-            border-radius: 0.5em;
-            border: 0.2em solid transparent;
-            font-weight: 700;
-
-            &:hover {
-                text-decoration: none;
-                background-color: $secondaryFontColor;
-            }
         }
 
         .progress-bar {
@@ -68,16 +59,6 @@
     .notification-success {
         background-color: $mainSuccessColor;
 
-        button {
-            background-color: $mainSuccessDarken;
-        }
-
-        button:hover {
-            background-color: $secondaryFontColor;
-            color: $mainSuccessDarken;
-            border-color: $mainSuccessDarken;
-        }
-
         .progress-bar {
             border-color: $mainSuccessDarken;
         }
@@ -85,16 +66,6 @@
 
     .notification-info {
         background-color: $mainInfoColor;
-
-        button {
-            background-color: $mainInfoDarken;
-        }
-
-        button:hover {
-            background-color: $secondaryFontColor;
-            color: $mainInfoDarken;
-            border-color: $mainInfoDarken;
-        }
 
         .progress-bar {
             border-color: $mainInfoDarken;
@@ -104,15 +75,6 @@
     .notification-error {
         background-color: $mainErrorColor;
 
-        button {
-            background-color: $mainErrorDarken;
-        }
-
-        button:hover {
-            background-color: $secondaryFontColor;
-            color: $mainErrorDarken;
-            border-color: $mainErrorDarken;
-        }
         .progress-bar {
             border-color: $mainErrorDarken;
         }

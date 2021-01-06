@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import './overlay.css';
 import { setGameStart, setGameTimer } from './actions';
 import { factoryButtons } from '../../../../utils/factory';
+import { buttonClass } from '../../../../utils/class-names.json';
 
 function Overlay({ setGameStartProps, setGameTimerProps }) {
-    const initializedOverlayBtn = factoryButtons({ buttonStyles: 'form-action-btn' });
+    const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
         setGameStartProps();
@@ -23,7 +23,7 @@ function Overlay({ setGameStartProps, setGameTimerProps }) {
             </div>
 
             <div>
-                {initializedOverlayBtn(null, 'Ready!', null, handleSubmit)}
+                {initializedOverlayBtn(null, 'Ready!', 'ready', handleSubmit)}
                 {initializedOverlayBtn('home', null, 'home')}
             </div>
         </section>

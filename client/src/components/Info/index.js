@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { archiveReaderState } from '../../utils/archiveHandler';
 import archive from './site-info-archive.json';
 import { factoryButtons } from '../../utils/factory';
+import { buttonClass } from '../../utils/class-names.json';
 
 function Info({ isLogin }) {
     function state() {
@@ -15,7 +16,7 @@ function Info({ isLogin }) {
                 <span>{archiveReaderState(archive, 'text', state())}</span>
 
                 {/* return <Button( SET_CLASS )( DIRECTION: archive[CURRENT], BUTTON_NAME: archive[CURRENT], ADDITIONAL_CLASS: null, MY_FUNC: null )> */}
-                {factoryButtons({ buttonStyles: 'info-action-btn' })(archiveReaderState(archive, 'path', state()), archiveReaderState(archive, 'button', state()))}
+                {factoryButtons({ buttonStyles: buttonClass.Info })(archiveReaderState(archive, 'path', state()), archiveReaderState(archive, 'button', state()))}
             </div>
         </section>
     );
