@@ -6,7 +6,7 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './login-validations';
 import { setNotification } from '../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../utils/class-names.json';
+import { formComponent, formFieldsWrapper, formBtnClass } from '../../utils/class-names.json';
 
 function Login({ setLoginValue, setNotificationSuccess }) {
     const username = useFormInput('');
@@ -98,8 +98,8 @@ function Login({ setLoginValue, setNotificationSuccess }) {
                     </div>
 
                     <div className="form-field-buttons">
-                        <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" value="login" />
+                        <input type="reset" className={formBtnClass} value="reset" />
+                        <input type="submit" className={formBtnClass} value="login" />
                     </div>
                 </form>
             </div>

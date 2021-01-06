@@ -5,7 +5,7 @@ import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import schema from './edit-meme-validations';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
+import { formComponent, formFieldsWrapper, formBtnClass } from '../../../utils/class-names.json';
 
 function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -109,8 +109,8 @@ function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationErro
                     </div>
 
                     <div className="form-field-buttons">
-                        <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" value="edit meme" />
+                        <input type="reset" className={formBtnClass} value="reset" />
+                        <input type="submit" className={formBtnClass} value="edit meme" />
                     </div>
                 </form>
             </div>

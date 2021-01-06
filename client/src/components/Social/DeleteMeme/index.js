@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
+import { formComponent, formFieldsWrapper, formBtnClass } from '../../../utils/class-names.json';
 
 function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -53,8 +53,8 @@ function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationEr
                     </div>
 
                     <div className="form-field-buttons">
-                        <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" value="delete meme" />
+                        <input type="reset" className={formBtnClass} value="reset" />
+                        <input type="submit" className={formBtnClass} value="delete meme" />
                     </div>
                 </form>
             </div>

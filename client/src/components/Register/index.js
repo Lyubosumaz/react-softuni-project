@@ -5,8 +5,8 @@ import { history } from '../../utils/history';
 import { httpUser } from '../../services/http';
 import schema from './register-validations';
 import { setNotification } from '../Notification/actions';
-import { formComponent, formFieldsWrapper, buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
+import { formComponent, formFieldsWrapper, buttonClass, formBtnClass } from '../../utils/class-names.json';
 
 function Register({ setNotificationSuccess, setNotificationError }) {
     const username = useFormInput('');
@@ -162,8 +162,8 @@ function Register({ setNotificationSuccess, setNotificationError }) {
                     </div>
 
                     <div className="form-field-buttons">
-                        <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" value="register" />
+                        <input type="reset" className={formBtnClass} value="reset" />
+                        <input type="submit" className={formBtnClass} value="register" />
                     </div>
                 </form>
             </div>

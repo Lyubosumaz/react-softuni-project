@@ -6,16 +6,16 @@
     "buttonClass": {
         "Header": "header-button",
         "Footer": "footer-button",
-        "GameOptionBar": "option-button",
         "Info": "info-button",
-        "ItemList": "item-card-button",
-        "Logout": "logout-button",
-        "MemeCard": "meme-card-button",
         "Register": "register-button",
-        "Social": "social-button",
-        "404": "four-o-four-button",
+        "Logout": "logout-button",
+        "GameOptionBar": "option-button",
         "Notification": "notifications-button",
-        "Overlay": "overlay-button"
+        "Overlay": "overlay-button",
+        "MemeCard": "meme-card-button",
+        "ItemList": "item-card-button",
+        "Social": "social-button",
+        "404": "four-o-four-button"
     },
     "formBtnClass": "form-action-btn"
 }

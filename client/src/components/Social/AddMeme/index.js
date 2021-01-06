@@ -6,7 +6,7 @@ import { httpSocial } from '../../../services/http';
 import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageHandler';
 import schema from './add-meme-validations';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
+import { formComponent, formFieldsWrapper, formBtnClass } from '../../../utils/class-names.json';
 
 function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -119,8 +119,8 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
                     </div>
 
                     <div className="form-field-buttons">
-                        <input type="reset" className="form-action-btn" value="reset" />
-                        <input type="submit" className="form-action-btn" value="add meme" />
+                        <input type="reset" className={formBtnClass} value="reset" />
+                        <input type="submit" className={formBtnClass} value="add meme" />
                     </div>
                 </form>
             </div>
