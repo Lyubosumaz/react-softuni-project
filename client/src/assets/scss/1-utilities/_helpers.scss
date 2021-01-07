@@ -1,5 +1,4 @@
 $scrollbarWidth: 0.5em;
-$scrollNotificationThumbColor: #90a4ae;
 
 .hidden {
     display: none !important;
@@ -21,23 +20,5 @@ $scrollNotificationThumbColor: #90a4ae;
         background-color: #90a4ae;
         border-radius: 0.5em;
         border: 0.2em solid #90a4ae;
-    }
-}
-
-.scroll-notification {
-    background: transparent;
-
-    &::-webkit-scrollbar {
-        width: 0.4em;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #cfd8dc;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: $scrollNotificationThumbColor;
-        border-radius: 0.75em;
-        border: 0.2em solid $scrollNotificationThumbColor;
     }
 }

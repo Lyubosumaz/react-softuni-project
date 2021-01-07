@@ -1,29 +1,63 @@
+$scrollbarWidth: 0.25em;
+$scrollNotificationThumbColor: #bbb;
+$notificationsMargin: 0.3em;
+$borderRadius: 0.5em;
+
+.scroll-notification {
+    background: transparent;
+
+    &::-webkit-scrollbar {
+        width: $scrollbarWidth;
+        height: $scrollbarWidth;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #cfd8dc;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0.2em;
+        background-color: $scrollNotificationThumbColor;
+        border: 0.2em solid $scrollNotificationThumbColor;
+    }
+}
+
 .notifications-list.scroll-notification {
+    padding: 0;
     overflow-y: scroll;
+
+    li.notification {
+        margin: $notificationsMargin 0 $notificationsMargin $notificationsMargin;
+        border-radius: 0;
+        border-top-left-radius: $borderRadius;
+        border-bottom-left-radius: $borderRadius;
+    }
 }
 
 .notifications-list {
     width: 20em;
-    max-height: 50vh;
+    max-height: 20em;
     padding: 0;
+    padding-right: $scrollbarWidth;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
     top: 4em;
     right: 2.5em;
-    // border-radius: 0.3em;
     background-color: transparent;
     overflow: hidden;
-
+    
     li.isClick {
         display: none;
     }
-
+    
     li {
+        box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.9);
+        margin: $notificationsMargin;
         padding: 0.5em;
-        flex: 0 0 100%;
+        flex-basis: 100%;
         border: 0.2em solid transparent;
-        border-radius: 0.5em;
+        border-radius: $borderRadius;
         overflow: hidden;
         display: flex;
         flex-wrap: wrap;

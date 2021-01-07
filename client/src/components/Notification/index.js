@@ -130,7 +130,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             setComponentClassName('reset');
             setComponentClassName('add');
 
-            autoClose();
+            // autoClose();
         }
     }, [notificationsRedux, setComponentClassName, autoClose]);
 
