@@ -152,7 +152,13 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                 notificationsArr.map((notification, index) => {
                     return (
                         <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification._id}__${index}`} className={`${notification._id} notification notification-${notification.options.class}`}>
-                            <p>{notification.msg}</p>
+                            <div>Image</div>
+
+                            <section>
+                                <h6>Notification Title</h6>
+
+                                <p>{notification.msg}</p>
+                            </section>
 
                             {factoryButtons({ buttonStyles: buttonClass.Notification })(null, 'Close', null, () => handleNotificationBtnClose(notification._id))}
 

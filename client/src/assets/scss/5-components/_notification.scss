@@ -1,7 +1,7 @@
 $scrollbarWidth: 0.25em;
 $scrollNotificationThumbColor: #bbb;
 $notificationsMargin: 0.3em;
-$borderRadius: 0.5em;
+$borderRadius: 0.2em;
 
 .scroll-notification {
     background: transparent;
@@ -52,7 +52,7 @@ $borderRadius: 0.5em;
     }
     
     li {
-        box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.9);
+        box-shadow: 0 0 0.3em 0.1em rgba($color: #888, $alpha: 0.5);
         margin: $notificationsMargin;
         padding: 0.5em;
         flex-basis: 100%;
