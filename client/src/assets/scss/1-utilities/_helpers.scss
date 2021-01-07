@@ -1,3 +1,6 @@
+$scrollbarWidth: 0.5em;
+$scrollNotificationThumbColor: #90a4ae;
+
 .hidden {
     display: none !important;
 }
@@ -6,7 +9,8 @@
     background: transparent;
 
     &::-webkit-scrollbar {
-        width: 0.75em;
+        width: $scrollbarWidth;
+        height: $scrollbarWidth;
     }
 
     &::-webkit-scrollbar-track {
@@ -15,8 +19,8 @@
 
     &::-webkit-scrollbar-thumb {
         background-color: #90a4ae;
-        border-radius: 0.75em;
-        border: 0.2em solid #cfd8dc;
+        border-radius: 0.5em;
+        border: 0.2em solid #90a4ae;
     }
 }
 
@@ -32,8 +36,8 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #cfd8dc;
+        background-color: $scrollNotificationThumbColor;
         border-radius: 0.75em;
-        border: 0.2em solid #90a4ae;
+        border: 0.2em solid $scrollNotificationThumbColor;
     }
 }

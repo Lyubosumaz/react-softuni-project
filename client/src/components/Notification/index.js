@@ -1,43 +1,76 @@
-import { useEffect, useState, useRef } from 'react';
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { removeAllNotification } from './actions';
-import { factoryButtons } from '../../utils/factory';
+import { useEffect, useRef, useState } from 'react';
+import { connect } from 'react-redux';
 import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
+import { removeAllNotification } from './actions';
 
 // TODO need to rework this component
 
 function Notification({ duration, notifications, removeAllNotificationProps }) {
+    const notificationComponent = useRef();
+    const notificationsRedux = notifications;
+    const [notificationsArr, setNotificationsArr] = useState([]);
+    let notificationsRef = useRef([]);
     // used classes
     // const componentClass = 'notifications-list scroll-notification';
     const componentClass = 'notifications-list';
     const additionalClass = 'scroll-notification';
     const hiddenClass = 'hidden';
     // TODO EXPAND COMPONENT OPTIONS
-    const applyScroll = 2;
+    const scrollBreakPoint = 2;
     const testTime = duration;
-    const notificationsProps = notifications;
-    const [notificationsArr, setNotificationsArr] = useState([]);
-    const notificationList = useRef();
-    let notificationsRef = useRef([]);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--notification-animation-duration', `${testTime}s`);
-        notificationList.current.className = `${notificationList.current.className} ${hiddenClass}`;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        notificationComponent.current.className = `${notificationComponent.current.className} ${hiddenClass}`;
     }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     useEffect(() => {
-        if (notificationsProps.length) {
-            setNotificationsArr(notificationsProps);
-            notificationList.current.className = componentClass;
+        console.log(notificationsRedux);
+        if (notificationsRedux.length) {
+            setNotificationsArr(notificationsRedux);
+            setComponentClassName('reset');
+            setComponentClassName('remove');
             // TODO commented for fixing styles
-            autoClose();
-            addAdditionalClass();
+            // autoClose();
+        }
+    }, [notificationsRedux]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    function setComponentClassName(key) {
+        const validate = scrollValidation();
+        switch (key) {
+            case 'reset':
+                notificationComponent.current.className = componentClass;
+                if (validate) notificationComponent.current.className = `${notificationComponent.current.className} ${additionalClass}`;
+                break;
+            case 'add':
+                if (validate && !notificationComponent.current.className.includes(additionalClass)) {
+                    notificationComponent.current.className = `${notificationComponent.current.className} ${additionalClass}`;
+                }
+                break;
+            case 'remove':
+                if (validate && notificationComponent.current.className.includes(additionalClass)) {
+                    notificationComponent.current.className = notificationComponent.current.className.replace(additionalClass, '');
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    function scrollValidation() {
+        let countOfNonHiddenNotifications = 0;
+
+        const allDOMNotifications = notificationComponent.current.children;
+        for (const notification of allDOMNotifications) {
+            if (!notification.className.includes(hiddenClass)) countOfNonHiddenNotifications++;
         }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [notificationsProps]);
+        return countOfNonHiddenNotifications >= scrollBreakPoint;
+    }
 
     function autoClose() {
         let interval = setTimeout(() => {
@@ -58,50 +91,16 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             });
 
             if (handleRefs()) {
-                const currentNotificationClassArr = notificationList.current.className.split(' ');
-                notificationList.current.className = currentNotificationClassArr[currentNotificationClassArr.length - 1] === hiddenClass ? notificationList.current.className : `${notificationList.current.className} ${hiddenClass}`;
+                const currentNotificationClassArr = notificationComponent.current.className.split(' ');
+                notificationComponent.current.className = currentNotificationClassArr[currentNotificationClassArr.length - 1] === hiddenClass ? notificationComponent.current.className : `${notificationComponent.current.className} ${hiddenClass}`;
                 removeAllNotificationProps();
                 setNotificationsArr([]);
             }
 
-            removeAdditionalClass();
+            // removeAdditionalClass();
         }, testTime * 1000);
 
         return () => clearTimeout(interval);
-    }
-
-    function addAdditionalClass() {
-        if (numberOfNonHiddenNotifications() >= applyScroll) {
-            if (!notificationList.current.className.includes(additionalClass)) {
-                notificationList.current.className = `${notificationList.current.className} ${additionalClass}`;
-            }
-        }
-    }
-
-    function removeAdditionalClass() {
-        if (numberOfNonHiddenNotifications() >= applyScroll) {
-            if (notificationList.current.className.includes(additionalClass)) {
-                const additionalClassIndex = notificationsRef.current.indexOf(additionalClass);
-                console.log(addAdditionalClass);
-
-                if (additionalClassIndex !== -1) {
-                    notificationsRef.current = notificationsRef.current.slice(0, additionalClassIndex);
-                }
-
-                console.log(notificationsRef);
-            }
-        }
-    }
-
-    function numberOfNonHiddenNotifications() {
-        let count = 0;
-
-        const allDOMNotifications = notificationList.current.children;
-        for (const element of allDOMNotifications) {
-            if (!element.className.includes(hiddenClass)) count++;
-        }
-
-        return count;
     }
 
     function btnHandlerClose(id) {
@@ -127,7 +126,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
     }
 
     return (
-        <ul ref={notificationList} className={componentClass}>
+        <ul ref={notificationComponent} className={componentClass}>
             {notificationsArr &&
                 notificationsArr.map((notification, index) => {
                     return (
