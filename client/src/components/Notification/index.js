@@ -5,26 +5,26 @@ import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 import { removeAllNotification } from './actions';
 
-// TODO need to rework this component
-
+// Component Classes
+const componentClass = 'notifications-list';
+const additionalClass = 'scroll-notification';
+const hiddenClass = 'hidden';
+const isClickClass = 'isClick';
 function Notification({ duration, notifications, removeAllNotificationProps }) {
     const notificationComponent = useRef();
     const notificationsRedux = notifications;
     const [notificationsArr, setNotificationsArr] = useState([]);
     let notificationsRef = useRef([]);
-    // Component Classes
-    const componentClass = 'notifications-list';
-    const additionalClass = 'scroll-notification';
-    const hiddenClass = 'hidden';
+
     // TODO EXPAND COMPONENT OPTIONS
     const scrollBreakPoint = 2;
-    const testTime = duration;
+    const animationDuration = duration;
 
     // Initial render: apply component options
     useEffect(() => {
-        document.documentElement.style.setProperty('--notification-animation-duration', `${testTime}s`);
+        document.documentElement.style.setProperty('--notification-animation-duration', `${animationDuration}s`);
         notificationComponent.current.className = `${notificationComponent.current.className} ${hiddenClass}`;
-    }, [testTime]);
+    }, [animationDuration]);
 
     function scrollValidation() {
         let countOfNonHiddenNotifications = 0;
@@ -42,7 +42,6 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             switch (data) {
                 case 'reset':
                     notificationComponent.current.className = componentClass;
-                    if (scrollValidation()) notificationComponent.current.className = `${notificationComponent.current.className} ${additionalClass}`;
                     break;
                 case 'add':
                     if (scrollValidation() && !notificationComponent.current.className.includes(additionalClass)) {
@@ -50,7 +49,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                     }
                     break;
                 case 'remove':
-                    if (scrollValidation() && notificationComponent.current.className.includes(additionalClass)) {
+                    if (notificationComponent.current.className.includes(additionalClass)) {
                         notificationComponent.current.className = notificationComponent.current.className.replace(additionalClass, '');
                     }
                     break;
@@ -72,6 +71,8 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
     );
 
     function removeNullRefs() {
+        if (!notificationsRef.current) return;
+
         const findNull = notificationsRef.current.indexOf(null);
         if (findNull !== -1) {
             notificationsRef.current = notificationsRef.current.slice(0, findNull);
@@ -98,44 +99,47 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
 
             let once = true;
             notificationsRef.current.forEach((el) => {
+                if (once && el.className.includes(isClickClass)) {
+                    el.className = el.className.replace(isClickClass, hiddenClass);
+                    once = false;
+                }
                 if (once && !el.className.includes(hiddenClass)) {
                     el.className = `${el.className} ${hiddenClass}`;
                     once = false;
                 }
             });
 
-            console.log(checkIfAllNotificationsAreHidden());
+            setComponentClassName('remove');
+
             if (checkIfAllNotificationsAreHidden()) {
-                setComponentClassName('remove');
-                // const currentNotificationClassArr = notificationComponent.current.className.split(' ');
+                setComponentClassName('reset');
+                setComponentClassName('hide');
 
-                // notificationComponent.current.className =
-                // currentNotificationClassArr[currentNotificationClassArr.length - 1] === hiddenClass
-                // ?
-                // notificationComponent.current.className
-                // :
-                // `${notificationComponent.current.className} ${hiddenClass}`;
-
-                //     removeAllNotificationProps();
-                //     setNotificationsArr([]);
+                setNotificationsArr([]);
+                removeAllNotificationProps();
             }
-        }, testTime * 1000);
+        }, animationDuration * 1000);
 
         return () => clearTimeout(interval);
-    }, [testTime, setComponentClassName]);
+    }, [animationDuration, setComponentClassName, removeAllNotificationProps]);
 
     useEffect(() => {
         if (notificationsRedux.length) {
             setNotificationsArr(notificationsRedux);
+
             setComponentClassName('reset');
+            setComponentClassName('add');
+
             autoClose();
         }
     }, [notificationsRedux, setComponentClassName, autoClose]);
 
     function handleNotificationBtnClose(id) {
+        removeNullRefs();
+
         notificationsRef.current.forEach((el) => {
-            if (el.className.split(' ')[0] === id) {
-                el.className = `${el.className} ${hiddenClass}`;
+            if (el.className.includes(id)) {
+                if (!el.className.includes(isClickClass)) el.className = `${el.className} ${isClickClass}`;
             }
         });
 
