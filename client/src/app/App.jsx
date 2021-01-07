@@ -1,16 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from '../services/store';
-import { httpUser } from '../services/http';
-import { authCookie, removeAllCookies } from '../services/cookies';
-
-import Router from '../router/Router';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Notification from '../components/Notification';
-
 import '../assets/scss/main.scss';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Notification from '../components/Notification';
+import Router from '../router/Router';
+import { authCookie, removeAllCookies } from '../services/cookies';
+import { httpUser } from '../services/http';
+import { persistor, store } from '../services/store';
 
 export default function App() {
     // REFRESHING TOKEN EVERY 9 MINUTES = 9*60*1000
@@ -39,7 +37,7 @@ export default function App() {
                         <Router />
                     </main>
                     <Footer />
-                    <Notification duration={3} />
+                    <Notification duration={3} scrollAt={1} />
                 </PersistGate>
             </Provider>
         </div>

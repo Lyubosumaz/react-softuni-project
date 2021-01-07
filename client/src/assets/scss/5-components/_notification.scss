@@ -1,24 +1,109 @@
-$scrollbarWidth: 0.25em;
-$scrollNotificationThumbColor: #bbb;
 $notificationsMargin: 0.3em;
-$borderRadius: 0.2em;
+$borderRadius: 0.3em;
+$scrollbarWidth: 0.3em;
+$scrollNotificationThumbColor: #aaa;
 
-.scroll-notification {
-    background: transparent;
+.notifications-list {
+    width: 25em;
+    max-height: 10.5em;
+    padding: 0;
+    padding-right: $scrollbarWidth;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 3em;
+    right: 1em;
+    background-color: transparent;
+    overflow: hidden;
 
-    &::-webkit-scrollbar {
-        width: $scrollbarWidth;
-        height: $scrollbarWidth;
+    li.isClick {
+        display: none;
     }
 
-    &::-webkit-scrollbar-track {
-        background: #cfd8dc;
+    li {
+        margin: $notificationsMargin;
+        flex-basis: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: $borderRadius;
+        box-shadow: $secondaryShadow;
+        overflow: hidden;
+
+        .notification-wrapper {
+            padding: 0.5em;
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+
+            .notification-icon-wrapper {
+                flex-basis: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                }
+            }
+
+            .notification-text {
+                flex-basis: 60%;
+
+                h5 {
+                }
+
+                p {
+                    padding: 0;
+                }
+            }
+
+            .notification-button-wrapper {
+                flex-basis: 10%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-start;
+            }
+        }
+
+        .notification-bar {
+            flex-basis: 100%;
+            height: 0.5em;
+            position: relative;
+
+            .bar {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                animation-name: barAnimation;
+                animation-duration: var(--notification-animation-duration);
+                animation-timing-function: linear;
+            }
+        }
     }
 
-    &::-webkit-scrollbar-thumb {
-        border-radius: 0.2em;
-        background-color: $scrollNotificationThumbColor;
-        border: 0.2em solid $scrollNotificationThumbColor;
+    .notification-success {
+        background-color: $mainSuccessColor;
+
+        .notification-bar .bar {
+            background-color: $mainSuccessDarken;
+        }
+    }
+
+    .notification-info {
+        background-color: $mainInfoColor;
+
+        .notification-bar .bar {
+            background-color: $mainInfoDarken;
+        }
+    }
+
+    .notification-error {
+        background-color: $mainErrorColor;
+
+        .notification-bar .bar {
+            background-color: $mainErrorDarken;
+        }
     }
 }
 
@@ -34,87 +119,20 @@ $borderRadius: 0.2em;
     }
 }
 
-.notifications-list {
-    width: 20em;
-    max-height: 20em;
-    padding: 0;
-    padding-right: $scrollbarWidth;
-    display: flex;
-    flex-wrap: wrap;
-    position: absolute;
-    top: 4em;
-    right: 2.5em;
-    background-color: transparent;
-    overflow: hidden;
-    
-    li.isClick {
-        display: none;
-    }
-    
-    li {
-        box-shadow: 0 0 0.3em 0.1em rgba($color: #888, $alpha: 0.5);
-        margin: $notificationsMargin;
-        padding: 0.5em;
-        flex-basis: 100%;
-        border: 0.2em solid transparent;
-        border-radius: $borderRadius;
-        overflow: hidden;
-        display: flex;
-        flex-wrap: wrap;
-
-        & > p {
-            flex-basis: 100%;
-            color: $secondaryFontColor;
-            font-weight: 700;
-        }
-
-        & > button {
-            flex-basis: 100%;
-        }
-
-        .progress-bar {
-            margin: 0.5em 0;
-            flex-basis: 100%;
-            height: 30px;
-            position: relative;
-            background-color: var(--notification-bar-color-secondary);
-            border: 0.3em solid transparent;
-
-            .bar {
-                position: absolute;
-                top: -1px;
-                bottom: -1px;
-                left: 0;
-                background-color: var(--notification-bar-color-main);
-                animation-name: barAnimation;
-                animation-duration: var(--notification-animation-duration);
-                animation-timing-function: linear;
-            }
-        }
+.scroll-notification {
+    &::-webkit-scrollbar {
+        width: $scrollbarWidth;
+        height: $scrollbarWidth;
     }
 
-    .notification-success {
-        background-color: $mainSuccessColor;
-
-        .progress-bar {
-            border-color: $mainSuccessDarken;
-        }
+    &::-webkit-scrollbar-track {
+        background: transparent;
     }
 
-    .notification-info {
-        background-color: $mainInfoColor;
-
-        .progress-bar {
-            border-color: $mainInfoDarken;
-        }
-    }
-
-    .notification-error {
-        background-color: $mainErrorColor;
-
-        .progress-bar {
-            border-color: $mainErrorDarken;
-        }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0.2em;
+        background-color: $scrollNotificationThumbColor;
+        border: 0.2em solid $scrollNotificationThumbColor;
     }
 }
 

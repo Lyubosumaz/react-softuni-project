@@ -10,15 +10,15 @@ const componentClass = 'notifications-list';
 const additionalClass = 'scroll-notification';
 const hiddenClass = 'hidden';
 const isClickClass = 'isClick';
-function Notification({ duration, notifications, removeAllNotificationProps }) {
+function Notification({ notifications, removeAllNotificationProps, duration, scrollAt }) {
     const notificationComponent = useRef();
     const notificationsRedux = notifications;
     const [notificationsArr, setNotificationsArr] = useState([]);
     let notificationsRef = useRef([]);
 
     // TODO EXPAND COMPONENT OPTIONS
-    const scrollBreakPoint = 2;
-    const animationDuration = duration;
+    const scrollBreakPoint = scrollAt ? scrollAt : 3;
+    const animationDuration = duration ? duration : 5;
 
     // Initial render: apply component options
     useEffect(() => {
@@ -26,7 +26,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
         notificationComponent.current.className = `${notificationComponent.current.className} ${hiddenClass}`;
     }, [animationDuration]);
 
-    function scrollValidation() {
+    const scrollValidation = useCallback(() => {
         let countOfNonHiddenNotifications = 0;
 
         const allDOMNotifications = notificationComponent.current.children;
@@ -35,7 +35,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
         }
 
         return countOfNonHiddenNotifications >= scrollBreakPoint;
-    }
+    }, [scrollBreakPoint]);
 
     const setComponentClassName = useCallback(
         (data) => {
@@ -67,7 +67,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                     break;
             }
         },
-        [notificationComponent]
+        [notificationComponent, scrollValidation]
     );
 
     function removeNullRefs() {
@@ -130,7 +130,7 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
             setComponentClassName('reset');
             setComponentClassName('add');
 
-            // autoClose();
+            autoClose();
         }
     }, [notificationsRedux, setComponentClassName, autoClose]);
 
@@ -152,17 +152,24 @@ function Notification({ duration, notifications, removeAllNotificationProps }) {
                 notificationsArr.map((notification, index) => {
                     return (
                         <li ref={(el) => (notificationsRef.current[index] = el)} key={`${notification._id}__${index}`} className={`${notification._id} notification notification-${notification.options.class}`}>
-                            <div>Image</div>
+                            <div className={`notification-wrapper`}>
+                                <div className={`notification-icon-wrapper`}>
+                                    <span>Image</span>
+                                </div>
 
-                            <section>
-                                <h6>Notification Title</h6>
+                                <section className={`notification-text`}>
+                                    <h5>Notification Title</h5>
 
-                                <p>{notification.msg}</p>
-                            </section>
+                                    <p>{notification.msg}</p>
+                                </section>
 
-                            {factoryButtons({ buttonStyles: buttonClass.Notification })(null, 'Close', null, () => handleNotificationBtnClose(notification._id))}
+                                <div className={`notification-button-wrapper`}>
+                                    {/* notification button */}
+                                    {factoryButtons({ buttonStyles: buttonClass.Notification })(null, 'X', null, () => handleNotificationBtnClose(notification._id))}
+                                </div>
+                            </div>
 
-                            <div className="progress-bar">
+                            <div className={`notification-bar`}>
                                 <span className="bar"></span>
                             </div>
                         </li>
@@ -187,7 +194,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
 
 Notification.propTypes = {
-    duration: PropTypes.number.isRequired,
     notifications: PropTypes.arrayOf(
         PropTypes.exact({
             _id: PropTypes.string.isRequired,
@@ -198,4 +204,6 @@ Notification.propTypes = {
         }).isRequired
     ),
     removeAllNotificationProps: PropTypes.func.isRequired,
+    duration: PropTypes.number,
+    scrollAt: PropTypes.number,
 };

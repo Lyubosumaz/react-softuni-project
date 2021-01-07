@@ -1,13 +1,5 @@
 :root {
     --notification-animation-duration: 0s;
-    --notification-max-width: 0rem;
-    --notification-max-height: 0rem;
-    --notification-success-color: #4caf50;
-    --notification-info-color: #0083ff;
-    --notification-error-color: #f4511e;
-    --notification-bar-border-color: #369;
-    --notification-bar-color-main: #369;
-    --notification-bar-color-secondary: #f0f0f0;
 }
 
 /* Display Break-Pints */
@@ -27,6 +19,7 @@ $tabletFontSize: 16px;   // 426  < 768
 $phoneFontSize: 14px;    // min  > 425
 
 $mainShadow: 0 0.2em 1.2em 0.2em rgba($color: #000, $alpha: 0.2);
+$secondaryShadow: 0 0 0.3em 0.1em rgba($color: #888, $alpha: 0.5);
 
 /* Colors */
 $mainRedColor: #f4511e;
