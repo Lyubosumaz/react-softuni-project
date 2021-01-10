@@ -1,9 +1,47 @@
-.overlay-container {
-    width: 36vh;
-    height: 22vh;
+.overlay-container-wrapper {
     position: absolute;
-    z-index: 99;
-    color: white;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.overlay-container {
+    width: 22em;
+    padding: 2em;
     background: #333;
-    border-radius: 25px;
+    border-radius: 2em;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+
+    header {
+        margin-bottom: 1.5em;
+        text-align: center;
+
+        h2 {
+            margin: 0;
+            line-height: 1.4;
+
+            &::after {
+                width: 40%;
+                margin: 0 auto;
+                padding-top: 0.1em;
+                display: block;
+                content: '';
+                background-color: #ddd;
+            }
+        }
+    }
+
+    p {
+    }
+
+    .overlay-buttons-wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
 }

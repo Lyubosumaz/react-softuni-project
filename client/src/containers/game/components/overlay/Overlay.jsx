@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { setGameStart, setGameTimer } from './actions';
-import { factoryButtons } from '../../../../utils/factory';
+import { connect } from 'react-redux';
 import { buttonClass } from '../../../../utils/class-names.json';
+import { factoryButtons } from '../../../../utils/factory';
+import { setGameStart, setGameTimer } from './actions';
 
 function Overlay({ setGameStartProps, setGameTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
@@ -13,20 +13,20 @@ function Overlay({ setGameStartProps, setGameTimerProps }) {
     };
 
     return (
-        <section className="overlay-container">
-            <header>
-                <h2>Start the Game</h2>
-            </header>
+        <div className={`overlay-container-wrapper`}>
+            <section className={`overlay-container`}>
+                <header>
+                    <h2>Start the Game</h2>
+                </header>
 
-            <div>
-                <p>After you press the Ready button, your game starts</p>
-            </div>
+                <p>You are not prepend!? After you press the Ready! button, your game starts</p>
 
-            <div>
-                {initializedOverlayBtn(null, 'Ready!', 'ready', handleSubmit)}
-                {initializedOverlayBtn('home', null, 'home')}
-            </div>
-        </section>
+                <div className={`overlay-buttons-wrapper`}>
+                    {initializedOverlayBtn(null, 'Ready!', 'ready', handleSubmit)}
+                    {initializedOverlayBtn('home', null, 'home')}
+                </div>
+            </section>
+        </div>
     );
 }
 

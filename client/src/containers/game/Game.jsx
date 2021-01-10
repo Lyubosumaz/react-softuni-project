@@ -1,18 +1,12 @@
+import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import World from './components/world/World';
-import Overlay from './components/overlay/Overlay';
-import Clock from './components/clock/Clock';
 import { httpGame } from '../../services/http';
+import Clock from './components/clock/Clock';
+import Overlay from './components/overlay/Overlay';
+import World from './components/world/World';
 
-function Game({
-    inGame,
-    time,
-    resetPlayerLocation,
-    resetGameLevel,
-    saveGameItems
-}) {
+function Game({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveGameItems(items));
@@ -29,7 +23,7 @@ function Game({
         <Fragment>
             <div>{(inGame && <Clock />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
 
-            <div>{!inGame && <Overlay />}</div>
+            {!inGame && <Overlay />}
 
             <div>
                 <World />
