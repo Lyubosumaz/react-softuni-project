@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { setSellItem, setEquipItem } from './actions';
-import { httpGame } from '../../../services/http';
-import { setNotification } from '../../../components/Notification/actions';
-import ItemsList from '../../../components/ItemsList';
+import { httpGame } from '../../../../services/http';
+import { setNotification } from '../../../../components/Notification/actions';
+import ItemsList from '../../../../components/ItemsList';
 
 function Inventory({
     inventorySellItem,

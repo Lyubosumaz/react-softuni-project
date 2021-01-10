@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
-import { httpGame } from '../../../services/http';
-import { setNotification } from '../../../components/Notification/actions';
-import ItemsList from '../../../components/ItemsList';
+import { httpGame } from '../../../../services/http';
+import { setNotification } from '../../../../components/Notification/actions';
+import ItemsList from '../../../../components/ItemsList';
 
 function Shop({ setNotificationError }) {
     const [items, setItems] = useState([]);

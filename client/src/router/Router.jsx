@@ -17,13 +17,13 @@ import Login from '../containers/login';
 import Logout from '../containers/logout';
 import Profile from '../containers/profile';
 
-// Game
-import Game from '../containers/game/Game';
-import Progress from '../containers/game/progress/Progress'; // TODO
-import Shop from '../containers/game/shop/Shop';
-import Inventory from '../containers/game/inventory/Inventory';
-import Character from '../containers/game/character/Character';
+// Games
 import Games from '../containers/games'; // TODO
+import Game from '../containers/game/Game';
+import Progress from '../components/Games/ForestRunner/Progress'; // TODO
+import Shop from '../components/Games/ForestRunner/Shop';
+import Inventory from '../components/Games/ForestRunner/Inventory';
+import Character from '../components/Games/ForestRunner/Character';
 
 // Puzzles
 import Puzzles from '../containers/puzzles'; // TODO
