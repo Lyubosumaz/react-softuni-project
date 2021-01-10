@@ -214,14 +214,16 @@ button {
 
 // Overlay
 .overlay-button {
-    margin: 5px;
+    width: 6em;
+    padding: 0.5em 1.5em;
+    border-radius: 1em;
 
     &.ready {
-        background-color: #a55;
+        background-color: $mainGreenColor;
     }
 
     &.home {
-        background-color: #f4511e;
+        background-color: $mainRedColor;
     }
 }
 
