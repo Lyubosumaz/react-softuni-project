@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { secondsToClock } from '../../../../utils/stringHandler';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { secondsToClock } from '../../utils/stringHandler';
 import { setTimeValue } from './actions';
 
-function Clock({ handleGameTimer, level, setTimeValue }) {
+function Timer({ handleGameTimer, level, setTimeValue }) {
     const [count, setCount] = useState(0);
 
     // TODO
@@ -45,9 +45,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Clock);
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);
 
-Clock.propTypes = {
+Timer.propTypes = {
     handleGameTimer: PropTypes.bool.isRequired,
     level: PropTypes.number.isRequired,
     setTimeValue: PropTypes.func.isRequired,

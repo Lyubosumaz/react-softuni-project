@@ -1,8 +1,8 @@
 import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import Timer from '../../components/Timer';
 import { httpGame } from '../../services/http';
-import Clock from './components/clock/Clock';
 import Overlay from './components/overlay/Overlay';
 import World from './components/world/World';
 
@@ -21,7 +21,7 @@ function Game({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems
 
     return (
         <Fragment>
-            <div>{(inGame && <Clock />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
+            <div>{(inGame && <Timer />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
 
             {!inGame && <Overlay />}
 
