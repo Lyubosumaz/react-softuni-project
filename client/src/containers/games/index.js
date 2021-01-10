@@ -7,6 +7,7 @@ export default function GamesContainer() {
     return (
         <section className={`${containerWrapper}`}>
             <Title />
+            {/* TODO adding carousel for the many games */}
             <p>In progress... Quick prevue of first game here: {factoryButtons({ buttonStyles: buttonClass.Games })('game', 'Forest Runner')}</p>
             <Info />
         </section>
