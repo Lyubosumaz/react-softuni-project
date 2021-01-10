@@ -1,8 +1,8 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import { factoryButtons } from '../../utils/factory';
 import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
 
 // TODO need to fix the Router, atm it makes re-rendering
 // TODO make this component reusable for many games
@@ -20,6 +20,10 @@ function GameOptionBar({ isLogin }) {
     return isLogged ? (
         <div className="options-bar">
             <ul>
+                {/* TODO after reworking the game this should be different */}
+                <li>{initializedOptionsBtn('game', 'Forest Runner')}</li>
+                <li>{initializedOptionsBtn('game', 'Level: --, Time: --h --m --s')}</li>
+
                 <li>{initializedOptionsBtn('game/progress', 'Progress')}</li>
                 <li>{initializedOptionsBtn('game/shop', 'Shop')}</li>
                 <li>{initializedOptionsBtn('game/inventory', 'Inventory')}</li>

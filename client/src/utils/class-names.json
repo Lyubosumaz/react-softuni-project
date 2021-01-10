@@ -15,7 +15,8 @@
         "MemeCard": "meme-card-button",
         "ItemList": "item-card-button",
         "Social": "social-button",
-        "404": "four-o-four-button"
+        "404": "four-o-four-button",
+        "Games": "carousel-button"
     },
     "formBtnClass": "form-action-btn"
 }

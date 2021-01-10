@@ -1,9 +1,9 @@
-import { Fragment, useState } from 'react';
 import { PropTypes } from 'prop-types';
+import { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { numberGenerator } from '../../utils/stringHandler';
-import { factoryButtons } from '../../utils/factory';
 import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
+import { numberGenerator } from '../../utils/stringHandler';
 
 function Header({ isLogin }) {
     const isLogged = isLogin;
@@ -27,7 +27,6 @@ function Header({ isLogin }) {
                         <ul>
                             {isLogged ? (
                                 <Fragment key={numberGenerator()}>
-                                    <li>{initializedNavBtn('game', null, additionalClasses)}</li>
                                     <li>{initializedNavBtn('games', null, additionalClasses)}</li>
                                     <li>{initializedNavBtn('puzzles', null, additionalClasses)}</li>
                                 </Fragment>
