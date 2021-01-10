@@ -1,9 +1,9 @@
 import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import Overlay from '../../components/GamePopup';
 import Timer from '../../components/Timer';
 import { httpGame } from '../../services/http';
-import Overlay from './components/overlay/Overlay';
 import World from './components/world/World';
 
 function Game({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {

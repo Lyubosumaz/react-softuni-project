@@ -1,10 +1,10 @@
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { buttonClass } from '../../../../utils/class-names.json';
-import { factoryButtons } from '../../../../utils/factory';
+import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
 import { setGameStart, setGameTimer } from './actions';
 
-function Overlay({ setGameStartProps, setGameTimerProps }) {
+function GamePopup({ setGameStartProps, setGameTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
@@ -37,9 +37,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(Overlay);
+export default connect(null, mapDispatchToProps)(GamePopup);
 
-Overlay.propTypes = {
+GamePopup.propTypes = {
     setGameStartProps: PropTypes.func.isRequired,
     setGameTimerProps: PropTypes.func.isRequired,
 };
