@@ -5,35 +5,35 @@ import { numberGenerator } from '../utils/stringHandler';
 import AuthRoute from './AuthRoute';
 
 // Default
-import Home from '../containers/home';
-import About from '../containers/about';
-import HouseOfFame from '../containers/house-of-fame';
-import TermsAndConditions from '../containers/terms-and-conditions';
-import FourOFour from '../containers/404';
+import Home from '../pages/home';
+import About from '../pages/about';
+import HouseOfFame from '../pages/house-of-fame';
+import TermsAndConditions from '../pages/terms-and-conditions';
+import FourOFour from '../pages/404';
 
 // User
-import Register from '../containers/register';
-import Login from '../containers/login';
-import Logout from '../containers/logout';
-import Profile from '../containers/profile';
+import Register from '../pages/register';
+import Login from '../pages/login';
+import Logout from '../pages/logout';
+import Profile from '../pages/profile';
 
 // Games
 import ForestRunner from '../components/Games/ForestRunner';
-import Games from '../containers/games'; // TODO
+import Games from '../pages/games'; // TODO
 import Progress from '../components/Games/ForestRunner/Progress'; // TODO
 import Shop from '../components/Games/ForestRunner/Shop';
 import Inventory from '../components/Games/ForestRunner/Inventory';
 import Character from '../components/Games/ForestRunner/Character';
 
 // Puzzles
-import Puzzles from '../containers/puzzles'; // TODO
+import Puzzles from '../pages/puzzles'; // TODO
 
 // Memes
-import Social from '../containers/social';
-import AddMeme from '../containers/social/add-meme';
-import ViewMeme from '../containers/social/view-meme';
-import EditMeme from '../containers/social/edit-meme';
-import DeleteMeme from '../containers/social/delete-meme';
+import Social from '../pages/social';
+import AddMeme from '../pages/social/add-meme';
+import ViewMeme from '../pages/social/view-meme';
+import EditMeme from '../pages/social/edit-meme';
+import DeleteMeme from '../pages/social/delete-meme';
 
 // Utility
 import GameOptionBar from '../components/GameOptionBar';
