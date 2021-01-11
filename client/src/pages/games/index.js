@@ -1,6 +1,6 @@
+import PageMainLayout from '../../layouts/PageMain';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
-import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function GamesContainer() {
     return (

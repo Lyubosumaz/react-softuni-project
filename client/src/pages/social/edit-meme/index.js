@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import EditMeme from '../../../components/Social/EditMeme';
-import PageMainLayout from '../../../containers/PageMainLayout';
+import PageMainLayout from '../../../layouts/PageMain';
 
 export default function EditMemeContainer({ match }) {
     const memeId = match.params.id;

@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { history } from '../../utils/history';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { setNotification } from '../../components/Notification/actions';
 import { httpUser } from '../../services/http';
-import schema from './register-validations';
-import { setNotification } from '../Notification/actions';
+import { buttonClass, formBtnClass, formComponent, formFieldsWrapper } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
-import { formComponent, formFieldsWrapper, buttonClass, formBtnClass } from '../../utils/class-names.json';
+import { history } from '../../utils/history';
+import schema from './register-validations';
 
 function Register({ setNotificationSuccess, setNotificationError }) {
     const username = useFormInput('');

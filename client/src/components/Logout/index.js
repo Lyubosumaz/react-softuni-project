@@ -1,11 +1,11 @@
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { setLogoutValue } from '../../containers/Login/actions';
 import { removeAllCookies } from '../../services/cookies';
 import { httpUser } from '../../services/http';
 import { buttonClass, componentData } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 import { history } from '../../utils/history';
-import { setLogoutValue } from '../Login/actions';
 import { setNotification } from '../Notification/actions';
 
 function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {

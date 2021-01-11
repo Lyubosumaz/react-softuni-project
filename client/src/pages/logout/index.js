@@ -1,5 +1,5 @@
 import Logout from '../../components/Logout';
-import PageMainLayout from '../../containers/PageMainLayout';
+import PageMainLayout from '../../layouts/PageMain';
 
 export default function LogoutContainer() {
     return (

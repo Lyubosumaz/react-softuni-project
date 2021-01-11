@@ -1,5 +1,5 @@
-import Login from '../../components/Login';
-import PageMainLayout from '../../containers/PageMainLayout';
+import Login from '../../containers/Login';
+import PageMainLayout from '../../layouts/PageMain';
 
 export default function LoginContainer() {
     return (

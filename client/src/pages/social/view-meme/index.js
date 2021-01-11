@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import ViewMeme from '../../../components/Social/ViewMeme';
-import PageMainLayout from '../../../containers/PageMainLayout';
+import PageMainLayout from '../../../layouts/PageMain';
 
 export default function ViewMemeContainer({ match }) {
     const memeId = match.params.id;

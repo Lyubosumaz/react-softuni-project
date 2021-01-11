@@ -1,5 +1,5 @@
 import AddMeme from '../../../components/Social/AddMeme';
-import PageMainLayout from '../../../containers/PageMainLayout';
+import PageMainLayout from '../../../layouts/PageMain';
 
 export default function AddMemeContainer() {
     return (

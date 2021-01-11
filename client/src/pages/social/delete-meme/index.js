@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import DeleteMeme from '../../../components/Social/DeleteMeme';
-import PageMainLayout from '../../../containers/PageMainLayout';
+import PageMainLayout from '../../../layouts/PageMain';
 
 export default function DeleteMemeContainer({ match }) {
     const memeId = match.params.id;

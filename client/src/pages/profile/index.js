@@ -1,5 +1,5 @@
 import Profile from '../../components/Profile';
-import PageMainLayout from '../../containers/PageMainLayout';
+import PageMainLayout from '../../layouts/PageMain';
 
 export default function ProfileContainer() {
     return (

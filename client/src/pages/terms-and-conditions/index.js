@@ -1,5 +1,5 @@
 import TermsAndConditions from '../../components/TermsAndConditions';
-import PageMainLayout from '../../containers/PageMainLayout';
+import PageMainLayout from '../../layouts/PageMain';
 
 export default function TermsAndConditionsContainer() {
     return (

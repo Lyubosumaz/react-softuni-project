@@ -1,12 +1,12 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import { setLoginValue } from './actions';
-import { history } from '../../utils/history';
+import { setNotification } from '../../components/Notification/actions';
 import { httpUser } from '../../services/http';
+import { formBtnClass, formComponent, formFieldsWrapper } from '../../utils/class-names.json';
+import { history } from '../../utils/history';
+import { setLoginValue } from './actions';
 import schema from './login-validations';
-import { setNotification } from '../Notification/actions';
-import { formComponent, formFieldsWrapper, formBtnClass } from '../../utils/class-names.json';
 
 function Login({ setLoginValue, setNotificationSuccess }) {
     const username = useFormInput('');
