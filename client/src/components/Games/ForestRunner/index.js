@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { httpGame } from '../../../services/http';
 import Overlay from '../../GamePopup';
 import Timer from '../../Timer';
-import { httpGame } from '../../../services/http';
 import World from './components/world/World';
 
-function Game({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {
+function ForestRunner({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveGameItems(items));
@@ -57,9 +57,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(ForestRunner);
 
-Game.propTypes = {
+ForestRunner.propTypes = {
     inGame: PropTypes.bool.isRequired,
     time: PropTypes.number.isRequired,
     resetPlayerLocation: PropTypes.func.isRequired,

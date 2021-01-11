@@ -1,13 +1,14 @@
 import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
-import { store } from '../../../../../services/store';
+import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
-// import { toastSuccess } from '../../../../utils/toastHandler';
+import { store } from '../../../../../services/store';
+import { setNotification } from '../../../../Notification/actions';
+import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
+// TODO this should be selectable
 import { tiles } from '../data/maps/2';
-// import { connect } from 'react-redux';
 
-export default function HandleMovement({ children }) {
+function HandleMovement({ children, movement, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -57,16 +58,9 @@ export default function HandleMovement({ children }) {
 
     function dispatchMove(direction, newPos) {
         const walkIndex = getWalkIndex();
+        const spriteLocation = getSpriteLocation(direction, walkIndex);
 
-        store.dispatch({
-            type: 'MOVE_PLAYER',
-            payload: {
-                position: newPos,
-                direction,
-                walkIndex,
-                spriteLocation: getSpriteLocation(direction, walkIndex),
-            },
-        });
+        movement(newPos, direction, walkIndex, spriteLocation);
     }
 
     function attemptMove(direction) {
@@ -120,7 +114,7 @@ export default function HandleMovement({ children }) {
                             level: store.getState().game.level,
                         });
 
-                        // toastSuccess('Welcome the next level!');
+                        setNotificationSuccess('Welcome the next level!');
 
                         store.dispatch({
                             type: 'END_THE_GAME',
@@ -142,12 +136,14 @@ export default function HandleMovement({ children }) {
                 if (store.getState().game.gold > 0) {
                     return;
                 }
+
                 const gold = Math.floor(Math.random() * 10 + 1);
                 store.dispatch({
                     type: 'OPEN_GOLD_CHEST',
                     payload: gold,
                 });
-                // toastSuccess(`You have picked up ${gold} gold!`);
+
+                setNotificationSuccess(`You have picked up ${gold} gold!`);
                 break;
             case 3:
                 if (store.getState().game.item.length > 0) {
@@ -158,7 +154,8 @@ export default function HandleMovement({ children }) {
                     type: 'OPEN_ITEM_CHEST',
                     payload: item,
                 });
-                // toastSuccess(`You have found ${item.itemName}!`);
+
+                setNotificationSuccess(`You have found ${item.itemName}!`);
                 break;
             default:
                 break;
@@ -167,8 +164,28 @@ export default function HandleMovement({ children }) {
 
     return (
         <Fragment>
-            <KeyboardEventHandler handleKeys={['left', 'right', 'up', 'down']} onKeyEvent={(key, e) => handleKeyDown(e)} />
+            <KeyboardEventHandler handleKeys={['left', 'right', 'up', 'down']} onKeyEvent={(_, e) => handleKeyDown(e)} />
             {children}
         </Fragment>
     );
 }
+
+function mapStateToProps(state) {}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        movement: (newPos, direction, walkIndex, spriteLocation) =>
+            dispatch({
+                type: 'MOVE_PLAYER',
+                payload: {
+                    position: newPos,
+                    direction,
+                    walkIndex,
+                    spriteLocation,
+                },
+            }),
+        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HandleMovement);
