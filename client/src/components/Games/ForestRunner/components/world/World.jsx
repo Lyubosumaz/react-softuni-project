@@ -3,7 +3,8 @@ import { PropTypes } from 'prop-types';
 import Map from '../map/Map';
 import Player from '../player/Player';
 import { tiles } from '../data/maps/1';
-import { store } from '../../../../services/store';
+// TODO check if store is needed like this
+import { store } from '../../../../../services/store';
 
 function World({ setTiles }) {
     //TODO level system

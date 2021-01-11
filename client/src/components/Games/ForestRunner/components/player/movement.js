@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
-import { store } from '../../../../services/store';
-import { httpGame } from '../../../../services/http';
+import { store } from '../../../../../services/store';
+import { httpGame } from '../../../../../services/http';
 // import { toastSuccess } from '../../../../utils/toastHandler';
 import { tiles } from '../data/maps/2';
 // import { connect } from 'react-redux';

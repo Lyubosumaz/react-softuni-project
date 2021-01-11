@@ -18,8 +18,8 @@ import Logout from '../containers/logout';
 import Profile from '../containers/profile';
 
 // Games
+import ForestRunner from '../components/Games/ForestRunner';
 import Games from '../containers/games'; // TODO
-import Game from '../containers/game/Game';
 import Progress from '../components/Games/ForestRunner/Progress'; // TODO
 import Shop from '../components/Games/ForestRunner/Shop';
 import Inventory from '../components/Games/ForestRunner/Inventory';
@@ -56,7 +56,7 @@ export default function AppRouter() {
                     render={({ match: { url } }) => (
                         <Fragment key={numberGenerator()}>
                             <GameOptionBar />
-                            <AuthRoute path={`${url}/`} exact component={Game} />
+                            <AuthRoute path={`${url}/`} exact component={ForestRunner} />
                             <AuthRoute path={`${url}/progress`} exact component={Progress} />
                             <AuthRoute path={`${url}/shop`} exact component={Shop} />
                             <AuthRoute path={`${url}/inventory`} exact component={Inventory} />

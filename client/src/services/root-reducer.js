@@ -4,14 +4,15 @@ import storage from 'redux-persist/lib/storage';
 
 import playerReducer from '../containers/game/components/player/reducer';
 import mapReducer from '../containers/game/components/map/reducer';
-import gameReducer from '../containers/game/reducer';
+// import gameReducer from '../containers/game/reducer';
+import gameForestRunnerReducer from '../components/Games/ForestRunner/reducer';
 import userReducer from '../components/Login/reducer';
 import notificationReducer from '../components/Notification/reducer';
 
 const appReducer = combineReducers({
     player: playerReducer,
     map: mapReducer,
-    game: gameReducer,
+    game: gameForestRunnerReducer,
     user: userReducer,
     notification: notificationReducer,
 });
