@@ -1,14 +1,10 @@
-import Title from '../../components/Title';
 import HouseOfFame from '../../components/HouseOfFame';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function HouseOfFameContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <HouseOfFame />
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }

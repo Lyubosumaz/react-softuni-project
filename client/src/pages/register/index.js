@@ -1,14 +1,10 @@
-import Title from '../../components/Title';
 import Register from '../../components/Register';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function RegisterContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <Register />
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }

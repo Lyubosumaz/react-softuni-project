@@ -1,14 +1,10 @@
-import Title from '../../components/Title';
 import Profile from '../../components/Profile';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function ProfileContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <Profile />
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }

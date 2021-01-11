@@ -1,14 +1,10 @@
-import Title from '../../components/Title';
 import Login from '../../components/Login';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function LoginContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <Login />
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }

@@ -1,14 +1,10 @@
-import Title from '../../components/Title';
 import Social from '../../components/Social';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function SocialContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <Social />
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }

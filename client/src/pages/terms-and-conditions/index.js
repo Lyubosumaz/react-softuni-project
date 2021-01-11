@@ -1,14 +1,10 @@
-import Title from '../../components/Title';
 import TermsAndConditions from '../../components/TermsAndConditions';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function TermsAndConditionsContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <TermsAndConditions />
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }

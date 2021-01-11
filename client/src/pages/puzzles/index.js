@@ -1,13 +1,9 @@
-import Title from '../../components/Title';
-import Info from '../../components/Info';
-import { containerWrapper } from '../../utils/class-names.json';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function PuzzlesContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             <p>In progress...</p>
-            <Info />
-        </section>
+        </PageMainLayout>
     );
 }
