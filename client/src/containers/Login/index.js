@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { setNotification } from '../../components/Notification/actions';
 import { httpUser } from '../../services/http';
+import { setLoginValue } from '../../services/redux/ducks/user';
 import { formBtnClass, formComponent, formFieldsWrapper } from '../../utils/class-names.json';
 import { history } from '../../utils/history';
-import { setLoginValue } from './actions';
 import schema from './login-validations';
 
-function Login({ setLoginValue, setNotificationSuccess }) {
+function Login({ setLoginValueProps, setNotificationSuccess }) {
     const username = useFormInput('');
     const password = useFormInput('');
     const [errors, setErrors] = useState({});
@@ -49,7 +49,7 @@ function Login({ setLoginValue, setNotificationSuccess }) {
             httpUser
                 .login(data)
                 .then((user) => {
-                    setLoginValue(user);
+                    setLoginValueProps(user);
                     setNotificationSuccess('You have Logged successfully!');
                     history.push('/home');
                 })
@@ -115,7 +115,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLoginValue: (data) => dispatch(setLoginValue(data)),
+        setLoginValueProps: (data) => dispatch(setLoginValue(data)),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }
@@ -123,6 +123,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 Login.propTypes = {
-    setLoginValue: PropTypes.func.isRequired,
+    setLoginValueProps: PropTypes.func.isRequired,
     setNotificationSuccess: PropTypes.func.isRequired,
 };

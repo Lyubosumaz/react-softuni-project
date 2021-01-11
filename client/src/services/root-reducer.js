@@ -7,7 +7,7 @@ import playerReducer from '../components/Games/ForestRunner/components/player/re
 import mapReducer from '../components/Games/ForestRunner/components/map/reducer';
 import gameReducer from '../components/Games/ForestRunner/reducer';
 
-import userReducer from '../containers/Login/reducer';
+import userReducer from './redux/ducks/user';
 import notificationReducer from '../components/Notification/reducer';
 
 const appReducer = combineReducers({
