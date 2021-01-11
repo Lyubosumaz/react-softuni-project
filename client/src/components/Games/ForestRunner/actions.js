@@ -5,6 +5,7 @@ export const generalActions = {
     OPEN_ITEM_CHEST: 'OPEN_ITEM_CHEST',
 };
 
+// functions used in HandleMovement component
 export const finishGameLevel = () => ({
     type: generalActions.FINISH_GAME_LEVEL,
     payload: false,

@@ -15,20 +15,13 @@ const initialState = {
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SAVE_GAME_ITEMS_LOOT':
+        // { FINISH_GAME_LEVEL, OPEN_GOLD_CHEST, OPEN_ITEM_CHEST, SET_GAME_TIMER}: HandleMovement component
+        case generalActions.FINISH_GAME_LEVEL:
             return {
                 ...state,
-                gameItems: action.payload,
-            };
-        case generalActions.SET_GAME_TIMER:
-            return {
-                ...state,
-                handleGameTimer: action.payload === 'start' ? true : false,
-            };
-        case 'SET_TIME':
-            return {
-                ...state,
-                time: action.payload,
+                inGame: action.payload,
+                // TODO this value is hardcoded need logic for next levels
+                level: 2,
             };
         case generalActions.OPEN_GOLD_CHEST:
             return {
@@ -40,17 +33,25 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 item: state.item.concat(action.payload),
             };
+        case generalActions.SET_GAME_TIMER:
+            return {
+                ...state,
+                handleGameTimer: action.payload === 'start' ? true : false,
+            };
+        case 'SAVE_GAME_ITEMS_LOOT':
+            return {
+                ...state,
+                gameItems: action.payload,
+            };
+        case 'SET_TIME':
+            return {
+                ...state,
+                time: action.payload,
+            };
         case 'START_THE_GAME':
             return {
                 ...state,
                 inGame: action.payload,
-            };
-        case generalActions.FINISH_GAME_LEVEL:
-            return {
-                ...state,
-                inGame: action.payload,
-                // TODO this value is hardcoded need logic for next levels
-                level: 2,
             };
         case 'RESET_GAME_LEVEL':
             return {
