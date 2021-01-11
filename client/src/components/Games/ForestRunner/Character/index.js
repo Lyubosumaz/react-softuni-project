@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { setRemoveItem } from './actions';
-import { httpGame } from '../../../../services/http';
-import { setNotification } from '../../../../components/Notification/actions';
-import MainStatistic from '../../../../components/MainStatistic';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
+import MainStatistic from '../../../../components/MainStatistic';
+import { setNotification } from '../../../../components/Notification/actions';
+import { httpGame } from '../../../../services/http';
+import { setRemoveItem } from './actions';
 
 function Character({ characterRemoveItem, setRemoveItemProps, setNotificationError }) {
     const [items, setItems] = useState([]);
@@ -63,7 +63,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setRemoveItemProps: () => dispatch(setRemoveItem(false)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

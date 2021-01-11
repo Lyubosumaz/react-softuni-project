@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
-import { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
-import { httpGame } from '../../../../services/http';
-import { setNotification } from '../../../../components/Notification/actions';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
+import { setNotification } from '../../../../components/Notification/actions';
+import { httpGame } from '../../../../services/http';
 
 function Shop({ setNotificationError }) {
     const [items, setItems] = useState([]);
@@ -35,7 +35,7 @@ function Shop({ setNotificationError }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

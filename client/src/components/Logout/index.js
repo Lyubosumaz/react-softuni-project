@@ -45,8 +45,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setLogoutValueProps: () => dispatch(setLogoutValue()),
-        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

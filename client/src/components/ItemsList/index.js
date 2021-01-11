@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
+import { Fragment } from 'react';
+import { connect } from 'react-redux';
 import { httpGame } from '../../services/http';
+import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
 import { currentPage } from '../../utils/pathHandler';
 import { numberGenerator } from '../../utils/stringHandler';
-import { factoryButtons } from '../../utils/factory';
 import { setNotification } from '../Notification/actions';
-import { buttonClass } from '../../utils/class-names.json';
 
 function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotificationInfo, setNotificationError }) {
     const initializedItemsListBtn = factoryButtons({ buttonStyles: buttonClass.ItemList });
@@ -143,8 +143,8 @@ function mapDispatchToProps(dispatch) {
                 type: 'CHARACTER_REMOVE_ITEM',
                 payload: true,
             }),
-        setNotificationInfo: (data) => dispatch(setNotification().info(data)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationInfo: (data) => dispatch(setNotification(data).info()),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

@@ -1,12 +1,12 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import { history } from '../../../utils/history';
 import { httpSocial } from '../../../services/http';
-import { getImage, gcd, imageRatio, imageOrientation, imageAltName } from '../../../utils/imageHandler';
-import schema from './add-meme-validations';
+import { formBtnClass, formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
+import { history } from '../../../utils/history';
+import { gcd, getImage, imageAltName, imageOrientation, imageRatio } from '../../../utils/imageHandler';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper, formBtnClass } from '../../../utils/class-names.json';
+import schema from './add-meme-validations';
 
 function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -136,8 +136,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { history } from '../../../utils/history';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
+import { formBtnClass, formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
+import { history } from '../../../utils/history';
 import { setNotification } from '../../Notification/actions';
-import { formComponent, formFieldsWrapper, formBtnClass } from '../../../utils/class-names.json';
 
 function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;
@@ -70,8 +70,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

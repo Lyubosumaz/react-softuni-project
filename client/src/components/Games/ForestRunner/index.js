@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
 import Overlay from '../../GamePopup';
 import Timer from '../../Timer';
+import { resetGameLevel, saveGameItems } from './actions';
+import { resetPlayerLocation } from './components/player/actions';
 import World from './components/world/World';
 
-function ForestRunner({ inGame, time, resetPlayerLocation, resetGameLevel, saveGameItems }) {
+function ForestRunner({ inGame, resetPlayerLocation, resetGameLevel, saveGameItems }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveGameItems(items));
@@ -35,25 +37,14 @@ function ForestRunner({ inGame, time, resetPlayerLocation, resetGameLevel, saveG
 function mapStateToProps(state) {
     return {
         inGame: state.game.inGame,
-        time: state.game.time,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        resetPlayerLocation: () =>
-            dispatch({
-                type: 'RESET_PLAYER_LOCATION',
-            }),
-        resetGameLevel: () =>
-            dispatch({
-                type: 'RESET_GAME_LEVEL',
-            }),
-        saveGameItems: (items) =>
-            dispatch({
-                type: 'SAVE_GAME_ITEMS_LOOT',
-                payload: items,
-            }),
+        resetPlayerLocation: () => dispatch(resetPlayerLocation()),
+        resetGameLevel: () => dispatch(resetGameLevel()),
+        saveGameItems: (items) => dispatch(saveGameItems(items)),
     };
 }
 
@@ -61,7 +52,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(ForestRunner);
 
 ForestRunner.propTypes = {
     inGame: PropTypes.bool.isRequired,
-    time: PropTypes.number.isRequired,
     resetPlayerLocation: PropTypes.func.isRequired,
     resetGameLevel: PropTypes.func.isRequired,
     saveGameItems: PropTypes.func.isRequired,

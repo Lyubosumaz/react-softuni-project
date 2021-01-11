@@ -13,6 +13,6 @@ export const changeMovement = (newPos, direction, walkIndex, spriteLocation) => 
     },
 });
 
-export const resetMovement = () => ({
+export const resetPlayerLocation = () => ({
     type: generalActions.RESET_PLAYER_LOCATION,
 });

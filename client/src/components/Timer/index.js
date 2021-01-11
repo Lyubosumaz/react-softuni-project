@@ -1,8 +1,8 @@
 import { PropTypes } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { setTime } from '../../components/Games/ForestRunner/actions';
 import { secondsToClock } from '../../utils/stringHandler';
-import { setTimeValue } from './actions';
 
 function Timer({ handleGameTimer, level, setTimeValue }) {
     const [count, setCount] = useState(0);
@@ -41,7 +41,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setTimeValue: (data) => dispatch(setTimeValue(data)),
+        setTimeValue: (data) => dispatch(setTime(data)),
     };
 }
 

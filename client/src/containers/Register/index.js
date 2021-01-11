@@ -173,8 +173,8 @@ function Register({ setNotificationSuccess, setNotificationError }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

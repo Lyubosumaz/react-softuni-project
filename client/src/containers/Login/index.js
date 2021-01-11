@@ -116,7 +116,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setLoginValue: (data) => dispatch(setLoginValue(data)),
-        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }
 

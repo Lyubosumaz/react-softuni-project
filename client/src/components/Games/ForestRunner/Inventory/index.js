@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { setSellItem, setEquipItem } from './actions';
-import { httpGame } from '../../../../services/http';
-import { setNotification } from '../../../../components/Notification/actions';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
+import { setNotification } from '../../../../components/Notification/actions';
+import { httpGame } from '../../../../services/http';
+import { setEquipItem, setSellItem } from './actions';
 
-function Inventory({
-    inventorySellItem,
-    inventoryEquipItem,
-    setSellItemProps,
-    setEquipItemProps,
-    setNotificationError
-}) {
+function Inventory({ inventorySellItem, inventoryEquipItem, setSellItemProps, setEquipItemProps, setNotificationError }) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -56,7 +50,7 @@ function mapDispatchToProps(dispatch) {
     return {
         setSellItemProps: () => dispatch(setSellItem(false)),
         setEquipItemProps: () => dispatch(setEquipItem(false)),
-        setNotificationError: (data) => dispatch(setNotification().error(data)),
+        setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
 }
 

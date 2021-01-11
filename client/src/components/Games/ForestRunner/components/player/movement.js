@@ -98,7 +98,7 @@ function HandleMovement({ children, changeMovement, setTiles, setGameTimer, open
             case 1:
                 if (!store.getState().game.item.length) openItemChest({ itemName: "You didn't loot anything" });
 
-                Promise.resolve(setGameTimer('stop'))
+                Promise.resolve(setGameTimer())
                     .then(() => {
                         httpGame.save({
                             totalGold: store.getState().game.gold,
@@ -150,11 +150,11 @@ function mapDispatchToProps(dispatch) {
     return {
         changeMovement: (newPos, direction, walkIndex, spriteLocation) => dispatch(changeMovement(newPos, direction, walkIndex, spriteLocation)),
         setTiles: (data) => dispatch(setTiles(data)),
-        setGameTimer: (data) => dispatch(setGameTimer(data)),
+        setGameTimer: () => dispatch(setGameTimer().stop()),
         openGoldChest: (data) => dispatch(openGoldChest(data)),
         openItemChest: (data) => dispatch(openItemChest(data)),
         finishGameLevel: () => dispatch(finishGameLevel()),
-        setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
+        setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }
 

@@ -36,14 +36,23 @@ const gameReducer = (state = initialState, action) => {
         case generalActions.SET_GAME_TIMER:
             return {
                 ...state,
-                handleGameTimer: action.payload === 'start' ? true : false,
+                handleGameTimer: action.payload,
             };
-        case 'SAVE_GAME_ITEMS_LOOT':
+        // { RESET_GAME_LEVEL, SAVE_GAME_ITEMS }: ForestRunner component
+        case generalActions.RESET_GAME_LEVEL:
+            return {
+                ...state,
+                gold: 0,
+                item: [],
+                time: 0,
+            };
+        case generalActions.SAVE_GAME_ITEMS:
             return {
                 ...state,
                 gameItems: action.payload,
             };
-        case 'SET_TIME':
+        // { SET_TIME }: Timer component
+        case generalActions.SET_TIME:
             return {
                 ...state,
                 time: action.payload,
@@ -53,13 +62,7 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 inGame: action.payload,
             };
-        case 'RESET_GAME_LEVEL':
-            return {
-                ...state,
-                gold: 0,
-                item: [],
-                time: 0,
-            };
+
         case 'CHARACTER_SELL_ITEM':
             return {
                 ...state,

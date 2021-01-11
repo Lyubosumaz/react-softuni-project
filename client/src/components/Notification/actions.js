@@ -7,28 +7,30 @@ export const generalActions = {
     REMOVE_ALL_NOTIFICATION: 'REMOVE_ALL_NOTIFICATION',
 };
 
-export const setNotification = () => {
+export const setNotification = (data) => {
+    const message = data.message ? data.message : data;
+
     return {
-        success: (data) => ({
+        success: () => ({
             type: generalActions.ADD_NEW_NOTIFICATION,
             payload: {
-                msg: data.message ? data.message : data,
+                msg: message,
                 _id: indexGenerator(),
                 options: notificationType.success,
             },
         }),
-        info: (data) => ({
+        info: () => ({
             type: generalActions.ADD_NEW_NOTIFICATION,
             payload: {
-                msg: data.message ? data.message : data,
+                msg: message,
                 _id: indexGenerator(),
                 options: notificationType.info,
             },
         }),
-        error: (data) => ({
+        error: () => ({
             type: generalActions.ADD_NEW_NOTIFICATION,
             payload: {
-                msg: data.message ? data.message : data,
+                msg: message,
                 _id: indexGenerator(),
                 options: notificationType.error,
             },
