@@ -8,7 +8,7 @@ import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
 
-function HandleMovement({ children, movement, setNotificationSuccess }) {
+function HandleMovement({ children, movement, openGoldChest, openItemChest, gameTimerState, endOfTheGame, addTiles, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -93,19 +93,9 @@ function HandleMovement({ children, movement, setNotificationSuccess }) {
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                if (store.getState().game.item.length === 0) {
-                    store.dispatch({
-                        type: 'OPEN_ITEM_CHEST',
-                        payload: { itemName: "You didn't loot anything" },
-                    });
-                }
+                if (!store.getState().game.item.length) openItemChest({ itemName: "You didn't loot anything" });
 
-                Promise.resolve(
-                    store.dispatch({
-                        type: 'GAME_TIMER_STATE',
-                        payload: false,
-                    })
-                )
+                Promise.resolve(gameTimerState())
                     .then(() => {
                         httpGame.save({
                             totalGold: store.getState().game.gold,
@@ -116,44 +106,27 @@ function HandleMovement({ children, movement, setNotificationSuccess }) {
 
                         setNotificationSuccess('Welcome the next level!');
 
-                        store.dispatch({
-                            type: 'END_THE_GAME',
-                            payload: false,
-                        });
+                        endOfTheGame();
 
-                        store.dispatch({
-                            type: 'ADD_TILES',
-                            payload: {
-                                tiles,
-                            },
-                        });
+                        addTiles({ tiles });
                     })
                     .catch((err) => {
                         console.error(err);
                     });
                 break;
             case 2:
-                if (store.getState().game.gold > 0) {
-                    return;
-                }
+                if (store.getState().game.gold > 0) return;
 
                 const gold = Math.floor(Math.random() * 10 + 1);
-                store.dispatch({
-                    type: 'OPEN_GOLD_CHEST',
-                    payload: gold,
-                });
+                openGoldChest(gold);
 
                 setNotificationSuccess(`You have picked up ${gold} gold!`);
                 break;
             case 3:
-                if (store.getState().game.item.length > 0) {
-                    return;
-                }
+                if (store.getState().game.item.length > 0) return;
+
                 const item = store.getState().game.gameItems[Math.ceil(Math.random() * 7)];
-                store.dispatch({
-                    type: 'OPEN_ITEM_CHEST',
-                    payload: item,
-                });
+                openItemChest(item);
 
                 setNotificationSuccess(`You have found ${item.itemName}!`);
                 break;
@@ -170,8 +143,6 @@ function HandleMovement({ children, movement, setNotificationSuccess }) {
     );
 }
 
-function mapStateToProps(state) {}
-
 function mapDispatchToProps(dispatch) {
     return {
         movement: (newPos, direction, walkIndex, spriteLocation) =>
@@ -184,8 +155,33 @@ function mapDispatchToProps(dispatch) {
                     spriteLocation,
                 },
             }),
+        openGoldChest: (data) =>
+            dispatch({
+                type: 'OPEN_GOLD_CHEST',
+                payload: data,
+            }),
+        openItemChest: (data) =>
+            dispatch({
+                type: 'OPEN_ITEM_CHEST',
+                payload: data,
+            }),
+        gameTimerState: () =>
+            dispatch({
+                type: 'GAME_TIMER_STATE',
+                payload: false,
+            }),
+        endOfTheGame: () =>
+            dispatch({
+                type: 'END_THE_GAME',
+                payload: false,
+            }),
+        addTiles: (data) =>
+            dispatch({
+                type: 'ADD_TILES',
+                payload: data,
+            }),
         setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HandleMovement);
+export default connect(null, mapDispatchToProps)(HandleMovement);
