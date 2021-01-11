@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
 import { store } from '../../../../../services/store';
 import { setNotification } from '../../../../Notification/actions';
+import { finishGameLevel, openGoldChest, openItemChest, stopGameTimer } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
+import { setTiles } from '../map/actions'; // map reducer
+import { changeMovement } from './actions'; // player reducer
 
-function HandleMovement({ children, movement, openGoldChest, openItemChest, gameTimerState, endOfTheGame, addTiles, setNotificationSuccess }) {
+function HandleMovement({ children, changeMovement, setTiles, stopGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -60,7 +63,7 @@ function HandleMovement({ children, movement, openGoldChest, openItemChest, game
         const walkIndex = getWalkIndex();
         const spriteLocation = getSpriteLocation(direction, walkIndex);
 
-        movement(newPos, direction, walkIndex, spriteLocation);
+        changeMovement(newPos, direction, walkIndex, spriteLocation);
     }
 
     function attemptMove(direction) {
@@ -95,7 +98,7 @@ function HandleMovement({ children, movement, openGoldChest, openItemChest, game
             case 1:
                 if (!store.getState().game.item.length) openItemChest({ itemName: "You didn't loot anything" });
 
-                Promise.resolve(gameTimerState())
+                Promise.resolve(stopGameTimer())
                     .then(() => {
                         httpGame.save({
                             totalGold: store.getState().game.gold,
@@ -106,9 +109,9 @@ function HandleMovement({ children, movement, openGoldChest, openItemChest, game
 
                         setNotificationSuccess('Welcome the next level!');
 
-                        endOfTheGame();
+                        finishGameLevel();
 
-                        addTiles({ tiles });
+                        setTiles({ tiles });
                     })
                     .catch((err) => {
                         console.error(err);
@@ -145,41 +148,12 @@ function HandleMovement({ children, movement, openGoldChest, openItemChest, game
 
 function mapDispatchToProps(dispatch) {
     return {
-        movement: (newPos, direction, walkIndex, spriteLocation) =>
-            dispatch({
-                type: 'MOVE_PLAYER',
-                payload: {
-                    position: newPos,
-                    direction,
-                    walkIndex,
-                    spriteLocation,
-                },
-            }),
-        openGoldChest: (data) =>
-            dispatch({
-                type: 'OPEN_GOLD_CHEST',
-                payload: data,
-            }),
-        openItemChest: (data) =>
-            dispatch({
-                type: 'OPEN_ITEM_CHEST',
-                payload: data,
-            }),
-        gameTimerState: () =>
-            dispatch({
-                type: 'GAME_TIMER_STATE',
-                payload: false,
-            }),
-        endOfTheGame: () =>
-            dispatch({
-                type: 'END_THE_GAME',
-                payload: false,
-            }),
-        addTiles: (data) =>
-            dispatch({
-                type: 'ADD_TILES',
-                payload: data,
-            }),
+        changeMovement: (newPos, direction, walkIndex, spriteLocation) => dispatch(changeMovement(newPos, direction, walkIndex, spriteLocation)),
+        setTiles: (data) => dispatch(setTiles(data)),
+        stopGameTimer: () => dispatch(stopGameTimer()),
+        openGoldChest: (data) => dispatch(openGoldChest(data)),
+        openItemChest: (data) => dispatch(openItemChest(data)),
+        finishGameLevel: () => dispatch(finishGameLevel()),
         setNotificationSuccess: (data) => dispatch(setNotification().success(data)),
     };
 }

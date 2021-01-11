@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import { SPRITE_SIZE } from '../../constants';
 import './map.css';
 
@@ -55,7 +55,7 @@ function Map({ tiles }) {
                 left: '0px',
                 width: '1600px',
                 height: '650px',
-                border: '4px solid white',
+                border: '4px solid black',
             }}
         >
             {tiles.length && tiles.map((row, index) => <MapRow key={index} tiles={row} />)}

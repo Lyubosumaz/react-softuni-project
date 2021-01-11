@@ -1,3 +1,5 @@
+import { generalActions } from './actions';
+
 const initialState = {
     inGame: false,
     gold: 0,
@@ -18,7 +20,7 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 gameItems: action.payload,
             };
-        case 'GAME_TIMER_STATE':
+        case generalActions.GAME_TIMER_STATE:
             return {
                 ...state,
                 handleGameTimer: action.payload,
@@ -28,12 +30,12 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 time: action.payload,
             };
-        case 'OPEN_GOLD_CHEST':
+        case generalActions.OPEN_GOLD_CHEST:
             return {
                 ...state,
                 gold: (state.gold += action.payload),
             };
-        case 'OPEN_ITEM_CHEST':
+        case generalActions.OPEN_ITEM_CHEST:
             return {
                 ...state,
                 item: state.item.concat(action.payload),
@@ -43,10 +45,11 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 inGame: action.payload,
             };
-        case 'END_THE_GAME':
+        case generalActions.FINISH_GAME_LEVEL:
             return {
                 ...state,
                 inGame: action.payload,
+                // TODO this value is hardcoded need logic for next levels
                 level: 2,
             };
         case 'RESET_GAME_LEVEL':

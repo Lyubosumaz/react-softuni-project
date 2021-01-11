@@ -1,25 +1,27 @@
+import { generalActions } from './actions';
+
 const initialState = {
     position: [0, 0],
-    spriteLocation: '0px 0px',
     default: 'EAST',
     walkIndex: 0,
+    spriteLocation: '0px 0px',
 };
 
 const playerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'MOVE_PLAYER':
+        case generalActions.MOVE_PLAYER:
             return {
                 ...state,
                 ...action.payload,
-            }
-        case 'RESET_PLAYER_LOCATION':
+            };
+        case generalActions.RESET_PLAYER_LOCATION:
             return {
                 ...state,
-                ...initialState
-            }
+                ...initialState,
+            };
         default:
             return state;
-    };
+    }
 };
 
 export default playerReducer;
