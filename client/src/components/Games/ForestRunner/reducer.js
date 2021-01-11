@@ -20,10 +20,10 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 gameItems: action.payload,
             };
-        case generalActions.GAME_TIMER_STATE:
+        case generalActions.SET_GAME_TIMER:
             return {
                 ...state,
-                handleGameTimer: action.payload,
+                handleGameTimer: action.payload === 'start' ? true : false,
             };
         case 'SET_TIME':
             return {

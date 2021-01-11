@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
 import { store } from '../../../../../services/store';
 import { setNotification } from '../../../../Notification/actions';
-import { finishGameLevel, openGoldChest, openItemChest, stopGameTimer } from '../../actions'; // game reducer
+import { finishGameLevel, openGoldChest, openItemChest, setGameTimer } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
 import { setTiles } from '../map/actions'; // map reducer
 import { changeMovement } from './actions'; // player reducer
 
-function HandleMovement({ children, changeMovement, setTiles, stopGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
+function HandleMovement({ children, changeMovement, setTiles, setGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -98,7 +98,7 @@ function HandleMovement({ children, changeMovement, setTiles, stopGameTimer, ope
             case 1:
                 if (!store.getState().game.item.length) openItemChest({ itemName: "You didn't loot anything" });
 
-                Promise.resolve(stopGameTimer())
+                Promise.resolve(setGameTimer('stop'))
                     .then(() => {
                         httpGame.save({
                             totalGold: store.getState().game.gold,
@@ -150,7 +150,7 @@ function mapDispatchToProps(dispatch) {
     return {
         changeMovement: (newPos, direction, walkIndex, spriteLocation) => dispatch(changeMovement(newPos, direction, walkIndex, spriteLocation)),
         setTiles: (data) => dispatch(setTiles(data)),
-        stopGameTimer: () => dispatch(stopGameTimer()),
+        setGameTimer: (data) => dispatch(setGameTimer(data)),
         openGoldChest: (data) => dispatch(openGoldChest(data)),
         openItemChest: (data) => dispatch(openItemChest(data)),
         finishGameLevel: () => dispatch(finishGameLevel()),

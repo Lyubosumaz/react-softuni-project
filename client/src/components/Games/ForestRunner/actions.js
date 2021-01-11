@@ -1,6 +1,6 @@
 export const generalActions = {
     FINISH_GAME_LEVEL: 'FINISH_GAME_LEVEL',
-    GAME_TIMER_STATE: 'GAME_TIMER_STATE',
+    SET_GAME_TIMER: 'SET_GAME_TIMER', // GAME_TIMER_STATE
     OPEN_GOLD_CHEST: 'OPEN_GOLD_CHEST',
     OPEN_ITEM_CHEST: 'OPEN_ITEM_CHEST',
 };
@@ -10,15 +10,9 @@ export const finishGameLevel = () => ({
     payload: false,
 });
 
-// doesn't have case yet
-export const startGameTimer = () => ({
-    type: generalActions.GAME_TIMER_STATE,
-    payload: true,
-});
-
-export const stopGameTimer = () => ({
-    type: generalActions.GAME_TIMER_STATE,
-    payload: false,
+export const setGameTimer = (data) => ({
+    type: generalActions.SET_GAME_TIMER,
+    payload: data,
 });
 
 export const openGoldChest = (data) => ({
