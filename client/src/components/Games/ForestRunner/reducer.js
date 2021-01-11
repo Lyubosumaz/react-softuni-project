@@ -15,7 +15,13 @@ const initialState = {
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
-        // { FINISH_GAME_LEVEL, OPEN_GOLD_CHEST, OPEN_ITEM_CHEST, SET_GAME_TIMER}: HandleMovement component
+        // { SET_GAME_TIMER }: HandleMovement & GamePopup components
+        case generalActions.SET_GAME_TIMER:
+            return {
+                ...state,
+                handleGameTimer: action.payload,
+            };
+        // { FINISH_GAME_LEVEL, OPEN_GOLD_CHEST, OPEN_ITEM_CHEST }: HandleMovement component
         case generalActions.FINISH_GAME_LEVEL:
             return {
                 ...state,
@@ -33,11 +39,7 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 item: state.item.concat(action.payload),
             };
-        case generalActions.SET_GAME_TIMER:
-            return {
-                ...state,
-                handleGameTimer: action.payload,
-            };
+
         // { RESET_GAME_LEVEL, SAVE_GAME_ITEMS }: ForestRunner component
         case generalActions.RESET_GAME_LEVEL:
             return {
@@ -57,12 +59,12 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 time: action.payload,
             };
-        case 'START_THE_GAME':
+        // { START_GAME_LEVEL }: GamePopup component
+        case generalActions.START_GAME_LEVEL:
             return {
                 ...state,
                 inGame: action.payload,
             };
-
         case 'CHARACTER_SELL_ITEM':
             return {
                 ...state,
