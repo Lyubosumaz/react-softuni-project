@@ -9,11 +9,4 @@ export default function GamesContainer() {
             <p>In progress... Quick prevue of first game here: {factoryButtons({ buttonStyles: buttonClass.Games })('game', 'Forest Runner')}</p>
         </PageMainLayout>
     );
-
-    // <section className={`${containerWrapper}`}>
-    //     <Title />
-    //     {/* TODO adding carousel for the many games */}
-    //     <p>In progress... Quick prevue of first game here: {factoryButtons({ buttonStyles: buttonClass.Games })('game', 'Forest Runner')}</p>
-    //     <Info />
-    // </section>
 }
