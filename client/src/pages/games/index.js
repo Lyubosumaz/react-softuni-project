@@ -1,15 +1,19 @@
-import Info from '../../components/Info';
-import Title from '../../components/Title';
-import { buttonClass, containerWrapper } from '../../utils/class-names.json';
+import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
+import PageMainLayout from '../../containers/PageMainLayout';
 
 export default function GamesContainer() {
     return (
-        <section className={`${containerWrapper}`}>
-            <Title />
+        <PageMainLayout>
             {/* TODO adding carousel for the many games */}
             <p>In progress... Quick prevue of first game here: {factoryButtons({ buttonStyles: buttonClass.Games })('game', 'Forest Runner')}</p>
-            <Info />
-        </section>
+        </PageMainLayout>
     );
+
+    // <section className={`${containerWrapper}`}>
+    //     <Title />
+    //     {/* TODO adding carousel for the many games */}
+    //     <p>In progress... Quick prevue of first game here: {factoryButtons({ buttonStyles: buttonClass.Games })('game', 'Forest Runner')}</p>
+    //     <Info />
+    // </section>
 }
