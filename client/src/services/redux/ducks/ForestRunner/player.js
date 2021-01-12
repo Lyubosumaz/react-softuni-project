@@ -8,7 +8,7 @@ const initialState = {
     spriteLocation: '0px 0px',
 };
 
-export default function playerReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case PLAYER_SET_MOVEMENT:
             return {

@@ -4,7 +4,7 @@ const initialState = {
     tiles: [],
 };
 
-export default function mapReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case MAP_SET_TILES:
             return {
