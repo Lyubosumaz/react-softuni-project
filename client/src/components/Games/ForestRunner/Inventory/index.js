@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
 import { httpGame } from '../../../../services/http';
+import { setEquipItem, setSellItem } from '../../../../services/redux/ducks/menu';
 import { setNotification } from '../../../../services/redux/ducks/notification';
-import { setEquipItem, setSellItem } from './actions';
 
 function Inventory({ inventorySellItem, inventoryEquipItem, setSellItemProps, setEquipItemProps, setNotificationError }) {
     const [items, setItems] = useState([]);
@@ -41,8 +41,8 @@ function Inventory({ inventorySellItem, inventoryEquipItem, setSellItemProps, se
 
 function mapStateToProps(state) {
     return {
-        inventorySellItem: state.game.inventorySellItem,
-        inventoryEquipItem: state.game.inventoryEquipItem,
+        inventorySellItem: state.menu.sellingItem,
+        inventoryEquipItem: state.menu.equippingItem,
     };
 }
 

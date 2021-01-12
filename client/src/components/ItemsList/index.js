@@ -2,13 +2,14 @@ import { PropTypes } from 'prop-types';
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../services/http';
+import { setEquipItem, setRemoveItem, setSellItem } from '../../services/redux/ducks/menu';
 import { setNotification } from '../../services/redux/ducks/notification';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 import { currentPage } from '../../utils/pathHandler';
 import { numberGenerator } from '../../utils/stringHandler';
 
-function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotificationInfo, setNotificationError }) {
+function ItemsList({ items, setSellItemProps, setEquipItemProps, setRemoveItemProps, setNotificationInfo, setNotificationError }) {
     const initializedItemsListBtn = factoryButtons({ buttonStyles: buttonClass.ItemList });
     const itemsList = items;
 
@@ -31,7 +32,7 @@ function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotific
                 .sell(item._id)
                 .then((res) => {
                     setNotificationInfo(res);
-                    setSellItem();
+                    setSellItemProps();
                 })
                 .catch((err) => {
                     setNotificationError(err);
@@ -43,7 +44,7 @@ function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotific
                 .equip(item._id)
                 .then((res) => {
                     setNotificationInfo(res);
-                    setEquipItem();
+                    setEquipItemProps();
                 })
                 .catch((err) => {
                     setNotificationError(err);
@@ -55,7 +56,7 @@ function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotific
                 .remove(item._id)
                 .then((res) => {
                     setNotificationInfo(res);
-                    setRemoveItem();
+                    setRemoveItemProps();
                 })
                 .catch((err) => {
                     setNotificationError(err);
@@ -128,21 +129,9 @@ function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotific
 
 function mapDispatchToProps(dispatch) {
     return {
-        setSellItem: () =>
-            dispatch({
-                type: 'CHARACTER_SELL_ITEM',
-                payload: true,
-            }),
-        setEquipItem: () =>
-            dispatch({
-                type: 'CHARACTER_EQUIP_ITEM',
-                payload: true,
-            }),
-        setRemoveItem: () =>
-            dispatch({
-                type: 'CHARACTER_REMOVE_ITEM',
-                payload: true,
-            }),
+        setSellItemProps: () => dispatch(setSellItem(true)),
+        setEquipItemProps: () => dispatch(setEquipItem(true)),
+        setRemoveItemProps: () => dispatch(setRemoveItem(true)),
         setNotificationInfo: (data) => dispatch(setNotification(data).info()),
         setNotificationError: (data) => dispatch(setNotification(data).error()),
     };
@@ -163,9 +152,9 @@ ItemsList.propTypes = {
             __v: PropTypes.number.isRequired,
         }).isRequired
     ),
-    setSellItem: PropTypes.func.isRequired,
-    setEquipItem: PropTypes.func.isRequired,
-    setRemoveItem: PropTypes.func.isRequired,
+    setSellItemProps: PropTypes.func.isRequired,
+    setEquipItemProps: PropTypes.func.isRequired,
+    setRemoveItemProps: PropTypes.func.isRequired,
     setNotificationInfo: PropTypes.func.isRequired,
     setNotificationError: PropTypes.func.isRequired,
 };

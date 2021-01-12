@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
 import MainStatistic from '../../../../components/MainStatistic';
 import { httpGame } from '../../../../services/http';
+import { setRemoveItem } from '../../../../services/redux/ducks/menu';
 import { setNotification } from '../../../../services/redux/ducks/notification';
-import { setRemoveItem } from './actions';
 
 function Character({ characterRemoveItem, setRemoveItemProps, setNotificationError }) {
     const [items, setItems] = useState([]);
@@ -56,7 +56,7 @@ function Character({ characterRemoveItem, setRemoveItemProps, setNotificationErr
 
 function mapStateToProps(state) {
     return {
-        characterRemoveItem: state.game.characterRemoveItem,
+        characterRemoveItem: state.menu.removingItem,
     };
 }
 
