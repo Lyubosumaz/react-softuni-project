@@ -29,3 +29,24 @@ export default function reducer(state = initialState, action) {
             return state;
     }
 }
+
+export function setSellItem(data) {
+    return {
+        type: MENU_SELL_ITEM,
+        payload: data,
+    };
+}
+
+export function setEquipItem(data) {
+    return {
+        type: MENU_EQUIP_ITEM,
+        payload: data,
+    };
+}
+
+export function setRemoveItem(data) {
+    return {
+        type: MENU_REMOVE_ITEM,
+        payload: data,
+    };
+}

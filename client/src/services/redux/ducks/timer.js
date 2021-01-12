@@ -1,19 +1,19 @@
-const SET_GAME_TIMER = 'react-softuni-project/forest-runner/game/SET_GAME_TIMER'; // GAME_TIMER_STATE :popup have some need fix
-const SET_TIME = 'react-softuni-project/forest-runner/game/SET_TIME';
+const TIMER_SET_STATE = 'react-softuni-project/forest-runner/timer/set-state';
+const TIMER_SET_TIME = 'react-softuni-project/forest-runner/timer/save-time';
 
 const initialState = {
-    handleGameTimer: false,
+    isTimerOn: false,
     time: 0,
 };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case SET_GAME_TIMER:
+        case TIMER_SET_STATE:
             return {
                 ...state,
-                handleGameTimer: action.payload,
+                isTimerOn: action.payload,
             };
-        case SET_TIME:
+        case TIMER_SET_TIME:
             return {
                 ...state,
                 time: action.payload,
@@ -23,20 +23,20 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export const setGameTimer = () => {
-    return {
-        start: () => ({
-            type: SET_GAME_TIMER,
-            payload: true,
-        }),
-        stop: () => ({
-            type: SET_GAME_TIMER,
-            payload: false,
-        }),
+export function setTimerState() {
+    const action = {
+        type: TIMER_SET_STATE,
     };
-};
 
-export const setTime = (data) => ({
-    type: SET_TIME,
-    payload: data,
-});
+    return {
+        start: () => ({ ...action, ...(action.payload = true) }),
+        stop: () => ({ ...action, ...(action.payload = false) }),
+    };
+}
+
+export function setTime(data) {
+    return {
+        type: TIMER_SET_TIME,
+        payload: data,
+    };
+}
