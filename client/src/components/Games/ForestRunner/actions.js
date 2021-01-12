@@ -1,8 +1,6 @@
 export const generalActions = {
     FINISH_GAME_LEVEL: 'FINISH_GAME_LEVEL',
     SET_GAME_TIMER: 'SET_GAME_TIMER', // GAME_TIMER_STATE :popup have some need fix
-    OPEN_GOLD_CHEST: 'OPEN_GOLD_CHEST',
-    OPEN_ITEM_CHEST: 'OPEN_ITEM_CHEST',
     RESET_GAME_LEVEL: 'RESET_GAME_LEVEL',
     SAVE_GAME_ITEMS: 'SAVE_GAME_ITEMS',
     SET_TIME: 'SET_TIME',
@@ -28,16 +26,6 @@ export const setGameTimer = () => {
         }),
     };
 };
-
-export const openGoldChest = (data) => ({
-    type: generalActions.OPEN_GOLD_CHEST,
-    payload: data,
-});
-
-export const openItemChest = (data) => ({
-    type: generalActions.OPEN_ITEM_CHEST,
-    payload: data,
-});
 
 // functions used in ForestRunner component
 export const resetGameLevel = () => ({

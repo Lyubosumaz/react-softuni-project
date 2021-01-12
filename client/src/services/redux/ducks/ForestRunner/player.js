@@ -1,5 +1,7 @@
 const PLAYER_SET_MOVEMENT = 'react-softuni-project/forest-runner/player/set-movement';
 const PLAYER_RESET_LOCATION = 'react-softuni-project/forest-runner/player/reset-location';
+const PLAYER_OPEN_GOLD_CHEST = 'react-softuni-project/forest-runner/player/open-gold-chest';
+const PLAYER_OPEN_ITEM_CHEST = 'react-softuni-project/forest-runner/player/open-item-chest';
 
 const initialState = {
     position: [0, 0],
@@ -20,6 +22,16 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 ...initialState,
             };
+        case PLAYER_OPEN_GOLD_CHEST:
+            return {
+                ...state,
+                gold: (state.gold += action.payload),
+            };
+        case PLAYER_OPEN_ITEM_CHEST:
+            return {
+                ...state,
+                item: state.item.concat(action.payload),
+            };
         default:
             return state;
     }
@@ -39,4 +51,18 @@ export function setMovement(newPos, direction, walkIndex, spriteLocation) {
 
 export function resetLocation() {
     return { type: PLAYER_RESET_LOCATION };
+}
+
+export function openGoldChest(data) {
+    return {
+        type: PLAYER_OPEN_GOLD_CHEST,
+        payload: data,
+    };
+}
+
+export function openItemChest(data) {
+    return {
+        type: PLAYER_OPEN_ITEM_CHEST,
+        payload: data,
+    };
 }

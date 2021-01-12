@@ -5,9 +5,6 @@ const SET_GAME_TIMER = 'react-softuni-project/forest-runner/game/SET_GAME_TIMER'
 const FINISH_GAME_LEVEL = 'react-softuni-project/forest-runner/game/FINISH_GAME_LEVEL';
 const RESET_GAME_LEVEL = 'react-softuni-project/forest-runner/game/RESET_GAME_LEVEL';
 
-const OPEN_GOLD_CHEST = 'react-softuni-project/forest-runner/game/OPEN_GOLD_CHEST';
-const OPEN_ITEM_CHEST = 'react-softuni-project/forest-runner/game/OPEN_ITEM_CHEST';
-
 const SAVE_GAME_ITEMS = 'react-softuni-project/forest-runner/game/SAVE_GAME_ITEMS';
 const SET_TIME = 'react-softuni-project/forest-runner/game/SET_TIME';
 const START_GAME_LEVEL = 'react-softuni-project/forest-runner/game/START_GAME_LEVEL'; // START_THE_GAME
@@ -42,17 +39,6 @@ export default function reducer(state = initialState, action) {
                 // TODO this value is hardcoded need logic for next levels
                 level: 2,
             };
-        case OPEN_GOLD_CHEST:
-            return {
-                ...state,
-                gold: (state.gold += action.payload),
-            };
-        case OPEN_ITEM_CHEST:
-            return {
-                ...state,
-                item: state.item.concat(action.payload),
-            };
-
         // { RESET_GAME_LEVEL, SAVE_GAME_ITEMS }: ForestRunner component
         case RESET_GAME_LEVEL:
             return {
@@ -116,16 +102,6 @@ export const setGameTimer = () => {
         }),
     };
 };
-
-export const openGoldChest = (data) => ({
-    type: OPEN_GOLD_CHEST,
-    payload: data,
-});
-
-export const openItemChest = (data) => ({
-    type: OPEN_ITEM_CHEST,
-    payload: data,
-});
 
 // functions used in ForestRunner component
 export const resetGameLevel = () => ({

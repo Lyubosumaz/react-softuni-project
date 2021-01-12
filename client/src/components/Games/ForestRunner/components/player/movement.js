@@ -3,15 +3,15 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
-import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
+import { openGoldChest, openItemChest, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { store } from '../../../../../services/store';
-import { finishGameLevel, openGoldChest, openItemChest, setGameTimer } from '../../actions'; // game reducer
+import { finishGameLevel, setGameTimer } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
 
-function HandleMovement({ children, setMovementProps, setTilesProps, setGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
+function HandleMovement({ children, setMovementProps, setTilesProps, setGameTimer, openGoldChestProps, openItemChestProps, finishGameLevel, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -96,7 +96,7 @@ function HandleMovement({ children, setMovementProps, setTilesProps, setGameTime
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                if (!store.getState().game.item.length) openItemChest({ itemName: "You didn't loot anything" });
+                if (!store.getState().game.item.length) openItemChestProps({ itemName: "You didn't loot anything" });
 
                 Promise.resolve(setGameTimer())
                     .then(() => {
@@ -121,7 +121,7 @@ function HandleMovement({ children, setMovementProps, setTilesProps, setGameTime
                 if (store.getState().game.gold > 0) return;
 
                 const gold = Math.floor(Math.random() * 10 + 1);
-                openGoldChest(gold);
+                openGoldChestProps(gold);
 
                 setNotificationSuccess(`You have picked up ${gold} gold!`);
                 break;
@@ -129,7 +129,7 @@ function HandleMovement({ children, setMovementProps, setTilesProps, setGameTime
                 if (store.getState().game.item.length > 0) return;
 
                 const item = store.getState().game.gameItems[Math.ceil(Math.random() * 7)];
-                openItemChest(item);
+                openItemChestProps(item);
 
                 setNotificationSuccess(`You have found ${item.itemName}!`);
                 break;
@@ -151,8 +151,8 @@ function mapDispatchToProps(dispatch) {
         setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
         setTilesProps: (data) => dispatch(setTiles(data)),
         setGameTimer: () => dispatch(setGameTimer().stop()),
-        openGoldChest: (data) => dispatch(openGoldChest(data)),
-        openItemChest: (data) => dispatch(openItemChest(data)),
+        openGoldChestProps: (data) => dispatch(openGoldChest(data)),
+        openItemChestProps: (data) => dispatch(openItemChest(data)),
         finishGameLevel: () => dispatch(finishGameLevel()),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
