@@ -2,9 +2,9 @@ import { PropTypes } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
+import { setNotification } from '../../../services/redux/ducks/notification';
 import { formBtnClass, formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
 import { history } from '../../../utils/history';
-import { setNotification } from '../../Notification/actions';
 import schema from './edit-meme-validations';
 
 function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
@@ -89,7 +89,6 @@ function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationErro
                             </div>
                         )}
                     </div>
-
                     <div className="form-field">
                         <label htmlFor="imageUrl">
                             <span>imageUrl:</span>
@@ -107,7 +106,7 @@ function EditMeme({ isLogin, memeId, setNotificationSuccess, setNotificationErro
                             </div>
                         )}
                     </div>
-
+                    import {setNotification} from '../../Notification/actions';
                     <div className="form-field-buttons">
                         <input type="reset" className={formBtnClass} value="reset" />
                         <input type="submit" className={formBtnClass} value="edit meme" />

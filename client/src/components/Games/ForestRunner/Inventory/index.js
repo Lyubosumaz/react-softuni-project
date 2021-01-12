@@ -2,8 +2,8 @@ import { PropTypes } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
-import { setNotification } from '../../../../components/Notification/actions';
 import { httpGame } from '../../../../services/http';
+import { setNotification } from '../../../../services/redux/ducks/notification';
 import { setEquipItem, setSellItem } from './actions';
 
 function Inventory({ inventorySellItem, inventoryEquipItem, setSellItemProps, setEquipItemProps, setNotificationError }) {

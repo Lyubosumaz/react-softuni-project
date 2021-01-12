@@ -1,9 +1,9 @@
 import { PropTypes } from 'prop-types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
+import { removeAllNotification } from '../../services/redux/ducks/notification';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
-import { removeAllNotification } from './actions';
 
 // Component Classes
 const componentClass = 'notifications-list';

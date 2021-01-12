@@ -2,9 +2,9 @@ import { PropTypes } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { httpSocial } from '../../../services/http';
+import { setNotification } from '../../../services/redux/ducks/notification';
 import { formBtnClass, formComponent, formFieldsWrapper } from '../../../utils/class-names.json';
 import { history } from '../../../utils/history';
-import { setNotification } from '../../Notification/actions';
 
 function DeleteMeme({ isLogin, memeId, setNotificationSuccess, setNotificationError }) {
     const isLogged = isLogin;

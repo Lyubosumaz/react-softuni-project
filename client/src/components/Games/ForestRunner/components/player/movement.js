@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
+import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { store } from '../../../../../services/store';
-import { setNotification } from '../../../../Notification/actions';
 import { finishGameLevel, openGoldChest, openItemChest, setGameTimer } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable

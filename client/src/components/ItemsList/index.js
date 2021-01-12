@@ -2,11 +2,11 @@ import { PropTypes } from 'prop-types';
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../services/http';
+import { setNotification } from '../../services/redux/ducks/notification';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 import { currentPage } from '../../utils/pathHandler';
 import { numberGenerator } from '../../utils/stringHandler';
-import { setNotification } from '../Notification/actions';
 
 function ItemsList({ items, setSellItem, setEquipItem, setRemoveItem, setNotificationInfo, setNotificationError }) {
     const initializedItemsListBtn = factoryButtons({ buttonStyles: buttonClass.ItemList });

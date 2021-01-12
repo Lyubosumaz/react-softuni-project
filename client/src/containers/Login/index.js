@@ -1,8 +1,8 @@
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { setNotification } from '../../components/Notification/actions';
 import { httpUser } from '../../services/http';
+import { setNotification } from '../../services/redux/ducks/notification';
 import { setLoginValue } from '../../services/redux/ducks/user';
 import { formBtnClass, formComponent, formFieldsWrapper } from '../../utils/class-names.json';
 import { history } from '../../utils/history';

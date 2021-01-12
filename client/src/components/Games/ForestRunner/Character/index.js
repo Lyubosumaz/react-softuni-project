@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ItemsList from '../../../../components/ItemsList';
 import MainStatistic from '../../../../components/MainStatistic';
-import { setNotification } from '../../../../components/Notification/actions';
 import { httpGame } from '../../../../services/http';
+import { setNotification } from '../../../../services/redux/ducks/notification';
 import { setRemoveItem } from './actions';
 
 function Character({ characterRemoveItem, setRemoveItemProps, setNotificationError }) {

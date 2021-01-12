@@ -2,11 +2,11 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { removeAllCookies } from '../../services/cookies';
 import { httpUser } from '../../services/http';
+import { setNotification } from '../../services/redux/ducks/notification';
 import { setLogoutValue } from '../../services/redux/ducks/user';
 import { buttonClass, componentData } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 import { history } from '../../utils/history';
-import { setNotification } from '../Notification/actions';
 
 function Logout({ setLogoutValueProps, setNotificationSuccess, setNotificationError }) {
     const initializedLogoutBtn = factoryButtons({ buttonStyles: buttonClass.Logout });

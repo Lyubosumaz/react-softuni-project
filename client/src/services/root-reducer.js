@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 // TODO make barrel reducer for different games
-import playerReducer from '../components/Games/ForestRunner/components/player/reducer';
 import mapReducer from '../components/Games/ForestRunner/components/map/reducer';
+import playerReducer from '../components/Games/ForestRunner/components/player/reducer';
 import gameReducer from '../components/Games/ForestRunner/reducer';
-
+import notificationReducer from './redux/ducks/notification';
 import userReducer from './redux/ducks/user';
-import notificationReducer from '../components/Notification/reducer';
 
 const appReducer = combineReducers({
     player: playerReducer,
