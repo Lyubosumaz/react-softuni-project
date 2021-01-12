@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // Project Reducers
-import playerReducer from '../components/Games/ForestRunner/components/player/reducer';
 import gameReducer from '../components/Games/ForestRunner/reducer';
 import mapReducer from './redux/ducks/ForestRunner/map';
+import playerReducer from './redux/ducks/ForestRunner/player';
 import notificationReducer from './redux/ducks/notification';
 import userReducer from './redux/ducks/user';
 

@@ -3,15 +3,15 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
+import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { store } from '../../../../../services/store';
 import { finishGameLevel, openGoldChest, openItemChest, setGameTimer } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
-import { changeMovement } from './actions'; // player reducer
 
-function HandleMovement({ children, changeMovement, setTilesProps, setGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
+function HandleMovement({ children, setMovementProps, setTilesProps, setGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -63,7 +63,7 @@ function HandleMovement({ children, changeMovement, setTilesProps, setGameTimer,
         const walkIndex = getWalkIndex();
         const spriteLocation = getSpriteLocation(direction, walkIndex);
 
-        changeMovement(newPos, direction, walkIndex, spriteLocation);
+        setMovementProps(newPos, direction, walkIndex, spriteLocation);
     }
 
     function attemptMove(direction) {
@@ -148,7 +148,7 @@ function HandleMovement({ children, changeMovement, setTilesProps, setGameTimer,
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeMovement: (newPos, direction, walkIndex, spriteLocation) => dispatch(changeMovement(newPos, direction, walkIndex, spriteLocation)),
+        setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
         setTilesProps: (data) => dispatch(setTiles(data)),
         setGameTimer: () => dispatch(setGameTimer().stop()),
         openGoldChest: (data) => dispatch(openGoldChest(data)),

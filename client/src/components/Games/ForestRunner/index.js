@@ -2,13 +2,13 @@ import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
+import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
 import Overlay from '../../GamePopup';
 import Timer from '../../Timer';
 import { resetGameLevel, saveGameItems } from './actions';
-import { resetPlayerLocation } from './components/player/actions';
 import World from './components/world/World';
 
-function ForestRunner({ inGame, resetPlayerLocation, resetGameLevel, saveGameItems }) {
+function ForestRunner({ inGame, resetLocationProps, resetGameLevel, saveGameItems }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveGameItems(items));
@@ -16,7 +16,7 @@ function ForestRunner({ inGame, resetPlayerLocation, resetGameLevel, saveGameIte
     }, []);
 
     useEffect(() => {
-        resetPlayerLocation();
+        resetLocationProps();
         resetGameLevel();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -42,7 +42,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        resetPlayerLocation: () => dispatch(resetPlayerLocation()),
+        resetLocationProps: () => dispatch(resetLocation()),
         resetGameLevel: () => dispatch(resetGameLevel()),
         saveGameItems: (items) => dispatch(saveGameItems(items)),
     };
@@ -52,7 +52,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ForestRunner);
 
 ForestRunner.propTypes = {
     inGame: PropTypes.bool.isRequired,
-    resetPlayerLocation: PropTypes.func.isRequired,
+    resetLocationProps: PropTypes.func.isRequired,
     resetGameLevel: PropTypes.func.isRequired,
     saveGameItems: PropTypes.func.isRequired,
 };

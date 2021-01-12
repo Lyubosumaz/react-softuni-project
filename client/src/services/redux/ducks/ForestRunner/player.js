@@ -1,4 +1,4 @@
-const PLAYER_MOVEMENT = 'react-softuni-project/forest-runner/player/movement';
+const PLAYER_SET_MOVEMENT = 'react-softuni-project/forest-runner/player/set-movement';
 const PLAYER_RESET_LOCATION = 'react-softuni-project/forest-runner/player/reset-location';
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 
 export default function playerReducer(state = initialState, action) {
     switch (action.type) {
-        case PLAYER_MOVEMENT:
+        case PLAYER_SET_MOVEMENT:
             return {
                 ...state,
                 ...action.payload,
@@ -25,9 +25,9 @@ export default function playerReducer(state = initialState, action) {
     }
 }
 
-export function changeMovement(newPos, direction, walkIndex, spriteLocation) {
+export function setMovement(newPos, direction, walkIndex, spriteLocation) {
     return {
-        type: PLAYER_MOVEMENT,
+        type: PLAYER_SET_MOVEMENT,
         payload: {
             position: newPos,
             direction,
@@ -37,6 +37,6 @@ export function changeMovement(newPos, direction, walkIndex, spriteLocation) {
     };
 }
 
-export function resetPlayerLocation() {
+export function resetLocation() {
     return { type: PLAYER_RESET_LOCATION };
 }
