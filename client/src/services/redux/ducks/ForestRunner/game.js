@@ -7,9 +7,6 @@ const initialState = {
     item: [],
     level: 1,
     gameItems: [],
-    inventorySellItem: false,
-    inventoryEquipItem: false,
-    characterRemoveItem: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -32,21 +29,6 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 gameItems: action.payload,
-            };
-        case 'CHARACTER_SELL_ITEM':
-            return {
-                ...state,
-                inventorySellItem: action.payload,
-            };
-        case 'CHARACTER_EQUIP_ITEM':
-            return {
-                ...state,
-                inventoryEquipItem: action.payload,
-            };
-        case 'CHARACTER_REMOVE_ITEM':
-            return {
-                ...state,
-                characterRemoveItem: action.payload,
             };
         default:
             return state;
