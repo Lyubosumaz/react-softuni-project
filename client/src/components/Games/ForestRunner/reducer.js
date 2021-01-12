@@ -4,8 +4,6 @@ const initialState = {
     inGame: false,
     gold: 0,
     item: [],
-    time: 0,
-    handleGameTimer: false,
     level: 1,
     gameItems: [],
     inventorySellItem: false,
@@ -15,12 +13,6 @@ const initialState = {
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
-        // { SET_GAME_TIMER }: HandleMovement & GamePopup components
-        case generalActions.SET_GAME_TIMER:
-            return {
-                ...state,
-                handleGameTimer: action.payload,
-            };
         // { FINISH_GAME_LEVEL, OPEN_GOLD_CHEST, OPEN_ITEM_CHEST }: HandleMovement component
         case generalActions.FINISH_GAME_LEVEL:
             return {
@@ -46,18 +38,11 @@ const gameReducer = (state = initialState, action) => {
                 ...state,
                 gold: 0,
                 item: [],
-                time: 0,
             };
         case generalActions.SAVE_GAME_ITEMS:
             return {
                 ...state,
                 gameItems: action.payload,
-            };
-        // { SET_TIME }: Timer component
-        case generalActions.SET_TIME:
-            return {
-                ...state,
-                time: action.payload,
             };
         // { START_GAME_LEVEL }: GamePopup component
         case generalActions.START_GAME_LEVEL:

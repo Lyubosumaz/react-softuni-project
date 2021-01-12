@@ -2,16 +2,18 @@ import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
+import { openGoldChest, openItemChest } from '../../../../../services/redux/ducks/ForestRunner/game';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
-import { openGoldChest, openItemChest, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
+import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
+import { setState } from '../../../../../services/redux/ducks/timer';
 import { store } from '../../../../../services/store';
-import { finishGameLevel, setGameTimer } from '../../actions'; // game reducer
+import { finishGameLevel } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
 
-function HandleMovement({ children, setMovementProps, setTilesProps, setGameTimer, openGoldChestProps, openItemChestProps, finishGameLevel, setNotificationSuccess }) {
+function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishGameLevel, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -98,9 +100,10 @@ function HandleMovement({ children, setMovementProps, setTilesProps, setGameTime
             case 1:
                 if (!store.getState().game.item.length) openItemChestProps({ itemName: "You didn't loot anything" });
 
-                Promise.resolve(setGameTimer())
+                Promise.resolve(stopTimerProps())
                     .then(() => {
                         httpGame.save({
+                            // TODO this needs update
                             totalGold: store.getState().game.gold,
                             totalItem: store.getState().game.item,
                             totalTime: store.getState().game.time,
@@ -150,7 +153,7 @@ function mapDispatchToProps(dispatch) {
     return {
         setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
         setTilesProps: (data) => dispatch(setTiles(data)),
-        setGameTimer: () => dispatch(setGameTimer().stop()),
+        stopTimerProps: () => dispatch(setState().stop()),
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
         finishGameLevel: () => dispatch(finishGameLevel()),

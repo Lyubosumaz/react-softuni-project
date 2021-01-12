@@ -1,5 +1,5 @@
 const TIMER_SET_STATE = 'react-softuni-project/forest-runner/timer/set-state';
-const TIMER_SET_TIME = 'react-softuni-project/forest-runner/timer/save-time';
+const TIMER_SAVE_TIME = 'react-softuni-project/forest-runner/timer/save-time';
 
 const initialState = {
     isTimerOn: false,
@@ -13,7 +13,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 isTimerOn: action.payload,
             };
-        case TIMER_SET_TIME:
+        case TIMER_SAVE_TIME:
             return {
                 ...state,
                 time: action.payload,
@@ -23,20 +23,22 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function setTimerState() {
-    const action = {
-        type: TIMER_SET_STATE,
-    };
-
+export function setState() {
     return {
-        start: () => ({ ...action, ...(action.payload = true) }),
-        stop: () => ({ ...action, ...(action.payload = false) }),
+        start: () => ({
+            type: TIMER_SET_STATE,
+            payload: true,
+        }),
+        stop: () => ({
+            type: TIMER_SET_STATE,
+            payload: false,
+        }),
     };
 }
 
-export function setTime(data) {
+export function saveTime(data) {
     return {
-        type: TIMER_SET_TIME,
+        type: TIMER_SAVE_TIME,
         payload: data,
     };
 }

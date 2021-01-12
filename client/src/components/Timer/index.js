@@ -1,10 +1,10 @@
 import { PropTypes } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { setTime } from '../../components/Games/ForestRunner/actions';
+import { saveTime } from '../../services/redux/ducks/timer';
 import { secondsToClock } from '../../utils/stringHandler';
 
-function Timer({ handleGameTimer, level, setTimeValue }) {
+function Timer({ isTimerOn, level, saveTimeProps }) {
     const [count, setCount] = useState(0);
 
     // TODO
@@ -19,9 +19,9 @@ function Timer({ handleGameTimer, level, setTimeValue }) {
     }, [count]);
 
     useEffect(() => {
-        setTimeValue(count);
+        saveTimeProps(count);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [handleGameTimer]);
+    }, [isTimerOn]);
 
     return (
         <div>
@@ -33,22 +33,23 @@ function Timer({ handleGameTimer, level, setTimeValue }) {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
-        handleGameTimer: state.game.handleGameTimer,
+        isTimerOn: state.timer.isTimerOn,
         level: state.game.level,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        setTimeValue: (data) => dispatch(setTime(data)),
+        saveTimeProps: (data) => dispatch(saveTime(data)),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer);
 
 Timer.propTypes = {
-    handleGameTimer: PropTypes.bool.isRequired,
+    isTimerOn: PropTypes.bool.isRequired,
     level: PropTypes.number.isRequired,
-    setTimeValue: PropTypes.func.isRequired,
+    saveTimeProps: PropTypes.func.isRequired,
 };

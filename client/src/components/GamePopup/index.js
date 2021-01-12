@@ -1,15 +1,16 @@
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { setState } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
-import { setGameStart, setGameTimer } from '../Games/ForestRunner/actions';
+import { setGameStart } from '../Games/ForestRunner/actions';
 
-function GamePopup({ setGameStartProps, setGameTimerProps }) {
+function GamePopup({ setGameStartProps, startTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
         setGameStartProps();
-        setGameTimerProps();
+        startTimerProps();
     };
 
     return (
@@ -33,7 +34,7 @@ function GamePopup({ setGameStartProps, setGameTimerProps }) {
 function mapDispatchToProps(dispatch) {
     return {
         setGameStartProps: () => dispatch(setGameStart()),
-        setGameTimerProps: () => dispatch(setGameTimer().start()),
+        startTimerProps: () => dispatch(setState().start()),
     };
 }
 
@@ -41,5 +42,5 @@ export default connect(null, mapDispatchToProps)(GamePopup);
 
 GamePopup.propTypes = {
     setGameStartProps: PropTypes.func.isRequired,
-    setGameTimerProps: PropTypes.func.isRequired,
+    startTimerProps: PropTypes.func.isRequired,
 };
