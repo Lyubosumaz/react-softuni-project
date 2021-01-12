@@ -1,11 +1,11 @@
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { tiles } from '../data/maps/1';
-import { setTiles } from '../map/actions';
 import Map from '../map/Map';
 import Player from '../player/Player';
 
-function World({ setTiles }) {
+function World({ setTilesProps }) {
     //TODO level system
     // switch (props.level) {
     //     case 1:
@@ -18,7 +18,7 @@ function World({ setTiles }) {
     //         break;
     // }
 
-    setTiles({ tiles });
+    setTilesProps({ tiles });
 
     return (
         <div
@@ -43,12 +43,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setTiles: (data) => dispatch(setTiles(data)),
+        setTilesProps: (data) => dispatch(setTiles(data)),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(World);
 
 World.propTypes = {
-    setTiles: PropTypes.func.isRequired,
+    setTilesProps: PropTypes.func.isRequired,
 };

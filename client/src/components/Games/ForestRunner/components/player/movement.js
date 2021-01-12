@@ -2,16 +2,16 @@ import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
+import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { store } from '../../../../../services/store';
 import { finishGameLevel, openGoldChest, openItemChest, setGameTimer } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
-import { setTiles } from '../map/actions'; // map reducer
 import { changeMovement } from './actions'; // player reducer
 
-function HandleMovement({ children, changeMovement, setTiles, setGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
+function HandleMovement({ children, changeMovement, setTilesProps, setGameTimer, openGoldChest, openItemChest, finishGameLevel, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -111,7 +111,7 @@ function HandleMovement({ children, changeMovement, setTiles, setGameTimer, open
 
                         finishGameLevel();
 
-                        setTiles({ tiles });
+                        setTilesProps({ tiles });
                     })
                     .catch((err) => {
                         console.error(err);
@@ -149,7 +149,7 @@ function HandleMovement({ children, changeMovement, setTiles, setGameTimer, open
 function mapDispatchToProps(dispatch) {
     return {
         changeMovement: (newPos, direction, walkIndex, spriteLocation) => dispatch(changeMovement(newPos, direction, walkIndex, spriteLocation)),
-        setTiles: (data) => dispatch(setTiles(data)),
+        setTilesProps: (data) => dispatch(setTiles(data)),
         setGameTimer: () => dispatch(setGameTimer().stop()),
         openGoldChest: (data) => dispatch(openGoldChest(data)),
         openItemChest: (data) => dispatch(openItemChest(data)),
