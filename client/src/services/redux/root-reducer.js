@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // Project Reducers
-import gameReducer from './redux/ducks/ForestRunner/game';
-import mapReducer from './redux/ducks/ForestRunner/map';
-import playerReducer from './redux/ducks/ForestRunner/player';
-import menuReducer from './redux/ducks/menu';
-import notificationReducer from './redux/ducks/notification';
-import timerReducer from './redux/ducks/timer';
-import userReducer from './redux/ducks/user';
+import gameReducer from './ducks/ForestRunner/game';
+import mapReducer from './ducks/ForestRunner/map';
+import playerReducer from './ducks/ForestRunner/player';
+import menuReducer from './ducks/menu';
+import notificationReducer from './ducks/notification';
+import timerReducer from './ducks/timer';
+import userReducer from './ducks/user';
 
 const appReducer = combineReducers({
     timer: timerReducer,

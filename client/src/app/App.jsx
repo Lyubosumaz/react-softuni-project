@@ -8,7 +8,7 @@ import Notification from '../components/Notification';
 import Router from '../router/Router';
 import { authCookie, removeAllCookies } from '../services/cookies';
 import { httpUser } from '../services/http';
-import { persistor, store } from '../services/store';
+import { persistor, store } from '../services/redux/store';
 
 export default function App() {
     // REFRESHING TOKEN EVERY 9 MINUTES = 9*60*1000
