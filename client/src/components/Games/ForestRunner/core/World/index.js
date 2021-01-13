@@ -41,9 +41,6 @@ function World({ level, setTilesProps }) {
                 className={`World`}
                 style={{
                     position: 'relative',
-                    // width: '1650px',
-                    // height: '650px',
-                    // margin: '20px auto',
                 }}
             >
                 <Map />

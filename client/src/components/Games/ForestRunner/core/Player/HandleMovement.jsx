@@ -2,32 +2,14 @@ import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
-import { finishLevel, openGoldChest, openItemChest } from '../../../../../services/redux/ducks/ForestRunner/game';
+import { finishLevel, nextLevel, openGoldChest, openItemChest, resetLevel } from '../../../../../services/redux/ducks/ForestRunner/game';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
-import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
+import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { setState } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({
-    children,
-    walkIndex,
-    tiles,
-    oldPos,
-    totalGold,
-    savedItem,
-    totalTime,
-    gameLevel,
-    gameItems,
-    inGame,
-    setMovementProps,
-    setTilesProps,
-    stopTimerProps,
-    openGoldChestProps,
-    openItemChestProps,
-    finishLevelProps,
-    setNotificationSuccess
-}) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, resetLocationProps, nextLevelProps, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -112,8 +94,13 @@ function HandleMovement({
                 if (!inGame) return;
                 if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
 
-                Promise.resolve(stopTimerProps())
-                    .then(() => {
+                Promise.resolve((totalGold, savedItem, totalTime, gameLevel) => {
+                    stopTimerProps();
+                    return { totalGold, savedItem, totalTime, gameLevel };
+                })
+                    .then((test) => {
+                        console.log(test);
+
                         httpGame.save({
                             totalGold: totalGold, // pickedGold
                             totalItem: savedItem, // pickedItem
@@ -121,11 +108,13 @@ function HandleMovement({
                             level: gameLevel, // currentLevel
                         });
 
+                        nextLevelProps(gameLevel);
+                    })
+                    .then(() => {
                         setNotificationSuccess('Welcome the next level!');
-
                         finishLevelProps();
-
-                        // setTilesProps({ level2 }); // TODO
+                        resetLevelProps();
+                        resetLocationProps();
                     })
                     .catch((err) => {
                         console.error(err);
@@ -182,6 +171,9 @@ function mapDispatchToProps(dispatch) {
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
         finishLevelProps: () => dispatch(finishLevel()),
+        resetLevelProps: () => dispatch(resetLevel()),
+        resetLocationProps: () => dispatch(resetLocation()),
+        nextLevelProps: (data) => dispatch(nextLevel(data)),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }

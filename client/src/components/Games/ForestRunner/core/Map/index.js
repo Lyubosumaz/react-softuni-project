@@ -51,12 +51,6 @@ function Map({ tiles }) {
         <div
             className={`Map`}
             style={{
-                // width: '1600px',
-                // height: '650px',
-                // display: 'inline-block',
-                // position: 'relative',
-                // top: '0px',
-                // left: '0px',
                 border: '4px solid #222',
             }}
         >

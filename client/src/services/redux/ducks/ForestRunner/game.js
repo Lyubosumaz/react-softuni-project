@@ -1,6 +1,7 @@
 const GAME_START_LEVEL = 'react-softuni-project/forest-runner/game/start-lever';
 const GAME_FINISH_LEVEL = 'react-softuni-project/forest-runner/game/finish-level';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
+const GAME_NEXT_LEVEL = 'react-softuni-project/forest-runner/game/next-level';
 const GAME_SAVE_ITEMS = 'react-softuni-project/forest-runner/game/save-game';
 const GAME_OPEN_GOLD_CHEST = 'react-softuni-project/forest-runner/game/open-gold-chest';
 const GAME_OPEN_ITEM_CHEST = 'react-softuni-project/forest-runner/game/open-item-chest';
@@ -30,15 +31,17 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 inGame: action.payload,
-                // TODO this value is hardcoded need logic for next levels
-                level: 2,
             };
         case GAME_RESET_LEVEL:
             return {
                 ...state,
                 gold: 0,
                 item: [],
-                time: 0,
+            };
+        case GAME_NEXT_LEVEL:
+            return {
+                ...state,
+                level: typeof action.payload === 'number' ? (action.payload++ >= 3 ? 1 : action.payload++) : 1,
             };
         case GAME_OPEN_GOLD_CHEST:
             return {
@@ -71,6 +74,13 @@ export function finishLevel() {
 
 export function resetLevel() {
     return { type: GAME_RESET_LEVEL };
+}
+
+export function nextLevel(data) {
+    return {
+        type: GAME_NEXT_LEVEL,
+        payload: data,
+    };
 }
 
 export function saveItems(data) {
