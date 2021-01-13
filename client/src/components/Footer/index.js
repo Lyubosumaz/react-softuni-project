@@ -16,7 +16,7 @@ function Footer({ inGame }) {
     return (
         <footer className={`site-footer ${inGame ? 'hidden' : ''}`}>
             <div className="site-wrapper">
-                <p className="copy-write">Lyubosumaz SoftUni Final Project. All rights reserved &copy; 2019-2021</p>
+                <p className="copy-write">Lyubosumaz Final React SoftUni Project. Copyright 2019-{`${new Date().getFullYear()}`} All Rights Reserved</p>
 
                 <ul className="footer-nav">
                     <li>{initializedFooterBtn('home')}</li>

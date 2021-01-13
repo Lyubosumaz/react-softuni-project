@@ -93,9 +93,11 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
             case 1:
                 if (!inGame) return;
                 if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
+                stopTimerProps();
+
                 console.log('out of Promise: ', totalGold, savedItem, totalTime, gameLevel);
 
-                Promise.resolve(stopTimerProps())
+                Promise.resolve()
                     .then(() => {
                         console.log('in then: ', totalGold, savedItem, totalTime, gameLevel);
 
