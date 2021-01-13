@@ -6,7 +6,7 @@ import { resetLevel, saveItems } from '../../../services/redux/ducks/ForestRunne
 import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
 import Overlay from '../../GamePopup';
 import Timer from '../../Timer';
-import World from './components/world/World';
+import World from './core/World';
 
 function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsProps }) {
     // TODO Game component should be reworked overall

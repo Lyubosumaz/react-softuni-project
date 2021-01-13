@@ -10,7 +10,7 @@ import { setState } from '../../../../../services/redux/ducks/timer';
 import { store } from '../../../../../services/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
-import { tiles } from '../data/maps/2';
+import { tiles } from '../Map/levels/2';
 
 function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
@@ -105,7 +105,7 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
                             // TODO this needs update
                             totalGold: store.getState().game.gold,
                             totalItem: store.getState().game.item,
-                            totalTime: store.getState().game.time,
+                            totalTime: store.getState().timer.time,
                             level: store.getState().game.level,
                         });
 

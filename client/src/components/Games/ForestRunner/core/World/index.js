@@ -1,9 +1,9 @@
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
-import { tiles } from '../data/maps/1';
-import Map from '../map/Map';
-import Player from '../player/Player';
+import Map from '../Map';
+import { tiles } from '../Map/levels/1/index';
+import Player from '../Player';
 
 function World({ setTilesProps }) {
     //TODO level system

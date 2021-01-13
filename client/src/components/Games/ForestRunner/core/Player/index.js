@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HandleMovement from './movement';
+import HandleMovement from './HandleMovement.jsx';
 import walkSprite from './sprite/player_walk.png';
 
 function Player(props) {
@@ -14,8 +14,8 @@ function Player(props) {
                     backgroundPosition: props.spriteLocation,
                     width: '64px',
                     height: '64px',
-                }}>
-            </div>
+                }}
+            ></div>
         </HandleMovement>
     );
 }
