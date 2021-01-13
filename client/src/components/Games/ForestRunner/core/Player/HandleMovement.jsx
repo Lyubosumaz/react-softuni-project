@@ -8,8 +8,6 @@ import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/pl
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { setState } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
-// TODO this should be selectable
-import { tiles as level2 } from '../Map/levels/2/index';
 
 function HandleMovement({
     children,
@@ -134,7 +132,6 @@ function HandleMovement({
             case 2:
                 if (totalGold > 0) return;
 
-                console.log(level2)
                 const gold = Math.floor(Math.random() * 10 + 1);
                 openGoldChestProps(gold);
 

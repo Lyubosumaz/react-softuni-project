@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import HandleMovement from './HandleMovement';
-import walkSprite from './sprite/player_walk.png';
+import walkSprite from './sprite/player_walk_48_384x192.png';
 
 function Player(props) {
     return (
         <HandleMovement>
             <div
                 style={{
-                    position: 'absolute',
                     top: props.position[1],
                     left: props.position[0],
-                    backgroundImage: `url('${walkSprite}')`,
                     backgroundPosition: props.spriteLocation,
-                    width: '64px',
-                    height: '64px',
+                    backgroundImage: `url('${walkSprite}')`,
+                    position: 'absolute',
+                    width: '48px',
+                    height: '48px',
                 }}
             ></div>
         </HandleMovement>
