@@ -49,6 +49,8 @@ export default function reducer(state = initialState, action) {
                 gold: (state.gold += action.payload),
             };
         case GAME_OPEN_ITEM_CHEST:
+            console.log('game reducer: ', action.payload);
+
             return {
                 ...state,
                 item: state.item.concat(action.payload),

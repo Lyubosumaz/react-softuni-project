@@ -48,6 +48,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(GamePopup);
 
 GamePopup.propTypes = {
     inGame: PropTypes.bool.isRequired,
-    setGameStartProps: PropTypes.func.isRequired,
+    startLevelProps: PropTypes.func.isRequired,
     startTimerProps: PropTypes.func.isRequired,
 };
