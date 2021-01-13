@@ -31,6 +31,7 @@ function getTileSprite(type) {
 }
 
 function MapTile({ tile }) {
+    console.log(tile);
     return (
         <div
             className={`tile ${getTileSprite(tile)}`}

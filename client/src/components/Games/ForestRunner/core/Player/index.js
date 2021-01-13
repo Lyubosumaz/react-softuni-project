@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HandleMovement from './HandleMovement.jsx';
+import HandleMovement from './HandleMovement';
 import walkSprite from './sprite/player_walk.png';
 
 function Player(props) {

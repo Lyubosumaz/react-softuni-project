@@ -7,12 +7,28 @@ import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { setState } from '../../../../../services/redux/ducks/timer';
-import { store } from '../../../../../services/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
-import { tiles } from '../Map/levels/2';
+import { tiles as level2 } from '../Map/levels/2/index';
 
-function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, setNotificationSuccess }) {
+function HandleMovement({
+    children,
+    walkIndex,
+    tiles,
+    oldPos,
+    totalGold,
+    savedItem,
+    totalTime,
+    gameLevel,
+    gameItems,
+    setMovementProps,
+    setTilesProps,
+    stopTimerProps,
+    openGoldChestProps,
+    openItemChestProps,
+    finishLevelProps,
+    setNotificationSuccess
+}) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -44,7 +60,6 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
     }
 
     function getWalkIndex() {
-        const walkIndex = store.getState().player.walkIndex;
         return walkIndex >= 7 ? 0 : walkIndex + 1;
     }
 
@@ -53,7 +68,6 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
     }
 
     function observeImpassable(newPos) {
-        const tiles = store.getState().map.tiles;
         const y = newPos[1] / SPRITE_SIZE;
         const x = newPos[0] / SPRITE_SIZE;
         const nextTile = tiles[y][x];
@@ -68,7 +82,6 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
     }
 
     function attemptMove(direction) {
-        const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
 
         if (observeBoundaries(newPos) && observeImpassable(newPos) < 4) {
@@ -97,40 +110,40 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                if (!store.getState().game.item.length) openItemChestProps({ itemName: "You didn't loot anything" });
+                if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
 
                 Promise.resolve(stopTimerProps())
                     .then(() => {
                         httpGame.save({
-                            // TODO this needs update
-                            totalGold: store.getState().game.gold,
-                            totalItem: store.getState().game.item,
-                            totalTime: store.getState().timer.time,
-                            level: store.getState().game.level,
+                            totalGold: totalGold, // pickedGold
+                            totalItem: savedItem, // pickedItem
+                            totalTime: totalTime,
+                            level: gameLevel, // currentLevel
                         });
 
                         setNotificationSuccess('Welcome the next level!');
 
                         finishLevelProps();
 
-                        setTilesProps({ tiles });
+                        // setTilesProps({ level2 }); // TODO
                     })
                     .catch((err) => {
                         console.error(err);
                     });
                 break;
             case 2:
-                if (store.getState().game.gold > 0) return;
+                if (totalGold > 0) return;
 
+                console.log(level2)
                 const gold = Math.floor(Math.random() * 10 + 1);
                 openGoldChestProps(gold);
 
                 setNotificationSuccess(`You have picked up ${gold} gold!`);
                 break;
             case 3:
-                if (store.getState().game.item.length > 0) return;
+                if (savedItem.length > 0) return;
 
-                const item = store.getState().game.gameItems[Math.ceil(Math.random() * 7)];
+                const item = gameItems[Math.ceil(Math.random() * 7)];
                 openItemChestProps(item);
 
                 setNotificationSuccess(`You have found ${item.itemName}!`);
@@ -148,6 +161,19 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
     );
 }
 
+function mapStateToProps(state) {
+    return {
+        walkIndex: state.player.walkIndex,
+        tiles: state.map.tiles,
+        oldPos: state.player.position,
+        totalGold: state.game.gold,
+        savedItem: state.game.item,
+        totalTime: state.timer.time,
+        gameLevel: state.game.level,
+        gameItems: state.game.gameItems,
+    };
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
@@ -160,4 +186,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(HandleMovement);
+export default connect(mapStateToProps, mapDispatchToProps)(HandleMovement);

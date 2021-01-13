@@ -198,6 +198,7 @@ Notification.propTypes = {
         PropTypes.exact({
             _id: PropTypes.string.isRequired,
             msg: PropTypes.string.isRequired,
+            title: PropTypes.string,
             options: PropTypes.exact({
                 class: PropTypes.string.isRequired,
             }),

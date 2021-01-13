@@ -33,7 +33,6 @@ function Timer({ isTimerOn, level, saveTimeProps }) {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         isTimerOn: state.timer.isTimerOn,
         level: state.game.level,
