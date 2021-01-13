@@ -24,9 +24,11 @@ function World({ setTilesProps }) {
         <div
             className="test-wrapper"
             style={{
+                paddingBottom: '1.1em', // TODO after fixing the nester router this is no longer needed
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                backgroundColor: '#3a3a3a',
             }}
         >
             <div

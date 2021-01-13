@@ -26,9 +26,7 @@ function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsPr
 
             {!inGame && <Overlay />}
 
-            <div>
-                <World />
-            </div>
+            <World />
         </Fragment>
     );
 }

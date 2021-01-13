@@ -57,7 +57,7 @@ function Map({ tiles }) {
                 // position: 'relative',
                 // top: '0px',
                 // left: '0px',
-                border: '4px solid black',
+                border: '4px solid #222',
             }}
         >
             {tiles.length && tiles.map((row, index) => <MapRow key={index} tiles={row} />)}
