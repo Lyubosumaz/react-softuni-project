@@ -7,6 +7,7 @@ import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { setState } from '../../../../../services/redux/ducks/timer';
+import { store } from '../../../../../services/redux/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
 function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, resetLocationProps, nextLevelProps, setNotificationSuccess }) {
@@ -93,13 +94,14 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
             case 1:
                 if (!inGame) return;
                 if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
-                stopTimerProps();
 
-                console.log('out of Promise: ', totalGold, savedItem, totalTime, gameLevel);
+                console.log('out of Promise: ', 'gold', totalGold, 'item', savedItem, 'time', totalTime, 'level', gameLevel);
+                console.log('out of Promise store: ', 'gold', store.getState().game.gold, 'item', store.getState().game.item, 'time', store.getState().timer.time, 'level', store.getState().game.level);
 
-                Promise.resolve()
+                Promise.resolve(stopTimerProps())
                     .then(() => {
                         console.log('in then: ', totalGold, savedItem, totalTime, gameLevel);
+                        console.log('in then store: ', 'gold', store.getState().game.gold, 'item', store.getState().game.item, 'time', store.getState().timer.time, 'level', store.getState().game.level);
 
                         httpGame.save({
                             totalGold: totalGold, // pickedGold
