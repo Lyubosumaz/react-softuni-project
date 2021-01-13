@@ -47,7 +47,7 @@ function MapRow({ tiles }) {
 }
 
 function Map({ tiles }) {
-    return (
+    return tiles ? (
         <div
             className={`Map`}
             style={{
@@ -62,7 +62,7 @@ function Map({ tiles }) {
         >
             {tiles.length && tiles.map((row, index) => <MapRow key={index} tiles={row} />)}
         </div>
-    );
+    ) : null;
 }
 
 function mapStateToProps(state) {

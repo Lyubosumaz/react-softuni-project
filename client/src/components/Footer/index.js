@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { factoryButtons } from '../../utils/factory';
+import { connect } from 'react-redux';
 import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
 
-export default function Footer() {
+function Footer({ inGame }) {
     const [activated, setActivated] = useState();
 
     function handleCallBack(buttonDirection) {
@@ -13,7 +14,7 @@ export default function Footer() {
     const initializedFooterBtn = factoryButtons(footerAttributes);
 
     return (
-        <footer className="site-footer">
+        <footer className={`site-footer ${inGame ? 'hidden' : ''}`}>
             <div className="site-wrapper">
                 <p className="copy-write">Lyubosumaz SoftUni Final Project. All rights reserved &copy; 2019-2021</p>
 
@@ -26,3 +27,11 @@ export default function Footer() {
         </footer>
     );
 }
+
+function mapStateToProps(state) {
+    return {
+        inGame: state.game.inGame,
+    };
+}
+
+export default connect(mapStateToProps)(Footer);

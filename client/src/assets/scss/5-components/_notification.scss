@@ -15,6 +15,7 @@ $scrollNotificationThumbColor: #aaa;
     right: 1em;
     background-color: transparent;
     overflow: hidden;
+    z-index: 8888;
 
     li.isClick {
         display: none;

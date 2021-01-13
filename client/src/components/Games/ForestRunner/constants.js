@@ -1,4 +1,4 @@
-import { tiles as levelOne } from './core/Map/levels/1/index';
+import { tiles as levelOne } from './core/Map/levels/1';
 
 function readLevelOne() {
     return {

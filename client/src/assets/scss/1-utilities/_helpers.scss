@@ -4,6 +4,11 @@ $scrollbarWidth: 0.5em;
     display: none !important;
 }
 
+.dimmer {
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2;
+}
+
 .scroll {
     background: transparent;
 
