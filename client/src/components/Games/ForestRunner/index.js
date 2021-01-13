@@ -5,7 +5,6 @@ import { httpGame } from '../../../services/http';
 import { resetLevel, saveItems } from '../../../services/redux/ducks/ForestRunner/game';
 import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
 import Overlay from '../../GamePopup';
-import Timer from '../../Timer';
 import World from './core/World';
 
 function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsProps }) {
@@ -23,7 +22,7 @@ function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsPr
 
     return (
         <Fragment>
-            <div>{(inGame && <Timer />) || <h1>Level: --, Time: --h --m --s</h1>}</div>
+            {/* <div>{(inGame && <Timer />) || <h1>Level: --, Time: --h --m --s</h1>}</div> */}
 
             {!inGame && <Overlay />}
 

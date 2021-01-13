@@ -24,11 +24,9 @@ function Timer({ isTimerOn, level, saveTimeProps }) {
     }, [isTimerOn]);
 
     return (
-        <div>
-            <h1>
-                Level: {level}, Time: {secondsToClock(count)}
-            </h1>
-        </div>
+        <span>
+            Level: {level}, Time: {secondsToClock(count)}
+        </span>
     );
 }
 
