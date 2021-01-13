@@ -1,3 +1,5 @@
+import { httpGame } from '../../../http';
+
 const GAME_START_LEVEL = 'react-softuni-project/forest-runner/game/start-lever';
 const GAME_FINISH_LEVEL = 'react-softuni-project/forest-runner/game/finish-level';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
@@ -5,6 +7,7 @@ const GAME_NEXT_LEVEL = 'react-softuni-project/forest-runner/game/next-level';
 const GAME_SAVE_ITEMS = 'react-softuni-project/forest-runner/game/save-game';
 const GAME_OPEN_GOLD_CHEST = 'react-softuni-project/forest-runner/game/open-gold-chest';
 const GAME_OPEN_ITEM_CHEST = 'react-softuni-project/forest-runner/game/open-item-chest';
+const GAME_SAVE_LEVEL = 'react-softuni-project/forest-runner/game/save-level';
 
 const initialState = {
     fetchedAllItems: [],
@@ -103,5 +106,25 @@ export function openItemChest(data) {
     return {
         type: GAME_OPEN_ITEM_CHEST,
         payload: data,
+    };
+}
+export function saveLevel(data) {
+    console.log(data);
+
+    return (dispatch, getState) => {
+        dispatch({ type: GAME_SAVE_LEVEL });
+        console.log(getState());
+
+        httpGame
+            .save({
+                totalGold: getState().game.gold, // pickedGold
+                totalItem: getState().game.item, // pickedItem
+                totalTime: getState().timer.time,
+                level: getState().game.level, // currentLevel
+            })
+            .then(
+                (response) => dispatch({ type: 'REQUEST_SUCCEEDED', payload: response }),
+                (error) => dispatch({ type: 'REQUEST_FAILED', error: error })
+            );
     };
 }

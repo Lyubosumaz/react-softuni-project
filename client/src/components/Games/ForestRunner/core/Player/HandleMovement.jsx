@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
-import { httpGame } from '../../../../../services/http';
-import { finishLevel, nextLevel, openGoldChest, openItemChest, resetLevel } from '../../../../../services/redux/ducks/ForestRunner/game';
+import { finishLevel, nextLevel, openGoldChest, openItemChest, resetLevel, saveLevel } from '../../../../../services/redux/ducks/ForestRunner/game';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
@@ -10,7 +9,7 @@ import { setState } from '../../../../../services/redux/ducks/timer';
 import { store } from '../../../../../services/redux/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, resetLocationProps, nextLevelProps, setNotificationSuccess }) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -98,29 +97,32 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
                 console.log('out of Promise: ', 'gold', totalGold, 'item', savedItem, 'time', totalTime, 'level', gameLevel);
                 console.log('out of Promise store: ', 'gold', store.getState().game.gold, 'item', store.getState().game.item, 'time', store.getState().timer.time, 'level', store.getState().game.level);
 
-                Promise.resolve(stopTimerProps())
-                    .then(() => {
-                        console.log('in then: ', totalGold, savedItem, totalTime, gameLevel);
-                        console.log('in then store: ', 'gold', store.getState().game.gold, 'item', store.getState().game.item, 'time', store.getState().timer.time, 'level', store.getState().game.level);
+                const test = { totalGold, savedItem, totalTime, gameLevel };
+                saveLevelProps(test);
 
-                        httpGame.save({
-                            totalGold: totalGold, // pickedGold
-                            totalItem: savedItem, // pickedItem
-                            totalTime: totalTime,
-                            level: gameLevel, // currentLevel
-                        });
+                // Promise.resolve(stopTimerProps())
+                //     .then(() => {
+                //         console.log('in then: ', totalGold, savedItem, totalTime, gameLevel);
+                //         console.log('in then store: ', 'gold', store.getState().game.gold, 'item', store.getState().game.item, 'time', store.getState().timer.time, 'level', store.getState().game.level);
 
-                        nextLevelProps(gameLevel);
-                    })
-                    .then(() => {
-                        setNotificationSuccess('Welcome the next level!');
-                        finishLevelProps();
-                        resetLevelProps();
-                        resetLocationProps();
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                    });
+                //         httpGame.save({
+                //             totalGold: totalGold, // pickedGold
+                //             totalItem: savedItem, // pickedItem
+                //             totalTime: totalTime,
+                //             level: gameLevel, // currentLevel
+                //         });
+
+                //         nextLevelProps(gameLevel);
+                //     })
+                //     .then(() => {
+                //         setNotificationSuccess('Welcome the next level!');
+                //         finishLevelProps();
+                //         resetLevelProps();
+                //         resetLocationProps();
+                //     })
+                //     .catch((err) => {
+                //         console.error(err);
+                //     });
                 break;
             case 2:
                 if (totalGold > 0) return;
@@ -174,6 +176,7 @@ function mapDispatchToProps(dispatch) {
         openItemChestProps: (data) => dispatch(openItemChest(data)),
         finishLevelProps: () => dispatch(finishLevel()),
         resetLevelProps: () => dispatch(resetLevel()),
+        saveLevelProps: (data) => dispatch(saveLevel(data)),
         resetLocationProps: () => dispatch(resetLocation()),
         nextLevelProps: (data) => dispatch(nextLevel(data)),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
