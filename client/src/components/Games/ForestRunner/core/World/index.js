@@ -22,15 +22,25 @@ function World({ setTilesProps }) {
 
     return (
         <div
+            className="test-wrapper"
             style={{
-                position: 'relative',
-                width: '1650px',
-                height: '650px',
-                margin: '20px auto',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
         >
-            <Map />
-            <Player />
+            <div
+                className={`World`}
+                style={{
+                    position: 'relative',
+                    // width: '1650px',
+                    // height: '650px',
+                    // margin: '20px auto',
+                }}
+            >
+                <Map />
+                <Player />
+            </div>
         </div>
     );
 }

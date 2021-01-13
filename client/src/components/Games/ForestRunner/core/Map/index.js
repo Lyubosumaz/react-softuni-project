@@ -49,12 +49,14 @@ function MapRow({ tiles }) {
 function Map({ tiles }) {
     return (
         <div
+            className={`Map`}
             style={{
-                position: 'relative',
-                top: '0px',
-                left: '0px',
-                width: '1600px',
-                height: '650px',
+                // width: '1600px',
+                // height: '650px',
+                // display: 'inline-block',
+                // position: 'relative',
+                // top: '0px',
+                // left: '0px',
                 border: '4px solid black',
             }}
         >

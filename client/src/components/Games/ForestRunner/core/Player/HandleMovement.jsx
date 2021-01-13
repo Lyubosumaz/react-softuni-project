@@ -19,6 +19,7 @@ function HandleMovement({
     totalTime,
     gameLevel,
     gameItems,
+    inGame,
     setMovementProps,
     setTilesProps,
     stopTimerProps,
@@ -108,6 +109,7 @@ function HandleMovement({
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
+                if (!inGame) return;
                 if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
 
                 Promise.resolve(stopTimerProps())
@@ -168,6 +170,7 @@ function mapStateToProps(state) {
         totalTime: state.timer.time,
         gameLevel: state.game.level,
         gameItems: state.game.gameItems,
+        inGame: state.game.inGame,
     };
 }
 
