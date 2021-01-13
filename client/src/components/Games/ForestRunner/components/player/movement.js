@@ -2,18 +2,17 @@ import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../../../services/http';
-import { openGoldChest, openItemChest } from '../../../../../services/redux/ducks/ForestRunner/game';
+import { finishLevel, openGoldChest, openItemChest } from '../../../../../services/redux/ducks/ForestRunner/game';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { setState } from '../../../../../services/redux/ducks/timer';
 import { store } from '../../../../../services/store';
-import { finishGameLevel } from '../../actions'; // game reducer
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 // TODO this should be selectable
 import { tiles } from '../data/maps/2';
 
-function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishGameLevel, setNotificationSuccess }) {
+function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -112,7 +111,7 @@ function HandleMovement({ children, setMovementProps, setTilesProps, stopTimerPr
 
                         setNotificationSuccess('Welcome the next level!');
 
-                        finishGameLevel();
+                        finishLevelProps();
 
                         setTilesProps({ tiles });
                     })
@@ -156,7 +155,7 @@ function mapDispatchToProps(dispatch) {
         stopTimerProps: () => dispatch(setState().stop()),
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
-        finishGameLevel: () => dispatch(finishGameLevel()),
+        finishLevelProps: () => dispatch(finishLevel()),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }

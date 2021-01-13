@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // Project Reducers
-import gameReducer from '../components/Games/ForestRunner/reducer';
+import gameReducer from './redux/ducks/ForestRunner/game';
 import mapReducer from './redux/ducks/ForestRunner/map';
 import playerReducer from './redux/ducks/ForestRunner/player';
 import menuReducer from './redux/ducks/menu';

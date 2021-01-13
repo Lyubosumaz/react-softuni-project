@@ -55,25 +55,25 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function setGameStart() {
+export function startLevel() {
     return {
         type: GAME_START_LEVEL,
         payload: true,
     };
 }
 
-export function finishGameLevel() {
+export function finishLevel() {
     return {
         type: GAME_FINISH_LEVEL,
         payload: false,
     };
 }
 
-export function resetGameLevel() {
+export function resetLevel() {
     return { type: GAME_RESET_LEVEL };
 }
 
-export function saveGameItems(data) {
+export function saveItems(data) {
     return {
         type: GAME_SAVE_ITEMS,
         payload: data,
