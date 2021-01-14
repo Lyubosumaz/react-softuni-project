@@ -99,6 +99,12 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
 
                 const test = { totalGold, savedItem, totalTime, gameLevel };
                 saveLevelProps(test);
+                finishLevelProps();
+                nextLevelProps(gameLevel);
+                setNotificationSuccess('Welcome the next level!');
+
+                resetLevelProps();
+                resetLocationProps();
 
                 // Promise.resolve(stopTimerProps())
                 //     .then(() => {
