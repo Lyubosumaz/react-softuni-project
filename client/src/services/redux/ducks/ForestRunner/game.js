@@ -108,13 +108,12 @@ export function openItemChest(data) {
         payload: data,
     };
 }
-export function saveLevel(data) {
-    console.log(data);
 
+export function saveLevel() {
     return (dispatch, getState) => {
         dispatch({ type: GAME_SAVE_LEVEL });
-        console.log(getState());
 
+        // TODO backend renaming maybe
         httpGame
             .save({
                 totalGold: getState().game.gold, // pickedGold
