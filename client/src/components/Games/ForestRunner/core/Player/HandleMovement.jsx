@@ -7,31 +7,10 @@ import { resetLocation, setMovement } from '../../../../../services/redux/ducks/
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { handlePopupEnd, handlePopupStart } from '../../../../../services/redux/ducks/popup';
 import { setState } from '../../../../../services/redux/ducks/timer';
+import { store } from '../../../../../services/redux/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({
-    children,
-    walkIndex,
-    tiles,
-    oldPos,
-    totalGold,
-    savedItem,
-    totalTime,
-    gameLevel,
-    gameItems,
-    inGame,
-    setMovementProps,
-    stopTimerProps,
-    openGoldChestProps,
-    openItemChestProps,
-    finishLevelProps,
-    resetLevelProps,
-    saveLevelProps,
-    resetLocationProps,
-    nextLevelProps,
-    handlePopupEndDisplay,
-    setNotificationSuccess
-}) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, handlePopupEndDisplay, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -114,10 +93,15 @@ function HandleMovement({
         switch (tile) {
             case 1:
                 if (!inGame) return;
-                if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
-                stopTimerProps();
+
+                Promise.all([!savedItem.length ? openItemChestProps({ itemName: "You didn't loot anything" }) : null, stopTimerProps()]).then((response) => {
+                    console.log(response, 'here');
+                    console.log(savedItem, totalTime);
+                    console.log(store.getState().game.item, store.getState().timer.time);
+                });
 
                 handlePopupEndDisplay();
+
                 // TODO after http request reworking
                 // saveLevelProps();
 
@@ -185,6 +169,7 @@ function mapDispatchToProps(dispatch) {
         nextLevelProps: (data) => dispatch(nextLevel(data)),
         handlePopupStartProps: () => dispatch(handlePopupStart()),
         handlePopupEndDisplay: () => dispatch(handlePopupEnd().display()),
+        testProps: () => dispatch(handlePopupEnd().display()),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }
