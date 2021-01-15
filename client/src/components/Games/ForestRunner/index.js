@@ -5,9 +5,10 @@ import { httpGame } from '../../../services/http';
 import { resetLevel, saveItems } from '../../../services/redux/ducks/ForestRunner/game';
 import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
 import Overlay from '../../GamePopup';
+import GamePopupEnd from '../../GamePopupEnd';
 import World from './core/World';
 
-function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsProps }) {
+function ForestRunner({ inGame, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveItemsProps(items));
@@ -25,6 +26,7 @@ function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsPr
             {/* <div>{(inGame && <Timer />) || <h1>Level: --, Time: --h --m --s</h1>}</div> */}
 
             {!inGame && <Overlay />}
+            {gamePopupEnd ? <GamePopupEnd /> : null}
 
             <World />
         </Fragment>
@@ -34,6 +36,7 @@ function ForestRunner({ inGame, resetLocationProps, resetLevelProps, saveItemsPr
 function mapStateToProps(state) {
     return {
         inGame: state.game.inGame,
+        gamePopupEnd: state.popup.gamePopupEnd,
     };
 }
 

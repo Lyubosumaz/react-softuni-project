@@ -7,10 +7,12 @@ import mapReducer from './ducks/ForestRunner/map';
 import playerReducer from './ducks/ForestRunner/player';
 import menuReducer from './ducks/menu';
 import notificationReducer from './ducks/notification';
+import popupReducer from './ducks/popup';
 import timerReducer from './ducks/timer';
 import userReducer from './ducks/user';
 
 const appReducer = combineReducers({
+    popup: popupReducer,
     timer: timerReducer,
     menu: menuReducer,
     player: playerReducer,

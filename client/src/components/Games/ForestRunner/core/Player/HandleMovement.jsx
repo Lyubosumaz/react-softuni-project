@@ -5,10 +5,33 @@ import { finishLevel, nextLevel, openGoldChest, openItemChest, resetLevel, saveL
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
+import { handlePopupEnd, handlePopupStart } from '../../../../../services/redux/ducks/popup';
 import { setState } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, setNotificationSuccess }) {
+function HandleMovement({
+    children,
+    walkIndex,
+    tiles,
+    oldPos,
+    totalGold,
+    savedItem,
+    totalTime,
+    gameLevel,
+    gameItems,
+    inGame,
+    setMovementProps,
+    stopTimerProps,
+    openGoldChestProps,
+    openItemChestProps,
+    finishLevelProps,
+    resetLevelProps,
+    saveLevelProps,
+    resetLocationProps,
+    nextLevelProps,
+    handlePopupEndDisplay,
+    setNotificationSuccess
+}) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -94,15 +117,16 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
                 if (!savedItem.length) openItemChestProps({ itemName: "You didn't loot anything" });
                 stopTimerProps();
 
+                handlePopupEndDisplay();
                 // TODO after http request reworking
-                saveLevelProps();
+                // saveLevelProps();
 
                 // TODO these functions need reworking
-                finishLevelProps();
-                nextLevelProps(gameLevel);
-                setNotificationSuccess('Welcome the next level!');
-                resetLevelProps();
-                resetLocationProps();
+                // finishLevelProps();
+                // nextLevelProps(gameLevel);
+                // setNotificationSuccess('Welcome the next level!');
+                // resetLevelProps();
+                // resetLocationProps();
                 break;
             case 2:
                 if (totalGold > 0) return;
@@ -159,6 +183,8 @@ function mapDispatchToProps(dispatch) {
         saveLevelProps: () => dispatch(saveLevel()),
         resetLocationProps: () => dispatch(resetLocation()),
         nextLevelProps: (data) => dispatch(nextLevel(data)),
+        handlePopupStartProps: () => dispatch(handlePopupStart()),
+        handlePopupEndDisplay: () => dispatch(handlePopupEnd().display()),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }
