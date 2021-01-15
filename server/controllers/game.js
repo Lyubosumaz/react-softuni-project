@@ -182,8 +182,6 @@ module.exports = {
             const userId = req.user._id;
             const { totalItem, totalGold, totalTime, level } = req.body;
 
-            console.log(userId, totalItem, totalGold, totalTime, level);
-
             models.GameProfile.updateOne(
                 { user: userId },
                 {

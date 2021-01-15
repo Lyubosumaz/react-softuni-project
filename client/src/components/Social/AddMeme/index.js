@@ -61,8 +61,6 @@ function AddMeme({ isLogin, setNotificationSuccess, setNotificationError }) {
         meme.imageOrientation = imageOrientation(width, height);
         meme.imageAltName = imageAltName(title.value);
 
-        console.log(meme);
-
         const hasErrors = Object.keys(errors).filter((key) => errors[key].length > 0);
 
         if (hasErrors.length === 0 && meme.title && meme.imageUrl && isLogged) {

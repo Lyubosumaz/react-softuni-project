@@ -14,8 +14,6 @@ export default function reducer(state = initialState, action) {
                 isTimerOn: action.payload,
             };
         case TIMER_SAVE_TIME:
-            console.log('timer: ', action.payload);
-
             return {
                 ...state,
                 time: action.payload,
