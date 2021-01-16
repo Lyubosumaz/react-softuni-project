@@ -23,16 +23,12 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function setState() {
+export function toggleTimer() {
+    const action = { type: TIMER_SET_STATE };
+
     return {
-        start: () => ({
-            type: TIMER_SET_STATE,
-            payload: true,
-        }),
-        stop: () => ({
-            type: TIMER_SET_STATE,
-            payload: false,
-        }),
+        start: () => ({ ...action, ...(action.payload = true) }),
+        stop: () => ({ ...action, ...(action.payload = false) }),
     };
 }
 

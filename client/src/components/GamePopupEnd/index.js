@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setState } from '../../services/redux/ducks/timer';
+import { toggleTimer } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
@@ -41,7 +41,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        startTimerProps: () => dispatch(setState().start()),
+        startTimerProps: () => dispatch(toggleTimer().start()),
     };
 }
 

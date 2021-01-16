@@ -6,7 +6,7 @@ import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
 import { handlePopupEnd, handlePopupStart } from '../../../../../services/redux/ducks/popup';
-import { setState } from '../../../../../services/redux/ducks/timer';
+import { toggleTimer } from '../../../../../services/redux/ducks/timer';
 import { store } from '../../../../../services/redux/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
@@ -159,7 +159,7 @@ function mapDispatchToProps(dispatch) {
     return {
         setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
         setTilesProps: (data) => dispatch(setTiles(data)),
-        stopTimerProps: () => dispatch(setState().stop()),
+        stopTimerProps: () => dispatch(toggleTimer().stop()),
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
         toggleStateOff: () => dispatch(toggleInGame().off()),
