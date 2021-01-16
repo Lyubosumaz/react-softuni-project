@@ -74,10 +74,10 @@ export function toggleInGame() {
     console.log('here toggle');
 
     return {
-        on: () => ({ ...action, ...(action.payload = true) }),
+        on: () => ({ ...action, payload: true }),
         off: () => {
             console.log('here off');
-            return { ...action, ...(action.payload = false) };
+            return { ...action, payload: false };
         },
     };
 }

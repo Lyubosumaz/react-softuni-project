@@ -97,6 +97,13 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
 
                 // saveLevelProps();
 
+                // TODO these functions need reworking
+                // toggleStateOff();
+                // nextLevelProps(gameLevel);
+                // setNotificationSuccess('Welcome the next level!');
+                resetLevelProps();
+                resetLocationProps();
+
                 setNotificationSuccess(`You have reach the maze end!`);
                 break;
             case 2:
