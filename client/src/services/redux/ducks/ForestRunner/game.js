@@ -1,7 +1,6 @@
 import { httpGame } from '../../../http';
 
-const GAME_START_LEVEL = 'react-softuni-project/forest-runner/game/start-lever';
-const GAME_FINISH_LEVEL = 'react-softuni-project/forest-runner/game/finish-level';
+const GAME_TOGGLE = 'react-softuni-project/forest-runner/game/toggle';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
 const GAME_NEXT_LEVEL = 'react-softuni-project/forest-runner/game/next-level';
 const GAME_SAVE_ITEMS = 'react-softuni-project/forest-runner/game/save-game';
@@ -13,7 +12,7 @@ const GAME_SAVE_LEVEL_FAILED = 'react-softuni-project/forest-runner/game/save-le
 
 const initialState = {
     fetchedAllItems: [],
-    inGame: false,
+    toggleInGame: false,
     gold: 0,
     item: [],
     level: 1,
@@ -27,15 +26,10 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 gameItems: action.payload,
             };
-        case GAME_START_LEVEL:
+        case GAME_TOGGLE:
             return {
                 ...state,
-                inGame: action.payload,
-            };
-        case GAME_FINISH_LEVEL:
-            return {
-                ...state,
-                inGame: action.payload,
+                toggleInGame: action.payload,
             };
         case GAME_RESET_LEVEL:
             return {
@@ -73,17 +67,12 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function startLevel() {
-    return {
-        type: GAME_START_LEVEL,
-        payload: true,
-    };
-}
+export function toggleState() {
+    const action = { type: GAME_TOGGLE };
 
-export function finishLevel() {
     return {
-        type: GAME_FINISH_LEVEL,
-        payload: false,
+        on: () => ({ ...action, ...(action.payload = true) }),
+        off: () => ({ ...action, ...(action.payload = false) }),
     };
 }
 

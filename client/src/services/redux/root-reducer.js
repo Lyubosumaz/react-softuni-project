@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // Project Reducers
 import gameReducer from './ducks/ForestRunner/game';
+import levelReducer from './ducks/ForestRunner/level';
 import mapReducer from './ducks/ForestRunner/map';
 import playerReducer from './ducks/ForestRunner/player';
 import menuReducer from './ducks/menu';
@@ -12,20 +13,21 @@ import timerReducer from './ducks/timer';
 import userReducer from './ducks/user';
 
 const appReducer = combineReducers({
+    game: gameReducer,
+    level: levelReducer,
+    map: mapReducer,
+    player: playerReducer,
+    menu: menuReducer,
+    notification: notificationReducer,
     popup: popupReducer,
     timer: timerReducer,
-    menu: menuReducer,
-    player: playerReducer,
-    map: mapReducer,
-    game: gameReducer,
     user: userReducer,
-    notification: notificationReducer,
 });
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['player', 'map', 'menu', 'game', 'timer', 'user'],
+    whitelist: ['player', 'map', 'menu', 'game', 'timer', 'user', 'level'],
 };
 
 const rootReducer = (state, action) => {

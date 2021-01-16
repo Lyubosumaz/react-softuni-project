@@ -10,7 +10,7 @@ import { setState } from '../../../../../services/redux/ducks/timer';
 import { store } from '../../../../../services/redux/store';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, handlePopupEndDisplay, setNotificationSuccess }) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, toggleInGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, finishLevelProps, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, handlePopupEndDisplay, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -92,7 +92,7 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                if (!inGame) return;
+                if (!toggleInGame) return;
 
                 Promise.all([!savedItem.length ? openItemChestProps({ itemName: "You didn't loot anything" }) : null, stopTimerProps()]).then((response) => {
                     console.log(response, 'here');
@@ -151,7 +151,7 @@ function mapStateToProps(state) {
         totalTime: state.timer.time,
         gameLevel: state.game.level,
         gameItems: state.game.gameItems,
-        inGame: state.game.inGame,
+        toggleInGame: state.game.toggleInGame,
     };
 }
 

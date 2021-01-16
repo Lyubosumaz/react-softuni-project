@@ -1,6 +1,5 @@
 import { httpGame } from '../../../http';
 
-const LEVEL_START = 'react-softuni-project/forest-runner/level/state';
 const LEVEL_RESET = 'react-softuni-project/forest-runner/level/reset';
 const LEVEL_NEXT = 'react-softuni-project/forest-runner/level/next';
 const LEVEL_SAVE = 'react-softuni-project/forest-runner/level/save';
@@ -9,7 +8,6 @@ const LEVEL_SAVE_FAILED = 'react-softuni-project/forest-runner/level/save-failed
 
 const initialState = {
     fetchedAllItems: [],
-    inGame: false,
     gold: 0,
     item: [],
     level: 1,
@@ -17,11 +15,6 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case LEVEL_START:
-            return {
-                ...state,
-                inGame: action.payload,
-            };
         case LEVEL_RESET:
             return {
                 ...state,
@@ -36,13 +29,6 @@ export default function reducer(state = initialState, action) {
         default:
             return state;
     }
-}
-
-export function startLevel() {
-    return {
-        type: LEVEL_START,
-        payload: true,
-    };
 }
 
 export function resetLevel() {
