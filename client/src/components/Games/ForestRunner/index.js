@@ -8,7 +8,7 @@ import Overlay from '../../GamePopup';
 import GamePopupEnd from '../../GamePopupEnd';
 import World from './core/World';
 
-function ForestRunner({ toggleInGame, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps }) {
+function ForestRunner({ inGame, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveItemsProps(items));
@@ -23,9 +23,9 @@ function ForestRunner({ toggleInGame, gamePopupEnd, resetLocationProps, resetLev
 
     return (
         <Fragment>
-            {/* <div>{(toggleInGame && <Timer />) || <h1>Level: --, Time: --h --m --s</h1>}</div> */}
+            {/* <div>{(inGame && <Timer />) || <h1>Level: --, Time: --h --m --s</h1>}</div> */}
 
-            {!toggleInGame && <Overlay />}
+            {!inGame && <Overlay />}
             {gamePopupEnd ? <GamePopupEnd /> : null}
 
             <World />
@@ -35,7 +35,7 @@ function ForestRunner({ toggleInGame, gamePopupEnd, resetLocationProps, resetLev
 
 function mapStateToProps(state) {
     return {
-        toggleInGame: state.game.toggleInGame,
+        inGame: state.game.inGame,
         gamePopupEnd: state.popup.gamePopupEnd,
     };
 }
@@ -51,7 +51,7 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(ForestRunner);
 
 ForestRunner.propTypes = {
-    toggleInGame: PropTypes.bool.isRequired,
+    inGame: PropTypes.bool.isRequired,
     resetLocationProps: PropTypes.func.isRequired,
     resetLevelProps: PropTypes.func.isRequired,
     saveItemsProps: PropTypes.func.isRequired,

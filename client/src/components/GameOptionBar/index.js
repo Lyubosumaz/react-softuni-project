@@ -7,7 +7,7 @@ import Timer from '../Timer';
 
 // TODO need to fix the Router, atm it makes re-rendering
 // TODO make this component reusable for many games
-function GameOptionBar({ isLogin, toggleInGame }) {
+function GameOptionBar({ isLogin, inGame }) {
     const isLogged = isLogin;
     const [activated, setActivated] = useState();
 
@@ -22,7 +22,7 @@ function GameOptionBar({ isLogin, toggleInGame }) {
         <div className="options-bar">
             <ul>
                 {/* TODO after reworking the game this should be different */}
-                <li className={`game-utilities`}>{toggleInGame ? <Timer /> : <span>Level: --, Time: --h --m --s</span>}</li>
+                <li className={`game-utilities`}>{inGame ? <Timer /> : <span>Level: --, Time: --h --m --s</span>}</li>
                 <li>{initializedOptionsBtn('game', 'Forest Runner')}</li>
 
                 <li>{initializedOptionsBtn('game/progress', 'Progress')}</li>
@@ -37,7 +37,7 @@ function GameOptionBar({ isLogin, toggleInGame }) {
 function mapStateToProps(state) {
     return {
         isLogin: state.user.isLogin,
-        toggleInGame: state.game.toggleInGame,
+        inGame: state.game.inGame,
     };
 }
 
@@ -45,5 +45,5 @@ export default connect(mapStateToProps)(GameOptionBar);
 
 GameOptionBar.propTypes = {
     isLogin: PropTypes.bool.isRequired,
-    toggleInGame: PropTypes.bool.isRequired,
+    inGame: PropTypes.bool.isRequired,
 };

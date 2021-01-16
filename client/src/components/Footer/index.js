@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function Footer({ toggleInGame }) {
+function Footer({ inGame }) {
     const [activated, setActivated] = useState();
 
     function handleCallBack(buttonDirection) {
@@ -14,7 +14,7 @@ function Footer({ toggleInGame }) {
     const initializedFooterBtn = factoryButtons(footerAttributes);
 
     return (
-        <footer className={`site-footer ${toggleInGame ? 'hidden' : ''}`}>
+        <footer className={`site-footer ${inGame ? 'hidden' : ''}`}>
             <div className="site-wrapper">
                 <p className="copy-write">Lyubosumaz Final React SoftUni Project. Copyright 2019-{`${new Date().getFullYear()}`} All Rights Reserved</p>
 
@@ -30,7 +30,7 @@ function Footer({ toggleInGame }) {
 
 function mapStateToProps(state) {
     return {
-        toggleInGame: state.game.toggleInGame,
+        inGame: state.game.inGame,
     };
 }
 

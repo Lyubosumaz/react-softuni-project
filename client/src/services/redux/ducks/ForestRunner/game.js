@@ -11,8 +11,8 @@ const GAME_SAVE_LEVEL_SUCCEEDED = 'react-softuni-project/forest-runner/game/save
 const GAME_SAVE_LEVEL_FAILED = 'react-softuni-project/forest-runner/game/save-level-failed';
 
 const initialState = {
+    inGame: false,
     fetchedAllItems: [],
-    toggleInGame: false,
     gold: 0,
     item: [],
     level: 1,
@@ -20,16 +20,16 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case GAME_TOGGLE:
+            return {
+                ...state,
+                inGame: action.payload,
+            };
         // TODO saves all game items in redux store, then used in open chest to get random item
         case GAME_SAVE_ITEMS:
             return {
                 ...state,
                 gameItems: action.payload,
-            };
-        case GAME_TOGGLE:
-            return {
-                ...state,
-                toggleInGame: action.payload,
             };
         case GAME_RESET_LEVEL:
             return {
@@ -67,7 +67,7 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function toggleState() {
+export function toggleInGame() {
     const action = { type: GAME_TOGGLE };
 
     return {
