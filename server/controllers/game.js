@@ -182,7 +182,7 @@ module.exports = {
             const userId = req.user._id;
             const { totalItem, totalGold, totalTime, level } = req.body;
 
-            if (!totalItem.length) totalItem.push({ itemName: "You didn't loot anything" });
+            if (!totalItem.length) totalItem.concat({ itemName: "You didn't loot anything" });
 
             models.GameProfile.updateOne(
                 { user: userId },

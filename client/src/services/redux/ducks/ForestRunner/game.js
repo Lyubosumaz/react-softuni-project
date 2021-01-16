@@ -69,14 +69,10 @@ export default function reducer(state = initialState, action) {
 
 export function toggleInGame() {
     const action = { type: GAME_TOGGLE };
-    console.log('here toggle');
 
     return {
         on: () => ({ ...action, payload: true }),
-        off: () => {
-            console.log('here off');
-            return { ...action, payload: false };
-        },
+        off: () => ({ ...action, payload: false }),
     };
 }
 

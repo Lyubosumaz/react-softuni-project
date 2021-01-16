@@ -9,7 +9,7 @@ import { handlePopupEnd, handlePopupStart } from '../../../../../services/redux/
 import { toggleTimer } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleStateOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, handlePopupEndDisplay, setNotificationSuccess }) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleInGameOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, handlePopupEndDisplay, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -98,7 +98,7 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
                 // saveLevelProps();
 
                 // TODO these functions need reworking
-                toggleStateOff();
+                toggleInGameOff();
                 nextLevelProps(gameLevel);
                 resetLevelProps();
                 resetLocationProps();
@@ -155,7 +155,7 @@ function mapDispatchToProps(dispatch) {
         stopTimerProps: () => dispatch(toggleTimer().stop()),
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
-        toggleStateOff: () => dispatch(toggleInGame().off()),
+        toggleInGameOff: () => dispatch(toggleInGame().off()),
         resetLevelProps: () => dispatch(resetLevel()),
         saveLevelProps: () => dispatch(saveLevel()),
         resetLocationProps: () => dispatch(resetLocation()),
