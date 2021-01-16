@@ -24,27 +24,19 @@ export default function reducer(state = initialState, action) {
 }
 
 export function handlePopupStart() {
+    const action = { type: POPUP_HANDLE_POPUP_START };
+
     return {
-        display: () => ({
-            type: POPUP_HANDLE_POPUP_START,
-            payload: true,
-        }),
-        close: () => ({
-            type: POPUP_HANDLE_POPUP_START,
-            payload: false,
-        }),
+        display: () => ({ ...action, payload: true }),
+        close: () => ({ ...action, payload: false }),
     };
 }
 
 export function handlePopupEnd() {
+    const action = { type: POPUP_HANDLE_POPUP_END };
+
     return {
-        display: () => ({
-            type: POPUP_HANDLE_POPUP_END,
-            payload: true,
-        }),
-        close: () => ({
-            type: POPUP_HANDLE_POPUP_END,
-            payload: false,
-        }),
+        display: () => ({ ...action, payload: true }),
+        close: () => ({ ...action, payload: false }),
     };
 }

@@ -5,7 +5,7 @@ import { toggleTimer } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function GamePopup({ inGame, toggleStateOn, startTimerProps }) {
+function GamePopupStart({ inGame, toggleStateOn, startTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
@@ -44,9 +44,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GamePopup);
+export default connect(mapStateToProps, mapDispatchToProps)(GamePopupStart);
 
-GamePopup.propTypes = {
+GamePopupStart.propTypes = {
     inGame: PropTypes.bool.isRequired,
     toggleStateOn: PropTypes.func.isRequired,
     startTimerProps: PropTypes.func.isRequired,

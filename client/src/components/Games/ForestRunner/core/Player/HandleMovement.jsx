@@ -98,9 +98,8 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
                 // saveLevelProps();
 
                 // TODO these functions need reworking
-                // toggleStateOff();
-                // nextLevelProps(gameLevel);
-                // setNotificationSuccess('Welcome the next level!');
+                toggleStateOff();
+                nextLevelProps(gameLevel);
                 resetLevelProps();
                 resetLocationProps();
 

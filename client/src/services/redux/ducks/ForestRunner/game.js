@@ -1,6 +1,4 @@
 import { httpGame } from '../../../http';
-import { handlePopupEnd } from '../popup';
-import { toggleTimer } from '../timer';
 
 const GAME_TOGGLE = 'react-softuni-project/forest-runner/game/toggle';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
@@ -116,7 +114,7 @@ export function openItemChest(data) {
 
 export function saveLevel() {
     return (dispatch, getState) => {
-        toggleTimer().stop();
+        // toggleTimer().stop();
         console.log('gold', getState().game.gold, 'item', getState().game.item, 'time', getState().timer.time, 'level', getState().game.level);
         dispatch({ type: GAME_SAVE_LEVEL });
 
@@ -133,7 +131,7 @@ export function saveLevel() {
 
                 console.log('thunk');
 
-                handlePopupEnd().display();
+                // handlePopupEnd().display();
 
                 // TODO after http request reworking
 
@@ -148,14 +146,14 @@ export function saveLevel() {
     };
 }
 
-function saveLevelSucceeded(data) {
-    console.log(data);
+// function saveLevelSucceeded(data) {
+//     console.log(data);
 
-    return {
-        type: GAME_SAVE_LEVEL_SUCCEEDED,
-        payload: data,
-    };
-}
+//     return {
+//         type: GAME_SAVE_LEVEL_SUCCEEDED,
+//         payload: data,
+//     };
+// }
 
 // function saveLevelFailed(data) {
 //     console.log(data);

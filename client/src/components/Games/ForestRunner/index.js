@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
 import { resetLevel, saveItems } from '../../../services/redux/ducks/ForestRunner/game';
 import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
-import Overlay from '../../GamePopup';
 import GamePopupEnd from '../../GamePopupEnd';
+import Overlay from '../../GamePopupStart';
 import World from './core/World';
 
 function ForestRunner({ inGame, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps }) {
