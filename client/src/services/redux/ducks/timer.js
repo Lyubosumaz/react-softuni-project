@@ -27,8 +27,8 @@ export function toggleTimer() {
     const action = { type: TIMER_SET_STATE };
 
     return {
-        start: () => ({ ...action, ...(action.payload = true) }),
-        stop: () => ({ ...action, ...(action.payload = false) }),
+        start: () => ({ ...action, payload: true }),
+        stop: () => ({ ...action, payload: false }),
     };
 }
 

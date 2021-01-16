@@ -1,4 +1,6 @@
 import { httpGame } from '../../../http';
+import { handlePopupEnd } from '../popup';
+import { toggleTimer } from '../timer';
 
 const GAME_TOGGLE = 'react-softuni-project/forest-runner/game/toggle';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
@@ -69,10 +71,14 @@ export default function reducer(state = initialState, action) {
 
 export function toggleInGame() {
     const action = { type: GAME_TOGGLE };
+    console.log('here toggle');
 
     return {
         on: () => ({ ...action, ...(action.payload = true) }),
-        off: () => ({ ...action, ...(action.payload = false) }),
+        off: () => {
+            console.log('here off');
+            return { ...action, ...(action.payload = false) };
+        },
     };
 }
 
@@ -110,6 +116,8 @@ export function openItemChest(data) {
 
 export function saveLevel() {
     return (dispatch, getState) => {
+        toggleTimer().stop();
+        console.log('gold', getState().game.gold, 'item', getState().game.item, 'time', getState().timer.time, 'level', getState().game.level);
         dispatch({ type: GAME_SAVE_LEVEL });
 
         // TODO backend renaming maybe!?
@@ -120,19 +128,34 @@ export function saveLevel() {
                 totalTime: getState().timer.time,
                 level: getState().game.level, // currentLevel
             })
-            .then((response) => dispatch({ type: GAME_SAVE_LEVEL_SUCCEEDED, payload: response }))
+            .then((response) => {
+                dispatch({ type: GAME_SAVE_LEVEL_SUCCEEDED, payload: response });
+
+                console.log('thunk');
+
+                handlePopupEnd().display();
+
+                // TODO after http request reworking
+
+                // TODO these functions need reworking
+                // toggleStateOff();
+                // nextLevelProps(gameLevel);
+                // setNotificationSuccess('Welcome the next level!');
+                // resetLevelProps();
+                // resetLocationProps();
+            })
             .catch((error) => dispatch({ type: GAME_SAVE_LEVEL_FAILED, error: error }));
     };
 }
 
-// function saveLevelSucceeded(data) {
-//     console.log(data);
+function saveLevelSucceeded(data) {
+    console.log(data);
 
-//     return {
-//         type: GAME_SAVE_LEVEL_SUCCEEDED,
-//         payload: data,
-//     };
-// }
+    return {
+        type: GAME_SAVE_LEVEL_SUCCEEDED,
+        payload: data,
+    };
+}
 
 // function saveLevelFailed(data) {
 //     console.log(data);
