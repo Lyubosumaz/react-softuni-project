@@ -9,6 +9,7 @@ const GAME_OPEN_ITEM_CHEST = 'react-softuni-project/forest-runner/game/open-item
 const GAME_SAVE_LEVEL = 'react-softuni-project/forest-runner/game/save-level';
 const GAME_SAVE_LEVEL_SUCCEEDED = 'react-softuni-project/forest-runner/game/save-level-succeeded';
 const GAME_SAVE_LEVEL_FAILED = 'react-softuni-project/forest-runner/game/save-level-failed';
+const TEST = 'TEST';
 
 const initialState = {
     inGame: false,
@@ -58,6 +59,11 @@ export default function reducer(state = initialState, action) {
                 ...state,
             };
         case GAME_SAVE_LEVEL_FAILED:
+            console.log(action);
+            return {
+                ...state,
+            };
+        case TEST:
             console.log(action);
             return {
                 ...state,
