@@ -10,14 +10,12 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, closePopupEn
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
-        closePopupEnd();
-
-        nextLevelProps(gameLevel);
-
-        toggleInGameOff();
-        displayPopupStart();
-        resetLocationProps();
-        resetLevelProps();
+        // closePopupEnd();
+        // nextLevelProps(gameLevel);
+        // toggleInGameOff();
+        // displayPopupStart();
+        // resetLocationProps();
+        // resetLevelProps();
     };
 
     return (
@@ -31,7 +29,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, closePopupEn
 
                 <div className={`game-statistics-wrapper`}>
                     <p>Looted gold: {totalGold}</p>
-                    <p>Looted item: {savedItem ? savedItem[0].itemName : 'wqrqwe'}</p>
+                    <p>Looted item: {savedItem.level ? savedItem[0].itemName : 'wqrqwe'}</p>
                     <p>Your time: {totalTime}</p>
                 </div>
 

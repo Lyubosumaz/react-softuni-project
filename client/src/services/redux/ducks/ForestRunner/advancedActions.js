@@ -1,17 +1,40 @@
 import { httpGame } from '../../../http';
-import { handlePopupStart } from '../popup';
+import { handlePopupEnd, handlePopupStart } from '../popup';
 import { toggleTimer } from '../timer';
-import { toggleInGame } from './game';
+import { nextLevel, resetLevel, toggleInGame } from './game';
+import { resetLocation } from './player';
 
 const GAME_SAVE_LEVEL = 'react-softuni-project/forest-runner/game/save-level';
 const GAME_SAVE_LEVEL_SUCCEEDED = 'react-softuni-project/forest-runner/game/save-level-succeeded';
 const GAME_SAVE_LEVEL_FAILED = 'react-softuni-project/forest-runner/game/save-level-failed';
 
 export function popupStartGame() {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(toggleInGame().on());
         dispatch(toggleTimer().start());
         dispatch(handlePopupStart().close());
+    };
+}
+
+export function popupEndGame() {
+    return (dispatch, getState) => {
+        //closePopupEnd();
+        dispatch(handlePopupEnd().close());
+
+        // nextLevelProps(gameLevel);
+        dispatch(nextLevel(getState().game.level));
+
+        // toggleInGameOff();
+        dispatch(toggleInGame().off());
+
+        // displayPopupStart();
+        dispatch(handlePopupStart().display());
+
+        // resetLocationProps();
+        dispatch(resetLocation());
+
+        dispatch(resetLevel());
+        // resetLevelProps();
     };
 }
 

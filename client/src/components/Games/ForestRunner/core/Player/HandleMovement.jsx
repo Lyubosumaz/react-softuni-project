@@ -92,7 +92,10 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
         switch (tile) {
             case 1:
                 if (!inGame) return;
+
+                if (gameItems.length) openItemChestProps({ itemName: "You didn't loot anything" });
                 stopTimerProps();
+
                 // handlePopupEndDisplay();
 
                 // saveLevelProps();
@@ -102,7 +105,7 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
                 displayPopupEndDisplay();
                 toggleInGameOff();
                 // resetLevelProps();
-                resetLocationProps();
+                // resetLocationProps();
 
                 setNotificationSuccess(`You have reach the maze end!`);
                 break;
