@@ -10,9 +10,9 @@ function GamePopupStart({ inGame, closePopupStart, toggleInGameOn, startTimerPro
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
-        closePopupStart();
         toggleInGameOn();
         startTimerProps();
+        closePopupStart();
     };
 
     return (
@@ -43,7 +43,7 @@ function mapDispatchToProps(dispatch) {
     return {
         toggleInGameOn: () => dispatch(toggleInGame().on()),
         startTimerProps: () => dispatch(toggleTimer().start()),
-        closePopupStart: () => dispatch(handlePopupStart().close),
+        closePopupStart: () => dispatch(handlePopupStart().close()),
     };
 }
 

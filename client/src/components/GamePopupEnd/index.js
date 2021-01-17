@@ -23,7 +23,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, gamePopupEnd
                 <p>Some text time: {totalTime}</p>
                 <p>Some text level: {gameLevel}</p>
 
-                <div className={`overlay-buttons-wrapper`}>{initializedOverlayBtn(null, 'Next Level', 'ready')}</div>
+                <div className={`overlay-buttons-wrapper`}>{initializedOverlayBtn(null, 'Next Level', 'next-level')}</div>
             </section>
         </div>
     );

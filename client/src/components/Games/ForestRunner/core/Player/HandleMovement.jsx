@@ -5,11 +5,11 @@ import { nextLevel, openGoldChest, openItemChest, resetLevel, saveLevel, toggleI
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
-import { handlePopupEnd, handlePopupStart } from '../../../../../services/redux/ducks/popup';
+import { handlePopupEnd } from '../../../../../services/redux/ducks/popup';
 import { toggleTimer } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleInGameOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, handlePopupEndDisplay, setNotificationSuccess }) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleInGameOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, displayPopupEndDisplay, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -98,6 +98,8 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
                 // saveLevelProps();
 
                 // TODO these functions need reworking
+
+                displayPopupEndDisplay();
                 toggleInGameOff();
                 nextLevelProps(gameLevel);
                 resetLevelProps();
@@ -160,8 +162,7 @@ function mapDispatchToProps(dispatch) {
         saveLevelProps: () => dispatch(saveLevel()),
         resetLocationProps: () => dispatch(resetLocation()),
         nextLevelProps: (data) => dispatch(nextLevel(data)),
-        handlePopupStartProps: () => dispatch(handlePopupStart()),
-        handlePopupEndDisplay: () => dispatch(handlePopupEnd().display()),
+        displayPopupEndDisplay: () => dispatch(handlePopupEnd().display()),
         testProps: () => dispatch(handlePopupEnd().display()),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };

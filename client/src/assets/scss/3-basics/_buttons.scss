@@ -227,6 +227,11 @@ button {
     }
 }
 
+.overlay-button.next-level {
+    width: auto;
+    background-color: $mainGreenColor;
+}
+
 // MEME
 .meme-card-button {
     padding: 0.3em 3em;

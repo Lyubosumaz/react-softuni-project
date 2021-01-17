@@ -2,14 +2,14 @@ import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
-import { resetLevel, saveItems } from '../../../services/redux/ducks/ForestRunner/game';
+import { resetLevel, saveItems, toggleInGame } from '../../../services/redux/ducks/ForestRunner/game';
 import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
 import { handlePopupStart } from '../../../services/redux/ducks/popup';
 import GamePopupEnd from '../../GamePopupEnd';
 import Overlay from '../../GamePopupStart';
 import World from './core/World';
 
-function ForestRunner({ displayPopupStart, gamePopupStart, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps }) {
+function ForestRunner({ displayPopupStart, gamePopupStart, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps, toggleInGameOff }) {
     // TODO Game component should be reworked overall
     useEffect(() => {
         httpGame.shop().then((items) => saveItemsProps(items));
@@ -17,6 +17,7 @@ function ForestRunner({ displayPopupStart, gamePopupStart, gamePopupEnd, resetLo
     }, []);
 
     useEffect(() => {
+        toggleInGameOff();
         displayPopupStart();
         resetLocationProps();
         resetLevelProps();
@@ -44,6 +45,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         displayPopupStart: () => dispatch(handlePopupStart().display()),
+        toggleInGameOff: () => dispatch(toggleInGame().off()),
         resetLocationProps: () => dispatch(resetLocation()),
         resetLevelProps: () => dispatch(resetLevel()),
         saveItemsProps: (items) => dispatch(saveItems(items)),
