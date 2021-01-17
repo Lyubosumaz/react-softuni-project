@@ -1,14 +1,21 @@
 import { connect } from 'react-redux';
+import { resetLevel, toggleInGame } from '../../services/redux/ducks/ForestRunner/game';
+import { resetLocation } from '../../services/redux/ducks/ForestRunner/player';
+import { handlePopupEnd, handlePopupStart } from '../../services/redux/ducks/popup';
 import { toggleTimer } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, gamePopupEnd, startLevelProps, startTimerProps }) {
+function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, closePopupEnd, toggleInGameOff, displayPopupStart, resetLocationProps, resetLevelProps, gamePopupEnd, startLevelProps, startTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
-        startLevelProps();
-        startTimerProps();
+        closePopupEnd();
+
+        toggleInGameOff();
+        displayPopupStart();
+        resetLocationProps();
+        resetLevelProps();
     };
 
     return (
@@ -23,7 +30,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, gamePopupEnd
                 <p>Some text time: {totalTime}</p>
                 <p>Some text level: {gameLevel}</p>
 
-                <div className={`overlay-buttons-wrapper`}>{initializedOverlayBtn(null, 'Next Level', 'next-level')}</div>
+                <div className={`overlay-buttons-wrapper`}>{initializedOverlayBtn(null, 'Next Level', 'next-level', handleSubmit)}</div>
             </section>
         </div>
     );
@@ -41,7 +48,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        toggleInGameOff: () => dispatch(toggleInGame().off()),
+        displayPopupStart: () => dispatch(handlePopupStart().display()),
+        resetLocationProps: () => dispatch(resetLocation()),
+        resetLevelProps: () => dispatch(resetLevel()),
         startTimerProps: () => dispatch(toggleTimer().start()),
+        closePopupEnd: () => dispatch(handlePopupEnd().close()),
     };
 }
 

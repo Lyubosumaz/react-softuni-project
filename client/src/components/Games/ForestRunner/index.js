@@ -44,8 +44,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        displayPopupStart: () => dispatch(handlePopupStart().display()),
         toggleInGameOff: () => dispatch(toggleInGame().off()),
+        displayPopupStart: () => dispatch(handlePopupStart().display()),
         resetLocationProps: () => dispatch(resetLocation()),
         resetLevelProps: () => dispatch(resetLevel()),
         saveItemsProps: (items) => dispatch(saveItems(items)),
