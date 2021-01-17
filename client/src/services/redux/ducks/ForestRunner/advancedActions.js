@@ -4,14 +4,11 @@ import { toggleTimer } from '../timer';
 import { nextLevel, openItemChest, resetLevel, toggleInGame } from './game';
 import { resetLocation } from './player';
 
-const GAME_SAVE_LEVEL = 'react-softuni-project/forest-runner/game/save-level';
-const GAME_SAVE_LEVEL_SUCCEEDED = 'react-softuni-project/forest-runner/game/save-level-succeeded';
-const GAME_SAVE_LEVEL_FAILED = 'react-softuni-project/forest-runner/game/save-level-failed';
-
 export function popupStartGame() {
     return (dispatch) => {
         dispatch(toggleInGame().on());
         dispatch(toggleTimer().start());
+
         dispatch(handlePopupStart().close());
     };
 }
@@ -19,10 +16,11 @@ export function popupStartGame() {
 export function popupEndGame() {
     return (dispatch, getState) => {
         dispatch(handlePopupEnd().close());
-        // dispatch(toggleInGame().off());
+
         dispatch(nextLevel(getState().game.level));
         dispatch(resetLocation());
         dispatch(resetLevel());
+
         dispatch(handlePopupStart().display());
     };
 }

@@ -1,16 +1,14 @@
+import { PropTypes } from 'prop-types';
 import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { finalTile } from '../../../../../services/redux/ducks/ForestRunner/advancedActions';
-import { nextLevel, openGoldChest, openItemChest, resetLevel, toggleInGame } from '../../../../../services/redux/ducks/ForestRunner/game';
-import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
-import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
+import { openGoldChest, openItemChest } from '../../../../../services/redux/ducks/ForestRunner/game';
+import { setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
-import { handlePopupEnd } from '../../../../../services/redux/ducks/popup';
-import { toggleTimer } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, finalTileProps, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleInGameOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, displayPopupEndDisplay, setNotificationSuccess }) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, gameItems, inGame, setMovementProps, finalTileProps, openGoldChestProps, openItemChestProps, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -92,17 +90,9 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                // if (!inGame) return;
+                if (!inGame) return;
 
                 finalTileProps();
-
-                // // Promise
-                // if (gameItems.length) openItemChestProps({ itemName: "You didn't loot anything" });
-                // stopTimerProps();
-
-                // // then
-                // displayPopupEndDisplay();
-                // toggleInGameOff();
 
                 setNotificationSuccess(`You have reach the maze end!`);
                 break;
@@ -142,8 +132,6 @@ function mapStateToProps(state) {
         oldPos: state.player.position,
         totalGold: state.game.gold,
         savedItem: state.game.item,
-        totalTime: state.timer.time,
-        gameLevel: state.game.level,
         gameItems: state.game.gameItems,
         inGame: state.game.inGame,
     };
@@ -153,18 +141,46 @@ function mapDispatchToProps(dispatch) {
     return {
         setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
         finalTileProps: () => dispatch(finalTile()),
-        setTilesProps: (data) => dispatch(setTiles(data)),
-        stopTimerProps: () => dispatch(toggleTimer().stop()),
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
-        toggleInGameOff: () => dispatch(toggleInGame().off()),
-        resetLevelProps: () => dispatch(resetLevel()),
-        resetLocationProps: () => dispatch(resetLocation()),
-        nextLevelProps: (data) => dispatch(nextLevel(data)),
-        displayPopupEndDisplay: () => dispatch(handlePopupEnd().display()),
-        testProps: () => dispatch(handlePopupEnd().display()),
         setNotificationSuccess: (data) => dispatch(setNotification(data).success()),
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HandleMovement);
+
+HandleMovement.propTypes = {
+    children: PropTypes.element.isRequired,
+    walkIndex: PropTypes.number.isRequired,
+    tiles: PropTypes.arrayOf(PropTypes.array.isRequired).isRequired,
+    oldPos: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    totalGold: PropTypes.number.isRequired,
+    savedItem: PropTypes.arrayOf(
+        PropTypes.exact({
+            _id: PropTypes.string,
+            itemName: PropTypes.string.isRequired,
+            imageUrl: PropTypes.string,
+            strength: PropTypes.number,
+            agility: PropTypes.number,
+            intelligence: PropTypes.number,
+            price: PropTypes.number,
+        }).isRequired
+    ).isRequired,
+    gameItems: PropTypes.arrayOf(
+        PropTypes.exact({
+            _id: PropTypes.string,
+            itemName: PropTypes.string.isRequired,
+            imageUrl: PropTypes.string,
+            strength: PropTypes.number,
+            agility: PropTypes.number,
+            intelligence: PropTypes.number,
+            price: PropTypes.number,
+        }).isRequired
+    ).isRequired,
+    inGame: PropTypes.bool.isRequired,
+    setMovementProps: PropTypes.func.isRequired,
+    finalTileProps: PropTypes.func.isRequired,
+    openGoldChestProps: PropTypes.func.isRequired,
+    openItemChestProps: PropTypes.func.isRequired,
+    setNotificationSuccess: PropTypes.func.isRequired,
+};
