@@ -22,9 +22,10 @@
     header {
         margin-bottom: 1.5em;
         text-align: center;
-
+        
         h2 {
             margin: 0;
+            margin-bottom: 0.3em;
             line-height: 1.4;
 
             &::after {
@@ -36,9 +37,18 @@
                 background-color: $secondaryFontColor;
             }
         }
+
+        h4 {
+            padding: 0;
+            margin: 0;
+        }
     }
 
-    p {}
+    p {
+        padding: 0;
+        margin-bottom: 2.5em;
+        text-align: center;
+    }
 
     .overlay-buttons-wrapper {
         display: flex;

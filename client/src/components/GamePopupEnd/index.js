@@ -23,6 +23,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, closePopupEn
             <section className={`overlay-container`}>
                 <header>
                     <h2>Game Statistics</h2>
+                    <h4>Level: {gameLevel}</h4>
                 </header>
 
                 <p>Some text gold: {totalGold}</p>
