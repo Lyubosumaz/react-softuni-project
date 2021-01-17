@@ -1,23 +1,13 @@
 import { connect } from 'react-redux';
 import { popupEndGame } from '../../services/redux/ducks/ForestRunner/advancedActions';
-import { nextLevel, resetLevel, toggleInGame } from '../../services/redux/ducks/ForestRunner/game';
-import { resetLocation } from '../../services/redux/ducks/ForestRunner/player';
-import { handlePopupEnd, handlePopupStart } from '../../services/redux/ducks/popup';
-import { toggleTimer } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGameProps, toggleInGameOff, displayPopupStart, resetLocationProps, resetLevelProps, nextLevelProps, gamePopupEnd, startLevelProps, startTimerProps }) {
+function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGameProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
         popupEndGameProps();
-        // closePopupEnd();
-        // nextLevelProps(gameLevel);
-        // toggleInGameOff();
-        // displayPopupStart();
-        // resetLocationProps();
-        // resetLevelProps();
     };
 
     return (
@@ -54,13 +44,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         popupEndGameProps: () => dispatch(popupEndGame()),
-        toggleInGameOff: () => dispatch(toggleInGame().off()),
-        displayPopupStart: () => dispatch(handlePopupStart().display()),
-        resetLocationProps: () => dispatch(resetLocation()),
-        resetLevelProps: () => dispatch(resetLevel()),
-        nextLevelProps: (data) => dispatch(nextLevel(data)),
-        startTimerProps: () => dispatch(toggleTimer().start()),
-        closePopupEnd: () => dispatch(handlePopupEnd().close()),
     };
 }
 
