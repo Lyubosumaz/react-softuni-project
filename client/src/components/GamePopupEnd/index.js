@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { popupEndGame } from '../../services/redux/ducks/ForestRunner/advancedActions';
 import { nextLevel, resetLevel, toggleInGame } from '../../services/redux/ducks/ForestRunner/game';
 import { resetLocation } from '../../services/redux/ducks/ForestRunner/player';
 import { handlePopupEnd, handlePopupStart } from '../../services/redux/ducks/popup';
@@ -6,10 +7,11 @@ import { toggleTimer } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, closePopupEnd, toggleInGameOff, displayPopupStart, resetLocationProps, resetLevelProps, nextLevelProps, gamePopupEnd, startLevelProps, startTimerProps }) {
+function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGameProps, toggleInGameOff, displayPopupStart, resetLocationProps, resetLevelProps, nextLevelProps, gamePopupEnd, startLevelProps, startTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
+        popupEndGameProps();
         // closePopupEnd();
         // nextLevelProps(gameLevel);
         // toggleInGameOff();
@@ -29,7 +31,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, closePopupEn
 
                 <div className={`game-statistics-wrapper`}>
                     <p>Looted gold: {totalGold}</p>
-                    <p>Looted item: {savedItem.level ? savedItem[0].itemName : 'wqrqwe'}</p>
+                    <p>Looted item: {savedItem[0].itemName}</p>
                     <p>Your time: {totalTime}</p>
                 </div>
 
@@ -51,6 +53,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        popupEndGameProps: () => dispatch(popupEndGame()),
         toggleInGameOff: () => dispatch(toggleInGame().off()),
         displayPopupStart: () => dispatch(handlePopupStart().display()),
         resetLocationProps: () => dispatch(resetLocation()),

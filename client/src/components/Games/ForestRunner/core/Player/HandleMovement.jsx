@@ -93,19 +93,13 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
             case 1:
                 if (!inGame) return;
 
+                // Promise
                 if (gameItems.length) openItemChestProps({ itemName: "You didn't loot anything" });
                 stopTimerProps();
 
-                // handlePopupEndDisplay();
-
-                // saveLevelProps();
-
-                // TODO these functions need reworking
-
+                // then
                 displayPopupEndDisplay();
                 toggleInGameOff();
-                // resetLevelProps();
-                // resetLocationProps();
 
                 setNotificationSuccess(`You have reach the maze end!`);
                 break;

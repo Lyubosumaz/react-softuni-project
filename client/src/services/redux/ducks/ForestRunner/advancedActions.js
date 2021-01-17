@@ -18,23 +18,12 @@ export function popupStartGame() {
 
 export function popupEndGame() {
     return (dispatch, getState) => {
-        //closePopupEnd();
         dispatch(handlePopupEnd().close());
-
-        // nextLevelProps(gameLevel);
         dispatch(nextLevel(getState().game.level));
-
-        // toggleInGameOff();
         dispatch(toggleInGame().off());
-
-        // displayPopupStart();
         dispatch(handlePopupStart().display());
-
-        // resetLocationProps();
         dispatch(resetLocation());
-
         dispatch(resetLevel());
-        // resetLevelProps();
     };
 }
 
