@@ -1,18 +1,19 @@
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleInGame } from '../../services/redux/ducks/ForestRunner/game';
+import { resetLevel, toggleInGame } from '../../services/redux/ducks/ForestRunner/game';
 import { handlePopupStart } from '../../services/redux/ducks/popup';
 import { toggleTimer } from '../../services/redux/ducks/timer';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function GamePopupStart({ inGame, level, closePopupStart, toggleInGameOn, startTimerProps }) {
+function GamePopupStart({ inGame, level, resetLevelProps, closePopupStart, toggleInGameOn, startTimerProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
         toggleInGameOn();
         startTimerProps();
         closePopupStart();
+        // resetLevelProps();
     };
 
     return (
@@ -43,6 +44,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        resetLevelProps: () => dispatch(resetLevel()),
         toggleInGameOn: () => dispatch(toggleInGame().on()),
         startTimerProps: () => dispatch(toggleTimer().start()),
         closePopupStart: () => dispatch(handlePopupStart().close()),

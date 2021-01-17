@@ -101,8 +101,7 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
 
                 displayPopupEndDisplay();
                 toggleInGameOff();
-                nextLevelProps(gameLevel);
-                resetLevelProps();
+                // resetLevelProps();
                 resetLocationProps();
 
                 setNotificationSuccess(`You have reach the maze end!`);
