@@ -1,7 +1,7 @@
 import { httpGame } from '../../../http';
 import { handlePopupEnd, handlePopupStart } from '../popup';
 import { toggleTimer } from '../timer';
-import { nextLevel, resetLevel, toggleInGame } from './game';
+import { nextLevel, openItemChest, resetLevel, toggleInGame } from './game';
 import { resetLocation } from './player';
 
 const GAME_SAVE_LEVEL = 'react-softuni-project/forest-runner/game/save-level';
@@ -19,44 +19,33 @@ export function popupStartGame() {
 export function popupEndGame() {
     return (dispatch, getState) => {
         dispatch(handlePopupEnd().close());
+        // dispatch(toggleInGame().off());
         dispatch(nextLevel(getState().game.level));
-        dispatch(toggleInGame().off());
-        dispatch(handlePopupStart().display());
         dispatch(resetLocation());
         dispatch(resetLevel());
+        dispatch(handlePopupStart().display());
     };
 }
 
-export function saveLevel() {
+export function finalTile() {
     return (dispatch, getState) => {
-        // toggleTimer().stop();
-        console.log('gold', getState().game.gold, 'item', getState().game.item, 'time', getState().timer.time, 'level', getState().game.level);
-        dispatch({ type: GAME_SAVE_LEVEL });
-
-        // TODO backend renaming maybe!?
-        httpGame
-            .save({
+        console.log(getState().game.item.length);
+        Promise.all([
+            // dispatch only if arr is empty
+            !getState().game.item.length ? dispatch(openItemChest({ itemName: "You didn't loot anything" })) : null,
+            // stops the timer
+            dispatch(toggleTimer().stop()),
+        ]).then(() => {
+            // TODO after http request reworking
+            httpGame.save({
                 totalGold: getState().game.gold, // pickedGold
                 totalItem: getState().game.item, // pickedItem
                 totalTime: getState().timer.time,
                 level: getState().game.level, // currentLevel
-            })
-            .then((response) => {
-                dispatch({ type: GAME_SAVE_LEVEL_SUCCEEDED, payload: response });
+            });
 
-                console.log('thunk');
-
-                // handlePopupEnd().display();
-
-                // TODO after http request reworking
-
-                // TODO these functions need reworking
-                // toggleStateOff();
-                // nextLevelProps(gameLevel);
-                // setNotificationSuccess('Welcome the next level!');
-                // resetLevelProps();
-                // resetLocationProps();
-            })
-            .catch((error) => dispatch({ type: GAME_SAVE_LEVEL_FAILED, error: error }));
+            dispatch(handlePopupEnd().display());
+            dispatch(toggleInGame().off());
+        });
     };
 }

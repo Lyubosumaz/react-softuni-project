@@ -1,4 +1,3 @@
-import { httpGame } from '../../../http';
 
 const GAME_TOGGLE = 'react-softuni-project/forest-runner/game/toggle';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
@@ -113,55 +112,3 @@ export function openItemChest(data) {
         payload: data,
     };
 }
-
-export function saveLevel() {
-    return (dispatch, getState) => {
-        // toggleTimer().stop();
-        console.log('gold', getState().game.gold, 'item', getState().game.item, 'time', getState().timer.time, 'level', getState().game.level);
-        dispatch({ type: GAME_SAVE_LEVEL });
-
-        // TODO backend renaming maybe!?
-        httpGame
-            .save({
-                totalGold: getState().game.gold, // pickedGold
-                totalItem: getState().game.item, // pickedItem
-                totalTime: getState().timer.time,
-                level: getState().game.level, // currentLevel
-            })
-            .then((response) => {
-                dispatch({ type: GAME_SAVE_LEVEL_SUCCEEDED, payload: response });
-
-                console.log('thunk');
-
-                // handlePopupEnd().display();
-
-                // TODO after http request reworking
-
-                // TODO these functions need reworking
-                // toggleStateOff();
-                // nextLevelProps(gameLevel);
-                // setNotificationSuccess('Welcome the next level!');
-                // resetLevelProps();
-                // resetLocationProps();
-            })
-            .catch((error) => dispatch({ type: GAME_SAVE_LEVEL_FAILED, error: error }));
-    };
-}
-
-// function saveLevelSucceeded(data) {
-//     console.log(data);
-
-//     return {
-//         type: GAME_SAVE_LEVEL_SUCCEEDED,
-//         payload: data,
-//     };
-// }
-
-// function saveLevelFailed(data) {
-//     console.log(data);
-
-//     return {
-//         type: GAME_SAVE_LEVEL_FAILED,
-//         payload: data,
-//     };
-// }

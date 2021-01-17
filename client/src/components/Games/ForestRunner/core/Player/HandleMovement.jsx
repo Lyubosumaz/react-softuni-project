@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
-import { nextLevel, openGoldChest, openItemChest, resetLevel, saveLevel, toggleInGame } from '../../../../../services/redux/ducks/ForestRunner/game';
+import { finalTile } from '../../../../../services/redux/ducks/ForestRunner/advancedActions';
+import { nextLevel, openGoldChest, openItemChest, resetLevel, toggleInGame } from '../../../../../services/redux/ducks/ForestRunner/game';
 import { setTiles } from '../../../../../services/redux/ducks/ForestRunner/map';
 import { resetLocation, setMovement } from '../../../../../services/redux/ducks/ForestRunner/player';
 import { setNotification } from '../../../../../services/redux/ducks/notification';
@@ -9,7 +10,7 @@ import { handlePopupEnd } from '../../../../../services/redux/ducks/popup';
 import { toggleTimer } from '../../../../../services/redux/ducks/timer';
 import { MAP_HEIGHT, MAP_WIDTH, SPRITE_SIZE } from '../../constants';
 
-function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleInGameOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, displayPopupEndDisplay, setNotificationSuccess }) {
+function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedItem, totalTime, gameLevel, gameItems, inGame, finalTileProps, setMovementProps, stopTimerProps, openGoldChestProps, openItemChestProps, toggleInGameOff, resetLevelProps, saveLevelProps, resetLocationProps, nextLevelProps, displayPopupEndDisplay, setNotificationSuccess }) {
     function getNewPosition(oldPos, direction) {
         switch (direction) {
             case 'WEST':
@@ -91,15 +92,17 @@ function HandleMovement({ children, walkIndex, tiles, oldPos, totalGold, savedIt
     function handleCurrentTile(tile) {
         switch (tile) {
             case 1:
-                if (!inGame) return;
+                // if (!inGame) return;
 
-                // Promise
-                if (gameItems.length) openItemChestProps({ itemName: "You didn't loot anything" });
-                stopTimerProps();
+                finalTileProps();
 
-                // then
-                displayPopupEndDisplay();
-                toggleInGameOff();
+                // // Promise
+                // if (gameItems.length) openItemChestProps({ itemName: "You didn't loot anything" });
+                // stopTimerProps();
+
+                // // then
+                // displayPopupEndDisplay();
+                // toggleInGameOff();
 
                 setNotificationSuccess(`You have reach the maze end!`);
                 break;
@@ -149,13 +152,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setMovementProps: (newPos, direction, walkIndex, spriteLocation) => dispatch(setMovement(newPos, direction, walkIndex, spriteLocation)),
+        finalTileProps: () => dispatch(finalTile()),
         setTilesProps: (data) => dispatch(setTiles(data)),
         stopTimerProps: () => dispatch(toggleTimer().stop()),
         openGoldChestProps: (data) => dispatch(openGoldChest(data)),
         openItemChestProps: (data) => dispatch(openItemChest(data)),
         toggleInGameOff: () => dispatch(toggleInGame().off()),
         resetLevelProps: () => dispatch(resetLevel()),
-        saveLevelProps: () => dispatch(saveLevel()),
         resetLocationProps: () => dispatch(resetLocation()),
         nextLevelProps: (data) => dispatch(nextLevel(data)),
         displayPopupEndDisplay: () => dispatch(handlePopupEnd().display()),

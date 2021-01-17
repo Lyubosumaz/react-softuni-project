@@ -21,7 +21,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGame
 
                 <div className={`game-statistics-wrapper`}>
                     <p>Looted gold: {totalGold}</p>
-                    <p>Looted item: {savedItem[0].itemName}</p>
+                    <p>Looted item: {savedItem.length ? savedItem[0].itemName : "You didn't loot anything"}</p>
                     <p>Your time: {totalTime}</p>
                 </div>
 
