@@ -4,6 +4,15 @@ import { toggleTimer } from '../timer';
 import { nextLevel, openItemChest, resetLevel, toggleInGame } from './game';
 import { resetLocation } from './player';
 
+export function initialGameLoad() {
+    return (dispatch) => {
+        // toggleInGameOff();
+        // displayPopupStart();
+        // resetLocationProps();
+        // resetLevelProps();
+    };
+}
+
 export function popupStartGame() {
     return (dispatch) => {
         dispatch(toggleInGame().on());
