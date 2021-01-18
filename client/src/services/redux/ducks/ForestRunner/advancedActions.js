@@ -7,8 +7,8 @@ import { resetLocation } from './player';
 export function initialGameLoad() {
     return (dispatch) => {
         // toggleInGameOff();
-        // displayPopupStart();
-        // resetLocationProps();
+        displayPopupStart();
+        resetLocationProps();
         // resetLevelProps();
     };
 }
