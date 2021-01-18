@@ -6,11 +6,11 @@ import { resetLocation } from './player';
 
 export function initialGameLoad() {
     return (dispatch) => {
-        toggleInGameOff();
-        displayPopupStart();
-        resetLocationProps();
-        resetLevelProps();
-        resetLevelProps();
+        dispatch(handlePopupStart().display());
+
+        dispatch(toggleInGame().off());
+        dispatch(resetLocation());
+        dispatch(resetLevel());
     };
 }
 
@@ -37,7 +37,6 @@ export function popupEndGame() {
 
 export function finalTile() {
     return (dispatch, getState) => {
-        console.log(getState().game.item.length);
         Promise.all([
             // dispatch only if arr is empty
             !getState().game.item.length ? dispatch(openItemChest({ itemName: "You didn't loot anything" })) : null,

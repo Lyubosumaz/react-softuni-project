@@ -2,33 +2,25 @@ import { PropTypes } from 'prop-types';
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { httpGame } from '../../../services/http';
-import { resetLevel, saveItems, toggleInGame } from '../../../services/redux/ducks/ForestRunner/game';
-import { resetLocation } from '../../../services/redux/ducks/ForestRunner/player';
-import { handlePopupStart } from '../../../services/redux/ducks/popup';
+import { initialGameLoad } from '../../../services/redux/ducks/ForestRunner/advancedActions';
+import { saveItems } from '../../../services/redux/ducks/ForestRunner/game';
 import GamePopupEnd from '../../GamePopupEnd';
 import Overlay from '../../GamePopupStart';
 import World from './core/World';
 
-function ForestRunner({ displayPopupStart, gamePopupStart, gamePopupEnd, resetLocationProps, resetLevelProps, saveItemsProps, toggleInGameOff }) {
-    // TODO Game component should be reworked overall
+function ForestRunner({ gamePopupStart, gamePopupEnd, initialGameLoadProps, saveItemsProps }) {
     useEffect(() => {
         httpGame.shop().then((items) => saveItemsProps(items));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [saveItemsProps]);
 
     useEffect(() => {
-        toggleInGameOff();
-        displayPopupStart();
-        resetLocationProps();
-        resetLevelProps();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        initialGameLoadProps();
+    }, [initialGameLoadProps]);
 
     return (
         <Fragment>
             {gamePopupStart ? <Overlay /> : null}
             {gamePopupEnd ? <GamePopupEnd /> : null}
-
             <World />
         </Fragment>
     );
@@ -36,7 +28,6 @@ function ForestRunner({ displayPopupStart, gamePopupStart, gamePopupEnd, resetLo
 
 function mapStateToProps(state) {
     return {
-        inGame: state.game.inGame,
         gamePopupStart: state.popup.gamePopupStart,
         gamePopupEnd: state.popup.gamePopupEnd,
     };
@@ -44,10 +35,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggleInGameOff: () => dispatch(toggleInGame().off()),
-        displayPopupStart: () => dispatch(handlePopupStart().display()),
-        resetLocationProps: () => dispatch(resetLocation()),
-        resetLevelProps: () => dispatch(resetLevel()),
+        initialGameLoadProps: () => dispatch(initialGameLoad()),
         saveItemsProps: (items) => dispatch(saveItems(items)),
     };
 }
@@ -57,7 +45,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(ForestRunner);
 ForestRunner.propTypes = {
     gamePopupStart: PropTypes.bool.isRequired,
     gamePopupEnd: PropTypes.bool.isRequired,
-    resetLocationProps: PropTypes.func.isRequired,
-    resetLevelProps: PropTypes.func.isRequired,
+    initialGameLoadProps: PropTypes.func.isRequired,
     saveItemsProps: PropTypes.func.isRequired,
 };

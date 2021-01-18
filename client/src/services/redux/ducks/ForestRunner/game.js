@@ -1,14 +1,9 @@
-
 const GAME_TOGGLE = 'react-softuni-project/forest-runner/game/toggle';
 const GAME_RESET_LEVEL = 'react-softuni-project/forest-runner/game/reset-level';
 const GAME_NEXT_LEVEL = 'react-softuni-project/forest-runner/game/next-level';
 const GAME_SAVE_ITEMS = 'react-softuni-project/forest-runner/game/save-game';
 const GAME_OPEN_GOLD_CHEST = 'react-softuni-project/forest-runner/game/open-gold-chest';
 const GAME_OPEN_ITEM_CHEST = 'react-softuni-project/forest-runner/game/open-item-chest';
-const GAME_SAVE_LEVEL = 'react-softuni-project/forest-runner/game/save-level';
-const GAME_SAVE_LEVEL_SUCCEEDED = 'react-softuni-project/forest-runner/game/save-level-succeeded';
-const GAME_SAVE_LEVEL_FAILED = 'react-softuni-project/forest-runner/game/save-level-failed';
-const TEST = 'TEST';
 
 const initialState = {
     inGame: false,
@@ -51,21 +46,6 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 item: state.item.concat(action.payload),
-            };
-        case GAME_SAVE_LEVEL_SUCCEEDED:
-            console.log(action);
-            return {
-                ...state,
-            };
-        case GAME_SAVE_LEVEL_FAILED:
-            console.log(action);
-            return {
-                ...state,
-            };
-        case TEST:
-            console.log(action);
-            return {
-                ...state,
             };
         default:
             return state;

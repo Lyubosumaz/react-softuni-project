@@ -3,7 +3,7 @@ import { popupEndGame } from '../../services/redux/ducks/ForestRunner/advancedAc
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 
-function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGameProps }) {
+function GamePopupEnd({ inGame, totalGold, savedItem, totalTime, gameLevel, popupEndGameProps }) {
     const initializedOverlayBtn = factoryButtons({ buttonStyles: buttonClass.Overlay });
 
     const handleSubmit = () => {
@@ -11,8 +11,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGame
     };
 
     return (
-        <div className={`overlay-container-wrapper`}>
-            {console.log(savedItem)}
+        <div className={`overlay-container-wrapper  ${!inGame ? 'dimmer' : ''}`}>
             <section className={`overlay-container`}>
                 <header>
                     <h2>Game Statistics</h2>
@@ -33,6 +32,7 @@ function GamePopupEnd({ totalGold, savedItem, totalTime, gameLevel, popupEndGame
 
 function mapStateToProps(state) {
     return {
+        inGame: state.game.inGame,
         totalGold: state.game.gold,
         savedItem: state.game.item,
         totalTime: state.timer.time,
