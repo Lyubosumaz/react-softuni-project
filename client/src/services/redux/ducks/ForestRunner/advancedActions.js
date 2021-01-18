@@ -10,6 +10,7 @@ export function initialGameLoad() {
         displayPopupStart();
         resetLocationProps();
         resetLevelProps();
+        resetLevelProps();
     };
 }
 
