@@ -6,10 +6,11 @@ import { resetLocation } from './player';
 
 export function initialGameLoad() {
     return (dispatch) => {
-        // toggleInGameOff();
+        toggleInGameOff();
         displayPopupStart();
         resetLocationProps();
-        // resetLevelProps();
+        resetLevelProps();
+        resetLevelProps();
     };
 }
 
