@@ -1,6 +1,6 @@
 {
     "name": "my-first-express",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This is my back-end for the site Dqvol 4",
     "authors": "Lubosumaz",
     "main": "index.js",
