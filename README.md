@@ -1,4 +1,4 @@
-# softuni-react-course-project
+# react-softuni-course-project
 my project "Dqvol 4"
 
 ## --need to install--
