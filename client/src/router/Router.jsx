@@ -52,7 +52,7 @@ export default function AppRouter() {
                 <AuthRoute path="/logout" exact component={Logout} />
                 <AuthRoute path="/profile" exact component={Profile} />
                 <Route
-                    path="/game"
+                    path="/forest-runner"
                     render={({ match: { url } }) => (
                         <Fragment key={numberGenerator()}>
                             <GameOptionBar />

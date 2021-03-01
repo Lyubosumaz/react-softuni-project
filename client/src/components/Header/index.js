@@ -26,13 +26,15 @@ function Header({ isLogin }) {
                     <li className="nav-container-left">
                         <ul>
                             {isLogged ? (
-                                <Fragment key={numberGenerator()}>
-                                    <li>{initializedNavBtn('games', null, additionalClasses)}</li>
-                                    <li>{initializedNavBtn('puzzles', null, additionalClasses)}</li>
-                                </Fragment>
+                                <li>{initializedNavBtn('forest-runner', 'Forest Runner', additionalClasses)}</li>
+                                // TODO: extend games and add puzzles
+                                // <Fragment key={numberGenerator()}>
+                                //     <li>{initializedNavBtn('games', null, additionalClasses)}</li>
+                                //     <li>{initializedNavBtn('puzzles', null, additionalClasses)}</li>
+                                // </Fragment>
                             ) : (
-                                <li>{initializedNavBtn('home', null, additionalClasses)}</li>
-                            )}
+                                    <li>{initializedNavBtn('home', null, additionalClasses)}</li>
+                                )}
                             <li>{initializedNavBtn('house-of-fame', 'House of Fame')}</li>
                         </ul>
                     </li>
@@ -46,11 +48,11 @@ function Header({ isLogin }) {
                                     <li>{initializedNavBtn('logout')}</li>
                                 </Fragment>
                             ) : (
-                                <Fragment key={numberGenerator()}>
-                                    <li>{initializedNavBtn('register')}</li>
-                                    <li>{initializedNavBtn('login')}</li>
-                                </Fragment>
-                            )}
+                                    <Fragment key={numberGenerator()}>
+                                        <li>{initializedNavBtn('register')}</li>
+                                        <li>{initializedNavBtn('login')}</li>
+                                    </Fragment>
+                                )}
                         </ul>
                     </li>
                 </ul>

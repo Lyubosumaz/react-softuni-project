@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import { archiveReaderState } from '../../utils/archiveHandler';
-import archive from './site-info-archive.json';
-import { factoryButtons } from '../../utils/factory';
 import { buttonClass } from '../../utils/class-names.json';
+import { factoryButtons } from '../../utils/factory';
+import archive from './site-info-archive.json';
 
 function Info({ isLogin }) {
     function state() {
