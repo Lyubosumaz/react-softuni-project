@@ -1,42 +1,31 @@
 import { Fragment } from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
-import { history } from '../utils/history';
-import { numberGenerator } from '../utils/stringHandler';
-import AuthRoute from './AuthRoute';
-
-// Default
-import Home from '../pages/home';
-import About from '../pages/about';
-import HouseOfFame from '../pages/house-of-fame';
-import TermsAndConditions from '../pages/terms-and-conditions';
+import { Route, Router, Switch } from 'react-router-dom';
+import GameOptionBar from '../components/GameOptionBar';
+import ForestRunner from '../components/Games/ForestRunner';
+import Character from '../components/Games/ForestRunner/Character';
+import Inventory from '../components/Games/ForestRunner/Inventory';
+import Progress from '../components/Games/ForestRunner/Progress'; // TODO
+import Shop from '../components/Games/ForestRunner/Shop';
 import FourOFour from '../pages/404';
-
-// User
-import Register from '../pages/register';
+import About from '../pages/about';
+import Games from '../pages/games'; // TODO
+import Home from '../pages/home';
+import HouseOfFame from '../pages/house-of-fame';
 import Login from '../pages/login';
 import Logout from '../pages/logout';
 import Profile from '../pages/profile';
-
-// Games
-import ForestRunner from '../components/Games/ForestRunner';
-import Games from '../pages/games'; // TODO
-import Progress from '../components/Games/ForestRunner/Progress'; // TODO
-import Shop from '../components/Games/ForestRunner/Shop';
-import Inventory from '../components/Games/ForestRunner/Inventory';
-import Character from '../components/Games/ForestRunner/Character';
-
-// Puzzles
 import Puzzles from '../pages/puzzles'; // TODO
-
-// Memes
+import Register from '../pages/register';
 import Social from '../pages/social';
 import AddMeme from '../pages/social/add-meme';
-import ViewMeme from '../pages/social/view-meme';
-import EditMeme from '../pages/social/edit-meme';
 import DeleteMeme from '../pages/social/delete-meme';
-
-// Utility
-import GameOptionBar from '../components/GameOptionBar';
+import EditMeme from '../pages/social/edit-meme';
+import ViewMeme from '../pages/social/view-meme';
+import TermsAndConditions from '../pages/terms-and-conditions';
+import { history } from '../utils/history';
+import { numberGenerator } from '../utils/stringHandler';
+import AuthRoute from './AuthRoute';
+import { forestRunner } from './paths.json';
 
 export default function AppRouter() {
     return (
@@ -52,7 +41,7 @@ export default function AppRouter() {
                 <AuthRoute path="/logout" exact component={Logout} />
                 <AuthRoute path="/profile" exact component={Profile} />
                 <Route
-                    path="/forest-runner"
+                    path={forestRunner}
                     render={({ match: { url } }) => (
                         <Fragment key={numberGenerator()}>
                             <GameOptionBar />

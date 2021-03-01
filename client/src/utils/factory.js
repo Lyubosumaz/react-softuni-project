@@ -1,5 +1,5 @@
-import { capitalizeFirstLetter } from './stringHandler';
 import Button from '../components/Button';
+import { capitalizeFirstLetter } from './stringHandler';
 
 export function factoryButtons({ activated, handleCallBack, buttonStyles }) {
     return function (direction, buttonText, additionalClass, myFunc) {

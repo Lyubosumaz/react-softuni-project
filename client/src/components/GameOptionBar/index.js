@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { forestRunner } from '../../router/paths.json';
 import { buttonClass } from '../../utils/class-names.json';
 import { factoryButtons } from '../../utils/factory';
 import Timer from '../Timer';
@@ -23,12 +24,12 @@ function GameOptionBar({ isLogin, inGame }) {
             <ul>
                 {/* TODO after reworking the game this should be different */}
                 <li className={`game-utilities`}>{inGame ? <Timer /> : <span>Level: --, Time: --h --m --s</span>}</li>
-                <li>{initializedOptionsBtn('game', 'Forest Runner')}</li>
+                <li>{initializedOptionsBtn(forestRunner, 'Forest Runner')}</li>
 
-                <li>{initializedOptionsBtn('game/progress', 'Progress')}</li>
-                <li>{initializedOptionsBtn('game/shop', 'Shop')}</li>
-                <li>{initializedOptionsBtn('game/inventory', 'Inventory')}</li>
-                <li>{initializedOptionsBtn('game/character', 'Character')}</li>
+                <li>{initializedOptionsBtn(`${forestRunner}/progress`, 'Progress')}</li>
+                <li>{initializedOptionsBtn(`${forestRunner}/shop`, 'Shop')}</li>
+                <li>{initializedOptionsBtn(`${forestRunner}/inventory`, 'Inventory')}</li>
+                <li>{initializedOptionsBtn(`${forestRunner}/character`, 'Character')}</li>
             </ul>
         </div>
     ) : null;

@@ -29,7 +29,7 @@ function Header({ isLogin }) {
                                 <li>{initializedNavBtn('forest-runner', 'Forest Runner', additionalClasses)}</li>
                                 // TODO: extend games and add puzzles
                                 // <Fragment key={numberGenerator()}>
-                                //     <li>{initializedNavBtn('games', null, additionalClasses)}</li>
+                                //     <li>{initializedNavBtn(forestRunner, null, additionalClasses)}</li>
                                 //     <li>{initializedNavBtn('puzzles', null, additionalClasses)}</li>
                                 // </Fragment>
                             ) : (

@@ -2,13 +2,12 @@ import { PropTypes } from 'prop-types';
 import { handleRoute } from '../../utils/history';
 
 export default function Button({ direction, buttonClass, buttonText, callbackDirection, isClicked, myFunc }) {
-    const handleClick = direction
+    const handleClick = typeof direction === "string"
         ? (event) => {
-              event.preventDefault();
-
-              handleRoute(`/${direction}`);
-              if (callbackDirection) callbackDirection(direction);
-          }
+            event.preventDefault();
+            handleRoute(direction.substr(0, 1) === '/' ? direction : `/${direction}`);
+            if (callbackDirection) callbackDirection(direction);
+        }
         : myFunc;
 
     return (

@@ -19,7 +19,6 @@ function Timer({ isTimerOn, level, saveTimeProps }) {
     }, [count]);
 
     useEffect(() => {
-        console.log(count);
         saveTimeProps(count);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isTimerOn]);
