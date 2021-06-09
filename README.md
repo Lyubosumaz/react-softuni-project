@@ -1,56 +1,66 @@
-# react-softuni-course-project
-my project "Dqvol 4"
-
-## --need to install--
-
-install Node.js --version 12:
-sudo snap install node --channel=12/stable --classic
+# react-softuni-project
+my project jokingly named "Dqvol 4" 
 
 
-windows-build-tools for bcrypt,
+# --dependencies info--
 
-download MongoDB from here:
-https://www.mongodb.com/download-center/community
+## front-end:
 
+  1. React -> build with create-react-app
 
-## --dependencies info--
+  2. Redux with Thunk and Persist -> state management
 
-Front-end:
+  3. SASS and Yup -> utils
 
-React - build with create-react-app,
+  4. Jest & Enzyme -> testing
 
-Redux - state management,
+## back-end:
 
-Yup - validations,
+  1. Node.js with Express -> server
 
-Jest & Enzyme - testing,
-
-
-Back-end:
-
-Express,
-
-MongoDB,
+  2. MongoDB and Mongoose -> database and ORM
 
 
-## --check for all used dependencies in the package.json files--
+# --install--
+
+  1. Node.js above version 12
+
+  2. MongoDB
+
+  3. windows-build-tools needed for bcrypt
 
 
-## --how to start app--
+# --start app--
 
-open Command Prompt write: mongod,
+  1. Clone project source code
+  
+    git@github.com:Lyubosumaz/react-softuni-project.git
 
-open second Command Prompt directory /server write: npm install (for first start) then npm start,
+  2. Start MongoDB service
 
-open third Command Prompt directory /client write: npm install (for first start) then npm start
+    service mongod status
+
+    sudo systemctl start mongod
+  
+  3. Both directories /server and /client should contain node_modules insure it with
+
+    npm install
+
+  4. Open terminal tabs for both directories /server and /client to run their service
+
+    npm start
+
+  5. Browse http://localhost:3000
 
 
-## --how to start unit tests--
+# --unit tests--
 
-open Command Prompt directory /client write: npm install then npm test
+  In terminal on directory /client type command
+
+    npm install then npm test
 
 
-## --info--
+# --info--
 
 JWT with Authentication refresh tokens and Blacklist tokens,
 
