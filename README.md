@@ -6,11 +6,11 @@ Now is taste ground for trying new stuff, that I see on the internet.
 
 ## front-end:
 
-  1. React -> build with create-react-app
+  1. React -> started with create-react-app
 
-  2. Redux with Thunk and Persist -> state management
+  2. Redux with Thunk & Persist -> state management
 
-  3. SASS and Yup -> utils
+  3. SASS & Yup -> utils
 
   4. Jest & Enzyme -> testing
 
@@ -18,7 +18,7 @@ Now is taste ground for trying new stuff, that I see on the internet.
 
   1. Node.js with Express -> server
 
-  2. MongoDB and Mongoose -> database and ORM
+  2. MongoDB with Mongoose -> database and ORM
 
 
 # --install--
