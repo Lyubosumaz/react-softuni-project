@@ -1,6 +1,8 @@
 # react-softuni-project
-My project jokingly named "Dqvol 4", used as final course project.
+My project jokingly named "Dqvol 4", used as final course SPA project.
 Now is taste ground for trying new stuff, that I see on the internet.
+
+
 
 # --dependencies info--
 
@@ -21,6 +23,7 @@ Now is taste ground for trying new stuff, that I see on the internet.
   2. MongoDB with Mongoose -> database and ORM
 
 
+
 # --install--
 
   1. Node.js above version 12
@@ -28,6 +31,7 @@ Now is taste ground for trying new stuff, that I see on the internet.
   2. MongoDB
 
   3. windows-build-tools needed for bcrypt
+
 
 
 # --start app--
@@ -53,11 +57,13 @@ Now is taste ground for trying new stuff, that I see on the internet.
   5. Browse http://localhost:3000
 
 
+
 # --unit tests--
 
   In terminal on directory /client type command
 
     npm run test
+
 
 
 # --info--
