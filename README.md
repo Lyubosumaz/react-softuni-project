@@ -1,6 +1,6 @@
 # react-softuni-project
-my project jokingly named "Dqvol 4" 
-
+My project jokingly named "Dqvol 4", used as final course project.
+Now is taste ground for trying new stuff, that I see on the internet.
 
 # --dependencies info--
 
@@ -57,19 +57,17 @@ my project jokingly named "Dqvol 4"
 
   In terminal on directory /client type command
 
-    npm install then npm test
+    npm run test
 
 
 # --info--
 
-JWT with Authentication refresh tokens and Blacklist tokens,
+  Authentication with JWT and refresh tokens on time interval with blacklisting tokens
 
-Route Authentication for path: /logout, /profile, all /game and all /social,
+  Client Route Authentication for paths: /logout, /profile, all /game and all /social 
 
-Tests are correctly rendering the Components,
+  Unit Testing the correct rendering of components
 
-Server routing is using middleware for authorizing the user,
+  /server/utils/seed.js contains the Game Items
 
-/server/utils/seed.js contains the Game Items,
-
-/server/app-config.js contains server options
+  /server/app-config.js contains server options
