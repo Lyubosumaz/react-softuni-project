@@ -1,6 +1,7 @@
 # react-softuni-project
-My project jokingly named "Dqvol 4", used as final course SPA project.
-Now is taste ground for trying new stuff, that I see on the internet.
+My project jokingly named "Dqvol 4", used as course finals project.
+Now is test ground for trying new stuff that I see on internet.
+Traditional SPA site.
 
 
 
